@@ -1,0 +1,73 @@
+//compiled: ./stylesheet.css.min
+$header : rgb(17, 81, 246)
+$base : #eee
+
+body, html
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
+  font-weight: 100
+
+main
+  text-align: center
+  position: absolute
+  margin: auto
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  width: 250px
+  height: 300px
+
+
+main section
+  // border: 1px solid #b3acac
+  border-radius: 3px
+
+h1
+  color: $header
+  font-weight: 100
+
+button
+  font-size: 1em
+  color: $base
+  text-align: center
+  border: none
+  border-radius: 5%
+  padding: 10px
+
+button#fb
+  background-color: $header
+
+.clicked
+  background-color: $header - 50 !important
+  opacity: 50%
+
+//chatrooms page
+.chatrooms
+  width: 500px !important
+
+.newRoom, .roomList, .userBlock
+  border: 1px black solid
+
+// userBlock
+.userBlock
+  background-color: $base
+  text-align: left !important
+
+// newRoom
+.newRoom
+  background-color: $base - 100
+  padding: 20px
+
+// room list
+.roomList
+  background-color: $base
+  text-align: left !important
+
+ul.roomList
+  list-style: none
+  text-align: center
+  margin: 0
+  padding: 10px 0 10px 0
+
+ul.roomList li
+  padding: 15px 0 0 0

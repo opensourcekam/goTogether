@@ -1,0 +1,55 @@
+//- chatrooms.jade
+extends ./layout.jade
+
+block content
+	script(src='/socket.io/socket.io.js')
+	script.
+		$(function(){
+			var host = '#{config.host}'
+			var socket = io.connect(host + '/roomlist');
+
+			socket.on('connect', function() {
+			  console.log('connect est');
+			});
+
+			socket.on('roomupdate', function(data) {
+			  var procData = JSON.parse(data);
+			  $('.roomList').html('')
+			  var str = procData.map(function(val) {
+					console.log(val);
+			    return '<a href="room/' + val.roomNum + '"><li>' + val.roomName + '</li>'
+			  });
+			  $('.roomList').prepend(str);
+			});
+
+			$('#createRoom').on('click', function() {
+			  console.log('createRoom');
+			  var roomName = $('.nRoom').val();
+			  if (roomName != '') {
+			    var roomNum = parseInt(Math.random() * 1000000);
+			    socket.emit('newroom', {
+			      roomName: roomName,
+			      roomNum: roomNum
+			    });
+			    $('.nRoom').val('');
+			  }
+			});
+
+		});
+	main.chatrooms
+		section
+			p= title
+			if !user
+				a(href='/auth/facebook') login
+			else
+				div.userBlock
+					a(href= 'https://www.facebook.com/app_scoped_user_id/' + user.id)
+						img(src=user.photos[0].value)
+					span #{user.displayName} | 
+						a(href="/logout") Logout
+				div.newRoom
+					input(type="text" class="nRoom" autocomplete="off")
+					br
+					button#createRoom Create Room
+				div.rooms
+					ul.roomList

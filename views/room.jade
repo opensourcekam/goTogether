@@ -1,0 +1,10 @@
+extends layout.jade
+
+block content
+  main
+    section
+    p #{roomName}
+    div.msgs
+      div.user 
+          img(src=user.photos[0].value)
+          span #{user.displayName}
