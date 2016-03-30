@@ -25,3 +25,5 @@ button#fb { background-color: #1151f6; }
 ul.roomList { list-style: none; text-align: center; margin: 0; padding: 10px 0 10px 0; }
 
 ul.roomList li { padding: 15px 0 0 0; }
+
+.msgs ul { list-style: none; margin: 0; padding: 0; text-align: left !important; }

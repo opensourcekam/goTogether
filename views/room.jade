@@ -1,10 +1,56 @@
 extends layout.jade
 
 block content
+  script(src='/socket.io/socket.io.js')
+  script.
+    $(function(){``
+      var host = '#{config.host}',
+       messages = io.connect(host + '/messages'),
+       roomNum = #{roomNum},
+      userName = '#{user.displayName}',
+     userPhoto = '#{user.photos[0].value}';
+
+      messages.on('connect', function() {
+        console.log('connect est');
+        messages.emit('joinroom', {roomNum:roomNum, userName:userName, userPhoto: userPhoto});
+      });
+
+      $('.newMsg input').on('keyup', function(e) {
+        if(e.which === 13 && $(this).val() != ''){
+          messages.emit('newMsg', {
+            roomNum:roomNum,
+            userName:userName,
+            userPhoto:userPhoto,
+            message:$(this).val()
+          });
+          updateFeed(userPhoto, $(this).val());
+          $(this).val('');
+        }
+      });
+      
+      messages.on('msgFeed', function(data) {
+          var msg = JSON.parse(data);
+          updateFeed(msg.userPhoto, msg.message);
+      })
+
+      function updateFeed(userPhoto, message) {
+        var str = '<li>';
+              str +=   '<img src="' + userPhoto + '" alt="" class="userPhoto"/>';
+              str +=    '<span class="user">';
+              str +=      '<div class="msg">';
+              str +=        '<span>' + message + '</span>';
+              str +=        '</div>';
+              str +=    '</span>';
+              str +=  '</li>';
+        $(str).hide().prependTo('.msgs').slideDown(100);
+      }
+    });
   main
     section
-    p #{roomName}
-    div.msgs
-      div.user 
-          img(src=user.photos[0].value)
-          span #{user.displayName}
+      p #{roomName}
+      article
+        div.msgs
+          ul
+            li
+        div.newMsg
+          input(type="text" autofill='false' autocorrect='true')
