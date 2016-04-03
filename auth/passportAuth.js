@@ -13,7 +13,7 @@ module.exports = function(passport, FacebookStrategy, config, mongoose) {
       profileFields: ['id', 'displayName', 'link', 'photos', 'email']
     },
     function(accessToken, refreshToken, profile, cb) {
-
+      console.log('prince', profile);
       //I was overwriting the scope in line 20 by passing in profile again... good example of closures!
       userModel.findOne({
             'profileID': profile.id
@@ -21,7 +21,6 @@ module.exports = function(passport, FacebookStrategy, config, mongoose) {
             if (user) {
               return cb(null, user);
             } else {
-              console.log('elseee');
               // if not create user and return profile
               var newChatUser = new userModel({
                 profileID: profile.id,

@@ -20,7 +20,6 @@ app.use(require('morgan')('combined'));
 app.use(cookieParser());
 app.use(require('body-parser').urlencoded({ extended: true }));
 
-
 var env = process.env.NODE_ENV || 'development';
 if(env === 'development'){
   // dev specific settings
@@ -42,7 +41,6 @@ if(env === 'development'){
 }
 
 /******************************************************
-
 Writing data to mongolab
 
 Define Structure of data
@@ -53,7 +51,6 @@ var userSchema = mongoose.Schema({
 });
 
 Pass the model to mongoose
-
 var Person = mongoose.model('users', userSchema);
 
 Create a new {}

@@ -3,8 +3,19 @@ $header : rgb(17, 81, 246)
 $base : #eee
 
 body, html
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
+  font-family: "Noto Sans", "Lucida Sans Unicode", "Lucida Grande", sans-serif
   font-weight: 100
+  background: -moz-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)
+  background: -webkit-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)
+
+aside
+  // background-color: rgb(32,39,73)
+  position: absolute
+  right: 0
+  bottom: 0
+  height: 100%
+  width: 400px
+  z-index: -2
 
 main
   text-align: center
@@ -17,6 +28,15 @@ main
   width: 250px
   height: 300px
 
+main.chatroom
+  width: 400px
+  height: inherit
+  top: auto !important
+  left: auto !important
+  font-size: .7em
+  overflow:   scroll
+  position:   relative
+
 
 main section
   // border: 1px solid #b3acac
@@ -24,7 +44,14 @@ main section
 
 h1
   color: $header
-  font-weight: 100
+
+li
+  list-style: none
+
+img.userPhoto
+  border-radius: 100px
+  position: relative
+  top: 40px
 
 button
   font-size: 1em
@@ -36,6 +63,7 @@ button
 
 button#fb
   background-color: $header
+
 
 .clicked
   background-color: $header - 50 !important
@@ -51,7 +79,7 @@ button#fb
 // userBlock
 .userBlock
   background-color: $base
-  text-align: left !important
+  // text-align: left !important
 
 // newRoom
 .newRoom
@@ -72,10 +100,136 @@ ul.roomList
 ul.roomList li
   padding: 15px 0 0 0
 
-
-// room styling
-.msgs ul
-  list-style: none
-  margin: 0
+// room message
+.newMsg textarea
+  resize: none
+  word-wrap: normal
+  font-weight: 100
+  font-size: 3em
+  background: none
+  color: white
+  -webkit-box-shadow: none !important
+  box-shadow: none !important
+  border: 0
   padding: 0
-  text-align: left !important
+  width: 90%
+  margin-bottom: 10px
+  // padding: 15px
+  margin-top: 30px
+  position: fixed
+  bottom: 0
+  width: 350px
+  right: 20px
+  border-bottom: 2px solid
+  //border-bottom-image-source: linear-gradient(rgba(0, 51, 102, 0.5), rgba(0, 0, 51, 0.5))
+  // border-width: 5pt
+  // border-image-slice: 1
+  // line-height: 1em
+
+textarea:focus
+  outline: none
+
+textarea[type='text']
+  line-height: 28px
+ul.msgs li
+  // text-align: right !important
+  margin-right: 2%
+
+ul.msgs p
+  color: #ffffff
+
+ul.msgs
+  overflow:   auto
+  position:   absolute
+  bottom:     0
+  width: 400px
+  max-height: 100%
+  margin-bottom: 70px
+// room styling
+@function em($value)
+  @return $value / 16 * 1em
+
+*, *::before, *::after
+  margin: 0
+  border: 0
+  padding: 0
+  word-wrap: break-word
+  box-sizing: border-box
+
+body
+  font-size: 1.2em
+  margin: 1em
+  background-color: rgba(mix(dodgerblue, black, 25%), 0.0625)
+
+/* MIXIN STARTS HERE
+/* Requires LifeSaver Sass mixin linked externally
+=friendChatBubble($radius: 8, $color: green, $proportional: false)
+  $tail: $radius * 1.5
+  $half: $radius * 0.5
+  $double: $radius * 2
+  display: inline-block
+  margin: em($half)
+  max-width: 400px
+  min-height: em($double)
+  // @include padding($half $tail, em);
+  padding: em($half) em($tail)
+  position: relative
+  border-radius: em($radius)
+  line-height: 1.5
+  color: white
+  background-color: $color
+  @if $proportional == true
+    p
+      font-size: em($radius)
+  &::before
+    content: ''
+    display: block
+    width: em($tail + 1)
+    height: em($radius)
+    // @include absolute(x ($radius - $tail) 0 x, em);
+    position: absolute
+    left: em($radius - $tail)
+    bottom: 0
+    border-right: em($radius) solid $color
+    border-bottom-right-radius: 100%
+    z-index: -1
+
+=bubble($radius: 8, $color: dodgerblue, $proportional: false)
+  $tail: $radius * 1.5
+  $half: $radius * 0.5
+  $double: $radius * 2
+  display: inline-block
+  margin: em($half)
+  max-width: 400px
+  min-height: em($double)
+  // @include padding($half $tail, em);
+  padding: em($half) em($tail)
+  position: relative
+  border-radius: em($radius)
+  line-height: 1.5
+  color: white
+  background-color: $color
+  @if $proportional == true
+    p
+      font-size: em($radius)
+  &::before
+    content: ''
+    display: block
+    width: em($tail)
+    height: em($radius)
+    // @include absolute(x ($radius - $tail) 0 x, em);
+    position: absolute
+    right: em($radius - $tail)
+    bottom: 0
+    border-left: em($radius) solid $color
+    border-bottom-left-radius: 100%
+    z-index: -1
+
+.chat-bubble-center
+  text-align: right
+
+.chatBubble
+  +bubble(32, #40a6bd)
+
+.friendChatBubble
+  +friendChatBubble(32, #35c1bf)

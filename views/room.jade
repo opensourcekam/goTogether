@@ -3,54 +3,93 @@ extends layout.jade
 block content
   script(src='/socket.io/socket.io.js')
   script.
-    $(function(){``
+    $(function(){
       var host = '#{config.host}',
        messages = io.connect(host + '/messages'),
        roomNum = #{roomNum},
       userName = '#{user.displayName}',
-     userPhoto = '#{user.photos[0].value}';
+     userPhoto = '#{user.photos[0].value}',
+        userID = #{user.id};
 
+
+    function textAreaAdjust(o) {
+      o.style.height = "1px";
+      o.style.height = (25+o.scrollHeight)+"px";
+    }
       messages.on('connect', function() {
         console.log('connect est');
         messages.emit('joinroom', {roomNum:roomNum, userName:userName, userPhoto: userPhoto});
       });
 
-      $('.newMsg input').on('keyup', function(e) {
+      $('.newMsg textarea').on('keyup', function(e) {
         if(e.which === 13 && $(this).val() != ''){
           messages.emit('newMsg', {
             roomNum:roomNum,
             userName:userName,
             userPhoto:userPhoto,
-            message:$(this).val()
+            message:$(this).val(),
+            theirID:userID
           });
           updateFeed(userPhoto, $(this).val());
           $(this).val('');
         }
       });
       
-      messages.on('msgFeed', function(data) {
+      messages.on('msgFeed', function(data, userName) {
           var msg = JSON.parse(data);
-          updateFeed(msg.userPhoto, msg.message);
+          console.log("ON MSG FEED USERID: ", msg);
+          updateFeed(msg.userPhoto, msg.message, msg.theirID, userName);
       })
 
-      function updateFeed(userPhoto, message) {
-        var str = '<li>';
-              str +=   '<img src="' + userPhoto + '" alt="" class="userPhoto"/>';
-              str +=    '<span class="user">';
-              str +=      '<div class="msg">';
-              str +=        '<span>' + message + '</span>';
+      function updateFeed(userPhoto, message, theirID) {
+        var   str  = '<li>';
+              str +=    '<span class="user" id="' + theirID + '">';
+              str +=      '<div class="chatBubble">';
+              str +=        '<p>' + message + '</p>';
               str +=        '</div>';
               str +=    '</span>';
+              str +=   '<img src="' + userPhoto + '" alt="" class="userPhoto"/>';
               str +=  '</li>';
-        $(str).hide().prependTo('.msgs').slideDown(100);
+        $(str).hide().appendTo('.msgs').slideDown(100);
+        checkWho($('span.user'))
       }
+      
+      function checkWho(items) {
+        for (var i = 0; i < items.length; i++) {
+          if (items[i].id != "undefined") {
+            $(items[i]).parent().css('text-align', 'left');
+            $(items[i]).children().addClass('friendChatBubble').removeClass('chatBubble')
+          } else {
+            $(items[i]).parent().css('text-align', 'right');
+          }
+        }
+      }
+      
+      //- code in question
+      messages.on('updateUserList', function(data){
+        console.log('event run updateUserList')
+        //- var listObj = JSON.parse(data);
+        //- console.log(listObj);
+        //- $('.users').html('');
+        //- var user = listObj.map(function(user){
+        //-   return '<li><img src="' + user.userPhoto + '" alt="" class="userPhoto"/><p>'+ user.userName +'</li>'
+        //- });
+        //- 
+        //- $(user).prependTo($('.users ul'));
+        
+      });
+      
+      setInterval(function() {
+        console.log('Emiting event to updateUserList');
+        messages.emit('updateList', {room:roomNum});
+      }, 1000);
+      //- code in question
     });
-  main
-    section
-      p #{roomName}
-      article
-        div.msgs
-          ul
-            li
-        div.newMsg
-          input(type="text" autofill='false' autocorrect='true')
+    
+  aside
+    main(class='chatroom')
+      section
+        article
+          ul.msgs
+          div.newMsg
+            textarea(type="text" autofill='false' autocorrect='true' cols='60' rows='1' onkeyup="textAreaAdjust(this)" style="overflow:hidden")
