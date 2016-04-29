@@ -9,7 +9,8 @@
 ### IDEA
 Produce an application that allows you and your friends to fully plan out a summertime trip.
 
-The application will have:
+######The application will have:
+
 1. Chatroom <- done
 2. Sign in/ up with Facebook <- done. Add -> x, y, z
 3. Budget tracking 💰 💸 🤑
