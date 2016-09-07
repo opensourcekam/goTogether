@@ -1,7 +1,6 @@
 # goTogether
 Travel planning + execution made simple.
 
----
 ### IDEA
 Application that allows you and your friends to fully plan trips together.
 
@@ -16,16 +15,40 @@ Application that allows you and your friends to fully plan trips together.
 9. Cart style trip finding
 
 ---
-### TODO
+## MAJOR TODOs
+1. Design UI
+2. Code UI - React.js, SASS
+3. Decide BASE APIs
+4. Design Backend
+5. Code Backend - Node.js, Python, Heroku/AWS
+
+### Frontend
+- KISS DRY
+- React.js - component architecture
+- SASS for styling
+- Using CSS library? or making own framework?
+
+### Backend
+- API request
+- Services, each should be it's own module
+
+### Database
+- Relational DB b/c each trip has specific relations
+
+---
+
+
+
+### Daily goals
 1. Decide on which APIs to integrate
 2. Sign up for each API
-3. Wireframe & plan the appliction 
+3. Wireframe & plan the appliction
 4. Iterate version w/ new design etc.
 5. Code
 6. Repeat
 
-------
-UPDATE to idea 8/6/16
+---
+**UPDATE to idea 8/6/16**
 
 ### Services
 1. Hotel finder
