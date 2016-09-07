@@ -2,17 +2,4 @@
 extends ./layout.jade
 
 block content
-  main
-    section
-      h1= appName
-      if !user
-        a(href='/auth/facebook')
-          button#fb login with facebook
-      else
-        p Hey #{user.displayName}, do you want to 
-          a(href='/chatrooms') chat?
-        
-        div
-          a(href= 'https://www.facebook.com/app_scoped_user_id/' + user.id)
-            img(src=user.photos[0].value)
-            //- p #{user.profileID}
+  main#app
