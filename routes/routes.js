@@ -1,26 +1,26 @@
-module.exports = function(express, app, passport, config, rooms) {
-  var router = express.Router();
+module.exports = function (express, app, passport, config, rooms) {
+  var router = express.Router()
 
   app.get('/',
-    function(req, res) {
+    function (req, res) {
       res.render('index', {
         user: req.user
-      });
-    });
+      })
+    })
 
-  function securePages(req, res, next) {
+  function securePages (req, res, next) {
     if (req.isAuthenticated()) {
-      next();
+      next()
     } else {
       res.redirect('/')
     }
   }
 
-  router.get('/auth/facebook', passport.authenticate('facebook'));
+  router.get('/auth/facebook', passport.authenticate('facebook'))
   router.get('/auth/facebook/callback', passport.authenticate('facebook', {
     successRedirect: '/chatrooms',
     failureRedirect: '/'
-  }));
+  }))
 
   /*
   {
@@ -34,43 +34,41 @@ module.exports = function(express, app, passport, config, rooms) {
   }
   */
 
-  router.get('/chatrooms', securePages, function(req, res, next) {
+  router.get('/chatrooms', securePages, function (req, res, next) {
     // console.log(config)
     res.render('chatrooms', {
       user: req.user,
       config: config
-    });
-  });
+    })
+  })
 
-
-  router.get('/room/:id', securePages, function(req, res, next) {
-    var room_name = findRoomName(req.params.id);
+  router.get('/room/:id', securePages, function (req, res, next) {
+    var roomName = findRoomName(req.params.id)
     res.render('room', {
       user: req.user,
       roomNum: req.params.id,
-      roomName: room_name,
-      config: config,
-    });
-  });
+      roomName: roomName,
+      config: config
+    })
+  })
 
-  function findRoomName(roomID) {
-      var n = 0;
-      while (n < rooms.length) {
-        if(rooms[n].roomNum == roomID){
-          return rooms[n].roomName;
-          break;
-        } else {
-          n++;
-          continue;
-        }
+  function findRoomName (roomID) {
+    var n = 0
+    while (n < rooms.length) {
+      if (rooms[n].roomNum === roomID) {
+        return rooms[n].roomName
+      } else {
+        n++
+        continue
       }
+    }
   }
 
-  router.get('/logout', securePages, function(req, res, next) {
-    //console.log(req.user)
-    req.logout();
+  router.get('/logout', securePages, function (req, res, next) {
+    // console.log(req.user)
+    req.logout()
     res.redirect('/')
-  });
+  })
 
-  app.use('/', router);
+  app.use('/', router)
 }

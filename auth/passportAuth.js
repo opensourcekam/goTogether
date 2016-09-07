@@ -1,42 +1,44 @@
-module.exports = function(passport, FacebookStrategy, config, mongoose) {
+module.exports = function (passport, FacebookStrategy, config, mongoose) {
   var chatUser = new mongoose.Schema({
     profileID: String,
     fullName: String,
     profilePic: String
-  });
-  var userModel = mongoose.model('chatUser', chatUser);
+  })
+  var UserModel = mongoose.model('chatUser', chatUser)
 
   passport.use(new FacebookStrategy({
-      clientID: config.fb.appID,
-      clientSecret: config.fb.appSecret,
-      callbackURL: config.fb.callbackURL,
-      profileFields: ['id', 'displayName', 'link', 'photos', 'email']
-    },
-    function(accessToken, refreshToken, profile, cb) {
-      console.log('prince', profile);
-      //I was overwriting the scope in line 20 by passing in profile again... good example of closures!
-      userModel.findOne({
-            'profileID': profile.id
-          }, function(err, user) {
-            if (user) {
-              return cb(null, user);
-            } else {
-              // if not create user and return profile
-              var newChatUser = new userModel({
-                profileID: profile.id,
-                fullName: profile.displayName,
-                profilePic: profile.photos[0].value || ''
-              });
+    clientID: config.fb.appID,
+    clientSecret: config.fb.appSecret,
+    callbackURL: config.fb.callbackURL,
+    profileFields: ['id', 'displayName', 'link', 'photos', 'email']
+  },
+    function (accessToken, refreshToken, profile, cb) {
+      console.log('prince', profile)
+        // I was overwriting the scope in line 20 by passing in profile again... good example of closures!
+      UserModel.findOne({
+        'profileID': profile.id
+      }, function (err, user) {
+        if (err) {
+          console.log(err)
+        }
+        if (user) {
+          return cb(null, user)
+        } else {
+          // if not create user and return profile
+          var NewChatUser = new UserModel({
+            profileID: profile.id,
+            fullName: profile.displayName,
+            profilePic: profile.photos[0].value || ''
+          })
 
-              newChatUser.save(function(err) {
-                cb(null, newChatUser);
-              });
-            }
-          });
+          NewChatUser.save(function (err) {
+            (err) ? console.error(err) : cb(null, NewChatUser)
+          })
+        }
+      })
 
-      return cb(null, profile);
-    }));
-
+      return cb(null, profile)
+    }))
 
   // Configure Passport authenticated session persistence.
   //
@@ -47,32 +49,32 @@ module.exports = function(passport, FacebookStrategy, config, mongoose) {
   // from the database when deserializing.  However, due to the fact that this
   // example does not have a database, the complete Twitter profile is serialized
   // and deserialized.
-  passport.serializeUser(function(user, cb) {
+  passport.serializeUser(function (user, cb) {
     // console.log(user)
-    cb(null, user);
-  });
+    cb(null, user)
+  })
 
-  passport.deserializeUser(function(obj, cb) {
-    cb(null, obj);
-  });
+  passport.deserializeUser(function (obj, cb) {
+    cb(null, obj)
+  })
 
   //, function(accessToken, refreshToken, profile, done) {
   //     //Check if user exists in DB
-  //     userModel.findOne({
+  //     UserModel.findOne({
   //       'profileID': profile.id
   //     }, function(err, user) {
   //       if (user) {
   //         return done(err, user);
   //       } else {
   //         // if not create user and return profile
-  //         var newChatUser = new userModel({
+  //         var NewChatUser = new UserModel({
   //           profileID: profile.id,
   //           fullName: profile.displayName,
   //           profilePic: profile.photos[0].value || ''
   //         });
   //
-  //         newChatUser.save(function(err) {
-  //           done(null, newChatUser);
+  //         NewChatUser.save(function(err) {
+  //           done(null, NewChatUser);
   //         });
   //       }
   //     });
@@ -80,5 +82,4 @@ module.exports = function(passport, FacebookStrategy, config, mongoose) {
   //     // return done(null, profile);
   //   }));
   // }
-
-};
+}
