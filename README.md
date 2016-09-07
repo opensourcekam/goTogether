@@ -1,4 +1,5 @@
 # goTogether
+- Travel planning and execution made simple
 ---
 ### To run the application
 1. Open terminal
@@ -27,3 +28,30 @@ Produce an application that allows you and your friends to fully plan out a summ
 4. Iterate version w/ new design etc.
 5. Code
 6. Repeat
+
+------
+
+## Services
+1. Hotel finder
+2. Flight finder
+3. Food finder
+4. Activities finder
+5. Excursión Finder
+
+## Features
+1. In app messaging
+2. In app budget tracking
+3. In app date picking/ date alignment tool
+4.  In app goal tracking
+
+## APIs
+------
+1. Location planning
+- Google maps
+- Flickr
+- 500px
+- Unsplashit
+2. Hotel planning
+- http://stackoverflow.com/questions/1185961/travel-hotel-apis
+- airBNB
+- Hoteles tonight
