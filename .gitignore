@@ -33,3 +33,13 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+public/bundle.js
+
+node_modules/
+
+.eslintcache
+
+coverage
+
+.DS_Store
