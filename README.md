@@ -1,6 +1,6 @@
 # goTogether
-- Travel planning and execution made simple
----
+Travel planning and execution made simple
+-----
 ### To run the application
 1. Open terminal
 2. Go to project -> cd goTogether
@@ -8,11 +8,11 @@
 4. Go to your browser -> navigate to localhost:port
 ---
 ### IDEA
-Produce an application that allows you and your friends to fully plan out a summertime trip.
+Produce an application that allows you and your friends to fully plan trips together.
 
 #####The application will have:
 
-1. Chatroom <- done
+1. Chatroom <- done/ half baked
 2. Sign in/ up with Facebook <- done. Add -> x, y, z
 3. Budget tracking 💰 💸 🤑
 4. Ability to set up playlist wiht your friends
@@ -20,6 +20,7 @@ Produce an application that allows you and your friends to fully plan out a summ
 6. Ability to help you find cheap airfare
 7. Ability to help you plan where you will be going out while in X place
 8. More to be discussed
+9. Cart style trip finding
 ---
 ### TODO
 1. Decide on which APIs to integrate
@@ -45,7 +46,6 @@ Produce an application that allows you and your friends to fully plan out a summ
 4.  In app goal tracking
 
 ## APIs
-------
 1. Location planning
 - Google maps
 - Flickr
