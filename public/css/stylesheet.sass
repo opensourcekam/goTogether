@@ -5,8 +5,11 @@ $base : #eee
 body, html
   font-family: "Noto Sans", "Lucida Sans Unicode", "Lucida Grande", sans-serif
   font-weight: 100
-  background: -moz-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)
-  background: -webkit-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)
+  background-image: url('../images/br0.jpg')
+  background-size: 100% auto
+  background-repeat: repeat
+  //background: -moz-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)
+  //background: -webkit-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)
 
 aside
   // background-color: rgb(32,39,73)
@@ -34,9 +37,6 @@ main section
   // border: 1px solid #b3acac
   border-radius: 3px
 
-h1
-  color: $header
-
 li
   list-style: none
 
@@ -52,10 +52,10 @@ button
   border: none
   border-radius: 5%
   padding: 10px
+  margin: 0 10px
 
 button#fb
   background-color: $header
-
 
 .clicked
   background-color: $header - 50 !important
@@ -145,7 +145,7 @@ ul.msgs
   margin: 0
   border: 0
   padding: 0
-  word-wrap: break-word
+  //word-wrap: break-word
   box-sizing: border-box
 
 body
@@ -225,3 +225,54 @@ body
 
 .friendChatBubble
   +friendChatBubble(32, #35c1bf)
+
+
+// cards
+article
+  width: 100%
+  text-align: center
+
+.cardWell
+  background-color: rgba(255, 255, 255, .1)
+  padding: 40px
+  z-index: -999
+  text-align: center
+  position: absolute
+  bottom: 0
+  left: 0
+  width: 100%
+
+.card
+  width: 360px
+  height: 280px
+  margin: auto 30px
+  background-color: rgba(250,255,255, .5)
+  color: white
+  z-index: 999
+  display: inline-flex
+  box-shadow: 1px 2px 60px #1f2025
+
+.card > *
+  opacity: 1
+
+.card > h1
+  font-size: 2em
+  font-weight: lighter
+  text-align: center
+  margin-left: 20px
+  margin-top: 20px
+
+.card:first-of-type p
+  margin: 50px -40px
+
+.card > p
+  padding: 10%
+  margin: 50px -20px
+  text-align: left
+  font-size: 1.15em
+
+/* Smartphones (portrait and landscape) -----------  */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+  .card
+    width: 100%
+    margin: 20px auto

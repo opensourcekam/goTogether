@@ -4,11 +4,11 @@ const Landing = require('./Parts/Landing')
 const { Router, Route, hashHistory } = require('react-router')
 
 const App = () => (
-  <div>
+  <main>
     <Router history={hashHistory}>
       <Route path='/' component={Landing} />
     </Router>
-  </div>
+  </main>
 )
 
 ReactDOM.render(<App />, document.getElementById('app'))
