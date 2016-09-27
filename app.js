@@ -4,14 +4,12 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const config = require('./config/config.js')
-
 // Turn on datastore
 const ConnectMongo = require('connect-mongo')(session)
 const mongoose = require('mongoose').connect(config.dburl)
 
 const passport = require('passport')
 const FacebookStrategy = require('passport-facebook').Strategy
-const rooms = []
 const port = 8080
 
 app.set('views', path.join(__dirname, 'views'))
@@ -72,12 +70,12 @@ app.use(passport.initialize())
 app.use(passport.session())
 // Turn on datastore
 require('./auth/passportAuth.js')(passport, FacebookStrategy, config, mongoose)
-require('./routes/routes.js')(express, app, passport, config, rooms)
+require('./routes/routes.js')(express, app, passport, config)
 
 app.set('port', process.env.PORT || port)
 var server = require('http').Server(app)
 var io = require('socket.io')(server)
-require('./socket/socket.js')(io, rooms)
+require('./socket/socket.js')(io)
 
 server.listen(app.get('port'), function () {
   console.log('Listening on http://localhost:', port)
