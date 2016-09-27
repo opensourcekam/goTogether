@@ -4,8 +4,11 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const config = require('./config/config.js')
+
+// Turn on datastore
 const ConnectMongo = require('connect-mongo')(session)
 const mongoose = require('mongoose').connect(config.dburl)
+
 const passport = require('passport')
 const FacebookStrategy = require('passport-facebook').Strategy
 const rooms = []
@@ -67,6 +70,7 @@ John.save(function(){console.log('done')})
 
 app.use(passport.initialize())
 app.use(passport.session())
+// Turn on datastore
 require('./auth/passportAuth.js')(passport, FacebookStrategy, config, mongoose)
 require('./routes/routes.js')(express, app, passport, config, rooms)
 

@@ -1,14 +1,21 @@
-module.exports = function (express, app, passport, config, rooms) {
+module.exports = function(express, app, passport, config, rooms) {
   var router = express.Router()
 
-  app.get('/',
-    function (req, res) {
-      res.render('index', {
-        user: req.user
-      })
-    })
+  app.get('/', function(req, res) {
 
-  function securePages (req, res, next) {
+    if (req.user) {
+      res.render('home', {
+        user: req.user,
+        config: config
+      })
+    } else {
+      res.render('index', {
+        user: "Travler"
+      })
+    }
+  })
+
+  function securePages(req, res, next) {
     if (req.isAuthenticated()) {
       next()
     } else {
@@ -18,53 +25,18 @@ module.exports = function (express, app, passport, config, rooms) {
 
   router.get('/auth/facebook', passport.authenticate('facebook'))
   router.get('/auth/facebook/callback', passport.authenticate('facebook', {
-    successRedirect: '/chatrooms',
+    successRedirect: '/#/home',
     failureRedirect: '/'
   }))
 
-  /*
-  {
-  BREAKS production
-  failureRedirect: '/',
-  failureFlash : false
-  }),
-  function(req, res) {
-  // Successful authentication, redirect home.
-  res.redirect('/chatrooms');
-  }
-  */
-
-  router.get('/chatrooms', securePages, function (req, res, next) {
-    // console.log(config)
-    res.render('chatrooms', {
+  router.get('/home', securePages, function(req, res, next) {
+    res.render('index', {
       user: req.user,
       config: config
     })
   })
 
-  router.get('/room/:id', securePages, function (req, res, next) {
-    var roomName = findRoomName(req.params.id)
-    res.render('room', {
-      user: req.user,
-      roomNum: req.params.id,
-      roomName: roomName,
-      config: config
-    })
-  })
-
-  function findRoomName (roomID) {
-    var n = 0
-    while (n < rooms.length) {
-      if (rooms[n].roomNum === roomID) {
-        return rooms[n].roomName
-      } else {
-        n++
-        continue
-      }
-    }
-  }
-
-  router.get('/logout', securePages, function (req, res, next) {
+  router.get('/logout', securePages, function(req, res, next) {
     // console.log(req.user)
     req.logout()
     res.redirect('/')

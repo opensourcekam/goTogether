@@ -5,11 +5,24 @@ $base : #eee
 body, html
   font-family: "Noto Sans", "Lucida Sans Unicode", "Lucida Grande", sans-serif
   font-weight: 100
-  background-image: url('../images/br0.jpg')
+  // background-image: url('../images/br2.jpg')
   background-size: 100% auto
   background-repeat: repeat
-  //background: -moz-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)
-  //background: -webkit-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)
+  height: 100%
+  background: -moz-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)
+  background: -webkit-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)
+
+body
+  min-height: 100%
+  position: relative
+  font-size: 1.2em
+  background-color: rgba(mix(dodgerblue, black, 25%), 0.0625)
+
+header > *
+  margin: 20px
+
+header a
+  text-decoration: none
 
 aside
   // background-color: rgb(32,39,73)
@@ -20,7 +33,8 @@ aside
   width: 400px
   z-index: -2
 
-main
+#app
+
 
 
 main.chatroom
@@ -56,6 +70,47 @@ button
 
 button#fb
   background-color: $header
+
+button#logout
+  background-color: red
+
+button#dashboard
+  background-color: green
+
+.centerMasonry
+  width: 100%
+  text-align: center
+
+.my-gallery-class
+  // max-width: 990px
+  margin: 2px auto
+  line-height: 1.4
+  padding-left: 0
+
+// .my-gallery-class > li
+//   display: inline
+//   text-align: center
+
+form
+  text-align: left
+  margin: 100px 0 50px 0
+  input
+    background: #f0f0f0
+    border: none
+    border-left: 2px solid #fff
+    font-size: 36px
+    font-family: 'Montserrat', sans-serif
+    padding: 20px
+    margin-bottom: 15px
+    transition: background 1.5s, border-left 2s
+    width: 600px
+    &:focus
+      background: #fff
+      border-left: 10px solid green
+      box-shadow: none
+      outline: none
+      transition: background 1s, border-left 1s
+
 
 .clicked
   background-color: $header - 50 !important
@@ -148,10 +203,6 @@ ul.msgs
   //word-wrap: break-word
   box-sizing: border-box
 
-body
-  font-size: 1.2em
-  margin: 1em
-  background-color: rgba(mix(dodgerblue, black, 25%), 0.0625)
 
 /* MIXIN STARTS HERE
 /* Requires LifeSaver Sass mixin linked externally
@@ -233,9 +284,9 @@ article
   text-align: center
 
 .cardWell
-  background-color: rgba(255, 255, 255, .1)
-  padding: 40px
-  z-index: -999
+  background-color: rgba(255, 255, 255, .6)
+  padding: 30px
+  //z-index: -999
   text-align: center
   position: absolute
   bottom: 0
@@ -246,8 +297,8 @@ article
   width: 360px
   height: 280px
   margin: auto 30px
-  background-color: rgba(250,255,255, .5)
-  color: white
+  background-color: rgba(250,255,255, .8)
+  color: whitergba(80, 82, 78, 0.75)
   z-index: 999
   display: inline-flex
   box-shadow: 1px 2px 60px #1f2025
@@ -256,9 +307,8 @@ article
   opacity: 1
 
 .card > h1
-  font-size: 2em
+  font-size: 1.7em
   font-weight: lighter
-  text-align: center
   margin-left: 20px
   margin-top: 20px
 
@@ -267,12 +317,41 @@ article
 
 .card > p
   padding: 10%
-  margin: 50px -20px
+  margin: 50px -25px
   text-align: left
-  font-size: 1.15em
+  font-size: 1.12em
 
 /* Smartphones (portrait and landscape) -----------  */
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+@media screen and (max-width:680px)
+  body, html
+    background: -moz-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)
+    background: -webkit-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)
+
+  input
+    width: 100% !important
+
+  header.span
+    margin: 2% auto
+
+  header nav
+    margin: 4% auto
+
+  div.ctaText > *
+    margin: 25% 5%
+
+  article.cardWell
+    position: static !important
+
   .card
-    width: 100%
+    width: 100% !important
     margin: 20px auto
+
+  .card > p
+    padding: 0%
+    margin: 0px 0px
+
+  .image-element-class
+    width: 100%
+
+  .image-element-class > img
+    width: 100%

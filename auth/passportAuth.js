@@ -1,11 +1,12 @@
 module.exports = function (passport, FacebookStrategy, config, mongoose) {
+
   var chatUser = new mongoose.Schema({
     profileID: String,
     fullName: String,
     profilePic: String
   })
-  var UserModel = mongoose.model('chatUser', chatUser)
 
+  var UserModel = mongoose.model('chatUser', chatUser)
   passport.use(new FacebookStrategy({
     clientID: config.fb.appID,
     clientSecret: config.fb.appSecret,
@@ -13,7 +14,7 @@ module.exports = function (passport, FacebookStrategy, config, mongoose) {
     profileFields: ['id', 'displayName', 'link', 'photos', 'email']
   },
     function (accessToken, refreshToken, profile, cb) {
-      console.log('prince', profile)
+      console.log(profile)
         // I was overwriting the scope in line 20 by passing in profile again... good example of closures!
       UserModel.findOne({
         'profileID': profile.id
@@ -36,7 +37,6 @@ module.exports = function (passport, FacebookStrategy, config, mongoose) {
           })
         }
       })
-
       return cb(null, profile)
     }))
 
