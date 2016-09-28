@@ -5,7 +5,6 @@
     https://github.com/mmckegg/json-query
   */
 
-const obscurePlaces = require('../data/places/atlasobscuraPlaces.json')
 const jsonQuery = require('json-query')
 
 class Search {
@@ -15,9 +14,8 @@ class Search {
    * @param {object} object - Contains 4 keys
    *  var example = {
    *   json: the json object,
-   *   select: used to select data from a database,
-   *   where: used to extract only those records that fulfill a specified criterion,
-   *   sendBack: used to extract the piece of data from the query you want back
+   *   selectAll: used to select data from a database,
+   *   where: used to extract only those records that fulfill a specified criterion
    *  }
    *
    * use ~ Search.getPlaces(example)
@@ -25,7 +23,7 @@ class Search {
    *
    */
   static getPlaces(object) {
-      let q = jsonQuery(`[*${object.select}~/${object.where}/i].${object.sendBack}`, {
+      let q = jsonQuery(`[*${object.selectAll}~/${object.where}/i]:`, {
         data: object.json,
         allowRegexp: true
       })
@@ -33,11 +31,11 @@ class Search {
     } // getPlaces
 }
 
+const obscurePlaces = require('../data/places/atlasObscurePlaces.json')
 console.log(Search.getPlaces({
   json: obscurePlaces,
-  select: 'name',
-  where: 'London',
-  sendBack: 'subName'
-}))
+  selectAll: 'name',
+  where: 'New York'
+}).value)
 
 exports.module = Search
