@@ -6,5 +6,5 @@
     "appSecret" : "cc86a318c2f4b234cc04ad85c822e203",
     "callbackURL" : "http://localhost:8080/auth/facebook/callback"
   },
-  "host" : "http://localhost:8080"
+  "host" : "http://127.0.0.1:8080"
 }
