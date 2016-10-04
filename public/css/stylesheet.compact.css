@@ -1,12 +1,10 @@
-body, html { font-family: "Noto Sans", "Lucida Sans Unicode", "Lucida Grande", sans-serif; font-weight: 100; background-size: 100% auto; background-repeat: repeat; height: 100%; background: -moz-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%); background: -webkit-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%); }
+body, html { font-family: "Noto Sans", "Lucida Sans Unicode", "Lucida Grande", sans-serif; font-weight: 100; background-size: 100% auto; background-repeat: repeat; height: 100%; background: -moz-linear-gradient(-45deg, #e0e0e7 0, #e0e0e7 25%, #8cc6f1 50%, #a5abfa 75%, #a5abfa 100%); background: -webkit-linear-gradient(-45deg, #e0e0e7 0, #e0e0e7 25%, #8cc6f1 50%, #a5abfa 75%, #a5abfa 100%); }
 
 body { min-height: 100%; position: relative; font-size: 1.2em; background-color: rgba(8, 36, 64, 0.0625); }
 
 header > * { margin: 20px; }
 
 header a { text-decoration: none; }
-
-aside { position: absolute; right: 0; bottom: 0; height: 100%; width: 400px; z-index: -2; }
 
 main.chatroom { width: 400px; height: inherit; top: auto !important; left: auto !important; font-size: .7em; overflow: scroll; position: relative; }
 
@@ -23,10 +21,6 @@ button#fb { background-color: #1151f6; }
 button#logout { background-color: red; }
 
 button#dashboard { background-color: green; }
-
-.centerMasonry { width: 100%; text-align: center; }
-
-.my-gallery-class { margin: 2px auto; line-height: 1.4; padding-left: 0; }
 
 form { text-align: left; margin: 100px 0 50px 0; }
 
@@ -89,6 +83,14 @@ article { width: 100%; text-align: center; }
 .card:first-of-type p { margin: 50px -40px; }
 
 .card > p { padding: 10%; margin: 50px -25px; text-align: left; font-size: 1.12em; }
+
+.centerMasonry { width: 100%; text-align: center; padding-bottom: 60px; }
+
+.my-gallery-class { margin: 2px auto; line-height: 1.4; padding-left: 0; }
+
+.grid-item { margin-bottom: 20px; }
+
+.grid-item > img { border-top-right-radius: 10%; }
 
 /* Smartphones (portrait and landscape) -----------  */
 @media screen and (max-width: 680px) { body, html { background: -moz-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%); background: -webkit-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%); }

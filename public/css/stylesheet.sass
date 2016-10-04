@@ -9,8 +9,10 @@ body, html
   background-size: 100% auto
   background-repeat: repeat
   height: 100%
-  background: -moz-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)
-  background: -webkit-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)
+  // background: -moz-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)
+  // background: -webkit-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)
+  background: -moz-linear-gradient(-45deg, #e0e0e7 0, #e0e0e7 25%, #8cc6f1 50%, #a5abfa 75%, #a5abfa 100%)
+  background: -webkit-linear-gradient(-45deg, #e0e0e7 0, #e0e0e7 25%, #8cc6f1 50%, #a5abfa 75%, #a5abfa 100%)
 
 body
   min-height: 100%
@@ -24,14 +26,14 @@ header > *
 header a
   text-decoration: none
 
-aside
-  // background-color: rgb(32,39,73)
-  position: absolute
-  right: 0
-  bottom: 0
-  height: 100%
-  width: 400px
-  z-index: -2
+// aside
+//   // background-color: rgb(32,39,73)
+//   position: absolute
+//   right: 0
+//   bottom: 0
+//   height: 100%
+//   width: 400px
+//   z-index: -2
 
 #app
 
@@ -76,16 +78,6 @@ button#logout
 
 button#dashboard
   background-color: green
-
-.centerMasonry
-  width: 100%
-  text-align: center
-
-.my-gallery-class
-  // max-width: 990px
-  margin: 2px auto
-  line-height: 1.4
-  padding-left: 0
 
 // .my-gallery-class > li
 //   display: inline
@@ -320,6 +312,28 @@ article
   margin: 50px -25px
   text-align: left
   font-size: 1.12em
+
+.centerMasonry
+  width: 100%
+  text-align: center
+  padding-bottom: 60px
+
+
+.my-gallery-class
+  // max-width: 990px
+  margin: 2px auto
+  line-height: 1.4
+  padding-left: 0
+  // display: none
+
+.grid-item
+  margin-bottom: 20px
+
+.grid-item > img,
+  border-top-right-radius: 10%
+
+.grid-item:hover
+
 
 /* Smartphones (portrait and landscape) -----------  */
 @media screen and (max-width:680px)
