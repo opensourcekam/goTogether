@@ -2,32 +2,39 @@ const React = require('react')
 const Masonry = require('react-masonry-component')
 
 var masonryOptions = {
-  transitionDuration: 70,
-  fitWidth: true
+  transitionDuration: 100,
+  fitWidth: true,
+  gutter: 20,
+  stagger: 50
 }
 
 var styles = {
   labels: {
     position: 'absolute',
-    bottom: '0',
+    bottom: '5',
     backgroundColor: 'rgba(255,255,255,0.4)',
-    width: '100%'
+    width: '100%',
+    height: '30%',
+    padding: '20px'
+  },
+  masonry: {
   }
 }
 
 class ObscurePlaces extends React.Component {
+  showDetails () {
+    console.log(this)
+  }
 
   render () {
-    var size = 12
-    var places = this.props.elements
-    var randSlice = Math.floor(Math.random() * places.length)
-
-    var childElements = places.slice(randSlice, randSlice + size).map((element) => {
+    var childElements = this.props.elements.map((element, i) => {
       return (
-        <li className='image-element-class'>
+        <li className='grid-item' key={i}>
           <div style={styles.labels}>
-            <label>{element.name}</label>
+            <p>{element.subName}</p>
+            <span>{element.name}</span>
           </div>
+
           <img src={element.src} />
         </li>
       )
@@ -35,11 +42,12 @@ class ObscurePlaces extends React.Component {
 
     return (
       <div className={'centerMasonry'}>
-        <Masonry className={'my-gallery-class'} // default ''
-          elementType={'ul'} // default 'div'
-          options={masonryOptions} // default {}
-          disableImagesLoaded={false} // default false
-          updateOnEachImageLoad={false} // default false and works only if    disableImagesLoaded is false
+        <Masonry className={'my-gallery-class'}
+          elementType={'ul'}
+          options={masonryOptions}
+          disableImagesLoaded={false}
+          updateOnEachImageLoad={false}
+          onImagesLoaded={this.handleImagesLoaded}
         >
           {childElements}
         </Masonry>
