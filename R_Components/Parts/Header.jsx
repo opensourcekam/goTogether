@@ -30,7 +30,7 @@ class Header extends React.Component {
         {console.log(this.state)}
         {this.state.loggedIn ? (
           <span>
-            <a href="/#/home"><button id="dashboard">Dashboard</button></a>
+            <a href="/#/home"><button id="dashboard">Idea me</button></a>
             <Logout />
           </span>
           ) : (
