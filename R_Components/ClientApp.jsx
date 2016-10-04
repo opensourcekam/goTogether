@@ -3,6 +3,7 @@ const ReactDOM = require('react-dom')
 const Landing = require('./Parts/Landing')
 const Layout = require('./Parts/Layout')
 const DashBoard = require('./Home/DashBoard')
+const NewTrip = require('./Trip/NewTrip')
 const {Router, Route, IndexRoute, hashHistory} = require('react-router')
 
 class App extends React.Component {
@@ -14,6 +15,7 @@ class App extends React.Component {
           <Route path='/' component={Layout}>
             <IndexRoute component={Landing} />
             <Route path="home" component={DashBoard} />
+            <Route path="newTrip" component={NewTrip} />
           </Route>
         </Router>
       </div>
