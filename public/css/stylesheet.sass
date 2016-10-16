@@ -3,7 +3,8 @@ $header : rgb(17, 81, 246)
 $base : #eee
 
 body, html
-  font-family: "Noto Sans", "Lucida Sans Unicode", "Lucida Grande", sans-serif
+  zoom: 90%
+  font-family: "Montserrat", sans-serif
   font-weight: 100
   // background-image: url('../images/br2.jpg')
   background-size: 100% auto
@@ -11,8 +12,10 @@ body, html
   height: 100%
   // background: -moz-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)
   // background: -webkit-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)
-  background: -moz-linear-gradient(-45deg, #e0e0e7 0, #e0e0e7 25%, #8cc6f1 50%, #a5abfa 75%, #a5abfa 100%)
-  background: -webkit-linear-gradient(-45deg, #e0e0e7 0, #e0e0e7 25%, #8cc6f1 50%, #a5abfa 75%, #a5abfa 100%)
+  // background: -moz-linear-gradient(-45deg, #e0e0e7 0, #e0e0e7 25%, #8cc6f1 50%, #a5abfa 75%, #a5abfa 100%)
+  // background: -webkit-linear-gradient(-45deg, #e0e0e7 0, #e0e0e7 25%, #8cc6f1 50%, #a5abfa 75%, #a5abfa 100%)
+  background: linear-gradient(135deg, #000 0.125em, #0092b7 0, #0092b7 calc(50% - .125em), #000 0, #000 calc(50% + .125em), #0092b7 0, #0092b7 calc(100% - .125em), #000 0)
+  background-size: .75em/1.4142135624 .75em/1.4142135624
 
 body
   min-height: 100%
@@ -55,6 +58,7 @@ main section
 
 li
   list-style: none
+  display: inline
 
 img.userPhoto
   border-radius: 100px
@@ -66,8 +70,8 @@ button
   color: $base
   text-align: center
   border: none
-  border-radius: 5%
-  padding: 10px
+  border-radius: 10px
+  padding: 8px
   margin: 0 10px
 
 button#fb
@@ -334,6 +338,71 @@ article
 
 .grid-item:hover
 
+/** Trip */
+.userTripCard
+  height: 860px
+  width: 40%
+  float: left
+  background-color: #eee
+  box-shadow: 0px 0px 20px 5px #A0A0Af
+  position: fixed
+  top: 120px
+  left: 10px
+  text-align: center
+  overflow: scroll
+
+.userTripCard figure img
+  border-radius: 100%
+  -webkit-box-shadow: inset 0px 0px 20px 6px rgba(0,0,0,0.45)
+  -moz-box-shadow: inset 0px 0px 20px 6px rgba(0,0,0,0.45)
+  box-shadow: 0px 0px 20px 6px rgba(0,0,0,0.45)
+  width: 150px
+  margin: 10px
+
+.userTripCard .budget canvas
+  width: 400px
+  height: 200px
+  background-color: red
+  position: relative
+  margin: 20px
+
+.userTripCard .map canvas
+  width: 400px
+  height: 300px
+  position: relative
+
+.userTripCard > p, span
+  text-align: center
+
+.tripCards
+
+.tripCard
+  width: 57%
+  height: 300px
+  background-color: #eee
+  margin: 20px 10px
+  float: right
+  overflow: scroll
+  box-shadow: 0px 0px 20px 5px #A0A0Af
+  border-top-right-radius: 10%
+
+
+.tripCard h2
+  margin-top: 20px
+  margin-bottom: 10px
+  margin-left: 2%
+  font-weight: 100 !important
+  text-align: left !important
+
+.tripTile
+  width: 210px
+  height: 200px
+  background-color: #aaa
+  margin: 0px 3.2996%
+  display: inline-block
+
+#map
+  height: 300px
 
 /* Smartphones (portrait and landscape) -----------  */
 @media screen and (max-width:680px)

@@ -1,5 +1,5 @@
 const React = require('react')
-const About = require('./About')
+const UserTripCard = require('./UserTripCard')
 const GetThere = require('./GetThere')
 const BookAPlace = require('./BookAPlace')
 const ThingsToDo = require('./ThingsToDo')
@@ -7,7 +7,11 @@ const ThingsToDo = require('./ThingsToDo')
 class NewTrip extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = {
+      lat: 0,
+      lon: 0
+    }
+    this.getLocation = this.getLocation.bind(this)
   }
 
   componentDidMount () {
@@ -16,28 +20,26 @@ class NewTrip extends React.Component {
 
   getLocation () {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.showPosition)
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.setState({lat: position.coords.latitude, lon: position.coords.longitude})
+      })
     } else {
       console.log('Geolocation is not supported by this browser.')
     }
   }
 
-  showPosition (position) {
-    console.log(position.coords.latitude, position.coords.longitude)
-  }
-
   render () {
     // console.log(userJSON)
     return (
-      <div>
+      <div onLoad={this.getLocation}>
         <aside>
-          <About />
+          <UserTripCard />
         </aside>
-        <div>
-          <GetThere className="trip-card" />
-          <BookAPlace className="trip-card" />
-          <ThingsToDo className="trip-card" />
-        </div>
+        <section className='tripCards'>
+          <GetThere />
+          <BookAPlace />
+          <ThingsToDo />
+        </section>
       </div>
     )
   }

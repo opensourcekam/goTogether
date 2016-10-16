@@ -5,6 +5,7 @@ const AutoComplete = require('./AutoComplete')
 const elements = require('../../../data/places/atlasObscurePlaces.json')
 const $ = require('../../../node_modules/jquery/dist/jquery.min.js')
 const _ = require('underscore')
+const { hashHistory } = require('react-router')
 
 class SearchLocations extends React.Component {
   constructor (props) {
@@ -47,18 +48,17 @@ class SearchLocations extends React.Component {
   }
 
   handleSubmit (e) {
-    e.preventDefault()
     var data = {
       location: this.state.location
     }
 
     $.ajax({type: 'POST', url: '/newTrip', data: data}).done((data) => {
-      if (typeof data.redirect === 'string') {
-        sessionStorage.setItem('location', data.location)
-        window.location = data.redirect
-      }
+      sessionStorage.setItem('location', data.location)
+      // window.location = data.redirect
+      hashHistory.push('newTrip')
+      e.preventDefault()
     }).fail((jqXhr) => {
-      console.log('failed to register')
+      console.log('Request failed')
     })
   }
 

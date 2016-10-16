@@ -1,11 +1,11 @@
 const React = require('react')
 
 const GoogleLogin = () => (
-  <section id='gglLogin'>
+  <li id='gglLogin'>
     <a href='/auth/google'>
       <button id='ggl'>login with Google</button>
     </a>
-  </section>
+  </li>
 )
 
 module.exports = GoogleLogin

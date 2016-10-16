@@ -1,4 +1,4 @@
-/* global userJSON */
+/* global userJSON sessionStorage */
 const React = require('react')
 
 const styles = {
@@ -17,7 +17,7 @@ class CTA extends React.Component {
   render () {
     return (
       <div className='ctaText' style={styles.ctaText}>
-        {userJSON.displayName ? (<h2 style={styles.h2}>{userJSON.displayName} It's time to go to <i> Madrid, Spain.</i></h2>) : (<h2 style={styles.h2}>It's time to go to<i> Madrid, Spain.</i></h2>)}
+        {userJSON.displayName ? (<h2 style={styles.h2}>{userJSON.displayName} It's time to go to <i> Madrid, Spain.</i></h2>) : (<h2 style={styles.h2}>It's time to go to<i> {sessionStorage.location || 'Madrid, Spain'}.</i></h2>)}
       </div>
     )
   }

@@ -1,11 +1,11 @@
 const React = require('react')
 
 const FacebookLogin = () => (
-  <section id='fbLogin'>
+  <li id='fbLogin'>
     <a href='/auth/facebook'>
       <button id='fb'>login with Facebook</button>
     </a>
-  </section>
+  </li>
 )
 
 module.exports = FacebookLogin

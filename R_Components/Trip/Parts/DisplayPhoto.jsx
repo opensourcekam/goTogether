@@ -11,7 +11,7 @@ class DisplayPhoto extends React.Component {
   render () {
     return (
       <figure>
-        <img src={userJSON.photos[0].value} />
+        <img src={(userJSON.photos) ? userJSON.photos[0].value : ''} />
       </figure>
     )
   }

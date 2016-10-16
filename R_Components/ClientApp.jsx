@@ -5,8 +5,23 @@ const Layout = require('./Parts/Layout')
 const DashBoard = require('./Home/DashBoard')
 const NewTrip = require('./Trip/NewTrip')
 const {Router, Route, IndexRoute, hashHistory} = require('react-router')
+import auth from './auth'
 
 class App extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      loggedIn: auth.loggedIn()
+    }
+  }
+
+  updateAuth (loggedIn) {
+    this.setState({loggedIn})
+  }
+
+  componentWillMount () {
+    auth.onChange = this.updateAuth(this.state.loggedIn)
+  }
 
   render () {
     return (

@@ -6,10 +6,7 @@ module.exports = {
   },
 
   logout (cb) {
-    // console.log('logging out')
     delete localStorage.token
-    if (cb) cb()
-    this.onChange(false)
   },
 
   onChange () {}

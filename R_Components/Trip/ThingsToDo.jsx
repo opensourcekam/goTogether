@@ -8,8 +8,15 @@ class ThingsToDo extends React.Component {
 
   render () {
     return (
-      <div>
-      </div>
+      <article className='tripCard'>
+        <h2>What are you doing there?</h2>
+        <div className='tripTile getThereTile'>
+        </div>
+        <div className='tripTile getThereTile'>
+        </div>
+        <div className='tripTile getThereTile'>
+        </div>
+      </article>
     )
   }
 }

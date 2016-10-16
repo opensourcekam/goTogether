@@ -8,8 +8,15 @@ class BookAPlace extends React.Component {
 
   render () {
     return (
-      <div>
-      </div>
+      <article className='tripCard'>
+        <h2>Where are you staying?</h2>
+        <div className='tripTile getThereTile'>
+        </div>
+        <div className='tripTile getThereTile'>
+        </div>
+        <div className='tripTile getThereTile'>
+        </div>
+      </article>
     )
   }
 }

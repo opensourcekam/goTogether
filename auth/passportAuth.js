@@ -11,9 +11,10 @@ module.exports = function (passport, FacebookStrategy, config, mongoose) {
     clientID: config.fb.appID,
     clientSecret: config.fb.appSecret,
     callbackURL: config.fb.callbackURL,
-    profileFields: ['id', 'displayName', 'link', 'photos', 'email']
+    profileFields: ['id', 'displayName', 'link', 'picture.type(large)', 'email']
   },
     function (accessToken, refreshToken, profile, cb) {
+      console.log(`Access token ${accessToken} refreshToken ${refreshToken}`)
       console.log(profile)
         // I was overwriting the scope in line 20 by passing in profile again... good example of closures!
       UserModel.findOne({

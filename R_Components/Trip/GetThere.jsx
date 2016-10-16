@@ -8,9 +8,15 @@ class GetThere extends React.Component {
 
   render () {
     return (
-      <div className='sideBox'>
-        <p>How are you arriving?</p>
-      </div>
+      <article className='tripCard'>
+        <h2>How are you arriving?</h2>
+        <div className='tripTile getThereTile'>
+        </div>
+        <div className='tripTile getThereTile'>
+        </div>
+        <div className='tripTile getThereTile'>
+        </div>
+      </article>
     )
   }
 }

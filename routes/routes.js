@@ -39,8 +39,8 @@ module.exports = function(express, app, passport, config) {
   router.post('/newTrip',(req,res,next) => {
     if (req.method.toLowerCase() === 'post') {
         const location = req.body.location
-        const route = `/#/newTrip`
-        res.send({redirect: route, location: location})
+        // const route = `/#/newTrip`
+        res.send({location: location})
     }
   })
 
