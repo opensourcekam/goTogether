@@ -10,7 +10,7 @@ module.exports = function (passport, FacebookStrategy, config, mongoose) {
   passport.use(new FacebookStrategy({
     clientID: config.fb.appID,
     clientSecret: config.fb.appSecret,
-    callbackURL: "ltsgo.herokuapp.com/#/auth/facebook/callback",
+    callbackURL: config.fb.callbackURL,
     profileFields: ['id', 'displayName', 'link', 'picture.type(large)', 'email']
   },
     function (accessToken, refreshToken, profile, cb) {
