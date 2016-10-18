@@ -1,4 +1,3 @@
-console.log('Hello world')
 const express = require('express')
 const app = express()
 const path = require('path')
@@ -9,14 +8,8 @@ const ConnectMongo = require('connect-mongo')(session)
 const mongoose = require('mongoose').connect(config.dburl)
 const passport = require('passport')
 const FacebookStrategy = require('passport-facebook').Strategy
-const server = require('http').Server(app)
-const io = require('socket.io')(server)
 const port = 8080
 const env = process.env.NODE_ENV || 'development'
-
-require('./auth/passportAuth.js')(passport, FacebookStrategy, config, mongoose)
-require('./routes/routes.js')(express, app, passport, config)
-require('./socket/socket.js')(io)
 
 app.set('view engine', 'jade')
 app.set('views', path.join(__dirname, 'views'))
@@ -47,6 +40,14 @@ if (env === 'development') {
 
 app.use(passport.initialize())
 app.use(passport.session())
+
+
+const server = require('http').Server(app)
+const io = require('socket.io')(server)
+
+require('./auth/passportAuth.js')(passport, FacebookStrategy, config, mongoose)
+require('./routes/routes.js')(express, app, passport, config)
+require('./socket/socket.js')(io)
 
 app.set('port', process.env.PORT || port)
 server.listen(app.get('port'), function () {
