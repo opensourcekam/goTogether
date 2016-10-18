@@ -1,3 +1,4 @@
+console.log('Hello world')
 const express = require('express')
 const app = express()
 const path = require('path')
