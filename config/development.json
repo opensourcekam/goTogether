@@ -1,5 +1,5 @@
 {
-  "dburl" : "mongodb://chatappuser:password@ds025439.mlab.com:25439/chaterapp",
+  "dburl" : "mongodb://localhost:27017/letsGo",
   "sessionSecret" : "ANGHVJBKLHVHMABJSD",
   "fb":{
     "appID" : "1748113468756848",

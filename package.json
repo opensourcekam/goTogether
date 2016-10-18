@@ -63,7 +63,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/btholt/complete-intro-to-react.git"
+    "url": "github.com/robinsonKameron/goTogether"
   },
   "standard": {
     "globals": [

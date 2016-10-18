@@ -34,8 +34,6 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
-public/javascript/bundle.js
-
 node_modules/
 
 .eslintcache
