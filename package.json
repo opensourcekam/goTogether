@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start": "nodemon app.js",
+    "start": "node app.js",
+    "startd": "nodemon app.js",
     "test": "standard",
     "watch": "webpack --watch"
   },
