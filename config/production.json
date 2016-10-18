@@ -4,7 +4,7 @@
   "fb":{
     "appID" : "1748113468756848",
     "appSecret" : "cc86a318c2f4b234cc04ad85c822e203",
-    "callbackURL" : "/auth/facebook/callback"
+    "callbackURL" : "https://ltsgo.herokuapp.com/auth/facebook/callback"
   },
   "host" : ""
 }
