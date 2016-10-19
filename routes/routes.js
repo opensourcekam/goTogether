@@ -25,7 +25,7 @@ module.exports = function(express, app, passport, config) {
 
   router.get('/auth/facebook', passport.authenticate('facebook'))
   router.get('/auth/facebook/callback', passport.authenticate('facebook', {
-    successRedirect: '/#/home',
+    successRedirect: '/#/tripIdeas',
     failureRedirect: '/'
   }))
 
