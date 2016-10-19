@@ -1,10 +1,9 @@
+/* global google */
 import React from 'react'
 import ReactDOM from 'react-dom'
 // https://gist.github.com/maedhr/8823168
 
-var geodesicPoly
-var marker1
-var marker2
+var geodesicPoly, marker1, marker2
 
 class Map extends React.Component {
   constructor (props) {
@@ -49,9 +48,9 @@ class Map extends React.Component {
   }
 
   draw () {
-  console.log('drawing')
-   var path = [marker1.getPosition(), marker2.getPosition()]
-   geodesicPoly.setPath(path)
+    console.log('drawing')
+    var path = [marker1.getPosition(), marker2.getPosition()]
+    geodesicPoly.setPath(path)
   }
 
   mapCenterLatLng () {
@@ -77,7 +76,9 @@ class Map extends React.Component {
 const { number } = React.PropTypes
 
 Map.propTypes = {
-  initialZoom: number.isRequired
+  initialZoom: number.isRequired,
+  currentPosition: number.isRequired,
+  flyingTo: number.isRequired
 }
 
 module.exports = Map
