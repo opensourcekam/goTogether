@@ -10,7 +10,7 @@ const currentPosition = {}
 const flyingTo = {}
 
 class UserTripCard extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       currentPosition: {
@@ -31,12 +31,12 @@ class UserTripCard extends React.Component {
 
   componentDidMount () {
     let getFuturePosition = () => {
-      axios.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + sessionStorage.location + '&key=AIzaSyC-GOgmWRmDOS6Ir9pNoBpdE_W-uAiHlTM').then(function(response) {
+      axios.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + sessionStorage.location + '&key=AIzaSyC-GOgmWRmDOS6Ir9pNoBpdE_W-uAiHlTM').then((response) => {
         console.log(response)
         flyingTo.lat = response.data.results[0].geometry.location.lat
         flyingTo.lng = response.data.results[0].geometry.location.lng
-      }).catch(function(error) {
-        console.log(error);
+      }).catch((error) => {
+        console.log(error)
       })
       this.setState({flyingTo})
     }
@@ -54,19 +54,18 @@ class UserTripCard extends React.Component {
     console.log(err)
   }
 
-  render() {
+  render () {
     console.log('a')
-    navigator.geolocation.getCurrentPosition(this.getCurrentPosition, this.getCurrentPositionErr, {timeout:10000})
+    navigator.geolocation.getCurrentPosition(this.getCurrentPosition, this.getCurrentPositionErr, {timeout: 10000})
     return (
       <section className='userTripCard'>
-        <DisplayPhoto/>
+        <DisplayPhoto />
         <div>
-          <p>{userJSON.displayName || ''}
-            is planning a trip to</p>
+          <p>{userJSON.displayName || ''} is planning a trip to</p>
           <span>{sessionStorage.location || ''}</span>
         </div>
-        <TripBudget/> {this.state.currentPosition.lat && this.state.flyingTo.lat
-          ? <Map currentPosition={this.state.currentPosition} flyingTo={this.state.flyingTo} initialZoom={5}/>
+        <TripBudget /> {this.state.currentPosition.lat && this.state.flyingTo.lat
+          ? <Map currentPosition={this.state.currentPosition} flyingTo={this.state.flyingTo} initialZoom={5} />
           : <p>Loading map...</p>}
       </section>
     )

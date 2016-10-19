@@ -9,7 +9,8 @@ const styles = {
     marginTop: '10%'
   },
   h2: {
-    fontWeight: '100'
+    fontWeight: '100',
+    fontSize: '2.1em'
   }
 }
 

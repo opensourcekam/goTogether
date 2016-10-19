@@ -4,18 +4,13 @@ const Cta = require('./LandingParts/Cta')
 
 class Landing extends React.Component {
   render () {
-    // Change backgroundImage
-    document.body.style.backgroundImage = 'url("../images/br2.jpg")'
-    document.body.style.backgroundSize = '100% auto'
-    document.body.style.backgroundRepeat = 'repeat'
-    document.body.style.height = '100%'
-
+    document.body.className = 'cover'
     return (
       <div>
         <Cta />
         <AboutBar />
       </div>
-    )
+      )
   }
 }
 
