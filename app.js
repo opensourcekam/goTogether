@@ -19,6 +19,13 @@ app.use(express.static(path.join(__dirname, '/public')))
 app.use(require('body-parser').urlencoded({ extended: true }))
 app.use(require('morgan')('combined'))
 
+const forceSsl = function (req, res, next) {
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+        return res.redirect(['https://', req.get('Host'), req.url].join(''))
+    }
+    return next()
+ }
+
 if (env === 'development') {
   // dev specific settings
   app.use(session({
@@ -28,6 +35,7 @@ if (env === 'development') {
   }))
 } else {
   // production specific settings
+  app.use(forceSsl)
   app.use(session({
     secret: config.sessionSecret,
     store: new ConnectMongo({
