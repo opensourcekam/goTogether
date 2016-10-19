@@ -2,7 +2,7 @@ const React = require('react')
 const ReactDOM = require('react-dom')
 const Landing = require('./Parts/Landing')
 const Layout = require('./Parts/Layout')
-const DashBoard = require('./Home/DashBoard')
+const DashBoard = require('./TripIdeas/DashBoard')
 const NewTrip = require('./Trip/NewTrip')
 const {Router, Route, IndexRoute, hashHistory} = require('react-router')
 import auth from './auth'
@@ -29,7 +29,7 @@ class App extends React.Component {
         <Router history={hashHistory}>
           <Route path='/' component={Layout}>
             <IndexRoute component={Landing} />
-            <Route path="home" component={DashBoard} />
+            <Route path="tripIdeas" component={DashBoard} />
             <Route path="newTrip" component={NewTrip} />
           </Route>
         </Router>

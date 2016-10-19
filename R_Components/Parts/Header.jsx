@@ -29,7 +29,7 @@ class Header extends React.Component {
             {this.state.loggedIn ? (
               <ul>
                 <li>
-                  <a href="/#/home"><button id="dashboard">Next place</button></a>
+                  <a href="/#/tripideas"><button id="tripideas">Trip Ideas</button></a>
                   <Logout />
                 </li>
               </ul>
