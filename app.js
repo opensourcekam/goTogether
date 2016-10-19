@@ -13,7 +13,9 @@ const env = process.env.NODE_ENV || 'development'
 
 app.set('view engine', 'jade')
 app.set('views', path.join(__dirname, 'views'))
-app.use('/jquery', express.static(path.join(__dirname, '/node_modules/jquery/dist')))
+app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
+app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, '/public')))
 app.use(require('body-parser').urlencoded({ extended: true }))
