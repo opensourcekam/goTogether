@@ -3,6 +3,7 @@ const UserTripCard = require('./UserTripCard')
 const GetThere = require('./GetThere')
 const BookAPlace = require('./BookAPlace')
 const ThingsToDo = require('./ThingsToDo')
+// const Datepicker = require('./Parts/Dates/Datepicker')
 
 class NewTrip extends React.Component {
   constructor (props) {
@@ -36,6 +37,7 @@ class NewTrip extends React.Component {
           <UserTripCard />
         </aside>
         <section className='tripCards'>
+          {/* <Datepicker /> */}
           <GetThere />
           <BookAPlace />
           <ThingsToDo />

@@ -5,7 +5,7 @@ const React = require('react')
 import axios from 'axios'
 const DisplayPhoto = require('./Parts/DisplayPhoto')
 const TripBudget = require('./Parts/Budget/TripBudget')
-const Map = require('./Parts/Maps/GMap')
+const Map = require('./Parts/Maps/ToFromMap')
 const currentPosition = {}
 const flyingTo = {}
 

@@ -10,15 +10,20 @@ var masonryOptions = {
 
 var styles = {
   labels: {
-    position: 'absolute',
-    bottom: '5',
-    backgroundColor: 'rgba(255,255,255,0.4)',
-    width: '100%',
-    height: '30%',
-    padding: '20px'
+    'backgroundColor': 'rgba(0, 0, 0, 0.6)',
+    'width': '100%',
+    'height': '100%'
   },
-  masonry: {
-  }
+  subName: {
+    'padding': '0',
+    'margin': '0',
+    'fontSize': '2em',
+    'fontWeight': '500'
+  },
+  name: {
+    'color': 'white'
+  },
+  masonry: {}
 }
 
 class ObscurePlaces extends React.Component {
@@ -29,34 +34,34 @@ class ObscurePlaces extends React.Component {
   render () {
     var childElements = this.props.elements.map((element, i) => {
       return (
-        <li className='grid-item' key={i}>
-          <div style={styles.labels}>
-            <p>{element.subName}</p>
-            <span>{element.name}</span>
+        <div className='card card-inverse' key={i}>
+          <div>
+              <div className='card-img-overlay' style={styles.labels}>
+                <span className='card-text' style={styles.subName}>{element.subName}, </span>
+                <span className='card-text'>{element.name}</span>
+              </div>
           </div>
-
-          <img src={element.src} />
-        </li>
+          <img className='card-img' src={element.src} />
+        </div>
       )
     })
 
     return (
       <div className={'centerMasonry'}>
         <Masonry className={'my-gallery-class'}
-          elementType={'ul'}
+          elementType={'div'}
           options={masonryOptions}
           disableImagesLoaded={false}
           updateOnEachImageLoad={false}
-          onImagesLoaded={this.handleImagesLoaded}
-        >
-          {childElements}
+          onImagesLoaded={this.handleImagesLoaded}>
+        {childElements}
         </Masonry>
       </div>
     )
   }
 }
 
-const { array } = React.PropTypes
+const {array} = React.PropTypes
 
 ObscurePlaces.propTypes = {
   elements: array.isRequired
