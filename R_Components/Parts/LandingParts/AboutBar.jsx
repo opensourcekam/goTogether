@@ -3,7 +3,7 @@ const Card = require('./Card')
 
 const style = {
   position: 'absolute',
-  bottom: '0',
+  bottom: '30px',
   left: '0',
   backgroundColor: 'rgba(157, 141, 141, 0.72)',
   padding: '40px'

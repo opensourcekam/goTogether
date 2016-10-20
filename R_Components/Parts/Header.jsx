@@ -12,13 +12,16 @@ class Header extends React.Component {
     }
   }
 
+  componentDidMount () {
+  }
+
+  componentWillUnmount () {
+  }
+
   updateAuth (loggedIn) {
     this.setState({
       loggedIn
     })
-  }
-
-  componentWillMount () {
   }
 
   render () {
