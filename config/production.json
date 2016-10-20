@@ -6,5 +6,8 @@
     "appSecret" : "acabbf5b5b6efa66ca07da12810c560d",
     "callbackURL" : "/auth/facebook/callback"
   },
+  "skyScanner":{
+    "apiKey": "lt187149402913642631939313133483"
+  },
     "host" : "ltsgo.herokuapp.com"
 }
