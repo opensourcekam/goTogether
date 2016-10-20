@@ -22,6 +22,7 @@ class Map extends React.Component {
       disableDefaultUI: true,
       draggable: true
     }
+    
     const google = window.google
     const map = new google.maps.Map(ReactDOM.findDOMNode(this), mapOptions)
 

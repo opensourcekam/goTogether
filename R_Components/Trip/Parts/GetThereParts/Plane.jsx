@@ -3,7 +3,8 @@ const React = require('react')
 class Plane extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = {
+    }
   }
 
   getPlanes () {
