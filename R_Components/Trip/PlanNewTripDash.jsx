@@ -32,11 +32,11 @@ class NewTrip extends React.Component {
   render () {
     // console.log(userJSON)
     return (
-      <div onLoad={this.getLocation}>
-        <aside>
+      <div className='row' onLoad={this.getLocation}>
+        <aside className='col-xs-12 col-sm-12 col-md-6'>
           <UserTripCard />
         </aside>
-        <section className='tripCards'>
+        <section className='tripCards col-xs-12 col-sm-12 col-md-6'>
           {/* <Datepicker /> */}
           <GetThere />
           <BookAPlace />

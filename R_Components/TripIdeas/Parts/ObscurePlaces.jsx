@@ -1,14 +1,13 @@
 const React = require('react')
 const Masonry = require('react-masonry-component')
 
-var masonryOptions = {
+const masonryOptions = {
   transitionDuration: 100,
   fitWidth: true,
   gutter: 20,
   stagger: 50
 }
-
-var styles = {
+const styles = {
   labels: {
     'backgroundColor': 'rgba(0, 0, 0, 0.6)',
     'width': '100%',
@@ -23,6 +22,9 @@ var styles = {
   name: {
     'color': 'white'
   },
+  cardImg: {
+    'width': '99%'
+  },
   masonry: {}
 }
 
@@ -36,12 +38,12 @@ class ObscurePlaces extends React.Component {
       return (
         <div className='card card-inverse' key={i}>
           <div>
-              <div className='card-img-overlay' style={styles.labels}>
-                <span className='card-text' style={styles.subName}>{element.subName}, </span>
-                <span className='card-text'>{element.name}</span>
-              </div>
+            <div className='card-img-overlay' style={styles.labels}>
+              <span className='card-text' style={styles.subName}>{element.subName}, </span>
+              <span className='card-text'>{element.name}</span>
+            </div>
           </div>
-          <img className='card-img' src={element.src} />
+          <img className='card-img' style={styles.cardImg} src={element.src} />
         </div>
       )
     })

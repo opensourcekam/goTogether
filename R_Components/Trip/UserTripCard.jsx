@@ -26,13 +26,12 @@ class UserTripCard extends React.Component {
 
     this.getCurrentPosition = this.getCurrentPosition.bind(this)
     this.getCurrentPositionErr = this.getCurrentPositionErr.bind(this)
-    // this.getFuturePosition = this.getFuturePosition.bind(this)
   }
 
   componentDidMount () {
     let getFuturePosition = () => {
       axios.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + sessionStorage.location + '&key=AIzaSyC-GOgmWRmDOS6Ir9pNoBpdE_W-uAiHlTM').then((response) => {
-        console.log(response)
+        // console.log(response)
         flyingTo.lat = response.data.results[0].geometry.location.lat
         flyingTo.lng = response.data.results[0].geometry.location.lng
       }).catch((error) => {
@@ -44,7 +43,7 @@ class UserTripCard extends React.Component {
   }
 
   getCurrentPosition (position) {
-    console.log('position.coords')
+    // console.log('position.coords')
     currentPosition.lat = position.coords.latitude
     currentPosition.lng = position.coords.longitude
     return this.setState({ currentPosition })
@@ -55,10 +54,14 @@ class UserTripCard extends React.Component {
   }
 
   render () {
-    console.log('a')
+    let styles = {
+      userTripCard: {
+        'marginBottom': '20px'
+      }
+    }
     navigator.geolocation.getCurrentPosition(this.getCurrentPosition, this.getCurrentPositionErr, {timeout: 10000})
     return (
-      <section className='userTripCard'>
+      <section className='userTripCard' style={styles.userTripCard}>
         <DisplayPhoto />
         <div>
           <p>{userJSON.displayName || ''} is planning a trip to</p>
