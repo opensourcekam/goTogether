@@ -9,9 +9,7 @@ module.exports = function(express, app, passport, config) {
         config: config
       })
     } else {
-      res.render('index', {
-        user: "Travler"
-      })
+      res.render('index', {user: "Travler"})
     }
   })
 
@@ -36,11 +34,11 @@ module.exports = function(express, app, passport, config) {
     })
   })
 
-  router.post('/newTrip',(req,res,next) => {
+  router.post('/newTrip', (req, res, next) => {
     if (req.method.toLowerCase() === 'post') {
-        const location = req.body.location
-        // const route = `/#/newTrip`
-        res.send({location: location})
+      const location = req.body.location
+      // const route = `/#/newTrip`
+      res.send({location: location})
     }
   })
 
@@ -50,30 +48,58 @@ module.exports = function(express, app, passport, config) {
     res.redirect('/')
   })
 
-  // Search interesting places API
-
-  /**
-  example use in front end with jQuery
-  $.getJSON("/searchPlace", {
-      loc: "New York",
-      format: "jsonp"
-    },
-    function(data) {
-      console.log(data)
-    });
-   */
-
   router.get('/searchPlace', (req, res, next) => {
     const obscurePlaces = require('../public/places/atlasObscurePlaces.json')
-    const response = Search.getPlacesByLocation({
-      json: obscurePlaces,
-      selectAll: 'name',
-      where: req.query.loc
-    }).value
+    const response = Search.getPlacesByLocation({json: obscurePlaces, selectAll: 'name', where: req.query.loc}).value
 
     res.json(response)
-
   })
+
+  // skyScanner API
+  const api = '/api/v1'
+  const SkyScanner = require('../api/skyScanner/Sky')
+  const skyScan = new SkyScanner(config)
+  const params = {
+    "market": "UK",
+    "currency": "GBP",
+    "locale": "en-GB",
+    "originPlace": "200",
+    "destinationPlace": "MRS-sky",
+    "outboundPartialDate": "2016-10",
+    "inboundPartialDate": "2016-11",
+    "q": "Mars",
+    callback: (json) => json
+  }
+
+  router.get(`${api}/locales`, (req, res, next) => {
+    skyScan.getLocals().then((response) => {
+      res.json(response.data)
+    }).catch((err) => {
+      console.log(err)
+      res.json({})
+    })
+  })
+
+  router.get(`${api}/testCheap`, (req, res, next) => {
+
+    skyScan.getCheapFlights(params).then((response) => {
+      res.json(response.data)
+    }).catch((err) => {
+      console.log(err)
+      res.json({})
+    })
+  })
+
+  router.get(`${api}/testAuto`, (req, res, next) => {
+    skyScan.getLocationAutoSuggest(params).then((response) => {
+      res.json(response.data)
+    }).catch((err) => {
+      console.log(err)
+      res.json({})
+    })
+  })
+
+  // end skyScanner API
 
   app.use('/', router)
 }
