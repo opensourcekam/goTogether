@@ -55,51 +55,51 @@ module.exports = function(express, app, passport, config) {
     res.json(response)
   })
 
-  // skyScanner API
-  const api = '/api/v1'
-  const SkyScanner = require('../api/skyScanner/Sky')
-  const skyScan = new SkyScanner(config)
-  const params = {
-    "market": "UK",
-    "currency": "GBP",
-    "locale": "en-GB",
-    "originPlace": "200",
-    "destinationPlace": "MRS-sky",
-    "outboundPartialDate": "2016-10",
-    "inboundPartialDate": "2016-11",
-    "q": "Mars",
-    callback: (json) => json
-  }
-
-  router.get(`${api}/locales`, (req, res, next) => {
-    skyScan.getLocals().then((response) => {
-      res.json(response.data)
-    }).catch((err) => {
-      console.log(err)
-      res.json({})
-    })
-  })
-
-  router.get(`${api}/testCheap`, (req, res, next) => {
-
-    skyScan.getCheapFlights(params).then((response) => {
-      res.json(response.data)
-    }).catch((err) => {
-      console.log(err)
-      res.json({})
-    })
-  })
-
-  router.get(`${api}/testAuto`, (req, res, next) => {
-    skyScan.getLocationAutoSuggest(params).then((response) => {
-      res.json(response.data)
-    }).catch((err) => {
-      console.log(err)
-      res.json({})
-    })
-  })
-
-  // end skyScanner API
+  // // skyScanner API
+  // const api = '/api/v1'
+  // const SkyScanner = require('../api/skyScanner/Sky')
+  // const skyScan = new SkyScanner(config)
+  // const params = {
+  //   "market": "UK",
+  //   "currency": "GBP",
+  //   "locale": "en-GB",
+  //   "originPlace": "200",
+  //   "destinationPlace": "MRS-sky",
+  //   "outboundPartialDate": "2016-10",
+  //   "inboundPartialDate": "2016-11",
+  //   "q": "Mars",
+  //   callback: (json) => json
+  // }
+  //
+  // router.get(`${api}/locales`, (req, res, next) => {
+  //   skyScan.getLocals().then((response) => {
+  //     res.json(response.data)
+  //   }).catch((err) => {
+  //     console.log(err)
+  //     res.json({})
+  //   })
+  // })
+  //
+  // router.get(`${api}/testCheap`, (req, res, next) => {
+  //
+  //   skyScan.getCheapFlights(params).then((response) => {
+  //     res.json(response.data)
+  //   }).catch((err) => {
+  //     console.log(err)
+  //     res.json({})
+  //   })
+  // })
+  //
+  // router.get(`${api}/testAuto`, (req, res, next) => {
+  //   skyScan.getLocationAutoSuggest(params).then((response) => {
+  //     res.json(response.data)
+  //   }).catch((err) => {
+  //     console.log(err)
+  //     res.json({})
+  //   })
+  // })
+  //
+  // // end skyScanner API
 
   app.use('/', router)
 }
