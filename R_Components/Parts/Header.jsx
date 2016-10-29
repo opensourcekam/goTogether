@@ -27,21 +27,27 @@ class Header extends React.Component {
   render () {
     return (
       <header style={{height: '100px'}}>
-        <span ><a href="/" style={{color: 'white', fontSize: '2em'}}>LetsGo</a></span>
+
         <nav style={{display: 'inline-flex', float: 'right'}}>
-            {this.state.loggedIn ? (
-              <ul>
-                <li>
-                  <a href="/#/tripideas"><button id="tripideas">Trip Ideas</button></a>
-                  <Logout />
-                </li>
-              </ul>
-              ) : (
-              <ul>
-                <FacebookLogin />
-                <GoogleLogin />
-              </ul>
-            )}
+          <span ><a href="/" style={{color: 'white', fontSize: '2.3em'}}>youme.🌎</a></span>
+          {this.state.loggedIn ? (
+            <ul>
+              <li>
+                <a href="/#/tripideas"><button id="tripideas">Trip Ideas</button></a>
+              </li>
+              <li>
+                <a href="/#/myTrips"><button id="myTrips">My Trips</button></a>
+              </li>
+              <li>
+                <Logout />
+              </li>
+            </ul>
+            ) : (
+            <ul>
+              <FacebookLogin />
+              <GoogleLogin />
+            </ul>
+          )}
         </nav>
       </header>
     )
