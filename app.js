@@ -48,8 +48,9 @@ app.set('port', process.env.PORT || port)
 
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
-require('./auth/passportAuth.js')(passport, FacebookStrategy, config, mongoose)
 require('./routes/routes.js')(express, app, passport, config)
+require('./routes/SkyscannerAPIV1')(express, app, config)
+require('./auth/passportAuth.js')(passport, FacebookStrategy, config, mongoose)
 require('./socket/socket.js')(io)
 
 server.listen(app.get('port'), function() {
