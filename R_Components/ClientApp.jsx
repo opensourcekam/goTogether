@@ -41,5 +41,6 @@ class App extends React.Component {
 
 document.addEventListener('DOMContentLoaded', () => {
   const store = configureStore()
-  ReactDOM.render(<App store={store}/>, document.getElementById('app'))
+  window.store = store
+  ReactDOM.render(<App store={store} />, document.getElementById('app'))
 })
