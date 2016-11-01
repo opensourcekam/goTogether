@@ -1,8 +1,8 @@
 import {
   REQUEST_USER,
-  UPDATE_USER,
-  receiveUser
-} from '../action/UserActions'
+  UPDATE_USER
+  // receiveUser
+} from '../actions/UserActions'
 
 export default ({ getState, dispatch }) => next => action => {
   // callbacks

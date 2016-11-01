@@ -1,8 +1,8 @@
 import {
   REQUEST_TRIP,
-  UPDATE_TRIP,
-  receiveTrip
-} from '../action/UserActions'
+  UPDATE_TRIP
+  // receiveTrip
+} from '../actions/TripActions'
 
 export default ({ getState, dispatch }) => next => action => {
   // callbacks
