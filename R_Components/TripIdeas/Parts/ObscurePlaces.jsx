@@ -4,8 +4,8 @@ const Masonry = require('react-masonry-component')
 const masonryOptions = {
   transitionDuration: 100,
   fitWidth: true,
-  gutter: 20,
-  stagger: 50
+  gutter: 50,
+  stagger: 100
 }
 const styles = {
   labels: {
@@ -36,25 +36,23 @@ class ObscurePlaces extends React.Component {
   render () {
     var childElements = this.props.elements.map((element, i) => {
       return (
-        <div className='card card-inverse' key={i}>
-          <div>
-            <div className='card-img-overlay' style={styles.labels}>
-              <span className='card-text' style={styles.subName}>{element.subName}, </span>
-              <span className='card-text'>{element.name}</span>
-            </div>
+        <li className='card card-inverse' key={i}>
+          <div className='card-img-overlay' style={styles.labels}>
+            <span className='card-text' style={styles.subName}>{element.subName}, </span>
+            <span className='card-text'>{element.name}</span>
           </div>
           <img className='card-img' style={styles.cardImg} src={element.src} />
-        </div>
+        </li>
       )
     })
 
     return (
       <div className={'centerMasonry'}>
         <Masonry className={'my-gallery-class'}
-          elementType={'div'}
+          elementType={'ul'}
           options={masonryOptions}
-          disableImagesLoaded={false}
-          updateOnEachImageLoad={false}
+          disableImagesLoaded={0}
+          updateOnEachImageLoad={1}
           onImagesLoaded={this.handleImagesLoaded}>
         {childElements}
         </Masonry>

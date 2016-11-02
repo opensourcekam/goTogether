@@ -4,6 +4,8 @@ const Landing = require('./Parts/Landing')
 const Layout = require('./Parts/Layout')
 const DashBoard = require('./TripIdeas/DashBoard')
 const PlanNewTripDash = require('./Trip/PlanNewTripDash')
+const MyTrips = require('./MyTrips/MyTrips')
+
 const {Router, Route, IndexRoute, hashHistory} = require('react-router')
 import auth from './auth'
 
@@ -31,6 +33,7 @@ class App extends React.Component {
             <IndexRoute component={Landing} />
             <Route path="tripIdeas" component={DashBoard} />
             <Route path="newTrip" component={PlanNewTripDash} />
+            <Route path="myTrips" component={MyTrips} />
           </Route>
         </Router>
       </div>

@@ -56,7 +56,7 @@ class SearchLocations extends React.Component {
       sessionStorage.setItem('location', data.location)
       // window.location = data.redirect
       hashHistory.push('newTrip')
-      e.preventDefault()
+      // e.preventDefault()
     }).fail((jqXhr) => {
       console.log('Request failed')
     })
