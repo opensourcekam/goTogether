@@ -1,45 +1,45 @@
-module.exports = function (passport, FacebookStrategy, config, mongoose) {
+module.exports = function(passport, FacebookStrategy, config, mongoose) {
+  const user = require('./Database/userSchema')(mongoose)
+  const UserModel = mongoose.model('user', user)
 
-  var chatUser = new mongoose.Schema({
-    profileID: String,
-    fullName: String,
-    profilePic: String
-  })
-
-  var UserModel = mongoose.model('chatUser', chatUser)
+  // I would like to share this userModel across my application so I can query for users more easily.
+  // exports.UserModel = UserModel
+  // const trip = require('./Database/tripsSchema')(mongoose)
+  
   passport.use(new FacebookStrategy({
     clientID: config.fb.appID,
     clientSecret: config.fb.appSecret,
     callbackURL: config.fb.callbackURL,
     profileFields: ['id', 'displayName', 'link', 'picture.type(large)', 'email']
-  },
-    function (accessToken, refreshToken, profile, cb) {
-      console.log(`Access token ${accessToken} refreshToken ${refreshToken}`)
-      console.log(profile)
-        // I was overwriting the scope in line 20 by passing in profile again... good example of closures!
-      UserModel.findOne({
-        'profileID': profile.id
-      }, function (err, user) {
-        if (err) {
-          console.log(err)
-        }
-        if (user) {
-          return cb(null, user)
-        } else {
-          // if not create user and return profile
-          var NewChatUser = new UserModel({
-            profileID: profile.id,
-            fullName: profile.displayName,
-            profilePic: profile.photos[0].value || ''
-          })
+  }, function(accessToken, refreshToken, profile, cb) {
+    console.log(`Access token ${accessToken} refreshToken ${refreshToken}`)
+    console.log(profile)
+    // I was overwriting the scope in line 20 by passing in profile again... good example of closures!
+    UserModel.findOne({
+      'profileID': profile.id
+    }, function(err, user) {
+      if (err) {
+        console.log(err)
+      }
+      if (user) {
+        return cb(null, user)
+      } else {
+        // if not create user and return profile
+        let Newuser = new UserModel({
+          profileID: profile.id,
+          fullName: profile.displayName,
+          profilePic: profile.photos[0].value || ''
+        })
 
-          NewChatUser.save(function (err) {
-            (err) ? console.error(err) : cb(null, NewChatUser)
-          })
-        }
-      })
-      return cb(null, profile)
-    }))
+        Newuser.save(function(err) {
+          console.log(Newuser)(err)
+            ? console.error(err)
+            : cb(null, Newuser)
+        })
+      }
+    })
+    return cb(null, profile)
+  }))
 
   // Configure Passport authenticated session persistence.
   //
@@ -50,12 +50,12 @@ module.exports = function (passport, FacebookStrategy, config, mongoose) {
   // from the database when deserializing.  However, due to the fact that this
   // example does not have a database, the complete Twitter profile is serialized
   // and deserialized.
-  passport.serializeUser(function (user, cb) {
+  passport.serializeUser(function(user, cb) {
     // console.log(user)
     cb(null, user)
   })
 
-  passport.deserializeUser(function (obj, cb) {
+  passport.deserializeUser(function(obj, cb) {
     cb(null, obj)
   })
 
@@ -68,14 +68,14 @@ module.exports = function (passport, FacebookStrategy, config, mongoose) {
   //         return done(err, user);
   //       } else {
   //         // if not create user and return profile
-  //         var NewChatUser = new UserModel({
+  //         let Newuser = new UserModel({
   //           profileID: profile.id,
   //           fullName: profile.displayName,
   //           profilePic: profile.photos[0].value || ''
   //         });
   //
-  //         NewChatUser.save(function(err) {
-  //           done(null, NewChatUser);
+  //         Newuser.save(function(err) {
+  //           done(null, Newuser);
   //         });
   //       }
   //     });

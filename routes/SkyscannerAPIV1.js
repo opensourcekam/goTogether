@@ -2,7 +2,7 @@
 
 module.exports = function(express, app, config) {
   const apiV1Router = express.Router()
-  const apiV1Root = '/api/v1'
+
   const SkyScanner = require('../api/skyScanner/Sky')
   const skyScan = new SkyScanner(config)
 

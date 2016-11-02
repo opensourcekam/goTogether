@@ -1,8 +1,11 @@
 module.exports = function(express, app, passport, config) {
   const router = express.Router()
   const Search = require('../Search/search.js')
+  const mongoose = require('mongoose')
 
-  app.get('/', (req, res) => {
+  app.get('/', (req, res, next) => {
+
+    //  console.log(JSON.stringify(req, null, ' '))
     if (req.user) {
       res.render('home', {
         user: req.user,
