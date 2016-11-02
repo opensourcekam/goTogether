@@ -3,7 +3,7 @@ const app = express()
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
-const config = require('./config/config.js')
+const config = require('./config/config')
 const ConnectMongo = require('connect-mongo')(session)
 const mongoose = require('mongoose').connect(config.dburl)
 const passport = require('passport')
@@ -27,6 +27,7 @@ app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, '/public')))
 app.use(require('body-parser').urlencoded({extended: true}))
+app.use(require('body-parser').json())
 app.use(require('morgan')('combined'))
 
 if (env === 'development') {
@@ -48,10 +49,13 @@ app.set('port', process.env.PORT || port)
 
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
-require('./routes/routes.js')(express, app, passport, config)
+require('./routes/routes')(express, app, passport, config)
 require('./routes/SkyscannerAPIV1')(express, app, config)
-require('./auth/passportAuth.js')(passport, FacebookStrategy, config, mongoose)
-require('./socket/socket.js')(io)
+require('./routes/trips')(express, app, mongoose)
+
+require('./auth/passportAuth')(passport, FacebookStrategy, config, mongoose)
+
+require('./socket/socket')(io)
 
 server.listen(app.get('port'), function() {
   console.log(`
