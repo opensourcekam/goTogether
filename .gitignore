@@ -45,3 +45,6 @@ coverage
 *.psd
 
 *.css
+
+#ignore drop page until ready
+youme-world-drop-page
