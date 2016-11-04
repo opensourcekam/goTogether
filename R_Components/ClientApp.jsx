@@ -7,6 +7,7 @@ const PlanNewTripDash = require('./Trip/PlanNewTripDash')
 const MyTrips = require('./MyTrips/MyTrips')
 
 const {Router, Route, IndexRoute, hashHistory} = require('react-router')
+import configureStore from '../redux/store/store'
 import auth from './auth'
 
 class App extends React.Component {
@@ -39,7 +40,10 @@ class App extends React.Component {
       </div>
     )
   }
-
 }
 
-ReactDOM.render(<App />, document.getElementById('app'))
+document.addEventListener('DOMContentLoaded', () => {
+  const store = configureStore()
+  window.store = store
+  ReactDOM.render(<App store={store} />, document.getElementById('app'))
+})

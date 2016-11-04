@@ -5,7 +5,9 @@ module.exports = {
   entry: './R_Components/ClientApp.jsx',
   output: {
     path: path.join(__dirname, '/public/javascript'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    devtoolModuleFilenameTemplate: '[resourcePath]',
+    devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]'
   },
   resolve: {
     extensions: ['', '.js', '.jsx', '.json']
@@ -33,5 +35,6 @@ module.exports = {
         loader: 'json-loader'
       }
     ]
-  }
+  },
+  devtool: 'source-map'
 }
