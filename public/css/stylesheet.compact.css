@@ -1,6 +1,6 @@
-body, html { zoom: 90%; font-family: "Montserrat", sans-serif; font-weight: 100; background-size: 100% auto; background-repeat: repeat; height: 100%; background: linear-gradient(135deg, #000 0.125em, #0092b7 0, #0092b7 calc(50% - .125em), #000 0, #000 calc(50% + .125em), #0092b7 0, #0092b7 calc(100% - .125em), #000 0); background-size: .75em/1.4142135624 .75em/1.4142135624; }
+body, html { zoom: 90%; font-family: "Montserrat", sans-serif; font-weight: 100; background-size: 100% auto; background-repeat: repeat; height: 100%; background-color: #FFE7E1; }
 
-body { min-height: 100%; position: relative; font-size: 1.2em; background-color: rgba(8, 36, 64, 0.0625); }
+body { min-height: 100%; position: relative; font-size: 1.2em; }
 
 .cover { color: white; position: relative; min-height: 350px; background: url("../images/br2.jpg") no-repeat scroll 0px 100%/cover transparent; }
 
@@ -108,10 +108,10 @@ span { text-align: center; }
 #map { height: 300px; }
 
 /* Smartphones (portrait and landscape) ----------- */
-@media screen and (max-width: 680px) { body, html { background: -moz-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%); background: -webkit-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%); }
-  input { width: 100% !important; }
+@media screen and (max-width: 680px) { input { width: 100% !important; }
   header.span { margin: 2% auto; }
   header nav { margin: 4% auto; }
+  h2#planningTripBubbleH2 { font-size: 4vmax !important; }
   div.ctaText > * { margin: 25% 5%; }
   .card-deck-wrapper, .card-group { position: static !important; }
   .card { width: 100% !important; margin: 20px auto; }

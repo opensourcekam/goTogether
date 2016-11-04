@@ -51,8 +51,8 @@ class ObscurePlaces extends React.Component {
         <Masonry className={'my-gallery-class'}
           elementType={'ul'}
           options={masonryOptions}
-          disableImagesLoaded={0}
-          updateOnEachImageLoad={1}
+          disableImagesLoaded={false}
+          updateOnEachImageLoad
           onImagesLoaded={this.handleImagesLoaded}>
         {childElements}
         </Masonry>

@@ -27,9 +27,8 @@ class Header extends React.Component {
   render () {
     return (
       <header style={{height: '100px'}}>
-
+        <span ><a href="/" style={{color: 'black', fontSize: '2.3em', 'marginTop': '20px'}}>youme.🌎</a></span>
         <nav style={{display: 'inline-flex', float: 'right'}}>
-          <span ><a href="/" style={{color: 'white', fontSize: '2.3em'}}>youme.🌎</a></span>
           {this.state.loggedIn ? (
             <ul>
               <li>

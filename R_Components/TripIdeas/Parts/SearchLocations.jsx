@@ -66,7 +66,7 @@ class SearchLocations extends React.Component {
     return (
       <section>
         <AutoComplete autoFillPlaces={this.state.autoFillPlaces} />
-        <form action="" onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <input onChange={this.renderPlaces} value={this.state.location} placeholder="Where is the next place?" type="text" list='places'>
           </input>
         </form>
