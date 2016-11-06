@@ -45,9 +45,9 @@ class Trip extends React.Component {
     return (
       <div className='planningTripBubble' style={style.planningTripBubble}>
         <div style={style.innerDivOverlay}>
-            <h2 style={style.h2} id="planningTripBubbleH2">{this.props.dest}</h2>
+            <h2 style={style.h2} id='planningTripBubbleH2'>{this.props.dest}</h2>
             <span>${this.props.budget}</span>
-            <span style={{"float":"right"}}>{this.props.tripDate}</span>
+            <span style={{'float':'right'}}>{this.props.tripDate}</span>
         </div>
         <img className='img-circle img-responsive' src={this.props.placeImage || '/images/br1.jpg'} style={style.img}></img>
       </div>
@@ -58,15 +58,15 @@ class Trip extends React.Component {
 module.exports = Trip
 
 /*
-    < li class = "card card-inverse" data - reactid = ".0.0.1.0.0.2.0.$1" style = "position: absolute left: 426px top: 0px" >
-      <div class="card-img-overlay" style="background-color:rgba(0, 0, 0, 0.6)width:100%height:100%" data-reactid=".0.0.1.0.0.2.0.$1.0">
-      <span class="card-text" style="padding:0pxmargin:0pxfont-size:2emfont-weight:500" data-reactid=".0.0.1.0.0.2.0.$1.0.0">
-        <span data-reactid=".0.0.1.0.0.2.0.$1.0.0.0">Ağdam</span>
-        <span data-reactid=".0.0.1.0.0.2.0.$1.0.0.1">,
+    < li class = 'card card-inverse' data - reactid = '.0.0.1.0.0.2.0.$1' style = 'position: absolute left: 426px top: 0px' >
+      <div class='card-img-overlay' style='background-color:rgba(0, 0, 0, 0.6)width:100%height:100%' data-reactid='.0.0.1.0.0.2.0.$1.0'>
+      <span class='card-text' style='padding:0pxmargin:0pxfont-size:2emfont-weight:500' data-reactid='.0.0.1.0.0.2.0.$1.0.0'>
+        <span data-reactid='.0.0.1.0.0.2.0.$1.0.0.0'>Ağdam</span>
+        <span data-reactid='.0.0.1.0.0.2.0.$1.0.0.1'>,
         </span>
       </span>
-      <span class="card-text" data-reactid=".0.0.1.0.0.2.0.$1.0.1">Akna, Azerbaijan</span>
+      <span class='card-text' data-reactid='.0.0.1.0.0.2.0.$1.0.1'>Akna, Azerbaijan</span>
     </div>
-    < img class = "card-img" style = "width:99%" src = "http://assets.atlasobscura.com/media/W1siZiIsInVwbG9hZHMvcGxhY2VfaW1hZ2VzLzJkYWY4ZTk3YTc5MjgzYjFhMWNhYThhN2RkYTZjMjQyOWU3YjEzNzUuanBnIl0sWyJwIiwiY29udmVydCIsIi1xdWFsaXR5IDkxIC1hdXRvLW9yaWVudCJdLFsicCIsInRodW1iIiwiMzcyeDI0OCMiXV0/2daf8e97a79283b1a1caa8a7dda6c2429e7b1375.jpg" data - reactid = ".0.0.1.0.0.2.0.$1.1" >
+    < img class = 'card-img' style = 'width:99%' src = 'http://assets.atlasobscura.com/media/W1siZiIsInVwbG9hZHMvcGxhY2VfaW1hZ2VzLzJkYWY4ZTk3YTc5MjgzYjFhMWNhYThhN2RkYTZjMjQyOWU3YjEzNzUuanBnIl0sWyJwIiwiY29udmVydCIsIi1xdWFsaXR5IDkxIC1hdXRvLW9yaWVudCJdLFsicCIsInRodW1iIiwiMzcyeDI0OCMiXV0/2daf8e97a79283b1a1caa8a7dda6c2429e7b1375.jpg' data - reactid = '.0.0.1.0.0.2.0.$1.1' >
     </li>
 */

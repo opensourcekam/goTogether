@@ -1,6 +1,6 @@
 const React = require('react')
 const Trip = require('./Parts/Trip')
-
+const CircleProgressBarWithImageCenter = require('./Parts/CircleProgressBarWithImageCenter')
 class MyTrips extends React.Component {
   constructor (props) {
     super(props)
@@ -26,16 +26,58 @@ class MyTrips extends React.Component {
     return (
       <div className='container-fluid'>
         <div className='col-xs-12 col-sm-12 col-md-4'>
-          <Trip dest='Tokyo' budget='1500' tripDate='12/29/2016' placeImage='/images/tempLocations/Tokyo.jpeg'/>
-          <Trip dest='Madrid' budget='1000' tripDate='12/29/2016' placeImage='/images/tempLocations/Madrid.jpeg'/>
+          <CircleProgressBarWithImageCenter
+            img='/images/tempLocations/LosAngeles.jpeg'
+            mountId='LosAngeles'
+            color='#aae444'
+            strokeWidth='4'
+            dest='Los Angeles'
+            budget='1200'
+            tripDate='1/18/2017'/>
+          <CircleProgressBarWithImageCenter
+            img='/images/tempLocations/Amsterdam.jpeg'
+            mountId='Amsterdam'
+            color='#aae444'
+            strokeWidth='4'
+            dest='Amsterdam'
+            budget='800'
+            tripDate='1/1/2119'/>
         </div>
         <div className='col-xs-12 col-sm-12 col-md-4'>
-          <Trip dest='Amsterdam' budget='2000' tripDate='12/29/2016' placeImage='/images/tempLocations/Amsterdam.jpeg'/>
-          <Trip dest='London' budget='1000' tripDate='12/29/2016' placeImage='/images/tempLocations/London.jpeg'/>
+          <CircleProgressBarWithImageCenter
+            img='/images/tempLocations/Cassis.jpeg'
+            mountId='Cassis'
+            color='#aae444'
+            strokeWidth='4'
+            dest='Cassis'
+            budget='1100'
+            tripDate='10/9/2018'/>
+          <CircleProgressBarWithImageCenter
+            img='/images/tempLocations/London.jpeg'
+            mountId='London'
+            color='#aae444'
+            strokeWidth='4'
+            dest='London'
+            budget='500'
+            tripDate='8/9/2098'/>
         </div>
         <div className='col-xs-12 col-sm-12 col-md-4'>
-          <Trip dest='Cassis' budget='1800' tripDate='12/29/2016' placeImage='/images/tempLocations/Cassis.jpeg'/>
-          <Trip dest='Los Angeles' budget='1900' tripDate='12/29/2016' placeImage='/images/tempLocations/LosAngeles.jpeg'/>
+          <CircleProgressBarWithImageCenter
+            img='/images/tempLocations/Tokyo.jpeg'
+            mountId='Tokyo'
+            color='#aae444'
+            strokeWidth='4'
+            dest='Tokyo'
+            budget='1100'
+            tripDate='12/29/2018'/>
+          <CircleProgressBarWithImageCenter
+            img='/images/tempLocations/Madrid.jpeg'
+            mountId='Madrid'
+            color='#aae444'
+            strokeWidth='4'
+            dest='Madrid'
+            budget='3000'
+            tripDate='1/29/3018'/>
         </div>
       </div>
     )
