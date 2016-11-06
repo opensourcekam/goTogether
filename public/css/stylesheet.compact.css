@@ -107,6 +107,14 @@ span { text-align: center; }
 
 #map { height: 300px; }
 
+svg { width: 100%; }
+
+.wrapper { position: relative; width: 450px; height: 450px; display: inline-block; margin: 20px 50px 0 0; }
+
+.wrapper > #bar { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+.wrapper > img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; /* Needs appropriate vendor prefixes */ box-sizing: border-box; /* This needs to be equal to strokeWidth */ padding: 4%; border-radius: 50%; }
+
 /* Smartphones (portrait and landscape) ----------- */
 @media screen and (max-width: 680px) { input { width: 100% !important; }
   header.span { margin: 2% auto; }
