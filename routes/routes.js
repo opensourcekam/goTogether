@@ -1,4 +1,4 @@
-module.exports = function(express, app, passport, config) {
+module.exports = function(express, app, passport, config, user, UserModel) {
   const router = express.Router()
   const Search = require('../Search/search.js')
   const mongoose = require('mongoose')
@@ -34,6 +34,13 @@ module.exports = function(express, app, passport, config) {
     res.render('index', {
       user: req.user,
       config: config
+    })
+  })
+
+  router.get('/usersTest', (req, res, next) => {
+    UserModel.find({},(err, doc) => {
+      res.setHeader('Content-Type', 'application/json')
+      res.json(doc)
     })
   })
 

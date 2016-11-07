@@ -1,11 +1,11 @@
-module.exports = function(passport, FacebookStrategy, config, mongoose) {
-  const user = require('./Database/userSchema')(mongoose)
-  const UserModel = mongoose.model('user', user)
+module.exports = function(passport, FacebookStrategy, config, mongoose, user, UserModel) {
+  // const user = require('./Database/userSchema')(mongoose)
+  // const UserModel = mongoose.model('user', user)
 
   // I would like to share this userModel across my application so I can query for users more easily.
   // exports.UserModel = UserModel
   // const trip = require('./Database/tripsSchema')(mongoose)
-  
+
   passport.use(new FacebookStrategy({
     clientID: config.fb.appID,
     clientSecret: config.fb.appSecret,
@@ -32,9 +32,7 @@ module.exports = function(passport, FacebookStrategy, config, mongoose) {
         })
 
         Newuser.save(function(err) {
-          console.log(Newuser)(err)
-            ? console.error(err)
-            : cb(null, Newuser)
+          (err) ? console.error(err) : cb(null, Newuser)
         })
       }
     })

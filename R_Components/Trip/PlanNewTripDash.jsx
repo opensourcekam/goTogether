@@ -12,27 +12,28 @@ class NewTrip extends React.Component {
       lat: 0,
       lon: 0
     }
-    this.getLocation = this.getLocation.bind(this)
+    // this.getLocation = this.getLocation.bind(this)
   }
 
   componentDidMount () {
-    this.getLocation
+    // this.getLocation
   }
 
-  getLocation () {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.setState({lat: position.coords.latitude, lon: position.coords.longitude})
-      })
-    } else {
-      console.log('Geolocation is not supported by this browser.')
-    }
-  }
+  // getLocation () {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       this.setState({lat: position.coords.latitude, lon: position.coords.longitude})
+  //     })
+  //   } else {
+  //     console.log('Geolocation is not supported by this browser.')
+  //   }
+  // }
 
   render () {
     // console.log(userJSON)
+    // <div className='row' onLoad={this.getLocation}>
     return (
-      <div className='row' onLoad={this.getLocation}>
+      <div className='row'>
         <aside className='col-xs-12 col-sm-12 col-md-6'>
           <UserTripCard />
         </aside>

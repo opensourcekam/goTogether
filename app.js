@@ -11,6 +11,15 @@ const FacebookStrategy = require('passport-facebook').Strategy
 const port = 8080
 const env = process.env.NODE_ENV || 'development'
 
+// DB
+// Mongoose models (should abstract out soon)
+const user = require('./Database/userSchema')(mongoose)
+const UserModel = mongoose.model('user', user)
+
+const TripModel = require('./Database/tripsSchema')(mongoose)
+const Trip = mongoose.model('Trips', TripModel)
+// DB
+
 // Middleware
 const forceSsl = function(req, res, next) {
   if (req.headers['x-forwarded-proto'] !== 'https') {
@@ -21,14 +30,15 @@ const forceSsl = function(req, res, next) {
 
 app.set('view engine', 'jade')
 app.set('views', path.join(__dirname, 'views'))
-app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'))
-app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'))
+// app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'))
+// app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'))
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, '/public')))
 app.use(require('body-parser').urlencoded({extended: true}))
 app.use(require('body-parser').json())
 app.use(require('morgan')('combined'))
+app.set('json spaces', 3)
 
 if (env === 'development') {
   // dev specific settings
@@ -49,12 +59,17 @@ app.set('port', process.env.PORT || port)
 
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
-require('./routes/routes')(express, app, passport, config)
+
+// routes
+require('./routes/routes')(express, app, passport, config, user, UserModel)
+require('./routes/trips')(express, app, mongoose, TripModel, Trip, UserModel)
 require('./routes/SkyscannerAPIV1')(express, app, config)
-require('./routes/trips')(express, app, mongoose)
 
-require('./auth/passportAuth')(passport, FacebookStrategy, config, mongoose)
 
+// passport auth (FB)
+require('./auth/passportAuth')(passport, FacebookStrategy, config, mongoose, user, UserModel)
+
+// socket.io
 require('./socket/socket')(io)
 
 server.listen(app.get('port'), function() {

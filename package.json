@@ -53,6 +53,7 @@
     "nyc": "^6.6.1",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
+    "progressbar.js": "^1.0.1",
     "react": "^0.14.8",
     "react-addons-test-utils": "^0.14.8",
     "react-dom": "^0.14.8",

@@ -5,8 +5,13 @@ module.exports = function(mongoose) {
       type: Schema.Types.ObjectId,
       ref: 'user'
     },
-    to: String,
-    // from: {type: String, default: },
+    to: {
+      type: String,
+      default: 'Heaven'
+    },
+    from: {
+      type: String
+    },
     created: {
       type: Date,
       default: Date.now
@@ -19,15 +24,32 @@ module.exports = function(mongoose) {
       type: Date,
       date: Date
     },
-    past: Boolean,
-    budget: Number,
+    past: {
+      type: Boolean,
+      default: false
+    },
+    budget: {
+      type: Number,
+      default: 100
+    },
     meta: {
-      votes: Number,
-      favs: Number,
-      unlocked: Boolean,
-      percantagePlanned: Number
+      votes: {
+        type: Number,
+        default: 0
+      },
+      favs: Array,
+      unlocked: {
+        type: Boolean,
+        default: false
+      },
+      percantagePlanned: {
+        type: Number,
+        default: 0
+      }
+    },
+    invitees: {
+      type: Array
     }
-    // invitees: {}
   }, {collection: 'Trips'})
 
   // const Trip = mongoose.model('trip', TripModel)

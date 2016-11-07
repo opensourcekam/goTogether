@@ -1,6 +1,7 @@
 const React = require('react')
-const ProgressBar = require('../../../public/javascript/progressbar')
-const _ = require('lodash')
+import { Circle, animate } from 'progressbar.js'
+import { sampleSize } from 'lodash'
+
 const style = {
   'img': {
     'width': '100%',
@@ -40,30 +41,6 @@ const style = {
 }
 
 class CircleProgressBarWithImageCenter extends React.Component {
-  /*<CircleProgressBarWithImageCenter
-            img='https://images.unsplash.com/photo-1465065600826-82807d7a83b2?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=5d14f5b77a64aea2934b9d9622075ae6'
-            loadDelaySeconds='100'
-            mountId='madrid'
-            color='#aae444'
-            loadTo='.5'
-            strokeWidth='4'/>
-
-          <CircleProgressBarWithImageCenter
-            img='https://images.unsplash.com/photo-1443170412500-d04323a4eb57?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=3fe94c5c326278dbd3e8f3e4b4eb3685'
-            loadDelaySeconds='100'
-            mountId='tokyo'
-            color='rgb(255, 53, 23)'
-            loadTo='.9'
-            strokeWidth='4'/>
-
-                  <CircleProgressBarWithImageCenter
-            img='https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=460fc65c8079dc4bd4a2ee7fa1fd7946'
-            loadDelaySeconds='100'
-            mountId='newYork'
-            color='rgb(25, 13, 233)'
-            loadTo='.3'
-            strokeWidth='4'/>*/
-
   constructor (props) {
     super(props)
     this.state = { loadTo: '0', hovered: 0 }
@@ -87,7 +64,7 @@ class CircleProgressBarWithImageCenter extends React.Component {
   animateProgress () {
     console.log(this)
     if(this.state.hovered === 0){
-      const circle = new ProgressBar.Circle(`#${this.props.mountId}`, {
+      const circle = new Circle(`#${this.props.mountId}`, {
         strokeWidth: this.props.strokeWidth || 4,  // This means 4% of the container
         color:  this.props.color
       })
@@ -95,7 +72,18 @@ class CircleProgressBarWithImageCenter extends React.Component {
       this.setState({hovered:1})
 
       // Sample to display mockup of completeing trip planning
-      circle.animate(_.sampleSize(['.1','.2','.3','.4','.5','.6','.7','.8','.9','1'], 1))
+      circle.animate(sampleSize([
+                                  '.1',
+                                  '.2',
+                                  '.3',
+                                  '.4',
+                                  '.5',
+                                  '.6',
+                                  '.7',
+                                  '.8',
+                                  '.9',
+                                  '1'
+                                ], 1))
     } else {
       console.log('no re render ProgressBar')
       return
@@ -112,7 +100,7 @@ class CircleProgressBarWithImageCenter extends React.Component {
         <img src={this.props.img}/>
         <div id={this.props.mountId}></div>
         <div style={style.innerDivOverlay}>
-            <h2 style={style.h2} id='planningTripBubbleH2'>Plan for {this.props.dest}</h2>
+            <h2 style={style.h2} id='planningTripBubbleH2'>{this.props.dest}</h2>
             <span>Avg. cost ${this.props.budget}</span>
             <span style={{'float':'right'}}>{this.props.tripDate}</span>
         </div>

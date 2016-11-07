@@ -52,6 +52,25 @@ class SearchLocations extends React.Component {
       location: this.state.location
     }
 
+    /*
+    var data = {
+      location: this.state.location,
+      _creator: '581a242b0916180d86032f30',
+      to: this.state.location,
+      tripDate: 'Dec 29, 2017',
+      budget: 5000
+    }
+
+    $.ajax({type: 'POST', url: '/trip/newTrip', data: data}).done((data) => {
+      sessionStorage.setItem('location', data.location)
+      // window.location = data.redirect
+      hashHistory.push('newTrip')
+      // e.preventDefault()
+    }).fail((jqXhr) => {
+      console.log('Request failed')
+    })
+  }
+    */
     $.ajax({type: 'POST', url: '/newTrip', data: data}).done((data) => {
       sessionStorage.setItem('location', data.location)
       // window.location = data.redirect
