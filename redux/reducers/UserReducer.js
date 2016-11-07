@@ -1,4 +1,7 @@
-import { RECIEVE_USER } from '../actions/UserActions'
+import {
+  RECIEVE_USER,
+  LOGOUT
+} from '../actions/UserActions'
 
 export default (state = null, action) => {
   // ensure state does not get overridden by accident
@@ -11,6 +14,8 @@ export default (state = null, action) => {
     case RECIEVE_USER:
       Object.assign(nextState, action.user)
       return nextState
+    case LOGOUT:
+      return null
     default:
       return state
   }

@@ -18,8 +18,18 @@ class App extends React.Component {
     }
   }
 
+  redirectIfLoggedOut (e) {
+    if (!this.state.loggedIn) {
+      hashHistory.push('/')
+    }
+  }
+
   updateAuth (loggedIn) {
     this.setState({loggedIn})
+  }
+
+  componentDidUpdate () {
+    this.redirectIfLoggedOut()
   }
 
   componentWillMount () {
@@ -32,7 +42,11 @@ class App extends React.Component {
         <Router history={hashHistory}>
           <Route path='/' component={Layout}>
             <IndexRoute component={Landing} />
-            <Route path="tripIdeas" component={DashBoard} />
+            <Route
+              path="tripIdeas"
+              component={DashBoard}
+              onEnter={this.redirectIfLoggedOut}
+            />
             <Route path="newTrip" component={PlanNewTripDash} />
             <Route path="myTrips" component={MyTrips} />
           </Route>
