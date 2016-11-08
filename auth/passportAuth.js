@@ -29,8 +29,7 @@ module.exports = function(passport, FacebookStrategy, config, mongoose, User) {
         let Newuser = new User({
           profileID: profile.id,
           fullName: profile.displayName,
-          profilePic: profile.photos[0].value || '',
-          trips: [{type: Schema.Types.ObjectId, ref: 'Trips'}]
+          profilePic: profile.photos[0].value || ''
         })
 
         Newuser.save(function(err) {
