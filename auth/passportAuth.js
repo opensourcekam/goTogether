@@ -1,4 +1,5 @@
 module.exports = function(passport, FacebookStrategy, config, mongoose, User) {
+  const Schema = mongoose.Schema
   // const user = require('./Database/userSchema')(mongoose)
   // const UserModel = mongoose.model('user', user)
 
