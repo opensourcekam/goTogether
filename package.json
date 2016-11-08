@@ -12,7 +12,8 @@
     "start": "node app.js",
     "startd": "nodemon app.js",
     "test": "standard",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "postinstall": "webpack --progress --colors"
   },
   "author": "Copyright (C)",
   "license": "MIT",
