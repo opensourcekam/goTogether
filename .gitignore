@@ -46,5 +46,8 @@ coverage
 
 *.css
 
-#ignore drop page until ready
+# ignore drop page until ready
 youme-world-drop-page
+
+# ignore bundle
+public/javascript/bundle.*
