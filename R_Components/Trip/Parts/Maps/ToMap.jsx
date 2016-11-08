@@ -1,4 +1,3 @@
-/* global google */
 import React from 'react'
 import ReactDOM from 'react-dom'
 // https://gist.github.com/maedhr/8823168
@@ -37,7 +36,7 @@ class ToMap extends React.Component {
 
 const { number, object } = React.PropTypes
 
-Map.propTypes = {
+ToMap.propTypes = {
   initialZoom: number.isRequired,
   flyingTo: object.isRequired
 }

@@ -4,14 +4,10 @@
 const React = require('react')
 import axios from 'axios'
 // import { find as _find } from 'lodash'
-import _ from 'lodash'
 const DisplayPhoto = require('./Parts/DisplayPhoto')
 const TripBudget = require('./Parts/Budget/TripBudget')
 // const Map = require('./Parts/Maps/ToFromMap')
 const ToMap = require('./Parts/Maps/ToMap')
-
-const currentPosition = {}
-const flyingTo = {}
 
 class UserTripCard extends React.Component {
   constructor (props) {
@@ -67,7 +63,7 @@ class UserTripCard extends React.Component {
         'marginBottom': '20px'
       }
     }
-    //navigator.geolocation.getCurrentPosition(this.getCurrentPosition, this.getCurrentPositionErr, {timeout: 10000})
+    // navigator.geolocation.getCurrentPosition(this.getCurrentPosition, this.getCurrentPositionErr, {timeout: 10000})
     return (
       <section className='userTripCard' style={styles.userTripCard}>
         <DisplayPhoto />

@@ -1,12 +1,12 @@
+/*global userJSON*/
 const React = require('react')
-const Trip = require('./Parts/Trip')
 const CircleProgressBarWithImageCenter = require('./Parts/CircleProgressBarWithImageCenter')
 import axios from 'axios'
-import { chunk as _chunk } from 'lodash'
+
 class MyTrips extends React.Component {
   constructor (props) {
     super(props)
-    this.state= {
+    this.state = {
       trips: []
     }
   }
@@ -34,22 +34,22 @@ class MyTrips extends React.Component {
   render () {
     return (
       <div className='container-fluid'>
-          {console.log(this.state.trips)}
-          {this.state.trips.map((trip, i) => {
-              return(
-                <div key={i} className='col-xs-12 col-sm-12 col-md-4'>
-                  <CircleProgressBarWithImageCenter
-                    img='/images/tempLocations/Madrid.jpeg'
-                    _id={trip._id}
-                    mountId={trip.to.replace(/[\s,]/g, '')}
-                    dest={trip.to}
-                    budget={trip.budget}
-                    tripDate={trip.tripDate}
-                    color='#aae444'
-                    strokeWidth='4'/>
-                </div>
-              )
-          })}
+        {console.log(this.state.trips)}
+        {this.state.trips.map((trip, i) => {
+          return (
+            <div key={i} className='col-xs-12 col-sm-12 col-md-4'>
+              <CircleProgressBarWithImageCenter
+                img='/images/tempLocations/Tokyo.jpeg'
+                _id={trip._id}
+                mountId={trip.to.replace(/[\s,]/g, '')}
+                dest={trip.to}
+                budget={trip.budget}
+                tripDate={trip.tripDate}
+                color='#aae444'
+                strokeWidth='4' />
+            </div>
+          )
+        })}
       </div>
     )
   }

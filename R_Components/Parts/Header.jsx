@@ -32,7 +32,7 @@ class Header extends React.Component {
           {this.state.loggedIn ? (
             <ul>
               <li>
-                <a href="/#/tripideas"><button id="tripideas">Trip Ideas</button></a>
+                <a href="/#/tripideas"><button id="tripideas">New Trip</button></a>
               </li>
               <li>
                 <a href="/#/myTrips"><button id="myTrips">My Trips</button></a>

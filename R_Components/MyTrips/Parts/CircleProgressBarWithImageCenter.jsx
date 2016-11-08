@@ -1,11 +1,10 @@
 const React = require('react')
-import { Circle, animate } from 'progressbar.js'
+import { Circle } from 'progressbar.js'
 import { sampleSize } from 'lodash'
 
 const style = {
   'img': {
     'width': '100%',
-    // 'height': 'auto',
     'position': 'relative',
     'borderTop': '.5em red solid'
   },
@@ -13,10 +12,7 @@ const style = {
     'position': 'relative',
     'display': 'block',
     'marginBottom': '3.75rem',
-    'borderRedius': '50%',
-    // 'border': '1px solid rgba(0, 0, 0, .125)',
-    // 'width': '500px',
-    // 'height': '500px'
+    'borderRedius': '50%'
   },
   'cardOverlay': {
     'position': 'absolute',
@@ -25,8 +21,7 @@ const style = {
     'left': '10%',
     'padding': '1.25rem',
     'backgroundColor': 'rgba(115, 186, 255,.85)',
-    'height': 'auto',
-
+    'height': 'auto'
   },
   'innerDivOverlay': {
     'position': 'absolute',
@@ -47,7 +42,7 @@ class CircleProgressBarWithImageCenter extends React.Component {
     this.animateProgress = this.animateProgress.bind(this)
   }
 
-  componentDidMount(){
+  componentDidMount () {
     // const circle = new ProgressBar.Circle(`#${this.props.mountId}`, {
     //   strokeWidth: this.props.strokeWidth || 4,  // This means 4% of the container
     //   color:  this.props.color
@@ -63,49 +58,51 @@ class CircleProgressBarWithImageCenter extends React.Component {
 
   animateProgress () {
     console.log(this)
-    if(this.state.hovered === 0){
+    if (this.state.hovered === 0) {
       const circle = new Circle(`#${this.props.mountId}`, {
         strokeWidth: this.props.strokeWidth || 4,  // This means 4% of the container
-        color:  this.props.color
+        color: this.props.color
       })
 
-      this.setState({hovered:1})
+      this.setState({hovered: 1})
 
       // Sample to display mockup of completeing trip planning
-      circle.animate(sampleSize([
-                                  '.1',
-                                  '.2',
-                                  '.3',
-                                  '.4',
-                                  '.5',
-                                  '.6',
-                                  '.7',
-                                  '.8',
-                                  '.9',
-                                  '1'
-                                ], 1))
+      circle.animate(sampleSize(['.1', '.2', '.3', '.4', '.5', '.6', '.7', '.8', '.9', '1'], 1))
     } else {
       console.log('no re render ProgressBar')
       return
     }
     // How can I unbind an event from my component :O
-    //delete this._reactInternalInstance._renderedComponent._currentElement.props.onMouseOver
+    // delete this._reactInternalInstance._renderedComponent._currentElement.props.onMouseOver
   }
 
-  dismountProgressBar () {}
-  render() {
+  render () {
     return (
       <div className='wrapper' data-trip-id={this.props._id} onMouseEnter={this.animateProgress}>
-        <img src={this.props.img}/>
+        <img src={this.props.img} />
         <div id={this.props.mountId}></div>
         <div style={style.innerDivOverlay}>
-            <h2 style={style.h2} id='planningTripBubbleH2'>{this.props.dest}</h2>
-            <span>Avg. cost ${this.props.budget}</span>
-            <span style={{'float':'right'}}>{this.props.tripDate}</span>
+          <h2 style={style.h2} id='planningTripBubbleH2'>{this.props.dest}</h2>
+          <span>Avg. cost ${this.props.budget}</span>
+          <span style={{'float': 'right'}}>{this.props.tripDate}</span>
         </div>
       </div>
     )
   }
+}
+
+const { number, string } = React.PropTypes
+
+CircleProgressBarWithImageCenter.propTypes = {
+  _id: string,
+  img: string,
+  mountId: string,
+  innerDivOverlay: string,
+  dest: string,
+  budget: number,
+  tripDate: string,
+  color: string,
+  strokeWidth: number
 }
 
 module.exports = CircleProgressBarWithImageCenter
