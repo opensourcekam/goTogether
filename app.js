@@ -43,7 +43,7 @@ require('./routes/SkyscannerAPIV1')(express, app, config)
 // routes
 
 // passport auth (FB)
-require('./auth/passportAuth')(passport, FacebookStrategy, config, mongoose, User, UserModel, Trip)
+require('./auth/passportAuth')(passport, FacebookStrategy, config, mongoose, User)
 
 // socket.io
 require('./socket/socket')(io)
