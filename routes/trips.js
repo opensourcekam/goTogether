@@ -1,5 +1,6 @@
-module.exports = (express, app, mongoose, TripModel, Trip, UserModel) => {
+module.exports = (express, app, mongoose, TripModel, Trip, User) => {
   const tripsRouter = express.Router()
+
   // const TripModel = require('../auth/Database/tripsSchema')(mongoose)
   // const Trip = mongoose.model('Trips', TripModel)
 
@@ -14,44 +15,56 @@ module.exports = (express, app, mongoose, TripModel, Trip, UserModel) => {
     //   res.json([{}])
     // })
 
-    const promise = Trip.find({'_creator': req.params._creator}).sort('-created').populate('_creator').exec()
-      promise.then((trips) => {
-        res.json(trips)
-      })
+    const promise = Trip.find({'_creator': req.params._creator}).sort('-created').exec()
+    promise.then((trips) => {
+      res.json(trips)
     })
+
+    promise.catch((err) => {
+      console.log('Does exist')
+      res.json(err)
+    })
+  })
 
   // CREATE NEW
   tripsRouter.post('/trip/newTrip', (req, res, next) => {
-    //HTTP POST localhost:8080/trip/newTrip _creator=5815288f0a9eb70645b1901a to='Kawasaki Ward, Japan' tripDate='Dec 29, 2017' budget=5000
+    //HTTP POST localhost:8080/trip/newTrip _creator=1271008379610267 to='Kawasaki Ward, Japan' tripDate='Dec 29, 2017' budget=5000
 
-    const checkIfUserExistPromise = UserModel.find({'_id': req.body._creator})
+    const checkIfUserExistPromise = User.find({'profileID': req.body._creator})
 
       checkIfUserExistPromise.then((user) => {
         console.log('Does exist')
-        console.log(user)
+        console.log(req.body)
+        console.log(user[0].trips)
+        let source = req.body,
+          createTripJSON = {}
+        for (let key in source) {
+          if (source.hasOwnProperty(key)) {
+            createTripJSON[key] = source[key]
+          }
+        }
+
+        // Mutate tripDate on the createTripJSON obj
+        createTripJSON.tripDate = new Date(req.body.tripDate)
+
+        Trip.create(createTripJSON, (err, doc) => {
+          if (err) {
+            res.json({'409': 'Document create fail'})
+          } else {
+            user[0].trips.push(doc)
+            user[0].save((err, doc) => {
+              console.log('SAVED TRIP')
+            })
+            res.json(doc)
+          }
+        })
+
       })
 
       checkIfUserExistPromise.catch(err => {
-        console.log('Does exist')
+        res.json(err)
+        console.log('User doesnt exist')
         console.log(err)
-      })
-
-      let source = req.body,
-        createTripJSON = {}
-      for (let key in source) {
-        if (source.hasOwnProperty(key)) {
-          createTripJSON[key] = source[key]
-        }
-      }
-
-      // Mutate tripDate on the createTripJSON obj
-      createTripJSON.tripDate = new Date(req.body.tripDate)
-      Trip.create(createTripJSON, (err, doc) => {
-        if (err) {
-          res.json({'409': 'Document create fail'})
-        } else {
-          res.json(doc)
-        }
       })
 
     }) // tripsRouter newTrip post
@@ -59,7 +72,7 @@ module.exports = (express, app, mongoose, TripModel, Trip, UserModel) => {
     // GET TRIP BY ID
     tripsRouter.get('/trip/trips/:_id', (req, res, next) => {
       if (req.params._id) {
-        let promise = Trip.findOne({'_id': req.params._id}).populate('_creator').exec()
+        let promise = Trip.findOne({'_id': req.params._id}).exec()
 
         promise.then((trip) => {
           res.json(trip)
@@ -84,11 +97,11 @@ module.exports = (express, app, mongoose, TripModel, Trip, UserModel) => {
     })
 
     // Reset database
-    // tripsRouter.get('/resetDB/1', (req, res, next) => {
-    //   Trip.remove({}, function(err) {
-    //     res.json([{}])
-    //   })
-    // })
+    tripsRouter.get('/resetDB/1', (req, res, next) => {
+      Trip.remove({}, function(err) {
+        res.json([{}])
+      })
+    })
 
     app.use('/', tripsRouter)
   }

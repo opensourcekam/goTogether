@@ -1,13 +1,19 @@
-module.exports = function(express, app, passport, config, user, UserModel) {
+module.exports = function(express, app, passport, config, User, UserModel) {
   const router = express.Router()
   const Search = require('../Search/search.js')
   const mongoose = require('mongoose')
 
   app.get('/', (req, res, next) => {
 
-    //  console.log(JSON.stringify(req, null, ' '))
+    console.log(`
+      Router get /
+
+      ${JSON.stringify(req.user, null, 10)}
+
+      `)
+
     if (req.user) {
-      res.render('home', {
+      res.render('index', {
         user: req.user,
         config: config
       })
@@ -31,6 +37,7 @@ module.exports = function(express, app, passport, config, user, UserModel) {
   }))
 
   router.get('/home', securePages, (req, res, next) => {
+    console.log(res.user[0].id)
     res.render('index', {
       user: req.user,
       config: config
@@ -38,11 +45,54 @@ module.exports = function(express, app, passport, config, user, UserModel) {
   })
 
   router.get('/usersTest', (req, res, next) => {
-    UserModel.find({},(err, doc) => {
-      res.setHeader('Content-Type', 'application/json')
+    // UserModel.find({}).populate('_creator').exec((err, doc)=> {
+    //   res.setHeader('Content-Type', 'application/json')
+    //   res.json(doc)
+    // })
+
+    const promise = User.find({}).populate('trips').exec()
+    promise.then((doc) => {
       res.json(doc)
     })
+
+    promise.catch((err) => {
+      console.log('Does exist')
+      res.json(err)
+    })
+
   })
+
+  router.get('/userById/:profileId', (req, res, next) => {
+    console.log(`{'profileID': ${req.params.profileId}}`)
+
+    const promise = User.findOne({'profileID': req.params.profileId}).populate('trips').exec()
+
+    promise.then((doc) => {
+      res.json(doc)
+    })
+
+    promise.catch((err) => {
+      console.log('Does exist')
+      res.json(err)
+    })
+  })
+
+  router.get('/user/trips/:profileId', (req, res, next) => {
+    console.log(`{'profileID': ${req.params.profileId}}`)
+
+    const promise = User.findOne({'profileID': req.params.profileId}).populate('trips').exec()
+
+    promise.then((doc) => {
+      res.json(doc.trips)
+    })
+
+    promise.catch((err) => {
+      console.log('Does exist')
+      res.json(err)
+    })
+  })
+
+
 
   router.post('/newTrip', (req, res, next) => {
     if (req.method.toLowerCase() === 'post') {
