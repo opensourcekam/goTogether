@@ -93,10 +93,9 @@ class CircleProgressBarWithImageCenter extends React.Component {
   }
 
   dismountProgressBar () {}
-
   render() {
     return (
-      <div className='wrapper' onMouseEnter={this.animateProgress}>
+      <div className='wrapper' data-trip-id={this.props._id} onMouseEnter={this.animateProgress}>
         <img src={this.props.img}/>
         <div id={this.props.mountId}></div>
         <div style={style.innerDivOverlay}>

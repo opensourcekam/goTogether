@@ -1,10 +1,14 @@
 const React = require('react')
 const Trip = require('./Parts/Trip')
 const CircleProgressBarWithImageCenter = require('./Parts/CircleProgressBarWithImageCenter')
+import axios from 'axios'
+import { chunk as _chunk } from 'lodash'
 class MyTrips extends React.Component {
   constructor (props) {
     super(props)
-    this.trips = []
+    this.state= {
+      trips: []
+    }
   }
 
   // Get each trip for currently loggedin user
@@ -16,7 +20,12 @@ class MyTrips extends React.Component {
   }
 
   componentDidMount () {
-
+    console.log(userJSON.id)
+    axios.get(`/user/trips/${userJSON.id}`).then((res) => {
+      return this.setState({ trips: res.data })
+    }).catch((err) => {
+      console.log(err)
+    })
   }
 
   componentWillUnmount () {
@@ -25,60 +34,22 @@ class MyTrips extends React.Component {
   render () {
     return (
       <div className='container-fluid'>
-        <div className='col-xs-12 col-sm-12 col-md-4'>
-          <CircleProgressBarWithImageCenter
-            img='/images/tempLocations/LosAngeles.jpeg'
-            mountId='LosAngeles'
-            color='#aae444'
-            strokeWidth='4'
-            dest='Los Angeles'
-            budget='1200'
-            tripDate='1/18/2017'/>
-          <CircleProgressBarWithImageCenter
-            img='/images/tempLocations/Amsterdam.jpeg'
-            mountId='Amsterdam'
-            color='#aae444'
-            strokeWidth='4'
-            dest='Amsterdam'
-            budget='800'
-            tripDate='1/1/2119'/>
-        </div>
-        <div className='col-xs-12 col-sm-12 col-md-4'>
-          <CircleProgressBarWithImageCenter
-            img='/images/tempLocations/Cassis.jpeg'
-            mountId='Cassis'
-            color='#aae444'
-            strokeWidth='4'
-            dest='Cassis'
-            budget='1100'
-            tripDate='10/9/2018'/>
-          <CircleProgressBarWithImageCenter
-            img='/images/tempLocations/London.jpeg'
-            mountId='London'
-            color='#aae444'
-            strokeWidth='4'
-            dest='London'
-            budget='500'
-            tripDate='8/9/2098'/>
-        </div>
-        <div className='col-xs-12 col-sm-12 col-md-4'>
-          <CircleProgressBarWithImageCenter
-            img='/images/tempLocations/Tokyo.jpeg'
-            mountId='Tokyo'
-            color='#aae444'
-            strokeWidth='4'
-            dest='Tokyo'
-            budget='1100'
-            tripDate='12/29/2018'/>
-          <CircleProgressBarWithImageCenter
-            img='/images/tempLocations/Madrid.jpeg'
-            mountId='Madrid'
-            color='#aae444'
-            strokeWidth='4'
-            dest='Madrid'
-            budget='3000'
-            tripDate='1/29/3018'/>
-        </div>
+          {console.log(this.state.trips)}
+          {this.state.trips.map((trip, i) => {
+              return(
+                <div key={i} className='col-xs-12 col-sm-12 col-md-4'>
+                  <CircleProgressBarWithImageCenter
+                    img='/images/tempLocations/Madrid.jpeg'
+                    _id={trip._id}
+                    mountId={trip.to.replace(/[\s,]/g, '')}
+                    dest={trip.to}
+                    budget={trip.budget}
+                    tripDate={trip.tripDate}
+                    color='#aae444'
+                    strokeWidth='4'/>
+                </div>
+              )
+          })}
       </div>
     )
   }

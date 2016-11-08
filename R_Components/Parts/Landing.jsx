@@ -16,8 +16,8 @@ class Landing extends React.Component {
       <div>
         <Cta />
         <AboutBar />
-      i</div>
-      )
+      </div>
+    )
   }
 }
 
