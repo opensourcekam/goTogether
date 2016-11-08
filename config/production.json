@@ -1,5 +1,5 @@
 {
-  "dburl" : "mongodb://robinsonkameron:xxg-nZb-eGn-d96@ds147797.mlab.com:47797/youme_world",
+  "dburl" : "mongodb://admin:password@ds147797.mlab.com:47797/heroku_hlbb7dj6",
   "sessionSecret" : "ANGHdfghjVJBKLHVHMABJSD",
   "fb":{
     "appID" : "838426282933960",
