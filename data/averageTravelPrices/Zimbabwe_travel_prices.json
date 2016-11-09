@@ -1,0 +1,18 @@
+{
+   "country": [
+      {
+         "city": "Bulawayo",
+         "hostels": "49.00$",
+         "hotels": "65.00$",
+         "backpacker": "71.85",
+         "price_index": "58.20"
+      },
+      {
+         "city": "Harare",
+         "hostels": "53.33$",
+         "hotels": "131.00$",
+         "backpacker": "82.55",
+         "price_index": "64.66"
+      }
+   ]
+}

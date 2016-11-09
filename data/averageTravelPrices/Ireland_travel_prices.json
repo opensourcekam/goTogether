@@ -1,0 +1,67 @@
+{
+   "country": [
+      {
+         "city": "Carlow",
+         "hostels": "53.61$",
+         "hotels": "74.12$",
+         "backpacker": "129.71",
+         "price_index": "82.39"
+      },
+      {
+         "city": "Cork",
+         "hostels": "33.77$",
+         "hotels": "84.03$",
+         "backpacker": "86.33",
+         "price_index": "76.64"
+      },
+      {
+         "city": "Dublin",
+         "hostels": "20.00$",
+         "hotels": "84.21$",
+         "backpacker": "76.56",
+         "price_index": "78.06"
+      },
+      {
+         "city": "Dundalk",
+         "hostels": "39.40$",
+         "hotels": "98.63$",
+         "backpacker": "85.86",
+         "price_index": "?"
+      },
+      {
+         "city": "Galway",
+         "hostels": "20.26$",
+         "hotels": "68.49$",
+         "backpacker": "69.86",
+         "price_index": "68.22"
+      },
+      {
+         "city": "Limerick",
+         "hostels": "26.46$",
+         "hotels": "77.65$",
+         "backpacker": "79.29",
+         "price_index": "75.76"
+      },
+      {
+         "city": "Sligo",
+         "hostels": "56.77$",
+         "hotels": "79.87$",
+         "backpacker": "121.74",
+         "price_index": "79.36"
+      },
+      {
+         "city": "Waterford",
+         "hostels": "50.85$",
+         "hotels": "81.13$",
+         "backpacker": "107.28",
+         "price_index": "78.23"
+      },
+      {
+         "city": "Wexford",
+         "hostels": "42.41$",
+         "hotels": "77.90$",
+         "backpacker": "89.14",
+         "price_index": "73.18"
+      }
+   ]
+}

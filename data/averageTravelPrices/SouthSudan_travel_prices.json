@@ -1,0 +1,18 @@
+{
+   "country": [
+      {
+         "city": "Lima",
+         "hostels": "22.00$",
+         "hotels": "71.09$",
+         "backpacker": "39.61",
+         "price_index": "45.82"
+      },
+      {
+         "city": "Trujillo",
+         "hostels": "23.00$",
+         "hotels": "49.19$",
+         "backpacker": "39.06",
+         "price_index": "31.43"
+      }
+   ]
+}

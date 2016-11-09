@@ -1,0 +1,18 @@
+{
+   "country": [
+      {
+         "city": "Almaty",
+         "hostels": "38.64$",
+         "hotels": "66.13$",
+         "backpacker": "59.42",
+         "price_index": "37.21"
+      },
+      {
+         "city": "Astana",
+         "hostels": "37.25$",
+         "hotels": "53.08$",
+         "backpacker": "58.15",
+         "price_index": "32.58"
+      }
+   ]
+}

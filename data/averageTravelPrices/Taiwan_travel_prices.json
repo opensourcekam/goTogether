@@ -1,0 +1,32 @@
+{
+   "country": [
+      {
+         "city": "HsinChu",
+         "hostels": "26.47$",
+         "hotels": "52.35$",
+         "backpacker": "45.90",
+         "price_index": "33.67"
+      },
+      {
+         "city": "Kaohsiung",
+         "hostels": "20.66$",
+         "hotels": "48.33$",
+         "backpacker": "37.70",
+         "price_index": "31.59"
+      },
+      {
+         "city": "Taichung",
+         "hostels": "20.82$",
+         "hotels": "56.72$",
+         "backpacker": "37.96",
+         "price_index": "37.34"
+      },
+      {
+         "city": "Taipei",
+         "hostels": "20.00$",
+         "hotels": "73.28$",
+         "backpacker": "38.53",
+         "price_index": "42.99"
+      }
+   ]
+}

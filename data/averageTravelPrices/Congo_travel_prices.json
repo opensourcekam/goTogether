@@ -1,0 +1,508 @@
+{
+   "country": [
+      {
+         "city": "Aberdeen",
+         "hostels": "55.57$",
+         "hotels": "84.94$",
+         "backpacker": "116.81",
+         "price_index": "93.42"
+      },
+      {
+         "city": "Ayr, South Ayrshire",
+         "hostels": "44.65$",
+         "hotels": "87.15$",
+         "backpacker": "93.80",
+         "price_index": "?"
+      },
+      {
+         "city": "Bath",
+         "hostels": "22.74$",
+         "hotels": "110.54$",
+         "backpacker": "71.72",
+         "price_index": "91.04"
+      },
+      {
+         "city": "Belfast",
+         "hostels": "21.21$",
+         "hotels": "92.65$",
+         "backpacker": "65.91",
+         "price_index": "67.40"
+      },
+      {
+         "city": "Birmingham",
+         "hostels": "21.33$",
+         "hotels": "78.90$",
+         "backpacker": "70.39",
+         "price_index": "70.73"
+      },
+      {
+         "city": "Blackburn",
+         "hostels": "21.95$",
+         "hotels": "83.25$",
+         "backpacker": "68.22",
+         "price_index": "?"
+      },
+      {
+         "city": "Bolton",
+         "hostels": "22.74$",
+         "hotels": "85.08$",
+         "backpacker": "86.27",
+         "price_index": "79.28"
+      },
+      {
+         "city": "Bournemouth",
+         "hostels": "30.32$",
+         "hotels": "93.64$",
+         "backpacker": "81.01",
+         "price_index": "81.26"
+      },
+      {
+         "city": "Bradford",
+         "hostels": "39.00$",
+         "hotels": "56.00$",
+         "backpacker": "92.15",
+         "price_index": "63.96"
+      },
+      {
+         "city": "Brighton",
+         "hostels": "29.91$",
+         "hotels": "92.74$",
+         "backpacker": "84.28",
+         "price_index": "82.80"
+      },
+      {
+         "city": "Bristol",
+         "hostels": "23.72$",
+         "hotels": "102.28$",
+         "backpacker": "70.01",
+         "price_index": "77.90"
+      },
+      {
+         "city": "Burnley",
+         "hostels": "22.74$",
+         "hotels": "84.72$",
+         "backpacker": "69.79",
+         "price_index": "69.27"
+      },
+      {
+         "city": "Cambridge",
+         "hostels": "27.28$",
+         "hotels": "95.31$",
+         "backpacker": "82.15",
+         "price_index": "78.21"
+      },
+      {
+         "city": "Canterbury",
+         "hostels": "32.59$",
+         "hotels": "92.15$",
+         "backpacker": "81.87",
+         "price_index": "71.85"
+      },
+      {
+         "city": "Cardiff",
+         "hostels": "42.90$",
+         "hotels": "85.93$",
+         "backpacker": "89.15",
+         "price_index": "75.78"
+      },
+      {
+         "city": "Carlisle",
+         "hostels": "49.45$",
+         "hotels": "85.81$",
+         "backpacker": "92.27",
+         "price_index": "69.27"
+      },
+      {
+         "city": "Cheltenham",
+         "hostels": "44.46$",
+         "hotels": "99.98$",
+         "backpacker": "96.22",
+         "price_index": "99.55"
+      },
+      {
+         "city": "Chester",
+         "hostels": "23.03$",
+         "hotels": "87.03$",
+         "backpacker": "73.87",
+         "price_index": "73.05"
+      },
+      {
+         "city": "Colchester",
+         "hostels": "52.12$",
+         "hotels": "86.35$",
+         "backpacker": "103.18",
+         "price_index": "77.65"
+      },
+      {
+         "city": "Corby",
+         "hostels": "37.90$",
+         "hotels": "92.18$",
+         "backpacker": "78.62",
+         "price_index": "82.65"
+      },
+      {
+         "city": "Coventry",
+         "hostels": "25.77$",
+         "hotels": "81.63$",
+         "backpacker": "69.13",
+         "price_index": "70.48"
+      },
+      {
+         "city": "Derby",
+         "hostels": "21.22$",
+         "hotels": "90.03$",
+         "backpacker": "68.58",
+         "price_index": "68.71"
+      },
+      {
+         "city": "Durham",
+         "hostels": "41.44$",
+         "hotels": "97.97$",
+         "backpacker": "86.85",
+         "price_index": "?"
+      },
+      {
+         "city": "Edinburgh",
+         "hostels": "20.00$",
+         "hotels": "93.20$",
+         "backpacker": "64.69",
+         "price_index": "77.51"
+      },
+      {
+         "city": "Exeter",
+         "hostels": "37.00$",
+         "hotels": "91.16$",
+         "backpacker": "85.74",
+         "price_index": "80.18"
+      },
+      {
+         "city": "Falkirk",
+         "hostels": "20.00$",
+         "hotels": "90.87$",
+         "backpacker": "58.50",
+         "price_index": "53.22"
+      },
+      {
+         "city": "Glasgow",
+         "hostels": "35.07$",
+         "hotels": "87.04$",
+         "backpacker": "84.85",
+         "price_index": "74.58"
+      },
+      {
+         "city": "Gloucester",
+         "hostels": "51.71$",
+         "hotels": "93.83$",
+         "backpacker": "106.42",
+         "price_index": "?"
+      },
+      {
+         "city": "Guildford",
+         "hostels": "20.00$",
+         "hotels": "97.24$",
+         "backpacker": "69.46",
+         "price_index": "74.04"
+      },
+      {
+         "city": "Harlow",
+         "hostels": "20.00$",
+         "hotels": "129.61$",
+         "backpacker": "67.98",
+         "price_index": "?"
+      },
+      {
+         "city": "Harrogate",
+         "hostels": "22.74$",
+         "hotels": "90.09$",
+         "backpacker": "80.50",
+         "price_index": "78.41"
+      },
+      {
+         "city": "High Wycombe",
+         "hostels": "21.07$",
+         "hotels": "106.32$",
+         "backpacker": "67.34",
+         "price_index": "76.66"
+      },
+      {
+         "city": "Hull",
+         "hostels": "41.35$",
+         "hotels": "87.22$",
+         "backpacker": "84.02",
+         "price_index": "71.80"
+      },
+      {
+         "city": "Inverness",
+         "hostels": "52.33$",
+         "hotels": "96.95$",
+         "backpacker": "105.53",
+         "price_index": "81.78"
+      },
+      {
+         "city": "Isle of Wight",
+         "hostels": "37.90$",
+         "hotels": "95.37$",
+         "backpacker": "103.27",
+         "price_index": "78.14"
+      },
+      {
+         "city": "Kilmarnock, East Ayrshire",
+         "hostels": "22.74$",
+         "hotels": "96.58$",
+         "backpacker": "70.41",
+         "price_index": "72.34"
+      },
+      {
+         "city": "Kingston Upon Hull",
+         "hostels": "39.00$",
+         "hotels": "85.33$",
+         "backpacker": "81.97",
+         "price_index": "58.20"
+      },
+      {
+         "city": "Leeds",
+         "hostels": "22.74$",
+         "hotels": "87.12$",
+         "backpacker": "69.81",
+         "price_index": "69.60"
+      },
+      {
+         "city": "Leicester",
+         "hostels": "38.22$",
+         "hotels": "77.69$",
+         "backpacker": "93.50",
+         "price_index": "62.52"
+      },
+      {
+         "city": "Lincoln",
+         "hostels": "69.89$",
+         "hotels": "96.44$",
+         "backpacker": "125.50",
+         "price_index": "87.11"
+      },
+      {
+         "city": "Liverpool",
+         "hostels": "21.91$",
+         "hotels": "82.56$",
+         "backpacker": "69.58",
+         "price_index": "70.58"
+      },
+      {
+         "city": "London",
+         "hostels": "20.00$",
+         "hotels": "117.62$",
+         "backpacker": "76.03",
+         "price_index": "108.94"
+      },
+      {
+         "city": "Luton",
+         "hostels": "27.28$",
+         "hotels": "90.78$",
+         "backpacker": "74.47",
+         "price_index": "?"
+      },
+      {
+         "city": "Manchester",
+         "hostels": "22.74$",
+         "hotels": "87.50$",
+         "backpacker": "75.08",
+         "price_index": "80.77"
+      },
+      {
+         "city": "Middlesbrough",
+         "hostels": "53.56$",
+         "hotels": "106.09$",
+         "backpacker": "110.22",
+         "price_index": "?"
+      },
+      {
+         "city": "Milton Keynes",
+         "hostels": "28.80$",
+         "hotels": "94.46$",
+         "backpacker": "77.26",
+         "price_index": "75.64"
+      },
+      {
+         "city": "Newcastle Upon Tyne",
+         "hostels": "26.85$",
+         "hotels": "86.81$",
+         "backpacker": "74.49",
+         "price_index": "70.36"
+      },
+      {
+         "city": "Newry",
+         "hostels": "65.14$",
+         "hotels": "96.79$",
+         "backpacker": "132.54",
+         "price_index": "64.30"
+      },
+      {
+         "city": "Northampton",
+         "hostels": "28.80$",
+         "hotels": "85.29$",
+         "backpacker": "76.04",
+         "price_index": "70.77"
+      },
+      {
+         "city": "Norwich",
+         "hostels": "38.75$",
+         "hotels": "90.49$",
+         "backpacker": "91.73",
+         "price_index": "84.86"
+      },
+      {
+         "city": "Nottingham",
+         "hostels": "38.22$",
+         "hotels": "84.51$",
+         "backpacker": "81.91",
+         "price_index": "75.36"
+      },
+      {
+         "city": "Oxford",
+         "hostels": "25.77$",
+         "hotels": "105.99$",
+         "backpacker": "73.40",
+         "price_index": "99.44"
+      },
+      {
+         "city": "Peterborough",
+         "hostels": "46.54$",
+         "hotels": "85.92$",
+         "backpacker": "101.18",
+         "price_index": "62.40"
+      },
+      {
+         "city": "Plymouth",
+         "hostels": "35.46$",
+         "hotels": "93.49$",
+         "backpacker": "86.82",
+         "price_index": "68.28"
+      },
+      {
+         "city": "Pontypridd",
+         "hostels": "31.03$",
+         "hotels": "88.23$",
+         "backpacker": "81.41",
+         "price_index": "56.66"
+      },
+      {
+         "city": "Portsmouth",
+         "hostels": "44.40$",
+         "hotels": "100.91$",
+         "backpacker": "98.68",
+         "price_index": "85.86"
+      },
+      {
+         "city": "Preston",
+         "hostels": "27.28$",
+         "hotels": "74.97$",
+         "backpacker": "81.30",
+         "price_index": "69.01"
+      },
+      {
+         "city": "Reading",
+         "hostels": "25.77$",
+         "hotels": "98.75$",
+         "backpacker": "74.04",
+         "price_index": "87.02"
+      },
+      {
+         "city": "Rochester",
+         "hostels": "20.00$",
+         "hotels": "98.38$",
+         "backpacker": "74.55",
+         "price_index": "77.59"
+      },
+      {
+         "city": "Sheffield",
+         "hostels": "21.22$",
+         "hotels": "85.71$",
+         "backpacker": "68.81",
+         "price_index": "69.99"
+      },
+      {
+         "city": "Slough",
+         "hostels": "20.00$",
+         "hotels": "109.55$",
+         "backpacker": "68.86",
+         "price_index": "83.23"
+      },
+      {
+         "city": "Southampton",
+         "hostels": "29.55$",
+         "hotels": "94.10$",
+         "backpacker": "77.76",
+         "price_index": "74.30"
+      },
+      {
+         "city": "Stoke-On-Trent",
+         "hostels": "21.22$",
+         "hotels": "97.01$",
+         "backpacker": "64.78",
+         "price_index": "75.48"
+      },
+      {
+         "city": "Sunderland",
+         "hostels": "26.85$",
+         "hotels": "88.32$",
+         "backpacker": "79.38",
+         "price_index": "?"
+      },
+      {
+         "city": "Surrey",
+         "hostels": "20.00$",
+         "hotels": "115.98$",
+         "backpacker": "77.15",
+         "price_index": "?"
+      },
+      {
+         "city": "Swansea",
+         "hostels": "36.38$",
+         "hotels": "89.60$",
+         "backpacker": "88.71",
+         "price_index": "66.29"
+      },
+      {
+         "city": "Swindon",
+         "hostels": "45.47$",
+         "hotels": "105.88$",
+         "backpacker": "96.30",
+         "price_index": "74.69"
+      },
+      {
+         "city": "Wakefield",
+         "hostels": "22.74$",
+         "hotels": "85.62$",
+         "backpacker": "80.83",
+         "price_index": "?"
+      },
+      {
+         "city": "Warrington",
+         "hostels": "21.00$",
+         "hotels": "94.17$",
+         "backpacker": "76.71",
+         "price_index": "88.78"
+      },
+      {
+         "city": "Worcester",
+         "hostels": "21.22$",
+         "hotels": "93.65$",
+         "backpacker": "63.12",
+         "price_index": "72.78"
+      },
+      {
+         "city": "Worthing",
+         "hostels": "21.98$",
+         "hotels": "99.45$",
+         "backpacker": "71.78",
+         "price_index": "70.02"
+      },
+      {
+         "city": "York",
+         "hostels": "22.74$",
+         "hotels": "108.99$",
+         "backpacker": "72.56",
+         "price_index": "81.97"
+      }
+   ]
+}

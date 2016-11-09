@@ -1,0 +1,67 @@
+{
+   "country": [
+      {
+         "city": "Barranquilla",
+         "hostels": "22.07$",
+         "hotels": "44.12$",
+         "backpacker": "38.82",
+         "price_index": "36.94"
+      },
+      {
+         "city": "Bogota",
+         "hostels": "20.80$",
+         "hotels": "49.00$",
+         "backpacker": "39.58",
+         "price_index": "35.48"
+      },
+      {
+         "city": "Bucaramanga",
+         "hostels": "21.76$",
+         "hotels": "48.20$",
+         "backpacker": "37.46",
+         "price_index": "41.91"
+      },
+      {
+         "city": "Cali",
+         "hostels": "24.00$",
+         "hotels": "34.63$",
+         "backpacker": "41.64",
+         "price_index": "31.26"
+      },
+      {
+         "city": "Cartagena",
+         "hostels": "20.80$",
+         "hotels": "83.81$",
+         "backpacker": "39.79",
+         "price_index": "49.50"
+      },
+      {
+         "city": "Manizales",
+         "hostels": "25.00$",
+         "hotels": "65.00$",
+         "backpacker": "42.14",
+         "price_index": "?"
+      },
+      {
+         "city": "Medellin",
+         "hostels": "20.68$",
+         "hotels": "52.08$",
+         "backpacker": "38.21",
+         "price_index": "29.52"
+      },
+      {
+         "city": "Pereira",
+         "hostels": "22.40$",
+         "hotels": "44.34$",
+         "backpacker": "38.10",
+         "price_index": "27.60"
+      },
+      {
+         "city": "Santa Marta",
+         "hostels": "8.37$",
+         "hotels": "56.80$",
+         "backpacker": "21.20",
+         "price_index": "36.70"
+      }
+   ]
+}

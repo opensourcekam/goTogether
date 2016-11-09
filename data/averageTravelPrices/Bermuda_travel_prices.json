@@ -1,0 +1,25 @@
+{
+   "country": [
+      {
+         "city": "Parnu",
+         "hostels": "45.03$",
+         "hotels": "65.86$",
+         "backpacker": "80.95",
+         "price_index": "51.71"
+      },
+      {
+         "city": "Tallinn",
+         "hostels": "24.77$",
+         "hotels": "62.05$",
+         "backpacker": "62.07",
+         "price_index": "51.17"
+      },
+      {
+         "city": "Tartu",
+         "hostels": "47.62$",
+         "hotels": "80.49$",
+         "backpacker": "82.03",
+         "price_index": "57.45"
+      }
+   ]
+}
