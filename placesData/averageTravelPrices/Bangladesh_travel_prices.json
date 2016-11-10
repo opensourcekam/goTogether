@@ -1,0 +1,18 @@
+{
+   "country": [
+      {
+         "city": "Chittagong",
+         "hostels": "82.00$",
+         "hotels": "92.64$",
+         "backpacker": "108.37",
+         "price_index": "42.12"
+      },
+      {
+         "city": "Dhaka",
+         "hostels": "31.62$",
+         "hotels": "63.00$",
+         "backpacker": "52.55",
+         "price_index": "33.36"
+      }
+   ]
+}

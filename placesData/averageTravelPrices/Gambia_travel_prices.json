@@ -1,0 +1,396 @@
+{
+   "country": [
+      {
+         "city": "Agra",
+         "hostels": "20.14$",
+         "hotels": "31.43$",
+         "backpacker": "32.19",
+         "price_index": "17.57"
+      },
+      {
+         "city": "Ahmedabad",
+         "hostels": "8.37$",
+         "hotels": "53.87$",
+         "backpacker": "19.55",
+         "price_index": "24.19"
+      },
+      {
+         "city": "Amritsar",
+         "hostels": "20.18$",
+         "hotels": "34.22$",
+         "backpacker": "33.87",
+         "price_index": "22.59"
+      },
+      {
+         "city": "Aurangabad",
+         "hostels": "24.03$",
+         "hotels": "57.64$",
+         "backpacker": "38.73",
+         "price_index": "24.28"
+      },
+      {
+         "city": "Bangalore",
+         "hostels": "22.00$",
+         "hotels": "71.00$",
+         "backpacker": "34.85",
+         "price_index": "30.53"
+      },
+      {
+         "city": "Bhilai",
+         "hostels": "20.26$",
+         "hotels": "45.19$",
+         "backpacker": "33.02",
+         "price_index": "20.67"
+      },
+      {
+         "city": "Bhopal",
+         "hostels": "28.69$",
+         "hotels": "58.66$",
+         "backpacker": "41.99",
+         "price_index": "24.62"
+      },
+      {
+         "city": "Bhubaneswar",
+         "hostels": "22.89$",
+         "hotels": "36.98$",
+         "backpacker": "35.84",
+         "price_index": "18.01"
+      },
+      {
+         "city": "Chandigarh",
+         "hostels": "24.09$",
+         "hotels": "43.10$",
+         "backpacker": "38.50",
+         "price_index": "20.41"
+      },
+      {
+         "city": "Chennai",
+         "hostels": "17.00$",
+         "hotels": "86.17$",
+         "backpacker": "29.51",
+         "price_index": "34.93"
+      },
+      {
+         "city": "Coimbatore",
+         "hostels": "28.87$",
+         "hotels": "55.16$",
+         "backpacker": "42.32",
+         "price_index": "24.67"
+      },
+      {
+         "city": "Dehradun",
+         "hostels": "20.50$",
+         "hotels": "55.60$",
+         "backpacker": "35.86",
+         "price_index": "26.81"
+      },
+      {
+         "city": "Delhi",
+         "hostels": "20.04$",
+         "hotels": "39.37$",
+         "backpacker": "34.97",
+         "price_index": "22.80"
+      },
+      {
+         "city": "Faridabad",
+         "hostels": "20.03$",
+         "hotels": "40.02$",
+         "backpacker": "33.77",
+         "price_index": "20.62"
+      },
+      {
+         "city": "Ghaziabad",
+         "hostels": "20.04$",
+         "hotels": "40.00$",
+         "backpacker": "34.65",
+         "price_index": "23.09"
+      },
+      {
+         "city": "Goa",
+         "hostels": "20.00$",
+         "hotels": "54.42$",
+         "backpacker": "35.87",
+         "price_index": "26.66"
+      },
+      {
+         "city": "Guntur",
+         "hostels": "20.23$",
+         "hotels": "39.46$",
+         "backpacker": "31.88",
+         "price_index": "17.22"
+      },
+      {
+         "city": "Gurgaon",
+         "hostels": "20.05$",
+         "hotels": "44.60$",
+         "backpacker": "36.69",
+         "price_index": "26.00"
+      },
+      {
+         "city": "Guwahati",
+         "hostels": "31.01$",
+         "hotels": "62.70$",
+         "backpacker": "44.69",
+         "price_index": "26.21"
+      },
+      {
+         "city": "Gwalior",
+         "hostels": "20.00$",
+         "hotels": "66.59$",
+         "backpacker": "33.17",
+         "price_index": "30.02"
+      },
+      {
+         "city": "Hyderabad",
+         "hostels": "20.40$",
+         "hotels": "34.40$",
+         "backpacker": "32.24",
+         "price_index": "17.80"
+      },
+      {
+         "city": "Indore",
+         "hostels": "22.55$",
+         "hotels": "40.25$",
+         "backpacker": "37.03",
+         "price_index": "19.30"
+      },
+      {
+         "city": "Jabalpur",
+         "hostels": "40.00$",
+         "hotels": "46.05$",
+         "backpacker": "54.52",
+         "price_index": "22.14"
+      },
+      {
+         "city": "Jaipur",
+         "hostels": "20.00$",
+         "hotels": "33.96$",
+         "backpacker": "32.25",
+         "price_index": "17.87"
+      },
+      {
+         "city": "Jalandhar",
+         "hostels": "26.36$",
+         "hotels": "53.53$",
+         "backpacker": "43.44",
+         "price_index": "28.24"
+      },
+      {
+         "city": "Jamshedpur",
+         "hostels": "48.00$",
+         "hotels": "94.72$",
+         "backpacker": "63.19",
+         "price_index": "35.66"
+      },
+      {
+         "city": "Jodhpur",
+         "hostels": "20.12$",
+         "hotels": "47.02$",
+         "backpacker": "35.52",
+         "price_index": "20.48"
+      },
+      {
+         "city": "Kanpur",
+         "hostels": "39.64$",
+         "hotels": "59.23$",
+         "backpacker": "54.33",
+         "price_index": "25.91"
+      },
+      {
+         "city": "Kochi",
+         "hostels": "20.16$",
+         "hotels": "37.74$",
+         "backpacker": "31.80",
+         "price_index": "20.70"
+      },
+      {
+         "city": "Kolhapur",
+         "hostels": "20.47$",
+         "hotels": "56.86$",
+         "backpacker": "31.67",
+         "price_index": "23.20"
+      },
+      {
+         "city": "Kolkata",
+         "hostels": "20.31$",
+         "hotels": "44.54$",
+         "backpacker": "33.94",
+         "price_index": "23.58"
+      },
+      {
+         "city": "Kollam",
+         "hostels": "20.33$",
+         "hotels": "50.59$",
+         "backpacker": "32.76",
+         "price_index": "20.87"
+      },
+      {
+         "city": "Kozhikode (Calicut)",
+         "hostels": "20.54$",
+         "hotels": "54.16$",
+         "backpacker": "30.61",
+         "price_index": "21.24"
+      },
+      {
+         "city": "Lucknow (Lakhnau)",
+         "hostels": "40.64$",
+         "hotels": "60.34$",
+         "backpacker": "57.03",
+         "price_index": "27.39"
+      },
+      {
+         "city": "Ludhiana",
+         "hostels": "23.31$",
+         "hotels": "58.11$",
+         "backpacker": "37.16",
+         "price_index": "28.23"
+      },
+      {
+         "city": "Madurai",
+         "hostels": "22.49$",
+         "hotels": "41.80$",
+         "backpacker": "35.04",
+         "price_index": "19.10"
+      },
+      {
+         "city": "Mangalore",
+         "hostels": "30.64$",
+         "hotels": "63.21$",
+         "backpacker": "42.93",
+         "price_index": "27.20"
+      },
+      {
+         "city": "Mumbai",
+         "hostels": "20.12$",
+         "hotels": "58.91$",
+         "backpacker": "34.04",
+         "price_index": "29.32"
+      },
+      {
+         "city": "Mysore",
+         "hostels": "20.00$",
+         "hotels": "31.48$",
+         "backpacker": "30.33",
+         "price_index": "15.85"
+      },
+      {
+         "city": "Nagercoil, Tamil Nadu",
+         "hostels": "21.25$",
+         "hotels": "25.62$",
+         "backpacker": "34.90",
+         "price_index": "16.70"
+      },
+      {
+         "city": "Nagpur",
+         "hostels": "38.63$",
+         "hotels": "67.11$",
+         "backpacker": "55.37",
+         "price_index": "29.76"
+      },
+      {
+         "city": "Navi Mumbai",
+         "hostels": "20.31$",
+         "hotels": "60.05$",
+         "backpacker": "35.49",
+         "price_index": "28.16"
+      },
+      {
+         "city": "Noida",
+         "hostels": "20.04$",
+         "hotels": "40.16$",
+         "backpacker": "33.88",
+         "price_index": "21.77"
+      },
+      {
+         "city": "Pondicherry",
+         "hostels": "20.82$",
+         "hotels": "40.87$",
+         "backpacker": "31.60",
+         "price_index": "17.86"
+      },
+      {
+         "city": "Pune",
+         "hostels": "21.14$",
+         "hotels": "40.90$",
+         "backpacker": "35.39",
+         "price_index": "21.31"
+      },
+      {
+         "city": "Siliguri",
+         "hostels": "21.41$",
+         "hotels": "57.53$",
+         "backpacker": "34.68",
+         "price_index": "22.06"
+      },
+      {
+         "city": "Surat",
+         "hostels": "20.70$",
+         "hotels": "55.19$",
+         "backpacker": "36.16",
+         "price_index": "25.37"
+      },
+      {
+         "city": "Thane",
+         "hostels": "20.41$",
+         "hotels": "56.54$",
+         "backpacker": "34.58",
+         "price_index": "27.44"
+      },
+      {
+         "city": "Thiruvananthapuram",
+         "hostels": "20.35$",
+         "hotels": "40.81$",
+         "backpacker": "31.57",
+         "price_index": "18.09"
+      },
+      {
+         "city": "Thrissur",
+         "hostels": "20.00$",
+         "hotels": "39.58$",
+         "backpacker": "30.85",
+         "price_index": "19.00"
+      },
+      {
+         "city": "Tirupati",
+         "hostels": "22.78$",
+         "hotels": "32.03$",
+         "backpacker": "34.42",
+         "price_index": "18.84"
+      },
+      {
+         "city": "Udaipur",
+         "hostels": "21.72$",
+         "hotels": "43.95$",
+         "backpacker": "32.41",
+         "price_index": "20.01"
+      },
+      {
+         "city": "Vadodara",
+         "hostels": "21.72$",
+         "hotels": "40.06$",
+         "backpacker": "35.71",
+         "price_index": "20.53"
+      },
+      {
+         "city": "Varanasi",
+         "hostels": "20.01$",
+         "hotels": "31.84$",
+         "backpacker": "34.58",
+         "price_index": "17.51"
+      },
+      {
+         "city": "Vijayawada",
+         "hostels": "46.82$",
+         "hotels": "65.89$",
+         "backpacker": "61.63",
+         "price_index": "27.73"
+      },
+      {
+         "city": "Visakhapatnam",
+         "hostels": "23.66$",
+         "hotels": "57.57$",
+         "backpacker": "36.20",
+         "price_index": "23.93"
+      }
+   ]
+}

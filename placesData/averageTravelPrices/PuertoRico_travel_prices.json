@@ -1,0 +1,25 @@
+{
+   "country": [
+      {
+         "city": "Clervaux",
+         "hostels": "55.16$",
+         "hotels": "90.75$",
+         "backpacker": "115.26",
+         "price_index": "90.44"
+      },
+      {
+         "city": "Esch-sur-alzette",
+         "hostels": "44.58$",
+         "hotels": "88.37$",
+         "backpacker": "?",
+         "price_index": "?"
+      },
+      {
+         "city": "Luxembourg",
+         "hostels": "41.25$",
+         "hotels": "86.96$",
+         "backpacker": "101.56",
+         "price_index": "93.12"
+      }
+   ]
+}

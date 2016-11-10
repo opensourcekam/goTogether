@@ -51,3 +51,6 @@ youme-world-drop-page
 
 # ignore bundle
 public/javascript/bundle.*
+
+# ignore redacted things
+BottomFeeder_webScraper/*

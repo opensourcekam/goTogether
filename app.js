@@ -12,6 +12,11 @@ const port = 8080
 const env = process.env.NODE_ENV || 'development'
 const axios = require('axios')
 
+// Routers
+const topRouter = express.Router()
+const tripsRouter = express.Router({mergeParams: true})
+const skyScannerRouter = express.Router()
+
 app.set('view engine', 'jade')
 app.set('views', path.join(__dirname, 'views'))
 // app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'))
@@ -22,33 +27,33 @@ app.use(express.static(path.join(__dirname, '/public')))
 
 // DB
 // Mongoose models (should abstract out soon)
-const UserModel = require('./Database/userSchema')(mongoose)
+const UserModel = require('./database/models/userSchema')(mongoose)
 const User = mongoose.model('User', UserModel)
 
-const TripModel = require('./Database/tripsSchema')(mongoose)
+const TripModel = require('./database/models/tripsSchema')(mongoose)
 const Trip = mongoose.model('Trips', TripModel)
 // DB
 
 // Middleware
-const middleware = require('./Middleware/middleware')(express, cookieParser, app, mongoose, ConnectMongo, passport, port, env, session, config)
+const middleware = require('./middleware/index')(express, cookieParser, app, tripsRouter, mongoose, ConnectMongo, passport, port, env, session, config)
 // End Middleware
 
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
 
 // routes
-require('./routes/routes')(express, app, passport, config, User, UserModel, axios)
-require('./routes/trips')(express, app, mongoose, TripModel, Trip, User)
-require('./routes/SkyscannerAPIV1')(express, app, config)
+require('./routes/routes')(express, app, topRouter, passport, config, User, Trip)
+require('./routes/trips')(express, app, topRouter, mongoose, TripModel, Trip, User)
+require('./routes/skyScanner')(express, app, skyScannerRouter, config)
 // routes
 
 // passport auth (FB)
-require('./auth/passportAuth')(passport, FacebookStrategy, config, mongoose, User)
+require('./auth/passport/facebookStratgey')(passport, FacebookStrategy, config, mongoose, User)
 
 // socket.io
-require('./socket/socket')(io)
+require('./socket_io/socket')(io)
 
-server.listen(app.get('port'), function() {
+server.listen(app.get('port'), function () {
   console.log(`
     Listening on http://localhost:${port}
     Environment: ${env}

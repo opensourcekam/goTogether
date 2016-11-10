@@ -1,0 +1,60 @@
+{
+   "country": [
+      {
+         "city": "Blagoevgrad",
+         "hostels": "20.06$",
+         "hotels": "43.24$",
+         "backpacker": "36.79",
+         "price_index": "25.87"
+      },
+      {
+         "city": "Burgas",
+         "hostels": "21.20$",
+         "hotels": "45.79$",
+         "backpacker": "41.86",
+         "price_index": "28.65"
+      },
+      {
+         "city": "Dobrich",
+         "hostels": "20.35$",
+         "hotels": "50.23$",
+         "backpacker": "43.86",
+         "price_index": "32.11"
+      },
+      {
+         "city": "Gabrovo",
+         "hostels": "22.52$",
+         "hotels": "33.21$",
+         "backpacker": "42.42",
+         "price_index": "25.91"
+      },
+      {
+         "city": "Plovdiv",
+         "hostels": "25.48$",
+         "hotels": "41.37$",
+         "backpacker": "46.53",
+         "price_index": "26.65"
+      },
+      {
+         "city": "Sofia",
+         "hostels": "22.52$",
+         "hotels": "45.36$",
+         "backpacker": "45.12",
+         "price_index": "29.68"
+      },
+      {
+         "city": "Varna",
+         "hostels": "15.00$",
+         "hotels": "60.89$",
+         "backpacker": "34.44",
+         "price_index": "34.40"
+      },
+      {
+         "city": "Veliko Tarnovo",
+         "hostels": "27.66$",
+         "hotels": "56.61$",
+         "backpacker": "46.55",
+         "price_index": "30.97"
+      }
+   ]
+}

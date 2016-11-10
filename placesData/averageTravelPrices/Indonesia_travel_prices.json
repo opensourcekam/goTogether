@@ -1,0 +1,32 @@
+{
+   "country": [
+      {
+         "city": "Abu Dhabi",
+         "hostels": "61.26$",
+         "hotels": "78.27$",
+         "backpacker": "100.35",
+         "price_index": "56.36"
+      },
+      {
+         "city": "Ajman",
+         "hostels": "20.42$",
+         "hotels": "70.72$",
+         "backpacker": "51.27",
+         "price_index": "46.72"
+      },
+      {
+         "city": "Dubai",
+         "hostels": "51.73$",
+         "hotels": "95.15$",
+         "backpacker": "96.80",
+         "price_index": "66.52"
+      },
+      {
+         "city": "Sharjah",
+         "hostels": "20.42$",
+         "hotels": "68.74$",
+         "backpacker": "59.84",
+         "price_index": "49.00"
+      }
+   ]
+}

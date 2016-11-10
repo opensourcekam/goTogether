@@ -16,19 +16,19 @@ li { list-style: none; display: inline; }
 
 img.userPhoto { border-radius: 100px; position: relative; top: 40px; }
 
-button { font-size: 1em; color: #eee; text-align: center; border: none; border-radius: 10px; padding: 8px; margin: 0 10px; }
+button { font-size: 1em; color: #eee; text-align: center; border: none; border-radius: 10px; padding: 8px; margin-top: 10px !important; margin-right: 10px !important; background-color: rgba(17, 81, 246, 0.84); }
 
-button#fb { background-color: #1151f6; }
+button#logout { background-color: #f61111; }
 
-button#logout { background-color: red; }
-
-button#tripideas { background-color: green; }
+button#ggl { background-color: rgba(120, 142, 121, 0.84); }
 
 form { text-align: left; margin: 100px 0 50px 0; }
 
 form input { background: #f0f0f0; border: none; border-left: 2px solid #fff; font-size: 36px; font-family: 'Montserrat', sans-serif; padding: 20px; margin-bottom: 15px; transition: background 1.5s, border-left 2s; width: 600px; }
 
 form input:focus { background: #fff; border-left: 10px solid green; box-shadow: none; outline: none; transition: background 1s, border-left 1s; }
+
+form button { font-size: 36px; padding: 20px; margin-bottom: 15px; width: 600px; }
 
 .clicked { background-color: #001fc4 !important; opacity: 50%; }
 
@@ -117,6 +117,7 @@ svg { width: 100%; }
 
 /* Smartphones (portrait and landscape) ----------- */
 @media screen and (max-width: 680px) { input { width: 100% !important; }
+  form button { width: 100% !important; }
   header.span { margin: 2% auto; }
   header nav { margin: 4% auto; }
   h2#planningTripBubbleH2 { font-size: 4vmax !important; }

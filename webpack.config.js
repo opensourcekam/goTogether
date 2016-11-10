@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   context: __dirname,
-  entry: './R_Components/ClientApp.jsx',
+  entry: './frontend/R_Components/ClientApp.jsx',
   output: {
     path: path.join(__dirname, '/public/javascript'),
     filename: 'bundle.js',
@@ -28,7 +28,8 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        query: {compact: false}
       },
       {
         test: /\.json$/,

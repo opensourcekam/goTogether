@@ -1,0 +1,18 @@
+{
+   "country": [
+      {
+         "city": "Algiers",
+         "hostels": "60.89$",
+         "hotels": "91.20$",
+         "backpacker": "83.22",
+         "price_index": "42.00"
+      },
+      {
+         "city": "Blida",
+         "hostels": "39.55$",
+         "hotels": "102.24$",
+         "backpacker": "56.44",
+         "price_index": "?"
+      }
+   ]
+}

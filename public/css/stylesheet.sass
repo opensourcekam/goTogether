@@ -59,13 +59,22 @@ button
   border: none
   border-radius: 10px
   padding: 8px
-  margin: 0 10px
+  margin-top: 10px !important
+  margin-right: 10px !important
+  background-color: rgba(17, 81, 246, .84)
   &#fb
-    background-color: #1151f6
+
   &#logout
-    background-color: red
-  &#tripideas
-    background-color: green
+    background-color: #f61111
+  &#newTrip
+
+  &#myTrips
+
+  &#ggl
+    background-color: rgba(120, 142, 121, 0.84)
+  &letsGo
+
+
 
 form
   text-align: left
@@ -86,6 +95,11 @@ form
       box-shadow: none
       outline: none
       transition: background 1s, border-left 1s
+  button
+    font-size: 36px
+    padding: 20px
+    margin-bottom: 15px
+    width: 600px
 
 .clicked
   background-color: #001fc4 !important
@@ -337,6 +351,8 @@ svg
     // background: -webkit-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)
   input
     width: 100% !important
+  form button
+    width: 100% !important 
   header
     &.span
       margin: 2% auto

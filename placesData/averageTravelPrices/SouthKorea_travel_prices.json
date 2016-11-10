@@ -1,0 +1,60 @@
+{
+   "country": [
+      {
+         "city": "Budapest",
+         "hostels": "20.54$",
+         "hotels": "43.93$",
+         "backpacker": "45.59",
+         "price_index": "37.29"
+      },
+      {
+         "city": "Debrecen",
+         "hostels": "33.77$",
+         "hotels": "57.20$",
+         "backpacker": "59.71",
+         "price_index": "37.57"
+      },
+      {
+         "city": "Miskolc",
+         "hostels": "33.77$",
+         "hotels": "71.49$",
+         "backpacker": "57.95",
+         "price_index": "43.59"
+      },
+      {
+         "city": "Pecs",
+         "hostels": "30.40$",
+         "hotels": "48.19$",
+         "backpacker": "56.87",
+         "price_index": "29.05"
+      },
+      {
+         "city": "Sopron",
+         "hostels": "58.94$",
+         "hotels": "89.54$",
+         "backpacker": "95.31",
+         "price_index": "48.46"
+      },
+      {
+         "city": "Szeged",
+         "hostels": "45.51$",
+         "hotels": "57.41$",
+         "backpacker": "72.81",
+         "price_index": "39.05"
+      },
+      {
+         "city": "Szekesfehervar",
+         "hostels": "40.07$",
+         "hotels": "50.61$",
+         "backpacker": "67.71",
+         "price_index": "37.93"
+      },
+      {
+         "city": "Veszprem",
+         "hostels": "31.52$",
+         "hotels": "79.49$",
+         "backpacker": "56.02",
+         "price_index": "41.61"
+      }
+   ]
+}

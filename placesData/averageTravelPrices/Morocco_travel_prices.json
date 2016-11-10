@@ -1,0 +1,53 @@
+{
+   "country": [
+      {
+         "city": "Bitola",
+         "hostels": "28.14$",
+         "hotels": "40.02$",
+         "backpacker": "44.33",
+         "price_index": "21.77"
+      },
+      {
+         "city": "Kumanovo",
+         "hostels": "27.39$",
+         "hotels": "55.42$",
+         "backpacker": "44.43",
+         "price_index": "29.06"
+      },
+      {
+         "city": "Ohrid",
+         "hostels": "22.52$",
+         "hotels": "32.26$",
+         "backpacker": "41.40",
+         "price_index": "24.98"
+      },
+      {
+         "city": "Prilep",
+         "hostels": "38.20$",
+         "hotels": "61.35$",
+         "backpacker": "55.93",
+         "price_index": "28.79"
+      },
+      {
+         "city": "Skopje",
+         "hostels": "27.39$",
+         "hotels": "55.27$",
+         "backpacker": "48.50",
+         "price_index": "31.66"
+      },
+      {
+         "city": "Struga",
+         "hostels": "22.52$",
+         "hotels": "32.08$",
+         "backpacker": "40.26",
+         "price_index": "24.29"
+      },
+      {
+         "city": "Tetovo",
+         "hostels": "27.39$",
+         "hotels": "56.14$",
+         "backpacker": "44.05",
+         "price_index": "26.90"
+      }
+   ]
+}
