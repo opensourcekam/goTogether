@@ -10,7 +10,7 @@ body, html
   background-repeat: repeat
   height: 100%
   // background: linear-gradient(135deg, #000 0.125em, #0092b7 0, #0092b7 calc(50% - .125em), #000 0, #000 calc(50% + .125em), #0092b7 0, #0092b7 calc(100% - .125em), #000 0)
-  background-color: #FFE7E1
+  background-color: #ffffff
   // background-size: .75em/1.4142135624 .75em/1.4142135624
 
 body
@@ -344,6 +344,37 @@ svg
       padding: 4%
       border-radius: 50%
 
+// Vertical Geosuggest
+input.geosuggest__input
+    margin: 0 !important
+
+ul.geosuggest__suggests
+    list-style-type: none
+    margin: 0
+    position: fixed
+    z-index: 9999999
+    overflow: hidden
+    border: none
+    border-left: 2px solid #fff
+    font-family: 'Montserrat', sans-serif
+    padding: 20px
+    transition: background 1.5s, border-left 2s
+    width: 600px
+
+li.geosuggest__item
+    background: #f0f0f0
+    display: block
+    border-bottom: 1px solid black
+    font-size: 2em
+    margin-bottom: 10px
+    padding: 10px
+    &:hover
+      background: rgba(249, 208, 213, 0.85)
+      box-shadow: none
+      outline: none
+      transition: background .2s
+
+
 /* Smartphones (portrait and landscape) -----------
 @media screen and (max-width: 680px)
   body, html
@@ -352,7 +383,7 @@ svg
   input
     width: 100% !important
   form button
-    width: 100% !important 
+    width: 100% !important
   header
     &.span
       margin: 2% auto
@@ -375,3 +406,6 @@ svg
     > img
       width: 100%
     // 44546623
+  ul.geosuggest__suggests
+    width: 100%
+    position: initial

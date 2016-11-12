@@ -1,4 +1,4 @@
-body, html { zoom: 90%; font-family: "Montserrat", sans-serif; font-weight: 100; background-size: 100% auto; background-repeat: repeat; height: 100%; background-color: #FFE7E1; }
+body, html { zoom: 90%; font-family: "Montserrat", sans-serif; font-weight: 100; background-size: 100% auto; background-repeat: repeat; height: 100%; background-color: #ffffff; }
 
 body { min-height: 100%; position: relative; font-size: 1.2em; }
 
@@ -115,6 +115,14 @@ svg { width: 100%; }
 
 .wrapper > img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; /* Needs appropriate vendor prefixes */ box-sizing: border-box; /* This needs to be equal to strokeWidth */ padding: 4%; border-radius: 50%; }
 
+input.geosuggest__input { margin: 0 !important; }
+
+ul.geosuggest__suggests { list-style-type: none; margin: 0; position: fixed; z-index: 9999999; overflow: hidden; border: none; border-left: 2px solid #fff; font-family: 'Montserrat', sans-serif; padding: 20px; transition: background 1.5s, border-left 2s; width: 600px; }
+
+li.geosuggest__item { background: #f0f0f0; display: block; border-bottom: 1px solid black; font-size: 2em; margin-bottom: 10px; padding: 10px; }
+
+li.geosuggest__item:hover { background: rgba(249, 208, 213, 0.85); box-shadow: none; outline: none; transition: background .2s; }
+
 /* Smartphones (portrait and landscape) ----------- */
 @media screen and (max-width: 680px) { input { width: 100% !important; }
   form button { width: 100% !important; }
@@ -126,4 +134,5 @@ svg { width: 100%; }
   .card { width: 100% !important; margin: 20px auto; }
   .card > p { padding: 0%; margin: 0px 0px; }
   .image-element-class { width: 100%; }
-  .image-element-class > img { width: 100%; } }
+  .image-element-class > img { width: 100%; }
+  ul.geosuggest__suggests { width: 100%; position: initial; } }
