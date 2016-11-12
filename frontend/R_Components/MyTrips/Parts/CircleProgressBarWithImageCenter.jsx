@@ -78,14 +78,15 @@ class CircleProgressBarWithImageCenter extends React.Component {
   }
 
   render () {
+    console.log(this.props.meta)
     return (
       <div className='wrapper' data-trip-id={this.props._id} onMouseEnter={this.animateProgress}>
         <img src={this.props.img} />
         <div id={this.props.mountId}></div>
         <div style={style.innerDivOverlay}>
           <h2 style={style.h2} id='planningTripBubbleH2'>{this.props.dest}</h2>
-          <span>Avg. cost ${this.props.budget}</span>
-          <span style={{'float': 'right'}}>{moment(this.props.tripDate).format('YYYY-DD-MM')}</span>
+          <span>Goal ${this.props.budget}</span>
+          <span style={{'float': 'right'}}>{moment(this.props.tripDate).format('MMM Do YYYY')}</span>
         </div>
       </div>
     )

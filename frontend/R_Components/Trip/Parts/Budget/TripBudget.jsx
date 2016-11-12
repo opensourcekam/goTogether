@@ -4,7 +4,7 @@ class TripBudget extends React.Component {
   render () {
     return (
       <div className="budget">
-        <canvas style={{visibility: 'hidden'}}>STUFF FOR BUDGET</canvas>
+        <p style={{visibility: 'visible'}}>${this.props.saved} of ${this.props.budget} saved keep going!</p>
       </div>
     )
   }

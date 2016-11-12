@@ -27,6 +27,7 @@ class App extends React.Component {
   }
 
   render () {
+
     return (
       <div>
         <Router history={hashHistory}>
@@ -36,8 +37,8 @@ class App extends React.Component {
             <Route path="newTrip" component={NewTrip} />
             {/* Contains the map */}
             <Route path="tripDash" component={Trip} />
-            {/* <Route path="/tripDash/:tripId" component={PlanNewTripDash} />
-            <Route path="/tripDash/:tripIdt" onEnter={handleAddPost}/> */}
+            <Route path="/tripDash/:tripId" component={Trip} />
+            {/* <Route path="/tripDash/:tripIdt" onEnter={handleAddPost}/> */}
             {/* Contains all trips currently planning */}
             <Route path="myTrips" component={MyTrips} />
           </Route>
