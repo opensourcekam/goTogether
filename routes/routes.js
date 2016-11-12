@@ -89,44 +89,29 @@ module.exports = function (express, app, router, passport, config, User, Trip) {
     })
   })
 
-  router.post('/tripDash', (req, res, next) => {
-    if (req.method.toLowerCase() === 'post') {
+  router.post('/newTrip', (req, res, next) => {
+    // HTTP POST localhost:8080/newTrip _creator=1271008379610267 to='Kawasaki Ward, Japan' tripDate='Dec 29, 2017' budget=5000
+    if (req.method.toLowerCase() === 'post' && req.user.id) {
       console.log(`MAKING A NEW TRIPPPPPP ${JSON.stringify(req.user, null, 10)}`)
-
-      // HTTP POST localhost:8080/trip/newTrip _creator=1271008379610267 to='Kawasaki Ward, Japan' tripDate='Dec 29, 2017' budget=5000
 
       User.find({'profileID': req.user.id}).then((user) => {
         console.log(`${req.user.id} Does exist`)
-        let tripJSON = req.body
+        req.body._creator = req.user.id
 
-        tripJSON._creator = req.user.id
-        tripJSON.to = req.body.location
-        tripJSON.tripDate = req.body.tripDate || 'Dec 29, 2017'
-        tripJSON.budget = req.body.budget || '500'
-
-      // Mutate tripDate on the createTripJSON obj
-      // createTripJSON.tripDate = new Date(req.body.tripDate)
-
-        Trip.create(tripJSON, (err, doc) => {
+        Trip.create(req.body, (err, doc) => {
           if (err) {
             return next({'409': 'Document create fail'})
           } else {
             user[0].trips.push(doc)
             user[0].save((err, doc) => {
-              console.log(`Saved trip to ${tripJSON.to}`)
+              console.log(`Saved trip ${doc}`)
             })
-            console.log(doc)
+            res.json(doc)
           }
         })
       }).catch(err => {
-        console.log(err)
-        console.log('User doesnt exist')
-        console.log(err)
+        res.send(err)
       })
-
-      const location = req.body.location
-      // const route = `/#/newTrip`
-      res.send({location: location})
     }
   })
 
