@@ -6,8 +6,20 @@ module.exports = function (mongoose) {
       ref: 'User'
     },
     to: {
-      type: String,
-      default: 'Heaven'
+      location: {
+        type: String,
+        default: 'Heaven'
+      },
+      geometry: {
+        lat: {
+          type: Number,
+          default: 0
+        },
+        lng: {
+          type: Number,
+          default: 0
+        }
+      }
     },
     from: {
       type: String
@@ -20,11 +32,15 @@ module.exports = function (mongoose) {
       type: Date,
       date: Date
     },
-    budget: {
-      type: Number,
-      default: 100
-    },
     meta: {
+      budget: {
+        type: Number,
+        default: 100
+      },
+      saved: {
+        type: Number,
+        default: 0
+      },
       created: {
         type: Date,
         default: Date.now
@@ -74,10 +90,12 @@ module.exports = function (mongoose) {
         type: Boolean,
         default: false
       },
-      invitees: [{
-        type: Schema.Types.ObjectId,
-        ref: 'user'
-      }]
+      invitees: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'user'
+        }
+      ]
     }
   }, {collection: 'Trips'})
 }
