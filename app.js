@@ -19,8 +19,6 @@ const skyScannerRouter = express.Router()
 
 app.set('view engine', 'jade')
 app.set('views', path.join(__dirname, 'views'))
-// app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'))
-// app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'))
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, '/public')))
