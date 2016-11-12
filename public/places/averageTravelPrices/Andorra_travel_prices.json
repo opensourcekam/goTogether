@@ -1,0 +1,165 @@
+{
+   "country": [
+      {
+         "city": "Beijing",
+         "hostels": "20.12",
+         "hotels": "51.03",
+         "backpacker": "38.78",
+         "price_index": "35.34"
+      },
+      {
+         "city": "Changchun",
+         "hostels": "20.47",
+         "hotels": "61.05",
+         "backpacker": "33.19",
+         "price_index": "34.17"
+      },
+      {
+         "city": "Chengdu",
+         "hostels": "20.09",
+         "hotels": "40.29",
+         "backpacker": "33.28",
+         "price_index": "25.15"
+      },
+      {
+         "city": "Chongqing",
+         "hostels": "21.18",
+         "hotels": "42.64",
+         "backpacker": "34.56",
+         "price_index": "24.86"
+      },
+      {
+         "city": "Dalian",
+         "hostels": "20.12",
+         "hotels": "34.25",
+         "backpacker": "35.29",
+         "price_index": "28.23"
+      },
+      {
+         "city": "Dongguan",
+         "hostels": "20.28",
+         "hotels": "38.50",
+         "backpacker": "35.02",
+         "price_index": "26.34"
+      },
+      {
+         "city": "Foshan",
+         "hostels": "21.27",
+         "hotels": "34.61",
+         "backpacker": "36.19",
+         "price_index": "?"
+      },
+      {
+         "city": "Guangzhou",
+         "hostels": "20.01",
+         "hotels": "34.53",
+         "backpacker": "34.88",
+         "price_index": "23.14"
+      },
+      {
+         "city": "Hangzhou",
+         "hostels": "20.00",
+         "hotels": "39.74",
+         "backpacker": "35.42",
+         "price_index": "26.37"
+      },
+      {
+         "city": "Nanjing",
+         "hostels": "25.30",
+         "hotels": "47.17",
+         "backpacker": "42.07",
+         "price_index": "31.90"
+      },
+      {
+         "city": "Ningbo",
+         "hostels": "22.69",
+         "hotels": "46.04",
+         "backpacker": "39.01",
+         "price_index": "?"
+      },
+      {
+         "city": "Qingdao, Shandong",
+         "hostels": "20.17",
+         "hotels": "39.08",
+         "backpacker": "32.11",
+         "price_index": "?"
+      },
+      {
+         "city": "Shanghai",
+         "hostels": "20.16",
+         "hotels": "45.83",
+         "backpacker": "40.51",
+         "price_index": "35.51"
+      },
+      {
+         "city": "Shenyang",
+         "hostels": "23.48",
+         "hotels": "45.08",
+         "backpacker": "37.90",
+         "price_index": "?"
+      },
+      {
+         "city": "Shenzhen",
+         "hostels": "20.28",
+         "hotels": "40.52",
+         "backpacker": "36.79",
+         "price_index": "30.28"
+      },
+      {
+         "city": "Suzhou",
+         "hostels": "21.41",
+         "hotels": "43.51",
+         "backpacker": "38.13",
+         "price_index": "28.59"
+      },
+      {
+         "city": "Tianjin",
+         "hostels": "21.53",
+         "hotels": "40.63",
+         "backpacker": "35.53",
+         "price_index": "24.60"
+      },
+      {
+         "city": "Urumqi",
+         "hostels": "32.70",
+         "hotels": "90.79",
+         "backpacker": "49.47",
+         "price_index": "?"
+      },
+      {
+         "city": "Wenzhou",
+         "hostels": "28.86",
+         "hotels": "52.05",
+         "backpacker": "46.11",
+         "price_index": "29.87"
+      },
+      {
+         "city": "Wuhan",
+         "hostels": "20.82",
+         "hotels": "50.79",
+         "backpacker": "34.07",
+         "price_index": "26.69"
+      },
+      {
+         "city": "Xi'an",
+         "hostels": "20.00",
+         "hotels": "37.81",
+         "backpacker": "32.34",
+         "price_index": "22.95"
+      },
+      {
+         "city": "Xiamen",
+         "hostels": "20.12",
+         "hotels": "43.06",
+         "backpacker": "35.18",
+         "price_index": "25.69"
+      },
+      {
+         "city": "Zhuhai",
+         "hostels": "24.84",
+         "hotels": "58.64",
+         "backpacker": "39.77",
+         "price_index": "?"
+      }
+   ]
+}

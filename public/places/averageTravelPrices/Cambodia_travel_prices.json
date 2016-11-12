@@ -1,0 +1,11 @@
+{
+   "country": [
+      {
+         "city": "Saint-denis",
+         "hostels": "80.71",
+         "hotels": "116.49",
+         "backpacker": "138.05",
+         "price_index": "105.20"
+      }
+   ]
+}

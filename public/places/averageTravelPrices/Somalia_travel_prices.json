@@ -1,0 +1,1754 @@
+{
+   "country": [
+      {
+         "city": "Abingdon, MD",
+         "hostels": "48.45",
+         "hotels": "114.11",
+         "backpacker": "110.19",
+         "price_index": "69.57"
+      },
+      {
+         "city": "Akron, OH",
+         "hostels": "39.45",
+         "hotels": "104.54",
+         "backpacker": "81.21",
+         "price_index": "74.95"
+      },
+      {
+         "city": "Albany, NY",
+         "hostels": "49.00",
+         "hotels": "112.18",
+         "backpacker": "93.41",
+         "price_index": "84.09"
+      },
+      {
+         "city": "Albuquerque, NM",
+         "hostels": "35.39",
+         "hotels": "91.72",
+         "backpacker": "73.96",
+         "price_index": "68.47"
+      },
+      {
+         "city": "Alexandria, MN",
+         "hostels": "49.99",
+         "hotels": "131.67",
+         "backpacker": "108.31",
+         "price_index": "?"
+      },
+      {
+         "city": "Alexandria, VA",
+         "hostels": "36.99",
+         "hotels": "119.50",
+         "backpacker": "86.59",
+         "price_index": "?"
+      },
+      {
+         "city": "Allentown, PA",
+         "hostels": "50.00",
+         "hotels": "105.00",
+         "backpacker": "97.69",
+         "price_index": "74.44"
+      },
+      {
+         "city": "Alpharetta, GA",
+         "hostels": "33.43",
+         "hotels": "107.00",
+         "backpacker": "78.45",
+         "price_index": "65.62"
+      },
+      {
+         "city": "Anaheim, CA",
+         "hostels": "24.00",
+         "hotels": "114.00",
+         "backpacker": "66.78",
+         "price_index": "?"
+      },
+      {
+         "city": "Anchorage, AK",
+         "hostels": "25.00",
+         "hotels": "114.48",
+         "backpacker": "74.78",
+         "price_index": "84.72"
+      },
+      {
+         "city": "Ann Arbor, MI",
+         "hostels": "33.99",
+         "hotels": "112.50",
+         "backpacker": "73.81",
+         "price_index": "75.68"
+      },
+      {
+         "city": "Appleton, WI",
+         "hostels": "34.99",
+         "hotels": "95.83",
+         "backpacker": "74.42",
+         "price_index": "71.57"
+      },
+      {
+         "city": "Arlington, VA",
+         "hostels": "25.01",
+         "hotels": "84.50",
+         "backpacker": "82.11",
+         "price_index": "82.89"
+      },
+      {
+         "city": "Asheville, NC",
+         "hostels": "44.30",
+         "hotels": "119.50",
+         "backpacker": "88.85",
+         "price_index": "76.91"
+      },
+      {
+         "city": "Athens, GA",
+         "hostels": "40.18",
+         "hotels": "117.16",
+         "backpacker": "81.11",
+         "price_index": "72.18"
+      },
+      {
+         "city": "Atlanta, GA",
+         "hostels": "31.36",
+         "hotels": "89.50",
+         "backpacker": "77.24",
+         "price_index": "67.70"
+      },
+      {
+         "city": "Atlantic City, NJ",
+         "hostels": "24.29",
+         "hotels": "78.53",
+         "backpacker": "70.80",
+         "price_index": "75.74"
+      },
+      {
+         "city": "Augusta, GA",
+         "hostels": "34.32",
+         "hotels": "84.50",
+         "backpacker": "77.41",
+         "price_index": "61.35"
+      },
+      {
+         "city": "Aurora, IL",
+         "hostels": "33.99",
+         "hotels": "87.50",
+         "backpacker": "82.06",
+         "price_index": "67.44"
+      },
+      {
+         "city": "Austin, TX",
+         "hostels": "37.00",
+         "hotels": "130.82",
+         "backpacker": "81.13",
+         "price_index": "81.15"
+      },
+      {
+         "city": "Bakersfield, CA",
+         "hostels": "32.00",
+         "hotels": "86.00",
+         "backpacker": "76.92",
+         "price_index": "68.77"
+      },
+      {
+         "city": "Baltimore, MD",
+         "hostels": "49.00",
+         "hotels": "104.19",
+         "backpacker": "98.08",
+         "price_index": "74.29"
+      },
+      {
+         "city": "Bellevue, WA",
+         "hostels": "46.74",
+         "hotels": "130.44",
+         "backpacker": "97.95",
+         "price_index": "84.56"
+      },
+      {
+         "city": "Bellingham, WA",
+         "hostels": "41.45",
+         "hotels": "96.85",
+         "backpacker": "84.28",
+         "price_index": "78.46"
+      },
+      {
+         "city": "Bemidji, MN",
+         "hostels": "80.61",
+         "hotels": "93.57",
+         "backpacker": "128.64",
+         "price_index": "81.35"
+      },
+      {
+         "city": "Berkeley, CA",
+         "hostels": "33.93",
+         "hotels": "139.78",
+         "backpacker": "79.93",
+         "price_index": "99.27"
+      },
+      {
+         "city": "Biloxi, MS",
+         "hostels": "45.00",
+         "hotels": "77.33",
+         "backpacker": "89.05",
+         "price_index": "71.23"
+      },
+      {
+         "city": "Binghamton, NY",
+         "hostels": "40.70",
+         "hotels": "114.97",
+         "backpacker": "95.64",
+         "price_index": "88.26"
+      },
+      {
+         "city": "Birmingham, AL",
+         "hostels": "20.57",
+         "hotels": "100.00",
+         "backpacker": "65.07",
+         "price_index": "73.04"
+      },
+      {
+         "city": "Bismarck, ND",
+         "hostels": "65.99",
+         "hotels": "89.00",
+         "backpacker": "112.97",
+         "price_index": "71.15"
+      },
+      {
+         "city": "Boca Raton, FL",
+         "hostels": "46.40",
+         "hotels": "147.00",
+         "backpacker": "93.22",
+         "price_index": "92.10"
+      },
+      {
+         "city": "Boise, ID",
+         "hostels": "53.99",
+         "hotels": "131.50",
+         "backpacker": "96.46",
+         "price_index": "83.36"
+      },
+      {
+         "city": "Boston, MA",
+         "hostels": "59.00",
+         "hotels": "119.00",
+         "backpacker": "116.44",
+         "price_index": "93.51"
+      },
+      {
+         "city": "Boulder, CO",
+         "hostels": "45.00",
+         "hotels": "129.00",
+         "backpacker": "96.64",
+         "price_index": "88.64"
+      },
+      {
+         "city": "Boynton Beach, FL",
+         "hostels": "47.00",
+         "hotels": "67.00",
+         "backpacker": "?",
+         "price_index": "?"
+      },
+      {
+         "city": "Bozeman, MT",
+         "hostels": "48.00",
+         "hotels": "124.60",
+         "backpacker": "87.56",
+         "price_index": "?"
+      },
+      {
+         "city": "Brooklyn, NY",
+         "hostels": "35.00",
+         "hotels": "131.54",
+         "backpacker": "94.34",
+         "price_index": "97.39"
+      },
+      {
+         "city": "Buffalo, NY",
+         "hostels": "29.04",
+         "hotels": "77.15",
+         "backpacker": "72.75",
+         "price_index": "65.92"
+      },
+      {
+         "city": "Burlington, VT",
+         "hostels": "49.95",
+         "hotels": "134.00",
+         "backpacker": "95.12",
+         "price_index": "95.12"
+      },
+      {
+         "city": "Butte, MT",
+         "hostels": "57.00",
+         "hotels": "122.12",
+         "backpacker": "104.19",
+         "price_index": "78.44"
+      },
+      {
+         "city": "Cabot, AR",
+         "hostels": "41.44",
+         "hotels": "103.47",
+         "backpacker": "113.35",
+         "price_index": "83.89"
+      },
+      {
+         "city": "Canton, OH",
+         "hostels": "44.95",
+         "hotels": "104.53",
+         "backpacker": "87.01",
+         "price_index": "?"
+      },
+      {
+         "city": "Cedar Rapids, IA",
+         "hostels": "39.99",
+         "hotels": "90.00",
+         "backpacker": "76.30",
+         "price_index": "64.89"
+      },
+      {
+         "city": "Chapel Hill, NC",
+         "hostels": "42.99",
+         "hotels": "109.00",
+         "backpacker": "78.07",
+         "price_index": "?"
+      },
+      {
+         "city": "Charleston, SC",
+         "hostels": "59.38",
+         "hotels": "129.72",
+         "backpacker": "107.54",
+         "price_index": "93.95"
+      },
+      {
+         "city": "Charleston, WV",
+         "hostels": "49.95",
+         "hotels": "132.28",
+         "backpacker": "92.78",
+         "price_index": "74.50"
+      },
+      {
+         "city": "Charlotte, NC",
+         "hostels": "38.15",
+         "hotels": "129.00",
+         "backpacker": "83.99",
+         "price_index": "86.33"
+      },
+      {
+         "city": "Charlottesville, VA",
+         "hostels": "51.99",
+         "hotels": "137.00",
+         "backpacker": "95.89",
+         "price_index": "86.09"
+      },
+      {
+         "city": "Chattanooga, TN",
+         "hostels": "39.95",
+         "hotels": "114.00",
+         "backpacker": "81.44",
+         "price_index": "78.49"
+      },
+      {
+         "city": "Cherry Hill, NJ",
+         "hostels": "24.95",
+         "hotels": "113.10",
+         "backpacker": "88.26",
+         "price_index": "?"
+      },
+      {
+         "city": "Chicago, IL",
+         "hostels": "33.16",
+         "hotels": "98.00",
+         "backpacker": "84.48",
+         "price_index": "80.00"
+      },
+      {
+         "city": "Cincinnati, OH",
+         "hostels": "34.29",
+         "hotels": "107.47",
+         "backpacker": "77.32",
+         "price_index": "?"
+      },
+      {
+         "city": "Clearwater, FL",
+         "hostels": "39.95",
+         "hotels": "114.05",
+         "backpacker": "81.34",
+         "price_index": "78.10"
+      },
+      {
+         "city": "Cleveland, OH",
+         "hostels": "42.49",
+         "hotels": "93.06",
+         "backpacker": "89.05",
+         "price_index": "73.12"
+      },
+      {
+         "city": "Clifton, NJ",
+         "hostels": "35.00",
+         "hotels": "130.69",
+         "backpacker": "89.95",
+         "price_index": "98.59"
+      },
+      {
+         "city": "College Station, TX",
+         "hostels": "44.00",
+         "hotels": "134.00",
+         "backpacker": "77.11",
+         "price_index": "80.51"
+      },
+      {
+         "city": "Colorado Springs, CO",
+         "hostels": "45.00",
+         "hotels": "96.88",
+         "backpacker": "91.04",
+         "price_index": "81.32"
+      },
+      {
+         "city": "Columbia, SC",
+         "hostels": "42.00",
+         "hotels": "90.64",
+         "backpacker": "83.04",
+         "price_index": "64.24"
+      },
+      {
+         "city": "Columbus, GA",
+         "hostels": "37.99",
+         "hotels": "99.00",
+         "backpacker": "73.55",
+         "price_index": "64.20"
+      },
+      {
+         "city": "Columbus, OH",
+         "hostels": "34.29",
+         "hotels": "113.22",
+         "backpacker": "76.38",
+         "price_index": "73.12"
+      },
+      {
+         "city": "Concord, NH",
+         "hostels": "50.15",
+         "hotels": "107.70",
+         "backpacker": "116.24",
+         "price_index": "64.59"
+      },
+      {
+         "city": "Corpus Christi, TX",
+         "hostels": "48.00",
+         "hotels": "104.00",
+         "backpacker": "87.46",
+         "price_index": "79.10"
+      },
+      {
+         "city": "Dallas, TX",
+         "hostels": "39.00",
+         "hotels": "94.00",
+         "backpacker": "87.13",
+         "price_index": "70.35"
+      },
+      {
+         "city": "Davenport, IA",
+         "hostels": "40.99",
+         "hotels": "92.30",
+         "backpacker": "75.71",
+         "price_index": "72.19"
+      },
+      {
+         "city": "Dayton, OH",
+         "hostels": "36.28",
+         "hotels": "89.72",
+         "backpacker": "75.83",
+         "price_index": "66.76"
+      },
+      {
+         "city": "Deerfield Beach, FL",
+         "hostels": "51.00",
+         "hotels": "137.50",
+         "backpacker": "116.60",
+         "price_index": "?"
+      },
+      {
+         "city": "Denver, CO",
+         "hostels": "23.00",
+         "hotels": "96.78",
+         "backpacker": "70.06",
+         "price_index": "75.56"
+      },
+      {
+         "city": "Des Moines, IA",
+         "hostels": "40.45",
+         "hotels": "98.28",
+         "backpacker": "81.02",
+         "price_index": "72.11"
+      },
+      {
+         "city": "Des Plaines, IL",
+         "hostels": "23.23",
+         "hotels": "93.92",
+         "backpacker": "60.14",
+         "price_index": "65.74"
+      },
+      {
+         "city": "Detroit, MI",
+         "hostels": "33.02",
+         "hotels": "91.66",
+         "backpacker": "76.73",
+         "price_index": "62.49"
+      },
+      {
+         "city": "Durham, NC",
+         "hostels": "35.72",
+         "hotels": "103.36",
+         "backpacker": "73.44",
+         "price_index": "74.72"
+      },
+      {
+         "city": "El Paso, TX",
+         "hostels": "21.10",
+         "hotels": "61.08",
+         "backpacker": "56.54",
+         "price_index": "?"
+      },
+      {
+         "city": "Erie, PA",
+         "hostels": "50.99",
+         "hotels": "106.99",
+         "backpacker": "96.64",
+         "price_index": "?"
+      },
+      {
+         "city": "Eugene, OR",
+         "hostels": "30.00",
+         "hotels": "113.55",
+         "backpacker": "67.79",
+         "price_index": "76.40"
+      },
+      {
+         "city": "Eureka, CA",
+         "hostels": "51.99",
+         "hotels": "124.18",
+         "backpacker": "107.24",
+         "price_index": "107.40"
+      },
+      {
+         "city": "Evansville, IN",
+         "hostels": "49.32",
+         "hotels": "85.00",
+         "backpacker": "92.22",
+         "price_index": "68.24"
+      },
+      {
+         "city": "Everett, WA",
+         "hostels": "55.25",
+         "hotels": "122.50",
+         "backpacker": "105.82",
+         "price_index": "81.19"
+      },
+      {
+         "city": "Fairbanks, AK",
+         "hostels": "27.78",
+         "hotels": "83.00",
+         "backpacker": "89.39",
+         "price_index": "74.35"
+      },
+      {
+         "city": "Fairfax, VA",
+         "hostels": "24.95",
+         "hotels": "91.23",
+         "backpacker": "83.48",
+         "price_index": "73.70"
+      },
+      {
+         "city": "Fargo, ND",
+         "hostels": "39.99",
+         "hotels": "94.57",
+         "backpacker": "83.10",
+         "price_index": "?"
+      },
+      {
+         "city": "Farmington, MO",
+         "hostels": "46.00",
+         "hotels": "88.50",
+         "backpacker": "?",
+         "price_index": "?"
+      },
+      {
+         "city": "Fayetteville, AR",
+         "hostels": "42.49",
+         "hotels": "96.50",
+         "backpacker": "89.52",
+         "price_index": "69.93"
+      },
+      {
+         "city": "Flint, MI",
+         "hostels": "39.39",
+         "hotels": "89.50",
+         "backpacker": "78.28",
+         "price_index": "61.73"
+      },
+      {
+         "city": "Fond du Lac, WI",
+         "hostels": "47.79",
+         "hotels": "99.25",
+         "backpacker": "92.14",
+         "price_index": "67.61"
+      },
+      {
+         "city": "Fontana, CA",
+         "hostels": "40.00",
+         "hotels": "107.00",
+         "backpacker": "83.99",
+         "price_index": "84.89"
+      },
+      {
+         "city": "Fort Collins, CO",
+         "hostels": "47.00",
+         "hotels": "107.00",
+         "backpacker": "92.61",
+         "price_index": "75.91"
+      },
+      {
+         "city": "Fort Lauderdale, FL",
+         "hostels": "35.00",
+         "hotels": "159.50",
+         "backpacker": "84.24",
+         "price_index": "90.33"
+      },
+      {
+         "city": "Fort Myers, FL",
+         "hostels": "44.10",
+         "hotels": "134.75",
+         "backpacker": "86.81",
+         "price_index": "80.66"
+      },
+      {
+         "city": "Fort Worth, TX",
+         "hostels": "38.25",
+         "hotels": "102.00",
+         "backpacker": "90.46",
+         "price_index": "72.63"
+      },
+      {
+         "city": "Fremont, CA",
+         "hostels": "52.65",
+         "hotels": "112.15",
+         "backpacker": "106.33",
+         "price_index": "84.51"
+      },
+      {
+         "city": "Fresno, CA",
+         "hostels": "39.00",
+         "hotels": "124.06",
+         "backpacker": "82.07",
+         "price_index": "75.00"
+      },
+      {
+         "city": "Gainesville, FL",
+         "hostels": "45.00",
+         "hotels": "107.00",
+         "backpacker": "84.73",
+         "price_index": "71.43"
+      },
+      {
+         "city": "Germantown, MD",
+         "hostels": "24.95",
+         "hotels": "90.89",
+         "backpacker": "66.73",
+         "price_index": "?"
+      },
+      {
+         "city": "Glendale, CA",
+         "hostels": "25.75",
+         "hotels": "132.49",
+         "backpacker": "68.11",
+         "price_index": "92.24"
+      },
+      {
+         "city": "Grand Rapids, MI",
+         "hostels": "30.00",
+         "hotels": "95.83",
+         "backpacker": "72.44",
+         "price_index": "68.81"
+      },
+      {
+         "city": "Green Bay, WI",
+         "hostels": "45.34",
+         "hotels": "104.22",
+         "backpacker": "84.83",
+         "price_index": "?"
+      },
+      {
+         "city": "Greensboro, NC",
+         "hostels": "39.44",
+         "hotels": "98.54",
+         "backpacker": "79.76",
+         "price_index": "69.23"
+      },
+      {
+         "city": "Greenville, SC",
+         "hostels": "31.72",
+         "hotels": "105.72",
+         "backpacker": "74.88",
+         "price_index": "70.71"
+      },
+      {
+         "city": "Harlingen, TX",
+         "hostels": "24.91",
+         "hotels": "124.28",
+         "backpacker": "57.47",
+         "price_index": "64.91"
+      },
+      {
+         "city": "Harrisburg, PA",
+         "hostels": "41.24",
+         "hotels": "103.68",
+         "backpacker": "84.96",
+         "price_index": "69.67"
+      },
+      {
+         "city": "Hartford, CT",
+         "hostels": "39.13",
+         "hotels": "99.50",
+         "backpacker": "87.03",
+         "price_index": "80.77"
+      },
+      {
+         "city": "Henderson, NV",
+         "hostels": "24.00",
+         "hotels": "79.28",
+         "backpacker": "68.77",
+         "price_index": "61.09"
+      },
+      {
+         "city": "Hilton Head Island, SC",
+         "hostels": "34.00",
+         "hotels": "129.48",
+         "backpacker": "?",
+         "price_index": "?"
+      },
+      {
+         "city": "Hoboken, NJ",
+         "hostels": "32.00",
+         "hotels": "146.17",
+         "backpacker": "83.39",
+         "price_index": "?"
+      },
+      {
+         "city": "Honolulu, HI",
+         "hostels": "17.00",
+         "hotels": "187.36",
+         "backpacker": "66.67",
+         "price_index": "113.94"
+      },
+      {
+         "city": "Houston, TX",
+         "hostels": "43.99",
+         "hotels": "107.00",
+         "backpacker": "87.68",
+         "price_index": "77.37"
+      },
+      {
+         "city": "Huntington, WV",
+         "hostels": "50.00",
+         "hotels": "102.00",
+         "backpacker": "92.81",
+         "price_index": "?"
+      },
+      {
+         "city": "Huntsville, AL",
+         "hostels": "36.99",
+         "hotels": "89.18",
+         "backpacker": "92.71",
+         "price_index": "62.00"
+      },
+      {
+         "city": "Indianapolis, IN",
+         "hostels": "39.48",
+         "hotels": "101.14",
+         "backpacker": "82.71",
+         "price_index": "67.59"
+      },
+      {
+         "city": "Iowa City, IA",
+         "hostels": "36.41",
+         "hotels": "99.00",
+         "backpacker": "73.88",
+         "price_index": "?"
+      },
+      {
+         "city": "Irvine, CA",
+         "hostels": "54.47",
+         "hotels": "117.57",
+         "backpacker": "103.62",
+         "price_index": "76.23"
+      },
+      {
+         "city": "Ithaca, NY",
+         "hostels": "54.00",
+         "hotels": "156.71",
+         "backpacker": "105.65",
+         "price_index": "98.19"
+      },
+      {
+         "city": "Jackson, MS",
+         "hostels": "35.69",
+         "hotels": "95.47",
+         "backpacker": "78.52",
+         "price_index": "75.90"
+      },
+      {
+         "city": "Jacksonville, FL",
+         "hostels": "32.00",
+         "hotels": "104.00",
+         "backpacker": "76.45",
+         "price_index": "73.21"
+      },
+      {
+         "city": "Jersey City, NJ",
+         "hostels": "30.00",
+         "hotels": "131.38",
+         "backpacker": "83.70",
+         "price_index": "77.56"
+      },
+      {
+         "city": "Johnson City, TN",
+         "hostels": "44.95",
+         "hotels": "94.50",
+         "backpacker": "85.04",
+         "price_index": "?"
+      },
+      {
+         "city": "Kansas City, MO",
+         "hostels": "35.99",
+         "hotels": "111.50",
+         "backpacker": "78.17",
+         "price_index": "74.04"
+      },
+      {
+         "city": "Kearney, NE",
+         "hostels": "49.33",
+         "hotels": "89.90",
+         "backpacker": "91.00",
+         "price_index": "73.19"
+      },
+      {
+         "city": "Kennewick, WA",
+         "hostels": "45.33",
+         "hotels": "110.25",
+         "backpacker": "86.03",
+         "price_index": "67.90"
+      },
+      {
+         "city": "Knoxville, TN",
+         "hostels": "36.53",
+         "hotels": "100.50",
+         "backpacker": "76.91",
+         "price_index": "66.99"
+      },
+      {
+         "city": "Lafayette, IN",
+         "hostels": "49.99",
+         "hotels": "107.99",
+         "backpacker": "88.30",
+         "price_index": "71.78"
+      },
+      {
+         "city": "Lafayette, LA",
+         "hostels": "37.14",
+         "hotels": "87.00",
+         "backpacker": "74.03",
+         "price_index": "80.64"
+      },
+      {
+         "city": "Lancaster, PA",
+         "hostels": "41.24",
+         "hotels": "112.25",
+         "backpacker": "89.21",
+         "price_index": "?"
+      },
+      {
+         "city": "Lansing, MI",
+         "hostels": "49.00",
+         "hotels": "127.16",
+         "backpacker": "88.78",
+         "price_index": "71.71"
+      },
+      {
+         "city": "Las Cruces, NM",
+         "hostels": "35.12",
+         "hotels": "90.94",
+         "backpacker": "71.96",
+         "price_index": "?"
+      },
+      {
+         "city": "Las Vegas, NV",
+         "hostels": "26.48",
+         "hotels": "80.96",
+         "backpacker": "71.29",
+         "price_index": "67.14"
+      },
+      {
+         "city": "Lexington, KY",
+         "hostels": "41.30",
+         "hotels": "124.50",
+         "backpacker": "82.47",
+         "price_index": "76.67"
+      },
+      {
+         "city": "Lincoln, NE",
+         "hostels": "39.00",
+         "hotels": "112.75",
+         "backpacker": "76.79",
+         "price_index": "72.57"
+      },
+      {
+         "city": "Little Rock, AR",
+         "hostels": "39.99",
+         "hotels": "92.79",
+         "backpacker": "88.57",
+         "price_index": "67.68"
+      },
+      {
+         "city": "Long Beach, CA",
+         "hostels": "39.19",
+         "hotels": "116.55",
+         "backpacker": "83.80",
+         "price_index": "?"
+      },
+      {
+         "city": "Los Angeles, CA",
+         "hostels": "24.00",
+         "hotels": "134.00",
+         "backpacker": "70.78",
+         "price_index": "89.71"
+      },
+      {
+         "city": "Louisville, KY",
+         "hostels": "38.58",
+         "hotels": "114.00",
+         "backpacker": "77.47",
+         "price_index": "76.25"
+      },
+      {
+         "city": "Lubbock, TX",
+         "hostels": "45.99",
+         "hotels": "127.50",
+         "backpacker": "86.69",
+         "price_index": "?"
+      },
+      {
+         "city": "Madison, WI",
+         "hostels": "46.99",
+         "hotels": "115.70",
+         "backpacker": "92.32",
+         "price_index": "82.50"
+      },
+      {
+         "city": "Manchester, NH",
+         "hostels": "55.00",
+         "hotels": "99.25",
+         "backpacker": "100.51",
+         "price_index": "71.51"
+      },
+      {
+         "city": "Mansfield, CT",
+         "hostels": "54.00",
+         "hotels": "124.00",
+         "backpacker": "92.26",
+         "price_index": "78.67"
+      },
+      {
+         "city": "McAllen, TX",
+         "hostels": "34.40",
+         "hotels": "86.15",
+         "backpacker": "71.92",
+         "price_index": "69.00"
+      },
+      {
+         "city": "Medford, OR",
+         "hostels": "50.00",
+         "hotels": "112.38",
+         "backpacker": "96.32",
+         "price_index": "81.48"
+      },
+      {
+         "city": "Melbourne, FL",
+         "hostels": "51.99",
+         "hotels": "114.00",
+         "backpacker": "102.16",
+         "price_index": "74.21"
+      },
+      {
+         "city": "Memphis, TN",
+         "hostels": "35.72",
+         "hotels": "132.22",
+         "backpacker": "78.62",
+         "price_index": "?"
+      },
+      {
+         "city": "Mesa, AZ",
+         "hostels": "36.65",
+         "hotels": "109.55",
+         "backpacker": "81.06",
+         "price_index": "?"
+      },
+      {
+         "city": "Miami, FL",
+         "hostels": "43.42",
+         "hotels": "157.00",
+         "backpacker": "95.88",
+         "price_index": "102.94"
+      },
+      {
+         "city": "Milwaukee, WI",
+         "hostels": "39.00",
+         "hotels": "91.05",
+         "backpacker": "87.61",
+         "price_index": "69.73"
+      },
+      {
+         "city": "Minneapolis, MN",
+         "hostels": "48.00",
+         "hotels": "89.00",
+         "backpacker": "96.41",
+         "price_index": "72.77"
+      },
+      {
+         "city": "Missoula, MT",
+         "hostels": "56.33",
+         "hotels": "84.47",
+         "backpacker": "90.28",
+         "price_index": "82.63"
+      },
+      {
+         "city": "Mobile, AL",
+         "hostels": "42.50",
+         "hotels": "96.50",
+         "backpacker": "82.03",
+         "price_index": "65.08"
+      },
+      {
+         "city": "Modesto, CA",
+         "hostels": "40.00",
+         "hotels": "90.53",
+         "backpacker": "84.48",
+         "price_index": "66.37"
+      },
+      {
+         "city": "Montgomery, AL",
+         "hostels": "36.54",
+         "hotels": "94.50",
+         "backpacker": "83.44",
+         "price_index": "61.47"
+      },
+      {
+         "city": "Morgantown, WV",
+         "hostels": "51.00",
+         "hotels": "95.28",
+         "backpacker": "97.55",
+         "price_index": "77.31"
+      },
+      {
+         "city": "Morristown, NJ",
+         "hostels": "42.50",
+         "hotels": "119.89",
+         "backpacker": "95.53",
+         "price_index": "84.72"
+      },
+      {
+         "city": "Mountain View, CA",
+         "hostels": "74.00",
+         "hotels": "131.68",
+         "backpacker": "142.79",
+         "price_index": "98.91"
+      },
+      {
+         "city": "Murrieta, CA",
+         "hostels": "44.00",
+         "hotels": "114.55",
+         "backpacker": "82.91",
+         "price_index": "?"
+      },
+      {
+         "city": "Naples, FL",
+         "hostels": "55.99",
+         "hotels": "232.00",
+         "backpacker": "107.86",
+         "price_index": "?"
+      },
+      {
+         "city": "Nashville, TN",
+         "hostels": "42.32",
+         "hotels": "119.17",
+         "backpacker": "86.06",
+         "price_index": "80.81"
+      },
+      {
+         "city": "New Haven, CT",
+         "hostels": "48.70",
+         "hotels": "99.38",
+         "backpacker": "106.03",
+         "price_index": "85.63"
+      },
+      {
+         "city": "New Orleans, LA",
+         "hostels": "39.60",
+         "hotels": "137.00",
+         "backpacker": "83.10",
+         "price_index": "85.67"
+      },
+      {
+         "city": "New York, NY",
+         "hostels": "40.00",
+         "hotels": "136.40",
+         "backpacker": "100.00",
+         "price_index": "100.00"
+      },
+      {
+         "city": "Newark, NJ",
+         "hostels": "20.09",
+         "hotels": "135.55",
+         "backpacker": "64.93",
+         "price_index": "102.23"
+      },
+      {
+         "city": "Newport News, VA",
+         "hostels": "33.33",
+         "hotels": "85.50",
+         "backpacker": "79.34",
+         "price_index": "?"
+      },
+      {
+         "city": "Newton, MA",
+         "hostels": "59.00",
+         "hotels": "112.00",
+         "backpacker": "116.14",
+         "price_index": "90.32"
+      },
+      {
+         "city": "Norfolk, VA",
+         "hostels": "35.00",
+         "hotels": "94.50",
+         "backpacker": "80.01",
+         "price_index": "76.41"
+      },
+      {
+         "city": "Norwalk, CT",
+         "hostels": "55.00",
+         "hotels": "106.26",
+         "backpacker": "109.89",
+         "price_index": "88.71"
+      },
+      {
+         "city": "Oakland, CA",
+         "hostels": "34.41",
+         "hotels": "124.50",
+         "backpacker": "84.73",
+         "price_index": "97.31"
+      },
+      {
+         "city": "Ocala, FL",
+         "hostels": "37.11",
+         "hotels": "115.00",
+         "backpacker": "98.67",
+         "price_index": "72.67"
+      },
+      {
+         "city": "Oklahoma City, OK",
+         "hostels": "39.30",
+         "hotels": "85.50",
+         "backpacker": "78.48",
+         "price_index": "61.43"
+      },
+      {
+         "city": "Olympia, WA",
+         "hostels": "45.39",
+         "hotels": "109.50",
+         "backpacker": "85.80",
+         "price_index": "77.10"
+      },
+      {
+         "city": "Omaha, NE",
+         "hostels": "38.58",
+         "hotels": "92.19",
+         "backpacker": "79.38",
+         "price_index": "61.63"
+      },
+      {
+         "city": "Orem, UT",
+         "hostels": "42.49",
+         "hotels": "119.50",
+         "backpacker": "91.33",
+         "price_index": "?"
+      },
+      {
+         "city": "Orlando, FL",
+         "hostels": "35.00",
+         "hotels": "114.48",
+         "backpacker": "82.63",
+         "price_index": "76.70"
+      },
+      {
+         "city": "Palm Coast, FL",
+         "hostels": "39.26",
+         "hotels": "114.00",
+         "backpacker": "?",
+         "price_index": "?"
+      },
+      {
+         "city": "Panama City, FL",
+         "hostels": "54.00",
+         "hotels": "108.60",
+         "backpacker": "102.58",
+         "price_index": "85.04"
+      },
+      {
+         "city": "Paso Robles, CA",
+         "hostels": "45.00",
+         "hotels": "134.20",
+         "backpacker": "?",
+         "price_index": "?"
+      },
+      {
+         "city": "Philadelphia, PA",
+         "hostels": "26.98",
+         "hotels": "114.00",
+         "backpacker": "71.94",
+         "price_index": "81.82"
+      },
+      {
+         "city": "Phoenix, AZ",
+         "hostels": "37.15",
+         "hotels": "131.69",
+         "backpacker": "85.13",
+         "price_index": "80.97"
+      },
+      {
+         "city": "Pittsburgh, PA",
+         "hostels": "51.52",
+         "hotels": "124.00",
+         "backpacker": "102.53",
+         "price_index": "90.02"
+      },
+      {
+         "city": "Plano, TX",
+         "hostels": "39.99",
+         "hotels": "99.50",
+         "backpacker": "93.47",
+         "price_index": "80.61"
+      },
+      {
+         "city": "Pocatello, ID",
+         "hostels": "42.00",
+         "hotels": "84.00",
+         "backpacker": "91.38",
+         "price_index": "?"
+      },
+      {
+         "city": "Portland, ME",
+         "hostels": "50.15",
+         "hotels": "103.65",
+         "backpacker": "104.02",
+         "price_index": "81.46"
+      },
+      {
+         "city": "Portland, OR",
+         "hostels": "45.00",
+         "hotels": "119.67",
+         "backpacker": "94.73",
+         "price_index": "80.83"
+      },
+      {
+         "city": "Poughkeepsie, NY",
+         "hostels": "55.00",
+         "hotels": "138.28",
+         "backpacker": "109.39",
+         "price_index": "100.88"
+      },
+      {
+         "city": "Providence, RI",
+         "hostels": "39.49",
+         "hotels": "122.15",
+         "backpacker": "92.63",
+         "price_index": "91.53"
+      },
+      {
+         "city": "Queens, NY",
+         "hostels": "21.99",
+         "hotels": "129.00",
+         "backpacker": "67.64",
+         "price_index": "84.35"
+      },
+      {
+         "city": "Raleigh, NC",
+         "hostels": "41.99",
+         "hotels": "109.17",
+         "backpacker": "84.06",
+         "price_index": "75.56"
+      },
+      {
+         "city": "Rapid City, SD",
+         "hostels": "42.40",
+         "hotels": "87.75",
+         "backpacker": "80.20",
+         "price_index": "68.63"
+      },
+      {
+         "city": "Reno, NV",
+         "hostels": "30.00",
+         "hotels": "65.00",
+         "backpacker": "72.93",
+         "price_index": "60.83"
+      },
+      {
+         "city": "Richmond, KY",
+         "hostels": "45.00",
+         "hotels": "122.00",
+         "backpacker": "?",
+         "price_index": "?"
+      },
+      {
+         "city": "Richmond, VA",
+         "hostels": "34.99",
+         "hotels": "111.80",
+         "backpacker": "77.65",
+         "price_index": "?"
+      },
+      {
+         "city": "Ridgecrest, CA",
+         "hostels": "49.00",
+         "hotels": "85.00",
+         "backpacker": "?",
+         "price_index": "?"
+      },
+      {
+         "city": "Riverside, CA",
+         "hostels": "40.00",
+         "hotels": "108.20",
+         "backpacker": "90.77",
+         "price_index": "73.67"
+      },
+      {
+         "city": "Roanoke, VA",
+         "hostels": "44.96",
+         "hotels": "92.00",
+         "backpacker": "91.46",
+         "price_index": "71.73"
+      },
+      {
+         "city": "Rochester, MN",
+         "hostels": "54.08",
+         "hotels": "120.72",
+         "backpacker": "100.77",
+         "price_index": "87.65"
+      },
+      {
+         "city": "Rochester, NY",
+         "hostels": "44.95",
+         "hotels": "98.50",
+         "backpacker": "88.53",
+         "price_index": "70.63"
+      },
+      {
+         "city": "Rockford, IL",
+         "hostels": "42.46",
+         "hotels": "124.22",
+         "backpacker": "85.62",
+         "price_index": "76.52"
+      },
+      {
+         "city": "Rocklin, CA",
+         "hostels": "34.00",
+         "hotels": "106.65",
+         "backpacker": "71.92",
+         "price_index": "76.72"
+      },
+      {
+         "city": "Rockville, MD",
+         "hostels": "24.95",
+         "hotels": "90.78",
+         "backpacker": "72.47",
+         "price_index": "?"
+      },
+      {
+         "city": "Royersford, PA",
+         "hostels": "50.00",
+         "hotels": "107.55",
+         "backpacker": "107.78",
+         "price_index": "96.36"
+      },
+      {
+         "city": "Sacramento, CA",
+         "hostels": "32.00",
+         "hotels": "108.10",
+         "backpacker": "81.53",
+         "price_index": "78.61"
+      },
+      {
+         "city": "Saginaw, MI",
+         "hostels": "39.74",
+         "hotels": "120.54",
+         "backpacker": "84.76",
+         "price_index": "84.68"
+      },
+      {
+         "city": "Saint Louis, MO",
+         "hostels": "39.99",
+         "hotels": "93.27",
+         "backpacker": "86.98",
+         "price_index": "72.43"
+      },
+      {
+         "city": "Saint Paul, MN",
+         "hostels": "46.74",
+         "hotels": "99.00",
+         "backpacker": "93.19",
+         "price_index": "72.41"
+      },
+      {
+         "city": "Saint Petersburg, FL",
+         "hostels": "45.89",
+         "hotels": "129.00",
+         "backpacker": "98.02",
+         "price_index": "77.63"
+      },
+      {
+         "city": "Salem, OR",
+         "hostels": "45.00",
+         "hotels": "142.00",
+         "backpacker": "91.22",
+         "price_index": "85.65"
+      },
+      {
+         "city": "Salt Lake City, UT",
+         "hostels": "34.00",
+         "hotels": "117.00",
+         "backpacker": "80.74",
+         "price_index": "80.26"
+      },
+      {
+         "city": "San Antonio, TX",
+         "hostels": "32.85",
+         "hotels": "97.31",
+         "backpacker": "70.10",
+         "price_index": "65.57"
+      },
+      {
+         "city": "San Diego, CA",
+         "hostels": "25.00",
+         "hotels": "134.15",
+         "backpacker": "73.66",
+         "price_index": "88.03"
+      },
+      {
+         "city": "San Francisco, CA",
+         "hostels": "33.00",
+         "hotels": "149.00",
+         "backpacker": "86.35",
+         "price_index": "102.94"
+      },
+      {
+         "city": "San Jose, CA",
+         "hostels": "38.00",
+         "hotels": "76.00",
+         "backpacker": "84.28",
+         "price_index": "74.65"
+      },
+      {
+         "city": "San Luis Obispo, CA",
+         "hostels": "49.00",
+         "hotels": "135.10",
+         "backpacker": "101.61",
+         "price_index": "113.16"
+      },
+      {
+         "city": "Santa Barbara, CA",
+         "hostels": "65.99",
+         "hotels": "182.16",
+         "backpacker": "121.63",
+         "price_index": "105.12"
+      },
+      {
+         "city": "Santa Cruz, CA",
+         "hostels": "54.31",
+         "hotels": "139.00",
+         "backpacker": "101.77",
+         "price_index": "86.57"
+      },
+      {
+         "city": "Sarasota, FL",
+         "hostels": "47.28",
+         "hotels": "126.54",
+         "backpacker": "89.16",
+         "price_index": "?"
+      },
+      {
+         "city": "Savannah, GA",
+         "hostels": "29.59",
+         "hotels": "140.52",
+         "backpacker": "73.30",
+         "price_index": "86.04"
+      },
+      {
+         "city": "Schaumburg, IL",
+         "hostels": "27.27",
+         "hotels": "89.50",
+         "backpacker": "92.24",
+         "price_index": "?"
+      },
+      {
+         "city": "Scottsdale, AZ",
+         "hostels": "34.99",
+         "hotels": "117.00",
+         "backpacker": "86.80",
+         "price_index": "?"
+      },
+      {
+         "city": "Scranton, PA",
+         "hostels": "49.00",
+         "hotels": "121.00",
+         "backpacker": "101.79",
+         "price_index": "87.42"
+      },
+      {
+         "city": "Seattle, WA",
+         "hostels": "44.49",
+         "hotels": "116.03",
+         "backpacker": "96.87",
+         "price_index": "83.58"
+      },
+      {
+         "city": "Shreveport, LA",
+         "hostels": "29.74",
+         "hotels": "88.56",
+         "backpacker": "71.99",
+         "price_index": "59.14"
+      },
+      {
+         "city": "Sioux Falls, SD",
+         "hostels": "50.41",
+         "hotels": "112.00",
+         "backpacker": "88.22",
+         "price_index": "69.07"
+      },
+      {
+         "city": "Spokane, WA",
+         "hostels": "44.95",
+         "hotels": "114.00",
+         "backpacker": "87.00",
+         "price_index": "78.39"
+      },
+      {
+         "city": "Springfield, MA",
+         "hostels": "45.89",
+         "hotels": "112.00",
+         "backpacker": "93.28",
+         "price_index": "71.93"
+      },
+      {
+         "city": "Springfield, MO",
+         "hostels": "49.95",
+         "hotels": "92.75",
+         "backpacker": "88.51",
+         "price_index": "57.68"
+      },
+      {
+         "city": "Spruce Pine, NC",
+         "hostels": "62.05",
+         "hotels": "140.16",
+         "backpacker": "98.67",
+         "price_index": "75.83"
+      },
+      {
+         "city": "Stamford, CT",
+         "hostels": "55.00",
+         "hotels": "116.65",
+         "backpacker": "106.99",
+         "price_index": "84.42"
+      },
+      {
+         "city": "Stillwater, OK",
+         "hostels": "46.38",
+         "hotels": "91.20",
+         "backpacker": "87.78",
+         "price_index": "?"
+      },
+      {
+         "city": "Stockton, CA",
+         "hostels": "44.99",
+         "hotels": "131.80",
+         "backpacker": "90.62",
+         "price_index": "81.01"
+      },
+      {
+         "city": "Syracuse, NY",
+         "hostels": "42.63",
+         "hotels": "102.55",
+         "backpacker": "86.82",
+         "price_index": "68.92"
+      },
+      {
+         "city": "Tacoma, WA",
+         "hostels": "44.49",
+         "hotels": "92.08",
+         "backpacker": "91.04",
+         "price_index": "69.43"
+      },
+      {
+         "city": "Tallahassee, FL",
+         "hostels": "39.20",
+         "hotels": "125.50",
+         "backpacker": "76.67",
+         "price_index": "77.24"
+      },
+      {
+         "city": "Tampa, FL",
+         "hostels": "42.49",
+         "hotels": "121.80",
+         "backpacker": "88.09",
+         "price_index": "74.92"
+      },
+      {
+         "city": "Toledo, OH",
+         "hostels": "35.97",
+         "hotels": "92.00",
+         "backpacker": "74.59",
+         "price_index": "?"
+      },
+      {
+         "city": "Tucson, AZ",
+         "hostels": "29.99",
+         "hotels": "112.08",
+         "backpacker": "70.91",
+         "price_index": "72.28"
+      },
+      {
+         "city": "Tulsa, OK",
+         "hostels": "39.00",
+         "hotels": "89.00",
+         "backpacker": "77.34",
+         "price_index": "71.24"
+      },
+      {
+         "city": "Tyler, TX",
+         "hostels": "43.43",
+         "hotels": "80.99",
+         "backpacker": "81.35",
+         "price_index": "59.99"
+      },
+      {
+         "city": "Urbana, IL",
+         "hostels": "46.74",
+         "hotels": "133.50",
+         "backpacker": "81.60",
+         "price_index": "?"
+      },
+      {
+         "city": "Vallejo, CA",
+         "hostels": "26.45",
+         "hotels": "153.51",
+         "backpacker": "74.91",
+         "price_index": "81.45"
+      },
+      {
+         "city": "Vancouver, WA",
+         "hostels": "51.84",
+         "hotels": "122.05",
+         "backpacker": "98.97",
+         "price_index": "85.83"
+      },
+      {
+         "city": "Virginia Beach, VA",
+         "hostels": "36.99",
+         "hotels": "84.00",
+         "backpacker": "81.25",
+         "price_index": "68.32"
+      },
+      {
+         "city": "Waco, TX",
+         "hostels": "45.99",
+         "hotels": "132.00",
+         "backpacker": "88.06",
+         "price_index": "?"
+      },
+      {
+         "city": "Waldorf, MD",
+         "hostels": "24.95",
+         "hotels": "113.13",
+         "backpacker": "77.97",
+         "price_index": "?"
+      },
+      {
+         "city": "Washington, DC",
+         "hostels": "24.95",
+         "hotels": "139.00",
+         "backpacker": "79.09",
+         "price_index": "96.62"
+      },
+      {
+         "city": "Wausau, WI",
+         "hostels": "47.99",
+         "hotels": "93.05",
+         "backpacker": "90.46",
+         "price_index": "92.65"
+      },
+      {
+         "city": "West Hollywood, CA",
+         "hostels": "25.75",
+         "hotels": "133.50",
+         "backpacker": "78.04",
+         "price_index": "87.59"
+      },
+      {
+         "city": "West Palm Beach, FL",
+         "hostels": "59.00",
+         "hotels": "164.00",
+         "backpacker": "111.42",
+         "price_index": "93.77"
+      },
+      {
+         "city": "Wichita Falls, TX",
+         "hostels": "35.00",
+         "hotels": "89.20",
+         "backpacker": "65.68",
+         "price_index": "48.86"
+      },
+      {
+         "city": "Wichita, KS",
+         "hostels": "37.00",
+         "hotels": "109.16",
+         "backpacker": "80.89",
+         "price_index": "73.77"
+      },
+      {
+         "city": "Winston-salem, NC",
+         "hostels": "33.79",
+         "hotels": "99.49",
+         "backpacker": "70.82",
+         "price_index": "69.12"
+      },
+      {
+         "city": "Woodbridge, VA",
+         "hostels": "40.79",
+         "hotels": "124.00",
+         "backpacker": "?",
+         "price_index": "?"
+      },
+      {
+         "city": "Worcester, MA",
+         "hostels": "54.00",
+         "hotels": "116.50",
+         "backpacker": "105.93",
+         "price_index": "92.28"
+      },
+      {
+         "city": "Yonkers, NY",
+         "hostels": "50.36",
+         "hotels": "154.30",
+         "backpacker": "116.00",
+         "price_index": "?"
+      },
+      {
+         "city": "Yucca Valley, CA",
+         "hostels": "47.99",
+         "hotels": "123.91",
+         "backpacker": "82.37",
+         "price_index": "72.62"
+      }
+   ]
+}

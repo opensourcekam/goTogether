@@ -1,0 +1,263 @@
+{
+   "country": [
+      {
+         "city": "Acapulco",
+         "hostels": "25.71",
+         "hotels": "77.64",
+         "backpacker": "42.66",
+         "price_index": "?"
+      },
+      {
+         "city": "Aguascalientes",
+         "hostels": "23.44",
+         "hotels": "47.42",
+         "backpacker": "38.48",
+         "price_index": "24.10"
+      },
+      {
+         "city": "Ajijic",
+         "hostels": "20.24",
+         "hotels": "51.09",
+         "backpacker": "38.18",
+         "price_index": "30.81"
+      },
+      {
+         "city": "Cabo San Lucas, Baja California Sur",
+         "hostels": "23.44",
+         "hotels": "155.67",
+         "backpacker": "44.01",
+         "price_index": "69.38"
+      },
+      {
+         "city": "Cancun",
+         "hostels": "20.15",
+         "hotels": "108.29",
+         "backpacker": "37.92",
+         "price_index": "56.30"
+      },
+      {
+         "city": "Chihuahua",
+         "hostels": "32.00",
+         "hotels": "42.31",
+         "backpacker": "52.06",
+         "price_index": "28.70"
+      },
+      {
+         "city": "Ciudad Juarez",
+         "hostels": "21.10",
+         "hotels": "67.75",
+         "backpacker": "36.46",
+         "price_index": "36.27"
+      },
+      {
+         "city": "Ciudad del Carmen",
+         "hostels": "24.74",
+         "hotels": "51.37",
+         "backpacker": "41.45",
+         "price_index": "34.39"
+      },
+      {
+         "city": "Cuernavaca",
+         "hostels": "32.53",
+         "hotels": "71.07",
+         "backpacker": "49.08",
+         "price_index": "34.92"
+      },
+      {
+         "city": "Ecatepec",
+         "hostels": "22.67",
+         "hotels": "94.55",
+         "backpacker": "42.48",
+         "price_index": "38.16"
+      },
+      {
+         "city": "Guadalajara",
+         "hostels": "20.17",
+         "hotels": "48.79",
+         "backpacker": "36.30",
+         "price_index": "28.14"
+      },
+      {
+         "city": "Guanajuato",
+         "hostels": "27.26",
+         "hotels": "64.20",
+         "backpacker": "44.18",
+         "price_index": "37.36"
+      },
+      {
+         "city": "Hermosillo",
+         "hostels": "24.12",
+         "hotels": "42.76",
+         "backpacker": "39.72",
+         "price_index": "28.24"
+      },
+      {
+         "city": "Irapuato",
+         "hostels": "27.26",
+         "hotels": "77.56",
+         "backpacker": "42.20",
+         "price_index": "35.35"
+      },
+      {
+         "city": "Leon",
+         "hostels": "20.41",
+         "hotels": "51.74",
+         "backpacker": "36.51",
+         "price_index": "29.80"
+      },
+      {
+         "city": "Matamoros",
+         "hostels": "25.67",
+         "hotels": "82.00",
+         "backpacker": "42.67",
+         "price_index": "?"
+      },
+      {
+         "city": "Mazatlan",
+         "hostels": "26.95",
+         "hotels": "74.13",
+         "backpacker": "43.42",
+         "price_index": "?"
+      },
+      {
+         "city": "Merida",
+         "hostels": "20.51",
+         "hotels": "51.87",
+         "backpacker": "35.88",
+         "price_index": "30.75"
+      },
+      {
+         "city": "Mexicali",
+         "hostels": "20.45",
+         "hotels": "57.32",
+         "backpacker": "42.96",
+         "price_index": "35.72"
+      },
+      {
+         "city": "Mexico City",
+         "hostels": "20.00",
+         "hotels": "62.35",
+         "backpacker": "36.74",
+         "price_index": "34.19"
+      },
+      {
+         "city": "Monterrey",
+         "hostels": "12.00",
+         "hotels": "61.15",
+         "backpacker": "28.94",
+         "price_index": "31.89"
+      },
+      {
+         "city": "Morelia",
+         "hostels": "23.12",
+         "hotels": "52.30",
+         "backpacker": "38.86",
+         "price_index": "30.68"
+      },
+      {
+         "city": "Nuevo Laredo",
+         "hostels": "44.67",
+         "hotels": "69.97",
+         "backpacker": "?",
+         "price_index": "?"
+      },
+      {
+         "city": "Playa del Carmen",
+         "hostels": "20.51",
+         "hotels": "104.91",
+         "backpacker": "35.59",
+         "price_index": "46.88"
+      },
+      {
+         "city": "Puebla",
+         "hostels": "20.51",
+         "hotels": "52.30",
+         "backpacker": "36.55",
+         "price_index": "31.28"
+      },
+      {
+         "city": "Puerto Vallarta",
+         "hostels": "27.54",
+         "hotels": "123.37",
+         "backpacker": "47.41",
+         "price_index": "51.74"
+      },
+      {
+         "city": "Queretaro",
+         "hostels": "22.73",
+         "hotels": "54.11",
+         "backpacker": "40.97",
+         "price_index": "30.71"
+      },
+      {
+         "city": "Reynosa",
+         "hostels": "39.94",
+         "hotels": "87.31",
+         "backpacker": "61.08",
+         "price_index": "40.23"
+      },
+      {
+         "city": "Saltillo",
+         "hostels": "31.59",
+         "hotels": "50.70",
+         "backpacker": "48.27",
+         "price_index": "29.84"
+      },
+      {
+         "city": "San Luis Potosi",
+         "hostels": "29.60",
+         "hotels": "66.47",
+         "backpacker": "47.56",
+         "price_index": "31.98"
+      },
+      {
+         "city": "Tijuana",
+         "hostels": "20.93",
+         "hotels": "112.00",
+         "backpacker": "39.71",
+         "price_index": "49.06"
+      },
+      {
+         "city": "Toluca",
+         "hostels": "22.35",
+         "hotels": "61.34",
+         "backpacker": "38.73",
+         "price_index": "33.25"
+      },
+      {
+         "city": "Tulum",
+         "hostels": "25.00",
+         "hotels": "119.33",
+         "backpacker": "43.39",
+         "price_index": "53.48"
+      },
+      {
+         "city": "Tuxtla Gutierrez",
+         "hostels": "20.51",
+         "hotels": "42.66",
+         "backpacker": "34.56",
+         "price_index": "25.25"
+      },
+      {
+         "city": "Veracruz",
+         "hostels": "21.05",
+         "hotels": "43.34",
+         "backpacker": "36.03",
+         "price_index": "28.71"
+      },
+      {
+         "city": "Xalapa, Veracruz",
+         "hostels": "20.13",
+         "hotels": "41.23",
+         "backpacker": "33.52",
+         "price_index": "26.66"
+      },
+      {
+         "city": "Zapopan",
+         "hostels": "20.17",
+         "hotels": "50.01",
+         "backpacker": "35.02",
+         "price_index": "?"
+      }
+   ]
+}

@@ -1,0 +1,18 @@
+{
+   "country": [
+      {
+         "city": "Montevideo",
+         "hostels": "22.00",
+         "hotels": "72.00",
+         "backpacker": "61.03",
+         "price_index": "50.66"
+      },
+      {
+         "city": "Punta del Este",
+         "hostels": "25.00",
+         "hotels": "97.28",
+         "backpacker": "78.71",
+         "price_index": "86.77"
+      }
+   ]
+}

@@ -1,0 +1,95 @@
+{
+   "country": [
+      {
+         "city": "Alberton",
+         "hostels": "22.55",
+         "hotels": "53.74",
+         "backpacker": "49.44",
+         "price_index": "?"
+      },
+      {
+         "city": "Benoni",
+         "hostels": "24.09",
+         "hotels": "52.79",
+         "backpacker": "54.15",
+         "price_index": "37.73"
+      },
+      {
+         "city": "Cape Town",
+         "hostels": "27.86",
+         "hotels": "75.02",
+         "backpacker": "51.16",
+         "price_index": "44.51"
+      },
+      {
+         "city": "Durban",
+         "hostels": "25.00",
+         "hotels": "60.40",
+         "backpacker": "47.53",
+         "price_index": "40.78"
+      },
+      {
+         "city": "East London",
+         "hostels": "37.53",
+         "hotels": "55.40",
+         "backpacker": "67.01",
+         "price_index": "?"
+      },
+      {
+         "city": "George",
+         "hostels": "25.42",
+         "hotels": "51.28",
+         "backpacker": "45.97",
+         "price_index": "?"
+      },
+      {
+         "city": "Johannesburg",
+         "hostels": "31.29",
+         "hotels": "59.65",
+         "backpacker": "57.32",
+         "price_index": "41.01"
+      },
+      {
+         "city": "Krugersdorp",
+         "hostels": "38.86",
+         "hotels": "74.70",
+         "backpacker": "?",
+         "price_index": "?"
+      },
+      {
+         "city": "Nelspruit",
+         "hostels": "31.42",
+         "hotels": "57.25",
+         "backpacker": "?",
+         "price_index": "?"
+      },
+      {
+         "city": "Pietermaritzburg",
+         "hostels": "41.85",
+         "hotels": "52.52",
+         "backpacker": "76.11",
+         "price_index": "?"
+      },
+      {
+         "city": "Port Elizabeth",
+         "hostels": "25.02",
+         "hotels": "51.36",
+         "backpacker": "48.55",
+         "price_index": "36.35"
+      },
+      {
+         "city": "Pretoria",
+         "hostels": "23.75",
+         "hotels": "52.84",
+         "backpacker": "50.41",
+         "price_index": "?"
+      },
+      {
+         "city": "Rustenburg",
+         "hostels": "39.51",
+         "hotels": "72.47",
+         "backpacker": "64.79",
+         "price_index": "43.63"
+      }
+   ]
+}

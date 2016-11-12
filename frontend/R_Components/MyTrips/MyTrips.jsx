@@ -43,11 +43,12 @@ class MyTrips extends React.Component {
             <div key={i} className='col-xs-12 col-sm-12 col-md-4'>
               <Link to={`/tripDash/${trip._id}`}>
                 <CircleProgressBarWithImageCenter
-                  img='/images/tempLocations/Tokyo.jpeg'
+                  img={`//maps.googleapis.com/maps/api/staticmap?center=${trip.to.geometry.lat},${trip.to.geometry.lng}&zoom=13&size=400x400&maptype=roadmap&key=AIzaSyDa8ZRyg_iOyMDRf7nM8sWp_6vLgy7mYLE`}
                   _id={trip._id}
                   mountId={trip.to.location.replace(/[\s,]/g, '')}
                   dest={trip.to.location}
                   budget={trip.meta.budget}
+                  saved={trip.meta.saved}
                   tripDate={trip.tripDate}
                   color='#aae444'
                   strokeWidth='4' />

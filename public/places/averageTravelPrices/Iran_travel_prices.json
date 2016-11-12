@@ -1,0 +1,46 @@
+{
+   "country": [
+      {
+         "city": "Dnipropetrovsk",
+         "hostels": "24.00",
+         "hotels": "46.13",
+         "backpacker": "37.53",
+         "price_index": "25.40"
+      },
+      {
+         "city": "Donetsk",
+         "hostels": "39.49",
+         "hotels": "63.45",
+         "backpacker": "66.02",
+         "price_index": "?"
+      },
+      {
+         "city": "Kharkiv",
+         "hostels": "20.04",
+         "hotels": "26.31",
+         "backpacker": "32.04",
+         "price_index": "18.41"
+      },
+      {
+         "city": "Kiev",
+         "hostels": "20.00",
+         "hotels": "38.43",
+         "backpacker": "33.40",
+         "price_index": "24.70"
+      },
+      {
+         "city": "Lviv",
+         "hostels": "21.69",
+         "hotels": "32.70",
+         "backpacker": "32.99",
+         "price_index": "18.98"
+      },
+      {
+         "city": "Odesa",
+         "hostels": "20.26",
+         "hotels": "27.38",
+         "backpacker": "36.15",
+         "price_index": "22.50"
+      }
+   ]
+}

@@ -1,0 +1,207 @@
+{
+   "country": [
+      {
+         "city": "Acheres",
+         "hostels": "34.82",
+         "hotels": "99.07",
+         "backpacker": "107.88",
+         "price_index": "115.17"
+      },
+      {
+         "city": "Aix-en-provence",
+         "hostels": "46.76",
+         "hotels": "108.00",
+         "backpacker": "103.78",
+         "price_index": "87.91"
+      },
+      {
+         "city": "Amiens",
+         "hostels": "45.03",
+         "hotels": "77.14",
+         "backpacker": "91.84",
+         "price_index": "?"
+      },
+      {
+         "city": "Angers",
+         "hostels": "34.20",
+         "hotels": "81.98",
+         "backpacker": "82.31",
+         "price_index": "?"
+      },
+      {
+         "city": "Annecy",
+         "hostels": "39.23",
+         "hotels": "114.15",
+         "backpacker": "90.91",
+         "price_index": "?"
+      },
+      {
+         "city": "Antibes",
+         "hostels": "30.40",
+         "hotels": "88.69",
+         "backpacker": "75.41",
+         "price_index": "?"
+      },
+      {
+         "city": "Avignon",
+         "hostels": "31.63",
+         "hotels": "111.05",
+         "backpacker": "79.40",
+         "price_index": "79.68"
+      },
+      {
+         "city": "Bordeaux",
+         "hostels": "32.57",
+         "hotels": "80.78",
+         "backpacker": "83.22",
+         "price_index": "?"
+      },
+      {
+         "city": "Boulogne-billancourt",
+         "hostels": "36.33",
+         "hotels": "102.04",
+         "backpacker": "98.58",
+         "price_index": "99.67"
+      },
+      {
+         "city": "Brest",
+         "hostels": "21.39",
+         "hotels": "78.07",
+         "backpacker": "69.10",
+         "price_index": "76.66"
+      },
+      {
+         "city": "Grenoble",
+         "hostels": "34.45",
+         "hotels": "70.56",
+         "backpacker": "81.55",
+         "price_index": "66.41"
+      },
+      {
+         "city": "Guyancourt",
+         "hostels": "9.00",
+         "hotels": "140.88",
+         "backpacker": "58.52",
+         "price_index": "?"
+      },
+      {
+         "city": "Le Mans",
+         "hostels": "36.37",
+         "hotels": "74.36",
+         "backpacker": "86.54",
+         "price_index": "58.65"
+      },
+      {
+         "city": "Lille",
+         "hostels": "20.26",
+         "hotels": "81.06",
+         "backpacker": "67.16",
+         "price_index": "66.92"
+      },
+      {
+         "city": "Lyon",
+         "hostels": "35.22",
+         "hotels": "70.83",
+         "backpacker": "85.17",
+         "price_index": "64.75"
+      },
+      {
+         "city": "Marseille",
+         "hostels": "34.80",
+         "hotels": "84.59",
+         "backpacker": "80.28",
+         "price_index": "67.29"
+      },
+      {
+         "city": "Montpellier",
+         "hostels": "33.77",
+         "hotels": "82.18",
+         "backpacker": "79.56",
+         "price_index": "72.27"
+      },
+      {
+         "city": "Mulhouse",
+         "hostels": "36.84",
+         "hotels": "90.06",
+         "backpacker": "93.61",
+         "price_index": "77.60"
+      },
+      {
+         "city": "Nancy",
+         "hostels": "38.28",
+         "hotels": "78.31",
+         "backpacker": "87.77",
+         "price_index": "79.87"
+      },
+      {
+         "city": "Nantes",
+         "hostels": "34.58",
+         "hotels": "64.27",
+         "backpacker": "83.78",
+         "price_index": "62.40"
+      },
+      {
+         "city": "Nice",
+         "hostels": "28.14",
+         "hotels": "89.37",
+         "backpacker": "82.11",
+         "price_index": "82.50"
+      },
+      {
+         "city": "Paris",
+         "hostels": "39.08",
+         "hotels": "117.94",
+         "backpacker": "94.67",
+         "price_index": "85.94"
+      },
+      {
+         "city": "Pau",
+         "hostels": "31.81",
+         "hotels": "69.78",
+         "backpacker": "76.39",
+         "price_index": "?"
+      },
+      {
+         "city": "Reims",
+         "hostels": "37.00",
+         "hotels": "81.66",
+         "backpacker": "94.73",
+         "price_index": "69.33"
+      },
+      {
+         "city": "Rennes",
+         "hostels": "31.24",
+         "hotels": "70.60",
+         "backpacker": "78.54",
+         "price_index": "64.06"
+      },
+      {
+         "city": "Saint-Etienne",
+         "hostels": "39.40",
+         "hotels": "93.75",
+         "backpacker": "84.13",
+         "price_index": "75.46"
+      },
+      {
+         "city": "Strasbourg",
+         "hostels": "37.11",
+         "hotels": "84.68",
+         "backpacker": "86.09",
+         "price_index": "71.53"
+      },
+      {
+         "city": "Toulon",
+         "hostels": "42.81",
+         "hotels": "85.41",
+         "backpacker": "93.42",
+         "price_index": "71.18"
+      },
+      {
+         "city": "Toulouse",
+         "hostels": "39.63",
+         "hotels": "72.20",
+         "backpacker": "92.18",
+         "price_index": "74.33"
+      }
+   ]
+}

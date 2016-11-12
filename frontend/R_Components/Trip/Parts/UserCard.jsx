@@ -24,7 +24,7 @@ class UserCard extends React.Component {
   componentDidMount () {}
 
   componentWillReceiveProps (nextProps) {
-    console.log('CWRP', nextProps)
+    // console.log('CWRP', nextProps)
     this.setState({trip: nextProps.data})
   }
 
@@ -36,15 +36,13 @@ class UserCard extends React.Component {
     }
     console.log(JSON.stringify(this.props, null, 3))
     let {trip} = this.state
-    console.log(trip)
+    // console.log(trip)
     return (
       <section className='userTripCard' style={styles.userTripCard}>
         {/* <pre><code>{JSON.stringify(this.props, null, 3)}</code></pre> */}
         <DisplayPhoto />
         <div>
-          <p>{userJSON.displayName || ''}
-          </p>
-          <span>{trip.to.location || ''}</span>
+          <p>{userJSON.displayName || ''} is planning a trip to {trip.to.location}</p>
         </div>
         <TripBudget
           budget={trip.meta.budget}

@@ -1,0 +1,130 @@
+{
+   "country": [
+      {
+         "city": "Ashdod",
+         "hostels": "22.00",
+         "hotels": "108.00",
+         "backpacker": "76.93",
+         "price_index": "?"
+      },
+      {
+         "city": "Bat Yam",
+         "hostels": "24.00",
+         "hotels": "105.56",
+         "backpacker": "74.08",
+         "price_index": "72.54"
+      },
+      {
+         "city": "Beersheba",
+         "hostels": "56.00",
+         "hotels": "172.00",
+         "backpacker": "110.00",
+         "price_index": "98.64"
+      },
+      {
+         "city": "Bet Shemesh",
+         "hostels": "60.00",
+         "hotels": "128.99",
+         "backpacker": "112.97",
+         "price_index": "?"
+      },
+      {
+         "city": "Hadera",
+         "hostels": "20.04",
+         "hotels": "113.50",
+         "backpacker": "73.94",
+         "price_index": "76.97"
+      },
+      {
+         "city": "Haifa",
+         "hostels": "20.35",
+         "hotels": "90.00",
+         "backpacker": "72.39",
+         "price_index": "76.29"
+      },
+      {
+         "city": "Herzliya",
+         "hostels": "20.04",
+         "hotels": "113.25",
+         "backpacker": "77.17",
+         "price_index": "92.33"
+      },
+      {
+         "city": "Hod Hasharon",
+         "hostels": "20.04",
+         "hotels": "101.41",
+         "backpacker": "79.63",
+         "price_index": "72.19"
+      },
+      {
+         "city": "Holon",
+         "hostels": "22.00",
+         "hotels": "106.60",
+         "backpacker": "77.70",
+         "price_index": "?"
+      },
+      {
+         "city": "Jerusalem",
+         "hostels": "23.00",
+         "hotels": "104.83",
+         "backpacker": "76.38",
+         "price_index": "76.51"
+      },
+      {
+         "city": "Nazareth",
+         "hostels": "20.35",
+         "hotels": "91.00",
+         "backpacker": "74.19",
+         "price_index": "66.92"
+      },
+      {
+         "city": "Netanya",
+         "hostels": "20.04",
+         "hotels": "108.92",
+         "backpacker": "71.97",
+         "price_index": "80.99"
+      },
+      {
+         "city": "Petah Tikva",
+         "hostels": "20.04",
+         "hotels": "102.83",
+         "backpacker": "73.71",
+         "price_index": "?"
+      },
+      {
+         "city": "Raanana",
+         "hostels": "20.04",
+         "hotels": "110.65",
+         "backpacker": "71.20",
+         "price_index": "?"
+      },
+      {
+         "city": "Ramat Gan",
+         "hostels": "20.04",
+         "hotels": "108.85",
+         "backpacker": "74.99",
+         "price_index": "79.37"
+      },
+      {
+         "city": "Rehovot",
+         "hostels": "21.00",
+         "hotels": "104.77",
+         "backpacker": "76.40",
+         "price_index": "77.19"
+      },
+      {
+         "city": "Rishon Leziyyon",
+         "hostels": "22.00",
+         "hotels": "104.50",
+         "backpacker": "79.41",
+         "price_index": "?"
+      },
+      {
+         "city": "Tel Aviv-yafo",
+         "hostels": "61.00",
+         "hotels": "116.07",
+         "backpacker": "123.53",
+         "price_index": "80.68"
+      }
+   ]
+}

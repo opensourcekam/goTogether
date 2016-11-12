@@ -1,0 +1,18 @@
+{
+   "country": [
+      {
+         "city": "Esfahan",
+         "hostels": "57.00",
+         "hotels": "119.20",
+         "backpacker": "85.77",
+         "price_index": "48.82"
+      },
+      {
+         "city": "Tehran",
+         "hostels": "41.24",
+         "hotels": "122.14",
+         "backpacker": "67.75",
+         "price_index": "52.93"
+      }
+   ]
+}

@@ -1,0 +1,46 @@
+{
+   "country": [
+      {
+         "city": "Bar",
+         "hostels": "21.20",
+         "hotels": "62.93",
+         "backpacker": "47.29",
+         "price_index": "46.04"
+      },
+      {
+         "city": "Budva",
+         "hostels": "24.77",
+         "hotels": "61.77",
+         "backpacker": "53.47",
+         "price_index": "49.80"
+      },
+      {
+         "city": "Herceg Novi",
+         "hostels": "26.13",
+         "hotels": "63.42",
+         "backpacker": "53.85",
+         "price_index": "?"
+      },
+      {
+         "city": "Niksic",
+         "hostels": "21.75",
+         "hotels": "108.00",
+         "backpacker": "?",
+         "price_index": "53.91"
+      },
+      {
+         "city": "Podgorica",
+         "hostels": "24.29",
+         "hotels": "66.98",
+         "backpacker": "46.16",
+         "price_index": "39.42"
+      },
+      {
+         "city": "Tivat",
+         "hostels": "23.32",
+         "hotels": "59.66",
+         "backpacker": "50.18",
+         "price_index": "42.59"
+      }
+   ]
+}

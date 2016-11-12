@@ -1,0 +1,67 @@
+{
+   "country": [
+      {
+         "city": "Antwerp",
+         "hostels": "21.39",
+         "hotels": "80.49",
+         "backpacker": "76.13",
+         "price_index": "80.64"
+      },
+      {
+         "city": "Brugge",
+         "hostels": "22.40",
+         "hotels": "97.94",
+         "backpacker": "86.59",
+         "price_index": "89.87"
+      },
+      {
+         "city": "Brussels",
+         "hostels": "21.39",
+         "hotels": "89.03",
+         "backpacker": "73.13",
+         "price_index": "80.01"
+      },
+      {
+         "city": "Gent",
+         "hostels": "28.14",
+         "hotels": "95.78",
+         "backpacker": "83.27",
+         "price_index": "92.86"
+      },
+      {
+         "city": "Hasselt",
+         "hostels": "42.20",
+         "hotels": "88.93",
+         "backpacker": "99.47",
+         "price_index": "82.22"
+      },
+      {
+         "city": "Leuven",
+         "hostels": "52.03",
+         "hotels": "100.36",
+         "backpacker": "102.93",
+         "price_index": "83.25"
+      },
+      {
+         "city": "Liege",
+         "hostels": "22.97",
+         "hotels": "89.18",
+         "backpacker": "71.73",
+         "price_index": "79.82"
+      },
+      {
+         "city": "Ostend",
+         "hostels": "32.65",
+         "hotels": "105.26",
+         "backpacker": "89.39",
+         "price_index": "95.39"
+      },
+      {
+         "city": "Roeselare",
+         "hostels": "36.44",
+         "hotels": "97.01",
+         "backpacker": "89.57",
+         "price_index": "67.45"
+      }
+   ]
+}

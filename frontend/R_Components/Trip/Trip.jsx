@@ -33,10 +33,13 @@ class Trip extends React.Component {
           <UserCard data={this.state.trip} />
         </aside>
         <section className='tripCards col-xs-12 col-sm-12 col-md-6'>
-          <GetThere />
+          <GetThere data={this.state.trip}/>
           <BookAPlace />
           <ThingsToDo />
         </section>
+        {/* <section>
+          <p>Average price a day for {this.getAverage(this.state.trip.to.location)}</p>
+        </section> */}
       </div>
     )
   }

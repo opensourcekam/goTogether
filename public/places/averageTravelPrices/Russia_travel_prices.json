@@ -1,0 +1,144 @@
+{
+   "country": [
+      {
+         "city": "Adana",
+         "hostels": "35.00",
+         "hotels": "39.74",
+         "backpacker": "57.51",
+         "price_index": "27.66"
+      },
+      {
+         "city": "Afyon",
+         "hostels": "49.29",
+         "hotels": "124.30",
+         "backpacker": "72.22",
+         "price_index": "?"
+      },
+      {
+         "city": "Alanya",
+         "hostels": "20.77",
+         "hotels": "68.89",
+         "backpacker": "42.49",
+         "price_index": "41.09"
+      },
+      {
+         "city": "Ankara",
+         "hostels": "30.40",
+         "hotels": "55.71",
+         "backpacker": "53.81",
+         "price_index": "34.80"
+      },
+      {
+         "city": "Antalya",
+         "hostels": "21.28",
+         "hotels": "45.82",
+         "backpacker": "42.73",
+         "price_index": "31.74"
+      },
+      {
+         "city": "Aydin",
+         "hostels": "61.65",
+         "hotels": "109.66",
+         "backpacker": "85.73",
+         "price_index": "51.84"
+      },
+      {
+         "city": "Balikesir",
+         "hostels": "43.19",
+         "hotels": "43.19",
+         "backpacker": "66.73",
+         "price_index": "31.35"
+      },
+      {
+         "city": "Bodrum",
+         "hostels": "30.04",
+         "hotels": "83.20",
+         "backpacker": "60.90",
+         "price_index": "56.05"
+      },
+      {
+         "city": "Bursa",
+         "hostels": "57.96",
+         "hotels": "85.31",
+         "backpacker": "83.70",
+         "price_index": "41.16"
+      },
+      {
+         "city": "Canakkale",
+         "hostels": "23.03",
+         "hotels": "58.32",
+         "backpacker": "41.42",
+         "price_index": "?"
+      },
+      {
+         "city": "Denizli",
+         "hostels": "20.26",
+         "hotels": "55.16",
+         "backpacker": "40.48",
+         "price_index": "32.83"
+      },
+      {
+         "city": "Fethiye",
+         "hostels": "22.26",
+         "hotels": "66.87",
+         "backpacker": "45.65",
+         "price_index": "45.40"
+      },
+      {
+         "city": "Gaziantep",
+         "hostels": "38.15",
+         "hotels": "42.72",
+         "backpacker": "58.96",
+         "price_index": "?"
+      },
+      {
+         "city": "Istanbul",
+         "hostels": "20.82",
+         "hotels": "48.19",
+         "backpacker": "43.92",
+         "price_index": "33.08"
+      },
+      {
+         "city": "Izmir",
+         "hostels": "33.18",
+         "hotels": "47.86",
+         "backpacker": "56.04",
+         "price_index": "31.62"
+      },
+      {
+         "city": "Konya",
+         "hostels": "39.83",
+         "hotels": "61.34",
+         "backpacker": "59.92",
+         "price_index": "32.73"
+      },
+      {
+         "city": "Mugla",
+         "hostels": "43.35",
+         "hotels": "84.56",
+         "backpacker": "69.97",
+         "price_index": "42.72"
+      },
+      {
+         "city": "Samsun",
+         "hostels": "56.10",
+         "hotels": "72.75",
+         "backpacker": "82.82",
+         "price_index": "41.19"
+      },
+      {
+         "city": "Tekirdag",
+         "hostels": "55.51",
+         "hotels": "55.51",
+         "backpacker": "81.49",
+         "price_index": "?"
+      },
+      {
+         "city": "Trabzon",
+         "hostels": "88.47",
+         "hotels": "89.48",
+         "backpacker": "?",
+         "price_index": "?"
+      }
+   ]
+}

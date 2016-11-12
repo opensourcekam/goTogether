@@ -1,0 +1,11 @@
+{
+   "country": [
+      {
+         "city": "Seoul",
+         "hostels": "30.54",
+         "hotels": "94.00",
+         "backpacker": "58.23",
+         "price_index": "57.60"
+      }
+   ]
+}
