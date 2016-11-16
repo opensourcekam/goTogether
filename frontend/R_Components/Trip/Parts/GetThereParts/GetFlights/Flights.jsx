@@ -19,6 +19,7 @@ class Flights extends React.Component {
     this.getFlights = this.getFlights.bind(this)
     this.setFlights = this.setFlights.bind(this)
   }
+
   setFlights (flights) {
     console.log('Set', flights)
     this.setState({itineraries: flights.itineraries})
@@ -33,7 +34,8 @@ class Flights extends React.Component {
       'originplace': this.props.from.skyscanner.CityId,
       'destinationplace': this.props.to.skyscanner.CityId,
       'outbounddate': this.props.date,
-      'adults': formattedAdults
+      'adults': formattedAdults,
+      '_id': this.props._id
     }
 
     console.log('GET PLANES', data)
@@ -41,6 +43,7 @@ class Flights extends React.Component {
     axios.post('/api/v1/flights/livePrices/poll', data)
           .then((response) => {
             console.log(JSON.stringify(response.data, null, 3))
+            console.log(response)
             if (response.data) {
               this.setFlights(response.data)
             }
@@ -52,6 +55,9 @@ class Flights extends React.Component {
 
   componentDidMount () {
     console.log('FLIGHTS PROPS', this.props)
+    if (this.props.itineraries.length) {
+      this.setState({itineraries: this.props.itineraries})
+    }
     this.getFlights()
   }
 
@@ -88,21 +94,20 @@ class Flights extends React.Component {
       )
     })
     return (
-      (this.state.itineraries.length) ?
-        <div className='table-responsive'>
-          <table className='table' style={style.table}>
-            <tbody>
-              <tr>
-                <th>Price</th>
-                <th>Agent</th>
-                <th>Link</th>
-              </tr>
-              {childElements}
-            </tbody>
-          </table>
-        </div>
+      (this.state.itineraries.length)
+      ? <div className='table-responsive'>
+        <table className='table' style={style.table}>
+          <tbody>
+            <tr>
+              <th>Price</th>
+              <th>Agent</th>
+              <th>Link</th>
+            </tr>
+            {childElements}
+          </tbody>
+        </table>
+      </div>
         : <PlaneSpinLoader />
-
     )
   }
 }
@@ -113,7 +118,9 @@ Flights.propTypes = {
   from: object.isRequired,
   to: object.isRequired,
   date: string.isRequired,
-  invitees: array.isRequired
+  invitees: array.isRequired,
+  _id: string.isRequired,
+  itineraries: array.isRequired
 }
 
 module.exports = Flights

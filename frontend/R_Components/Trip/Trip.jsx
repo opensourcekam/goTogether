@@ -23,7 +23,7 @@ class Trip extends React.Component {
         console.log(trip)
         return this.setState({trip: trip.data})
       }).catch((err) => {
-        throw new Error('Could not get trip', err)
+        console.log(err)
       })
     }
   }

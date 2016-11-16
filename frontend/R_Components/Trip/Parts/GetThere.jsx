@@ -1,5 +1,5 @@
 const React = require('react')
-const Plane = require('./GetThereParts/new/Plane')
+const Plane = require('./GetThereParts/Plane')
 // const Train = require('./GetThereParts/Train')
 // const Bus = require('./GetThereParts/Bus')
 
