@@ -1,6 +1,6 @@
 module.exports = function (mongoose) {
   const Schema = mongoose.Schema
-  return new Schema({
+  let TripSchema = new Schema({
     _creator: {
       type: Number,
       ref: 'User'
@@ -19,10 +19,28 @@ module.exports = function (mongoose) {
           type: Number,
           default: 0
         }
+      },
+      skyscanner: {
+        PlaceId: String,
+        PlaceName: String,
+        CountryId: String,
+        RegionId: String,
+        CityId: String,
+        CountryName: String
       }
     },
     from: {
-      type: String
+      location: {
+        type: String
+      },
+      skyscanner: {
+        PlaceId: String,
+        PlaceName: String,
+        CountryId: String,
+        RegionId: String,
+        CityId: String,
+        CountryName: String
+      }
     },
     tripDate: {
       type: Date,
@@ -90,6 +108,8 @@ module.exports = function (mongoose) {
         type: Boolean,
         default: false
       },
+      activities: [
+      ],
       invitees: [
         {
           type: Schema.Types.ObjectId,
@@ -98,4 +118,15 @@ module.exports = function (mongoose) {
       ]
     }
   }, {collection: 'Trips'})
+
+  // TripSchema.pre('save', true, (next, done) => {
+  // // calling next kicks off the next middleware in parallel
+  // next()
+  // })
+  //
+  // TripSchema.post('save', (doc) => {
+  //   console.log('%s has been saved', doc._id)
+  // })
+
+  return TripSchema
 }
