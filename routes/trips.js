@@ -31,6 +31,15 @@ module.exports = (express, app, router, mongoose, TripModel, Trip, User) => {
     if (req.params._id) {
       let promise = Trip.findOne({'_id': req.params._id}).exec()
 
+      promise.then((doc) => {
+        res.json(doc)
+      })
+
+      promise.catch((err) => {
+        console.log('Does exist')
+        res.json(err)
+      })
+
       promise.then((trip) => {
         res.json(trip)
       })
@@ -89,7 +98,7 @@ module.exports = (express, app, router, mongoose, TripModel, Trip, User) => {
   })
 
   // Reset database
-  router.get('/resetDB/1', (req, res, next) => {
+  router.delete('/resetDB', (req, res, next) => {
     Trip.remove({}, function (err) {
       res.json([{}])
     })

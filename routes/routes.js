@@ -59,23 +59,22 @@ module.exports = function (express, app, router, passport, config, User, Trip) {
     })
   })
 
-  router.get('/userById/:profileId', (req, res, next) => {
-    console.log(`{'profileID': ${req.params.profileId}}`)
-
-    const promise = User.findOne({'profileID': req.params.profileId}).populate('trips').exec()
-
-    promise.then((doc) => {
-      res.json(doc)
-    })
-
-    promise.catch((err) => {
-      console.log('Does exist')
-      res.json(err)
-    })
-  })
+  // router.get('/userById/:profileId', (req, res, next) => {
+  //   console.log(`{'profileID': ${req.params.profileId}}`)
+  //
+  //   const promise = User.findOne({'profileID': req.params.profileId}).populate('flights').exec()
+  //
+  //   promise.then((doc) => {
+  //     res.json(doc)
+  //   })
+  //
+  //   promise.catch((err) => {
+  //     console.log('Does exist')
+  //     res.json(err)
+  //   })
+  // })
 
   router.get('/user/trips/:profileId', (req, res, next) => {
-    console.log(`{'profileID': ${req.user}}`)
 
     const promise = User.findOne({'profileID': req.params.profileId}).populate('trips').exec()
 
