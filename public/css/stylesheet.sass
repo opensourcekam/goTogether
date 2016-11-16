@@ -32,6 +32,7 @@ header
     text-decoration: none
 
 main
+  overflow: hidden
   &.chatroom
     width: 400px
     height: inherit
@@ -296,7 +297,7 @@ span
   margin-bottom: 20px
   overflow: scroll
   box-shadow: 0px 0px 20px 5px #A0A0Af
-  border-top-right-radius: 10%
+  // border-top-right-radius: 10%
   h2
     margin-top: 20px
     margin-bottom: 10px
@@ -374,6 +375,162 @@ li.geosuggest__item
       outline: none
       transition: background .2s
 
+/* CubeLoader*/
+
+.lt-cube-grid
+  width: 120px
+  height: 120px
+  margin: 10% auto
+  .lt-cube
+    width: 20px
+    height: 20px
+    -webkit-animation: lt-ScaleDelay 1.5s infinite ease-in-out
+    animation: lt-ScaleDelay 1.5s infinite ease-in-out
+    background-color: pink
+    float: left
+  .lt-cube1
+    width: 20px
+    height: 20px
+    -webkit-animation: lt-ScaleDelay 1.5s infinite ease-in-out
+    animation: lt-ScaleDelay 1.5s infinite ease-in-out
+    background-color: white
+    float: right
+  .c1
+    -webkit-animation-delay: 0.2s
+    animation-delay: 0.2s
+  .c2
+    -webkit-animation-delay: 0.3s
+    animation-delay: 0.3s
+  .c3
+    -webkit-animation-delay: 0.4s
+    animation-delay: 0.4s
+  .c4
+    -webkit-animation-delay: 0.5s
+    animation-delay: 0.5s
+  .c5
+    -webkit-animation-delay: 0.6s
+    animation-delay: 0.6s
+  .c6
+    -webkit-animation-delay: 0.7s
+    animation-delay: 0.7s
+  .c7
+    -webkit-animation-delay: 0.8s
+    animation-delay: 0.8s
+  .c8
+    -webkit-animation-delay: 0.9s
+    animation-delay: 0.9s
+  .c9
+    -webkit-animation-delay: 0.10s
+    animation-delay: 0.10s
+
+@-webkit-keyframes lt-ScaleDelay
+  0%, 70%, 100%
+    -webkit-transform: scale3D(10, 20, 30)
+    transform: scale3D(1, 1, 1)
+
+  35%
+    -webkit-transform: scale3D(0, 0, 1)
+    transform: scale3D(0, 0, 1)
+
+
+@keyframes lt-ScaleDelay
+  0%, 70%, 100%
+    -webkit-transform: scale3D(1, 1, 1)
+    transform: scale3D(1, 1, 1)
+
+  35%
+    -webkit-transform: scale3D(0, 0, 1)
+    transform: scale3D(0, 0, 1)
+
+
+/* Fin Animation */
+
+/*PLANE*/
+.wings
+  background: white
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  width: 120px
+  height: 3px
+  animation: wings 1s infinite ease
+  animation-timing-function: cubic-bezier(0.57, -0.28, 0.37, 0.88)
+
+.circle
+  width: 16px
+  height: 16px
+  border-radius: 100%
+  background: #F3721C
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  animation: circle_ani .5 infinate ease
+
+.arc
+  width: 40px
+  height: 40px
+  border-radius: 50%
+  border: solid 5px #dfdfc2
+  position: absolute
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  border-left: solid 3px rgba(223, 223, 194, 0)
+  border-right: solid 3px rgba(223, 223, 194, 0)
+  border-bottom: solid 3px rgba(223, 223, 194, 0)
+  animation: spin2 1s infinite ease
+
+.arc2
+  width: 60px
+  height: 60px
+  border-radius: 50%
+  border: solid 5px #ffeb4e
+  position: absolute
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  border-left: solid 3px rgba(255, 235, 78, 0)
+  border-right: solid 3px rgba(255, 235, 78, 0)
+  border-bottom: solid 3px rgba(255, 235, 78, 0)
+  transform: rotateZ(180deg)
+  animation: spin 1s infinite ease
+
+@keyframes circle_ani
+  0%, 100%
+    transform: scale(10, 10)
+
+  50%
+    transform: scale(-10, -10)
+
+
+@keyframes spin
+  0%, 100%
+    transform: translate(-50%, -50%) rotateZ(180deg)
+
+  50%
+    transform: translate(-50%, -50%) rotateZ(-900deg)
+
+
+@keyframes spin2
+  0%, 100%
+    transform: translate(-50%, -50%) rotateZ(-180deg)
+
+  50%
+    transform: translate(-50%, -50%) rotateZ(900deg)
+
+
+@keyframes wings
+  0%, 100%
+    transform: translate(-50%, -50%) rotateZ(-4deg)
+
+  50%
+    transform: translate(-50%, -50%) rotateZ(4deg)
+
+/*PLANE*/
 
 /* Smartphones (portrait and landscape) -----------
 @media screen and (max-width: 680px)
@@ -409,3 +566,8 @@ li.geosuggest__item
   ul.geosuggest__suggests
     width: 100%
     position: initial
+
+// @media screen and (max-width: 1000px)
+//   div.wrapper
+//     width: 100%
+//     height: 100%
