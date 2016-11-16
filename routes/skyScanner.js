@@ -1,52 +1,83 @@
 // https://github.com/jkbrzt/httpie
 
 module.exports = function (express, app, router, config) {
-  const SkyScanner = require('../api/skyScanner/Sky')
-  const skyScan = new SkyScanner(config)
-
-  const params = {
-    'market': 'UK',
-    'currency': 'GBP',
-    'locale': 'en-GB',
-    'originPlace': '200',
-    'destinationPlace': 'MRS-sky',
-    'outboundPartialDate': '2016-10',
-    'inboundPartialDate': '2016-11',
-    'q': 'Mars',
-    callback: (json) => json
-  }
+  const skyscanner = require('skyscannerjs')
+  const api = new skyscanner.API('prtl6749387986743898559646983194')
 
   router.get('/', (req, res, next) => {
-    console.log(req)
     res.json({'APIV1': 'true'})
   })
 
-  router.get(`/locales`, (req, res, next) => {
-    skyScan.getLocals().then((response) => {
-      res.json(response.data)
+  router.get('/locationAutosuggest/:location', (req, res, next) => {
+    // GET - locationAutosuggest with this.props.country// or store in database when trip is created
+      // RETURNS - [{},{},{}] arr[0] is clostest match to req.body.location
+    api.locationAutosuggest({market: 'US', currency: 'USD', locale: 'en-US', query: req.params.location}).then((response) => {
+      const places = response.data.Places
+      console.log(places)
+      res.json(places)
     }).catch((err) => {
       console.log(err)
-      res.json({})
+      res.json({'err': err.status})
     })
   })
 
-  router.get(`/testCheap`, (req, res, next) => {
-    skyScan.getCheapFlights(params).then((response) => {
-      res.json(response.data)
-    }).catch((err) => {
-      console.log(err)
-      res.json({})
-    })
-  })
+  router.post('/livePrices/poll', (req, res, next) => {
+    console.log(req.isAuthenticated())
 
-  router.get(`/testAuto`, (req, res, next) => {
-    skyScan.getLocationAutoSuggest(params).then((response) => {
-      res.json(response.data)
-    }).catch((err) => {
-      console.log(err)
-      res.json({})
-    })
-  })
+    // flow of getting ticket prices for user
+    // 1. GET - locationAutosuggest with this.props.country// or store in database when trip is created
+      // RETURNS - [{},{},{}] arr[0] is clostest match to req.body.location
 
-  app.use('/api/v1', router)
+    // 2. GET - livePrices with polled session returns [{},{},{}]
+
+    // 3. Render JSON into trips Component but in -price order as table w/
+        // | cost | provider | date | link |
+        // ---------------------------------
+        // |      |          |      |      |
+        // ---------------------------------
+        // |      |          |      |      |
+        // ---------------------------------
+        // |      |          |      |      |
+        // ---------------------------------
+    // 4. handle if user purchases etc...
+    // rejoyce
+    // repeat for hotels
+    // fix more stuff
+    if (req.isAuthenticated()) {
+      console.log(req.body)
+
+      api.flights.livePrices.session({
+        country: 'UK',
+        currency: 'GBP',
+        locale: 'en-GB',
+        locationSchema: 'Iata',
+        originplace: req.body.originplace,
+        destinationplace: req.body.destinationplace,
+        outbounddate: req.body.outbounddate,
+        adults: parseInt(req.body.adults) || 1
+      }).then((response) => {
+        const location = response.headers.location
+        console.log(`POLL SESSION CREATED ${location}`)
+        // POLL THE FLIGHT SESSION
+        api.flights.livePrices.poll(location).then((response) => {
+          const itineraries = response.data.Itineraries
+          const legs = response.data.legs
+
+          // console.log({'itineraries': itineraries})
+
+          res.json({'itineraries': itineraries.slice(0, 10)})
+        }).catch((err) => {
+          console.log(err)
+          res.json({'err': err.status})
+        })
+      }).catch((err) => {
+        res.json({'err': err.status})
+      })
+    } else {
+      res.json({})
+      next()
+    }
+  }) // router
+
+  app.use('/api/v1/flights', router)
 }

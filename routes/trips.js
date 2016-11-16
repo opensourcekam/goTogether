@@ -1,5 +1,13 @@
 module.exports = (express, app, router, mongoose, TripModel, Trip, User) => {
   // GET ALL
+  // app.use((req, res, next) => {
+  //   if(req.isAuthenticated()){
+  //     next()
+  //   } else {
+  //     res.redirect('/')
+  //   }
+  // })
+  //
   router.get('/trips/all', (req, res, next) => {
     // HTTP GET localhost:8080/api/v1/trip/all
     const promise = Trip.find({}).sort('-created').exec().then((doc) => {
@@ -10,7 +18,7 @@ module.exports = (express, app, router, mongoose, TripModel, Trip, User) => {
   })
 
   router.get('/trips/all/:_creator', (req, res, next) => {
-    // HTTP GET localhost:8080/api/v1/trip/all/1271008379610267
+    // HTTP GET localhost:8080/api/v1/trips/all/1271008379610267
     const promise = Trip.find({'_creator': req.params._creator}).sort('-created').exec().then((trips) => {
       res.json(trips)
     }).catch((err) => {
@@ -34,7 +42,7 @@ module.exports = (express, app, router, mongoose, TripModel, Trip, User) => {
     // HTTP delete localhost:8080/trips/delete/58263fd3d0d9ec8aaee1abe0
     Trip.findOneAndRemove({
       '_id': req.params._id
-    }, function(err, obj) {
+    }, function (err, obj) {
       if (obj !== null && obj !== undefined) {
         res.json({'Trip removed': obj})
       } else {
@@ -42,12 +50,28 @@ module.exports = (express, app, router, mongoose, TripModel, Trip, User) => {
       }
     })
   }).put('/trips/:_id', (req, res, next) => {
-
+    // console.log(req)
     Trip.findById({'_id': req.params._id}).then((doc, err) => {
-      console.log(`This is the doc ${doc}`)
+      console.log(`PUT req on trips/:id ${doc}`)
       if (doc) {
 
-        doc.meta.saved += req.params.amount
+        let update = `UPDATE ${req.body.update.toUpperCase()}`
+
+        switch (update) {
+          case 'UPDATE BUDGET':
+            doc.meta.saved = parseInt(req.body.amount) + parseInt(doc.meta.saved)
+            break
+          case 'UPDATE ACTIVITIES':
+            doc.meta.activities.push(obj)
+            break
+          case 'UPDATE FROM':
+            console.log(req.body.from)
+            doc.from = req.body.from
+            break
+          default:
+            console.log('NO PUT TYPE FOUND')
+            next()
+        }
 
         doc.save((err) => {
           if (err) {
