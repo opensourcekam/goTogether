@@ -116,7 +116,10 @@ module.exports = function (mongoose) {
           ref: 'user'
         }
       ]
-    }
+    },
+    flights: [{
+      type:Schema.Types.Mixed
+    }]
   }, {collection: 'Trips'})
 
   // TripSchema.pre('save', true, (next, done) => {
