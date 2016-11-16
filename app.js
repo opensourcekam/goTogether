@@ -15,7 +15,8 @@ const axios = require('axios')
 // Routers
 const topRouter = express.Router()
 const tripsRouter = express.Router({mergeParams: true})
-const skyScannerRouter = express.Router()
+const skyScanner_flights_Router = express.Router()
+const skyScanner_hotels_Router = express.Router()
 
 app.set('view engine', 'jade')
 app.set('views', path.join(__dirname, 'views'))
@@ -42,7 +43,8 @@ const io = require('socket.io')(server)
 // routes
 require('./routes/routes')(express, app, topRouter, passport, config, User, Trip)
 require('./routes/trips')(express, app, topRouter, mongoose, TripModel, Trip, User)
-require('./routes/skyScanner')(express, app, skyScannerRouter, config)
+require('./routes/skyScanner_flights')(express, app, skyScanner_flights_Router, config, Trip)
+require('./routes/skyScanner_hotels')(express, app, skyScanner_hotels_Router, config, Trip)
 // routes
 
 // passport auth (FB)
