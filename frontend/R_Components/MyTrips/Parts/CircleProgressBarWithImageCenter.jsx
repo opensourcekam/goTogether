@@ -1,6 +1,6 @@
 const React = require('react')
 import { Circle } from 'progressbar.js'
-import { sampleSize } from 'lodash'
+// import { sampleSize } from 'lodash'
 import moment from 'moment'
 
 const style = {
@@ -69,7 +69,7 @@ class CircleProgressBarWithImageCenter extends React.Component {
 
       // Sample to display mockup of completeing trip planning
       // circle.animate(sampleSize(['0.1', '.2', '.3', '.4', '.5', '.6', '.7', '.8', '.9', '1'], 1))
-      let progressPercent = (this.props.saved/ this.props.budget).toFixed(2)
+      let progressPercent = (this.props.saved / this.props.budget).toFixed(2)
 
       circle.animate(progressPercent)
     } else {
@@ -84,7 +84,7 @@ class CircleProgressBarWithImageCenter extends React.Component {
     return (
       <div className='wrapper' data-trip-id={this.props._id} onMouseEnter={this.animateProgress}>
         <img src={this.props.img} />
-        <div id={this.props.mountId}></div>
+        <div id={this.props.mountId} />
         <div style={style.innerDivOverlay}>
           <h2 style={style.h2} id='planningTripBubbleH2'>{this.props.dest}</h2>
           <span>Goal ${this.props.budget}</span>
@@ -106,7 +106,8 @@ CircleProgressBarWithImageCenter.propTypes = {
   budget: number,
   tripDate: string,
   color: string,
-  strokeWidth: string
+  strokeWidth: string,
+  saved: number
 }
 
 module.exports = CircleProgressBarWithImageCenter

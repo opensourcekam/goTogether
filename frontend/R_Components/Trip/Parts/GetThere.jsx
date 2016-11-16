@@ -1,7 +1,7 @@
 const React = require('react')
-const Plane = require('./GetThereParts/Plane')
-const Train = require('./GetThereParts/Train')
-const Bus = require('./GetThereParts/Bus')
+const Plane = require('./GetThereParts/new/Plane')
+// const Train = require('./GetThereParts/Train')
+// const Bus = require('./GetThereParts/Bus')
 
 class GetThere extends React.Component {
   constructor (props) {
@@ -12,15 +12,21 @@ class GetThere extends React.Component {
   render () {
     return (
       <article className='tripCard'>
-        <h2>How are you arriving?</h2>
+        {/* <h2>How are you arriving?</h2> */}
         <div className='card-deck'>
-          <Plane />
-          <Train />
-          <Bus />
+          <Plane data={this.props.data} />
+          {/* <Train />
+          <Bus /> */}
         </div>
       </article>
     )
   }
+}
+
+const { object } = React.PropTypes
+
+GetThere.propTypes = {
+  data: object.isRequired
 }
 
 module.exports = GetThere

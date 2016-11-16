@@ -21,7 +21,7 @@ class Plane extends React.Component {
 
     return (
       <div className='card'>
-        <div className="card-block">Plane</div>
+        <div className='card-block'>Plane</div>
         <img onClick={this.getPlanes} className='card-img-bottom' style={style.img} src={`/images/trip/${iconSRC}`} alt='Card image' />
       </div>
     )

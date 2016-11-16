@@ -1,8 +1,8 @@
 const React = require('react')
 const UserCard = require('./Parts/UserCard')
 const GetThere = require('./Parts/GetThere')
-const BookAPlace = require('./Parts/BookAPlace')
-const ThingsToDo = require('./Parts/ThingsToDo')
+// const BookAPlace = require('./Parts/BookAPlace')
+// const ThingsToDo = require('./Parts/ThingsToDo')
 
 import axios from 'axios'
 
@@ -16,12 +16,14 @@ class Trip extends React.Component {
 
   componentWillMount () {
     const tripId = this.props.routeParams.tripId
-    if(tripId) {
+    console.log(tripId)
+    if (tripId) {
       axios.get(`/api/v1/trips/${tripId}`).then((trip) => {
         console.log('Set trip state')
+        console.log(trip)
         return this.setState({trip: trip.data})
       }).catch((err) => {
-        console.log('no trip found')
+        throw new Error('Could not get trip', err)
       })
     }
   }
@@ -33,9 +35,9 @@ class Trip extends React.Component {
           <UserCard data={this.state.trip} />
         </aside>
         <section className='tripCards col-xs-12 col-sm-12 col-md-6'>
-          <GetThere data={this.state.trip}/>
-          <BookAPlace />
-          <ThingsToDo />
+          <GetThere data={this.state.trip} />
+          {/* <BookAPlace />
+          <ThingsToDo /> */}
         </section>
         {/* <section>
           <p>Average price a day for {this.getAverage(this.state.trip.to.location)}</p>
@@ -43,6 +45,13 @@ class Trip extends React.Component {
       </div>
     )
   }
+}
+
+const { object, string } = React.PropTypes
+
+Trip.propTypes = {
+  routeParams: object.isRequired,
+  tripId: string.isRequired
 }
 
 module.exports = Trip

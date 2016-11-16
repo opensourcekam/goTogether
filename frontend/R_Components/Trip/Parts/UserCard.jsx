@@ -1,3 +1,4 @@
+/* global userJSON */
 const React = require('react')
 const DisplayPhoto = require('./DisplayPhoto')
 const TripBudget = require('./Budget/TripBudget')
@@ -17,15 +18,16 @@ class UserCard extends React.Component {
           percantagePlanned: 0,
           saved: 0
         }
-      }
+      },
+      activities: []
     }
   }
 
   componentDidMount () {}
 
   componentWillReceiveProps (nextProps) {
-    // console.log('CWRP', nextProps)
-    this.setState({trip: nextProps.data})
+    // console.log('UserCard CWRP', nextProps)
+    this.setState({trip: nextProps.data, activities: nextProps.data.meta.activities})
   }
 
   render () {
@@ -34,9 +36,8 @@ class UserCard extends React.Component {
         'marginBottom': '20px'
       }
     }
-    console.log(JSON.stringify(this.props, null, 3))
-    let {trip} = this.state
-    // console.log(trip)
+    let { trip, activities } = this.state
+    // console.log(JSON.stringify(activities, null, 3))
     return (
       <section className='userTripCard' style={styles.userTripCard}>
         {/* <pre><code>{JSON.stringify(this.props, null, 3)}</code></pre> */}
@@ -49,7 +50,7 @@ class UserCard extends React.Component {
           saved={trip.meta.saved}
         />
         {trip.to.location && trip.to.geometry.lat
-          ? <ToMap flyingTo={trip.to.geometry} initialZoom={12} />
+          ? <ToMap flyingTo={trip.to.geometry} activities={activities} initialZoom={12} />
           : <p>Loading map...</p>}
       </section>
     )

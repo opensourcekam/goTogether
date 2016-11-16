@@ -1,12 +1,12 @@
-/* global sessionStorage */
+/* global */
 const React = require('react')
 const ObscurePlaces = require('./ObscurePlaces')
 const AutoComplete = require('./AutoComplete')
 const elements = require('../../../../placesData/atlasObscure/atlasObscurePlaces.json')
 // https://github.com/ubilabs/react-geosuggest
 import Geosuggest from 'react-geosuggest'
-
 import axios from 'axios'
+
 const _ = require('underscore')
 const {hashHistory} = require('react-router')
 
@@ -21,7 +21,8 @@ class NewTripForm extends React.Component {
       budget: '',
       to: {
         location: '',
-        geometry: {}
+        geometry: {},
+        skyscanner: {}
       }
     }
 
@@ -31,7 +32,7 @@ class NewTripForm extends React.Component {
     // Bind this to event functions
     // this.renderPlaces = this.renderPlaces.bind(this)
     this.onSuggestSelect = this.onSuggestSelect.bind(this)
-    this.onChange = this.onChange.bind(this)
+    this.getObscureCards = this.getObscureCards.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.changeDate = this.changeDate.bind(this)
     this.setBudget = this.setBudget.bind(this)
@@ -52,21 +53,27 @@ class NewTripForm extends React.Component {
   }
 
   onSuggestSelect (e) {
-    console.log(e)
-    this.setState({
-      to: {
-        location: e.label,
-        geometry: e.location
-      }
+    // console.log(e)
+    axios.get(`/api/v1/flights/locationAutosuggest/${e.label}`).then((locationAutosuggest) => {
+      // console.log(locationAutosuggest.data)
+      this.setState({
+        to: {
+          location: e.label,
+          geometry: e.location,
+          skyscanner: locationAutosuggest.data[0] || undefined
+        }
+      })
+      console.log(`onSuggestSelect state: ${JSON.stringify(this.state, null, 3)}`)
+    }).catch((error) => {
+      console.log(error)
     })
-    console.log(this.state)
   }
 
   onSuggestNoResults (e) {
     console.log(e)
   }
 
-  onChange (e) {
+  getObscureCards (e) {
     console.log(e)
     if (e.trim() !== '') {
       axios.get('/searchPlace', {
@@ -114,7 +121,7 @@ class NewTripForm extends React.Component {
       axios.post('/newTrip', data).then((response) => {
         // sessionStorage.setItem('data', JSON.stringify(this.state.to, null, ''))
         console.log(response)
-        if(response.statusText === 'OK' && response.data){
+        if (response.statusText === 'OK' && response.data) {
           hashHistory.push(`tripDash/${response.data._id}`)
         }
       }).catch((error) => {
@@ -141,7 +148,7 @@ class NewTripForm extends React.Component {
 
           <div className='form-group'>
             {/* <input onChange={this.renderPlaces} value={this.state.location} placeholder='Where are we going?' type='text' list='places' /> */}
-            <Geosuggest types={['(cities)']} onChange={this.onChange} onFocus={this.onFocus} onBlur={this.onBlur} onSuggestSelect={this.onSuggestSelect} onSuggestNoResults={this.onSuggestNoResults} value={this.state.location} placeholder='Where are we going?' />
+            <Geosuggest types={['(cities)']} onChange={this.getObscureCards} onFocus={this.onFocus} onBlur={this.onBlur} onSuggestSelect={this.onSuggestSelect} onSuggestNoResults={this.onSuggestNoResults} value={this.state.location} placeholder='Where are we going?' />
           </div>
 
           <button id='letsGo' type='submit'>Lets go!</button>
