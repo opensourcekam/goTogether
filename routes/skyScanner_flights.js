@@ -43,7 +43,11 @@ module.exports = function (express, app, router, config, Trip) {
     // fix more stuff
     if (req.isAuthenticated() || req.body._id === '') {
       console.log(req.body)
+      /* Getting weird bugs when polling session 1st time need to restructure
+        option 1. Create poll session with livePrices/create/session then store session in DB. If call livePrices/c/session 304, use that poll session to call livePrices/poll otherwise call livePrices/poll with the db session
 
+        option 2. Abstract api.flights.livePrices.poll out of first promise into its own function then call that inside of
+      */
       api.flights.livePrices.session({
         country: 'UK',
         currency: 'GBP',
@@ -55,57 +59,89 @@ module.exports = function (express, app, router, config, Trip) {
         adults: parseInt(req.body.adults) || 1
       }).then((response) => {
         const location = response.headers.location
-        console.log(`POLL SESSION CREATED ${location}`)
-        // POLL THE FLIGHT SESSION
-        api.flights.livePrices.poll(location).then((response) => {
-          const itineraries = response.data.Itineraries
-          const legs = response.data.legs
 
-          // console.log({'itineraries': itineraries})
-          Trip.findById({'_id': req.body._id}).then((doc, err) => {
-            if (doc) {
-              // pop off last polling session
-              doc.flights.shift()
+        console.log(`// POLL SESSION CREATED ${location}`)
+        console.log('// POLL THE FLIGHT SESSION')
 
-              // get data necessary to send to user
-              // add new data to fArr
-              doc.flights.push(itineraries)
-              doc.save((err, doc) => {
-                console.log(`Saved trip ${doc}`)
-              })
-            } else {
-              console.log({'No document error': err})
-            }
-          }).catch((err) => {
-            console.log(err)
-          })
+        pollSession(location)
 
-          res.json({
-            'itineraries': itineraries
-          })
-
-        }).catch((err) => {
-          if (err.status === 304 && err.statusText === 'Not Modified') {
-            console.log('GET FLIGHTS FROM DB')
-            Trip.findById({'_id': req.body._id}).then((doc, err) => {
-              res.json({
-                'itineraries': doc.flights
-              })
-            }).catch((err) => {
-              console.log(err)
-            })
-          } else {
-            console.log(err)
-            res.json({'err': err.status})
-          }
-        })
       }).catch((err) => {
+
+        console.log(err)
         res.json({'err': err.status})
       })
     } else {
       res.json({})
       next()
     }
+
+    let pollSession = (location) => {
+      let livePricesPromise = api.flights.livePrices.poll(location)
+
+      livePricesPromise.then((response) => {
+        const { Itineraries, Legs, Query } = response.data
+
+        console.log(Query)
+        console.log({'// itineraries': Itineraries})
+
+        console.log({'// data': response.data })
+
+        Trip.findById({'_id': req.body._id}).then((doc, err) => {
+          if (doc) {
+            // pop off last polling session
+            doc.flights.shift()
+
+            // get data necessary to send to user
+            // add new data to fArr
+            doc.flights.push(Itineraries)
+            doc.save((err, doc) => {
+              console.log(`// Saved trip ${doc}`)
+            })
+          } else {
+            console.log({'// No document error': err})
+          }
+        }).catch((err) => {
+          console.log(err)
+        }) // db call 1
+
+        // respond with json
+        res.json({
+          'itineraries': Itineraries
+        })
+      })
+
+      livePricesPromise.catch((err) => {
+
+        // If an err is caught it will contain the url for the polling location still
+
+        if (err.status === 304 && err.statusText === 'Not Modified') {
+          console.log('GET FLIGHTS FROM DB')
+          let pricesErrObj = err
+          Trip.findById({'_id': req.body._id}).then((doc, err) => {
+            console.log('If this is the first time nothing exist...')
+
+            if (doc.flights.length) {
+              console.log('// doc has flights')
+              res.json({
+                'itineraries': doc.flights
+              })
+            } else {
+              console.log('// doc doesnt have flights recurse on pollSession()')
+              pollSession(pricesErrObj.config.url)
+            }
+
+
+          }).catch((err) => {
+            console.log(err)
+          }) // db call 2
+
+        } else {
+          console.log(err)
+          res.json({'err': err.status})
+        }
+      }) // session poll catch
+    } // end pollSession function
+
   }) // router
 
   app.use('/api/v1/flights', router)
