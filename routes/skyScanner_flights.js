@@ -120,7 +120,7 @@ module.exports = function (express, app, router, config, Trip) {
           Trip.findById({'_id': req.body._id}).then((doc, err) => {
             console.log('If this is the first time nothing exist...')
 
-            if (doc.flights.length) {
+            if (doc.flights.length > 0 && doc.flights[0].length !== 0) {
               console.log('// doc has flights')
               res.json({
                 'itineraries': doc.flights
