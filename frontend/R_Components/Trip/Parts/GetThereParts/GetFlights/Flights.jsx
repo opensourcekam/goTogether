@@ -86,7 +86,7 @@ class Flights extends React.Component {
       return (
         <tr key={i}>
           <td>£{flight.PricingOptions[0].Price.toFixed(2)}</td>
-          <td>{flight.PricingOptions[0].Agents[0]}</td>
+          {/* <td>{flight.PricingOptions[0].Agents[0]}</td> */}
           <td>
             <a href={flight.PricingOptions[0].DeeplinkUrl}>Book now</a>
           </td>
@@ -100,7 +100,7 @@ class Flights extends React.Component {
           <tbody>
             <tr>
               <th>Price</th>
-              <th>Agent</th>
+              {/* <th>Agent</th> */}
               <th>Link</th>
             </tr>
             {childElements}

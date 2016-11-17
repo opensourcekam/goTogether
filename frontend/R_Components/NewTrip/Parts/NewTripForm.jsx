@@ -53,8 +53,8 @@ class NewTripForm extends React.Component {
   }
 
   onSuggestSelect (e) {
-    // console.log(e)
-    axios.get(`/api/v1/flights/locationAutosuggest/${e.label}`).then((locationAutosuggest) => {
+    console.log(e.label)
+    axios.get(`/api/v1/flights/locationAutosuggest/${e.label.split(',')[0]}`).then((locationAutosuggest) => {
       // console.log(locationAutosuggest.data)
       this.setState({
         to: {

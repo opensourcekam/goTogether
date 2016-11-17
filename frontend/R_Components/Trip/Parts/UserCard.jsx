@@ -3,6 +3,7 @@ const React = require('react')
 const DisplayPhoto = require('./DisplayPhoto')
 const TripBudget = require('./Budget/TripBudget')
 const ToMap = require('./Maps/ToMap')
+import moment from 'moment'
 
 class UserCard extends React.Component {
   constructor (props) {
@@ -34,6 +35,9 @@ class UserCard extends React.Component {
     let styles = {
       userTripCard: {
         'marginBottom': '20px'
+      },
+      tripDateAndBudget: {
+        'padding': '20px'
       }
     }
     let { trip, activities } = this.state
@@ -42,9 +46,10 @@ class UserCard extends React.Component {
       <section className='userTripCard' style={styles.userTripCard}>
         {/* <pre><code>{JSON.stringify(this.props, null, 3)}</code></pre> */}
         <DisplayPhoto />
-        <div>
-          <p>{userJSON.displayName || ''} is planning a trip to {trip.to.location}</p>
-        </div>
+          <div style={styles.tripDateAndBudget}>
+            <h2>{trip.to.location}</h2>
+            <h4>{moment(trip.tripDate).format('MMM Do, YYYY')}</h4>
+          </div>
         <TripBudget
           budget={trip.meta.budget}
           saved={trip.meta.saved}
