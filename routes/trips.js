@@ -98,7 +98,7 @@ module.exports = (express, app, router, mongoose, TripModel, Trip, User) => {
   })
 
   // Reset database
-  router.delete('/resetDB', (req, res, next) => {
+  router.get('/resetDB', (req, res, next) => {
     Trip.remove({}, function (err) {
       res.json([{}])
     })

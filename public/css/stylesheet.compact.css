@@ -24,13 +24,19 @@ button#logout { background-color: #f61111; }
 
 button#ggl { background-color: rgba(120, 142, 121, 0.84); }
 
-form { text-align: left; margin: 100px 0 50px 0; }
+.table-container tr:nth-child(odd) { background-color: rgba(212, 249, 193, 0.5); }
+
+.table-container tr { text-align: left; }
+
+form { text-align: left; margin: 20px 0 50px 70px; }
 
 form input { background: #f0f0f0; border: none; border-left: 2px solid #fff; font-size: 36px; font-family: 'Montserrat', sans-serif; padding: 20px; margin-bottom: 15px; transition: background 1.5s, border-left 2s; width: 600px; }
 
 form input:focus { background: #fff; border-left: 10px solid green; box-shadow: none; outline: none; transition: background 1s, border-left 1s; }
 
 form button { font-size: 36px; padding: 20px; margin-bottom: 15px; width: 600px; }
+
+form button#letsGo { float: left; margin-bottom: 30px; margin-left: 15px; }
 
 .clicked { background-color: #001fc4 !important; opacity: 50%; }
 
@@ -82,7 +88,7 @@ article { width: 100%; text-align: center; }
 
 .centerMasonry { width: 100%; text-align: center; padding-bottom: 60px; }
 
-.my-gallery-class { margin: 2px auto; line-height: 1.4; padding-left: 0; }
+.my-gallery-class { margin: 2px auto; line-height: 1.4; padding-left: 0; clear: left; }
 
 .grid-item { margin-bottom: 20px; }
 
@@ -111,7 +117,7 @@ span { text-align: center; }
 
 svg { width: 100%; }
 
-.wrapper { position: relative; width: 450px; height: 450px; display: inline-block; margin: 20px 50px 0 0; }
+.wrapper { position: relative; width: 100%; height: 100%; display: inline-block; margin: 20px 50px 0 0; }
 
 .wrapper > #bar { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
@@ -183,9 +189,39 @@ li.geosuggest__item:hover { background: rgba(249, 208, 213, 0.85); box-shadow: n
   50% { transform: translate(-50%, -50%) rotateZ(4deg); } }
 
 /*PLANE*/
+/*CALENDAR*/
+div.rdr-DateRange { text-align: center !important; }
+
+div.rdr-MonthAndYear-innerWrapper { margin: 20px; }
+
+button.rdr-MonthAndYear-button { height: 50px !important; width: 50px !important; }
+
+button.rdr-MonthAndYear-button.prev i { border-width: 4px 6px 4px 20px !important; }
+
+button.rdr-MonthAndYear-button.next i { margin: 0px 0px 0px 22px !important; }
+
+div.rdr-MonthAndYear-innerWrapper span { font-size: 2em; }
+
+span.rdr-Day.is-inRange, .is-selected { width: 57px !important; height: 57px !important; }
+
+div.rdr-MonthAndYear-button { height: 47px; width: 47px; }
+
+div.rdr-MonthAndYear-button i { margin: 0px 0px 0px 16px; }
+
+div.rdr-WeekDays { display: none !important; }
+
+div.rdr-Calendar { width: 600px !important; }
+
+div.rdr-Calendar:nth-of-type(1) { display: none !important; }
+
+span.rdr-Day, .rdr-WeekDay { font-size: 32px !important; }
+
+.rdr-Days > span { margin: 10px; }
+
 /* Smartphones (portrait and landscape) ----------- */
 @media screen and (max-width: 680px) { input { width: 100% !important; }
-  form button { width: 100% !important; }
+  form { margin: 20px 0 50px 0px; }
+  form button#letsGo { width: 100% !important; margin-left: 0px; }
   header.span { margin: 2% auto; }
   header nav { margin: 4% auto; }
   h2#planningTripBubbleH2 { font-size: 4vmax !important; }
@@ -195,4 +231,6 @@ li.geosuggest__item:hover { background: rgba(249, 208, 213, 0.85); box-shadow: n
   .card > p { padding: 0%; margin: 0px 0px; }
   .image-element-class { width: 100%; }
   .image-element-class > img { width: 100%; }
-  ul.geosuggest__suggests { width: 100%; position: initial; } }
+  ul.geosuggest__suggests { width: 100%; position: initial; }
+  #progress-circle-container { margin: -35px; }
+  div.rdr-Calendar { width: 100% !important; } }

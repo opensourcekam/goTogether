@@ -75,11 +75,15 @@ button
     background-color: rgba(120, 142, 121, 0.84)
   &letsGo
 
+.table-container tr:nth-child(odd)
+  background-color: rgba(212, 249, 193, .5)
 
+.table-container tr
+  text-align: left
 
 form
   text-align: left
-  margin: 100px 0 50px 0
+  margin: 20px 0 50px 70px
   input
     background: #f0f0f0
     border: none
@@ -101,6 +105,10 @@ form
     padding: 20px
     margin-bottom: 15px
     width: 600px
+  button#letsGo
+    float: left
+    margin-bottom: 30px
+    margin-left: 15px
 
 .clicked
   background-color: #001fc4 !important
@@ -255,6 +263,7 @@ article
   margin: 2px auto
   line-height: 1.4
   padding-left: 0
+  clear: left
 
 .grid-item
   margin-bottom: 20px
@@ -322,8 +331,10 @@ svg
 
 .wrapper
   position: relative
-  width: 450px
-  height: 450px
+  // width: 450px
+  // height: 450px
+  width: 100%
+  height: 100%
   display: inline-block
   margin: 20px 50px 0 0
   >
@@ -532,6 +543,53 @@ li.geosuggest__item
 
 /*PLANE*/
 
+/*CALENDAR*/
+div.rdr-DateRange
+  text-align: center !important
+
+div.rdr-MonthAndYear-innerWrapper
+  margin: 20px
+
+button.rdr-MonthAndYear-button
+  height: 50px !important
+  width: 50px !important
+
+button.rdr-MonthAndYear-button.prev i
+ border-width: 4px 6px 4px 20px !important
+
+button.rdr-MonthAndYear-button.next i
+ margin: 0px 0px 0px 22px !important
+
+
+div.rdr-MonthAndYear-innerWrapper span
+  font-size: 2em
+
+span.rdr-Day.is-inRange, .is-selected
+  width: 57px !important
+  height: 57px !important
+
+div.rdr-MonthAndYear-button
+  height: 47px
+  width: 47px
+
+div.rdr-MonthAndYear-button i
+  margin: 0px 0px 0px 16px
+
+div.rdr-WeekDays
+  display: none !important
+
+div.rdr-Calendar
+  width: 600px !important
+
+div.rdr-Calendar:nth-of-type(1)
+  display: none !important
+
+span.rdr-Day, .rdr-WeekDay
+  font-size: 32px !important
+
+.rdr-Days > span
+  margin: 10px
+
 /* Smartphones (portrait and landscape) -----------
 @media screen and (max-width: 680px)
   body, html
@@ -539,8 +597,11 @@ li.geosuggest__item
     // background: -webkit-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)
   input
     width: 100% !important
-  form button
+  form
+    margin: 20px 0 50px 0px
+  form button#letsGo
     width: 100% !important
+    margin-left: 0px
   header
     &.span
       margin: 2% auto
@@ -567,7 +628,12 @@ li.geosuggest__item
     width: 100%
     position: initial
 
-// @media screen and (max-width: 1000px)
-//   div.wrapper
-//     width: 100%
-//     height: 100%
+  #progress-circle-container
+    margin: -35px
+  div.rdr-Calendar
+    width: 100% !important
+
+// @media screen and (min-width: 320px) and (max-width: 568px)
+//   .container-fluid .wrapper
+//     width: 380
+//     height: 380

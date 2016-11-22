@@ -3,6 +3,7 @@ module.exports = function (express, app, router, passport, config, User, Trip) {
   const mongoose = require('mongoose')
 
   app.get('/', (req, res, next) => {
+
     console.log(`
 
       Router get ${req.baseUrl}
@@ -105,6 +106,7 @@ module.exports = function (express, app, router, passport, config, User, Trip) {
             user[0].save((err, doc) => {
               console.log(`Saved trip ${doc}`)
             })
+
             res.json(doc)
           }
         })

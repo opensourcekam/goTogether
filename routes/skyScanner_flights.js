@@ -50,7 +50,7 @@ module.exports = function (express, app, router, config, Trip) {
       */
       api.flights.livePrices.session({
         country: 'UK',
-        currency: 'GBP',
+        currency: 'EUR',
         locale: 'en-GB',
         locationSchema: 'Iata',
         originplace: req.body.originplace,
