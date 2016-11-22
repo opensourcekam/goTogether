@@ -85,9 +85,9 @@ class Flights extends React.Component {
     let childElements = this.state.itineraries.map((flight, i) => {
       return (
         <tr key={i}>
-          <td>£{flight.PricingOptions[0].Price.toFixed(2)}</td>
+          <td style={style.td}>€ {flight.PricingOptions[0].Price.toFixed(2)}</td>
           {/* <td>{flight.PricingOptions[0].Agents[0]}</td> */}
-          <td>
+          <td style={style.td}>
             <a href={flight.PricingOptions[0].DeeplinkUrl}>Book now</a>
           </td>
         </tr>
@@ -95,7 +95,7 @@ class Flights extends React.Component {
     })
     return (
       (this.state.itineraries.length)
-      ? <div className='table-responsive'>
+      ? <div className='table-container'>
         <table className='table' style={style.table}>
           <tbody>
             <tr>
