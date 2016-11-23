@@ -128,9 +128,13 @@ class NewTripForm extends React.Component {
     this.setState({dates: e})
   }
 
-  onStartDateChange (e) {
-    console.log(e)
-    debugger
+  onDateChange (when) {
+    const key = `${when}Date`
+    return e => {
+      const dates = Object.assign(this.state.dates, { [key]: e[key] })
+      this.setState({ dates })
+      console.log(`startDate: ${this.state.dates.startDate._d}, endDate: ${this.state.dates.endDate._d}`)
+    }
   }
 
   handleSubmit (e) {
@@ -192,18 +196,20 @@ class NewTripForm extends React.Component {
             {/* react-date-range picker trying to replace!  */}
             <h3>From</h3>
             <DateRangePickerWrapper
-              onChange={this.onStartDateChange}
+              selectsStart
               selected={this.state.dates.startDate}
               startDate={this.state.dates.startDate}
-              selectsStart
-              endDate={this.state.dates.endDate} 
+              endDate={this.state.dates.endDate}
+              onChange={this.onDateChange('start')}
             />
 
             <h3>To</h3>
             <DateRangePickerWrapper
-              onChange={this.onDatesSelected}
+              selectsEnd
+              selected={this.state.dates.endDate}
               startDate={this.state.dates.startDate}
-              endDate={this.state.dates.endDate} 
+              endDate={this.state.dates.endDate}
+              onChange={this.onDateChange('end')}
             />
           </div>
 
