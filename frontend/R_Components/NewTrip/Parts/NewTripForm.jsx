@@ -128,6 +128,11 @@ class NewTripForm extends React.Component {
     this.setState({dates: e})
   }
 
+  onStartDateChange (e) {
+    console.log(e)
+    debugger
+  }
+
   handleSubmit (e) {
     e.preventDefault()
 
@@ -185,10 +190,21 @@ class NewTripForm extends React.Component {
               initialVisibleMonth={() => moment('04 2017', 'MM YYYY')}
             /> */}
             {/* react-date-range picker trying to replace!  */}
+            <h3>From</h3>
+            <DateRangePickerWrapper
+              onChange={this.onStartDateChange}
+              selected={this.state.dates.startDate}
+              startDate={this.state.dates.startDate}
+              selectsStart
+              endDate={this.state.dates.endDate} 
+            />
+
+            <h3>To</h3>
             <DateRangePickerWrapper
               onChange={this.onDatesSelected}
               startDate={this.state.dates.startDate}
-              endDate={this.state.dates.endDate} />
+              endDate={this.state.dates.endDate} 
+            />
           </div>
 
           <button id='letsGo' type='submit'>Lets go!</button>
