@@ -26,6 +26,7 @@ class Plane extends React.Component {
         skyscanner: {}
       },
       tripDate: '',
+      tripEndDate: '',
       invitees: [],
       _id: '',
       alreadyPut: false
@@ -47,6 +48,7 @@ class Plane extends React.Component {
         from: nextProps.data.from,
         to: nextProps.data.to,
         tripDate: moment(nextProps.data.tripDate).format('YYYY-MM-DD'),
+        tripEndDate: moment(nextProps.data.tripEndDate).format('YYYY-MM-DD'),
         invitees: nextProps.data.meta.invitees,
         itineraries: nextProps.data.flights[0] || [],
         alreadyPut: true
@@ -58,6 +60,7 @@ class Plane extends React.Component {
         from: nextProps.data.from,
         to: nextProps.data.to,
         tripDate: moment(nextProps.data.tripDate).format('YYYY-MM-DD'),
+        tripEndDate: moment(nextProps.data.tripEndDate).format('YYYY-MM-DD'),
         invitees: nextProps.data.meta.invitees,
         itineraries: nextProps.data.flights[0] || []
       })
@@ -107,11 +110,16 @@ class Plane extends React.Component {
       <div>
         {(this.state.from && this.state.alreadyPut)
           ? <div>
-            <h2>{`Flights from ${this.state.from.skyscanner.PlaceName}, ${this.state.from.skyscanner.CountryName} to ${this.state.to.skyscanner.PlaceName}, ${this.state.to.skyscanner.CountryName}`}</h2>
+            <h2>{`Round trips from ${this.state.from.skyscanner.PlaceName}, ${this.state.from.skyscanner.CountryName} to ${this.state.to.skyscanner.PlaceName}, ${this.state.to.skyscanner.CountryName}`}</h2>
+            {/* <label htmlFor='booked'>
+              Booked
+            </label>
+            <input id='booked' type='checkbox'></input> */}
             <Flights
               from={this.state.from}
               to={this.state.to}
-              date={this.state.tripDate}
+              tripDate={this.state.tripDate}
+              tripEndDate={this.state.tripEndDate}
               invitees={this.state.invitees}
               _id={this.state._id}
               itineraries={this.state.itineraries} />

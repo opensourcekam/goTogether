@@ -71,11 +71,15 @@ module.exports = (express, app, router, mongoose, TripModel, Trip, User) => {
             doc.meta.saved = parseInt(req.body.amount) + parseInt(doc.meta.saved)
             break
           case 'UPDATE ACTIVITIES':
-            doc.meta.activities.push(obj)
+            doc.meta.activities.push({})
             break
           case 'UPDATE FROM':
             console.log(req.body.from)
             doc.from = req.body.from
+            break
+          case 'UPDATE INVITEES':
+            // console.log(doc.meta.invitees)
+            doc.meta.invitees.push({})
             break
           default:
             console.log('NO PUT TYPE FOUND')
@@ -94,13 +98,6 @@ module.exports = (express, app, router, mongoose, TripModel, Trip, User) => {
       }
     }).catch((err) => {
       res.json({'Find error': err})
-    })
-  })
-
-  // Reset database
-  router.get('/resetDB', (req, res, next) => {
-    Trip.remove({}, function (err) {
-      res.json([{}])
     })
   })
 

@@ -49,14 +49,15 @@ module.exports = function (express, app, router, config, Trip) {
         option 2. Abstract api.flights.livePrices.poll out of first promise into its own function then call that inside of
       */
       api.flights.livePrices.session({
-        country: 'UK',
+        country: 'ES',
         currency: 'EUR',
-        locale: 'en-GB',
+        locale: 'es-ES',
         locationSchema: 'Iata',
         originplace: req.body.originplace,
         destinationplace: req.body.destinationplace,
         outbounddate: req.body.outbounddate,
-        adults: parseInt(req.body.adults) || 1
+        inbounddate: req.body.inbounddate,
+        adults: parseInt(req.body.adults) || 3
       }).then((response) => {
         const location = response.headers.location
 

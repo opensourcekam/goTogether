@@ -118,7 +118,7 @@ module.exports = function (mongoose) {
       ]
     },
     flights: [{
-      type:Schema.Types.Mixed
+      type: Schema.Types.Mixed
     }]
   }, {collection: 'Trips'})
 

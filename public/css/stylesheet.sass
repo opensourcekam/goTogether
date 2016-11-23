@@ -331,10 +331,10 @@ svg
 
 .wrapper
   position: relative
-  // width: 450px
-  // height: 450px
-  width: 100%
-  height: 100%
+  width: 450px
+  height: 450px
+  // width: 100%
+  // height: 100%
   display: inline-block
   margin: 20px 50px 0 0
   >
@@ -546,6 +546,8 @@ li.geosuggest__item
 /*CALENDAR*/
 div.rdr-DateRange
   text-align: center !important
+  position: absolute !important
+  z-index: 9999999999
 
 div.rdr-MonthAndYear-innerWrapper
   margin: 20px
@@ -562,11 +564,11 @@ button.rdr-MonthAndYear-button.next i
 
 
 div.rdr-MonthAndYear-innerWrapper span
-  font-size: 2em
+  font-size: 5vh
 
 span.rdr-Day.is-inRange, .is-selected
-  width: 57px !important
-  height: 57px !important
+  width: 40px !important
+  height: 40px !important
 
 div.rdr-MonthAndYear-button
   height: 47px

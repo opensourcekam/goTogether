@@ -154,7 +154,8 @@ class NewTripForm extends React.Component {
     return (
       <section>
 
-        <AutoComplete autoFillPlaces={this.state.autoFillPlaces} />
+        <AutoComplete
+          autoFillPlaces={this.state.autoFillPlaces} />
 
         <form onSubmit={this.handleSubmit} className='form-inline'>
 
@@ -165,19 +166,37 @@ class NewTripForm extends React.Component {
           <div className='form-group' style={{'float': 'left'}}>
             {/* <input onChange={this.renderPlaces} value={this.state.location} placeholder='Where are we going?' type='text' list='places' /> */}
             <h2 style={style.h2}>Where are we going?</h2>
-            <Geosuggest types={['(cities)']} onChange={this.getObscureCards} onFocus={this.onFocus} onBlur={this.onBlur} onSuggestSelect={this.onSuggestSelect} onSuggestNoResults={this.onSuggestNoResults} value={this.state.location} placeholder='Marsille, France' />
+            <Geosuggest
+              types={['(cities)']}
+              onChange={this.getObscureCards}
+              onFocus={this.onFocus}
+              onBlur={this.onBlur}
+              onSuggestSelect={this.onSuggestSelect}
+              onSuggestNoResults={this.onSuggestNoResults}
+              value={this.state.location}
+              placeholder='Marsille, France' />
           </div>
 
           <div className='form-group'>
             <h2 style={style.h2}>When are we going?</h2>
             {/* <input value={`${this.state.date}`} onChange={this.changeDate} placeholder={`When are we going? ${new Date().toLocaleDateString()}`} type='text' /> */}
-            <DateRangePickerWrapper onChange={this.onDatesSelected} startDate={this.state.dates.startDate} endDate={this.state.dates.endDate} />
+            {/*  REACT-DATES AIRBNB DATE PICKER */}
+            {/* <DateRangePickerWrapper
+              initialVisibleMonth={() => moment('04 2017', 'MM YYYY')}
+            /> */}
+            {/* react-date-range picker trying to replace!  */}
+            <DateRangePickerWrapper
+              onChange={this.onDatesSelected}
+              startDate={this.state.dates.startDate}
+              endDate={this.state.dates.endDate} />
           </div>
 
           <button id='letsGo' type='submit'>Lets go!</button>
         </form>
 
-        <ObscurePlaces elements={this.state.locations} searched={this.state.searched} />
+        <ObscurePlaces
+          elements={this.state.locations}
+          searched={this.state.searched} />
 
       </section>
     )

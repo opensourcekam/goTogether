@@ -33,7 +33,8 @@ class Flights extends React.Component {
     let data = {
       'originplace': this.props.from.skyscanner.CityId,
       'destinationplace': this.props.to.skyscanner.CityId,
-      'outbounddate': this.props.date,
+      'outbounddate': this.props.tripDate,
+      'inbounddate': this.props.tripEndDate,
       'adults': formattedAdults,
       '_id': this.props._id
     }

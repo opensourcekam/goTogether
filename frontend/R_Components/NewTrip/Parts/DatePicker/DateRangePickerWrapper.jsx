@@ -18,29 +18,15 @@ class DateRangePickerWrapper extends Component {
     this.onBlurCalendarInput = this.onBlurCalendarInput.bind(this)
   }
 
-  handleChange (linked, payload) {
-    // console.log(payload)
-    this.setState({
-      [linked]: payload
-    })
-  }
+  // Handle changes of input to calender component
+  handleChange (linked, payload) { this.setState({ [linked]: payload }) }
 
-  onFocusCalendarInput () {
-    // console.log(this.state)
-    this.setState({
-      'displayCalendar': 1
-    })
-  }
+  // Input focus
+  onFocusCalendarInput () { this.setState({ displayCalendar: 1 }) }
+  onBlurCalendarInput () { this.setState({ displayCalendar: 0 }) }
 
-  onBlurCalendarInput () {
-    // this.setState({
-    //   'displayCalendar': 0
-    // })
-  }
-
-  componentWillReceiveProps (nextProps) {
-    this.setState({linked: nextProps})
-  }
+  // Pass props to linked
+  componentWillReceiveProps (nextProps) { this.setState({ linked: nextProps }) }
 
   render () {
     const { linked } = this.state
@@ -60,25 +46,30 @@ class DateRangePickerWrapper extends Component {
             />
         </div>
         {(this.state.displayCalendar === 1)
-         ? <DateRange
-             linkedCalendars
-             firstDayOfWeek={1}
-             onInit={this.handleChange}
-             onChange={this.props.onChange}
-             theme={{
-               PredefinedRanges: {
-                 marginLeft: 10,
-                 marginTop: 10
-               },
-               DayHover: {
-                 background: '#ffffff',
-                 color: '#7f8c8d',
-                 transform: 'scale(1.1) translateY(-10%)',
-                 boxShadow: '0 2px 4px rgba(0, 0, 0, 0.4)'
-               }
-             }}
-            />
-          : <p />}
+         ? <div onMouseOver={this.onMouseOverInput}>
+             <DateRange
+                 linkedCalendars
+                 firstDayOfWeek={1}
+                 onInit={this.handleChange}
+                 onChange={this.props.onChange}
+                 theme={{
+                   PredefinedRanges: {
+                     marginLeft: 10,
+                     marginTop: 10
+                   },
+                   DayHover: {
+                     background: '#ffffff',
+                     color: '#7f8c8d',
+                     transform: 'scale(1.1) translateY(-10%)',
+                     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.4)'
+                   },
+                   Calendar : {
+                    color : '#95a5a6'
+                  }
+                 }}
+                />
+           </div>
+          : null}
       </div>
     )
   }
@@ -91,3 +82,50 @@ DateRangePickerWrapper.propTypes = {
 }
 
 module.exports = DateRangePickerWrapper
+
+// AIRBNB DATE PICKER!!!
+// import React from 'react'
+//
+// import DateRangePicker from 'react-dates'
+// import moment from 'moment'
+// import { START_DATE } from 'react-dates/constants'
+//
+// class DateRangePickerWrapper extends React.Component {
+//   constructor (props) {
+//     super(props)
+//     this.state = {
+//       focusedInput: START_DATE,
+//       startDate: null,
+//       endDate: null
+//     }
+//
+//     this.onDatesChange = this.onDatesChange.bind(this)
+//     this.onFocusChange = this.onFocusChange.bind(this)
+//   }
+//
+//   onDatesChange ({ startDate, endDate }) {
+//     this.setState({ startDate, endDate })
+//   }
+//
+//   onFocusChange (focusedInput) {
+//     this.setState({ focusedInput })
+//   }
+//
+//   render () {
+//     const { focusedInput, startDate, endDate } = this.state
+//     return (
+//       <div>
+//         <DateRangePicker
+//           {...this.props}
+//           onDatesChange={this.onDatesChange}
+//           onFocusChange={this.onFocusChange}
+//           focusedInput={focusedInput}
+//           startDate={startDate.toString()}
+//           endDate={endDate.toString()}
+//         />
+//       </div>
+//     )
+//   }
+// }
+//
+// module.exports = DateRangePickerWrapper
