@@ -1,5 +1,5 @@
 {
-  "dburl" : "mongodb://admin:password@ds147797.mlab.com:47797/heroku_hlbb7dj6",
+  "dburl" : "mongodb://localhost:27017/youme_World_dev",
   "DEPRECIATEDFORDEV_dburl" : "mongodb://chatappuser:password@ds025439.mlab.com:25439/chaterapp",
   "sessionSecret" : "ANGHVJBKLHVHMABJSD",
   "fb":{
