@@ -35,7 +35,7 @@ class NewTripForm extends React.Component {
         location: '',
         geometry: {},
         skyscanner: {}
-      },
+      }
     }
 
     this.data = []
@@ -148,7 +148,6 @@ class NewTripForm extends React.Component {
 
     if (data.to !== '' && data.tripDate && data.tripEndDate) {
       axios.post('/newTrip', data).then((response) => {
-        // sessionStorage.setItem('data', JSON.stringify(this.state.to, null, ''))
         console.log(response)
         if (response.statusText === 'OK' && response.data) {
           hashHistory.push(`tripDash/${response.data._id}`)
@@ -168,12 +167,7 @@ class NewTripForm extends React.Component {
 
         <form onSubmit={this.handleSubmit} className='form-inline'>
 
-          {/* <div className='form-group'>
-            <input value={`${this.state.budget}`} onChange={this.setBudget} placeholder={`What are we saving? ${this.props.currencySymbol}500`} type='text' />
-          </div> */}
-
           <div className='form-group' style={{'float': 'left'}}>
-            {/* <input onChange={this.renderPlaces} value={this.state.location} placeholder='Where are we going?' type='text' list='places' /> */}
             <h2 style={style.h2}>Where are we going?</h2>
             <Geosuggest
               types={['(cities)']}
