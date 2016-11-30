@@ -2,7 +2,8 @@
 const React = require('react')
 const ObscurePlaces = require('./ObscurePlaces')
 const AutoComplete = require('./AutoComplete')
-const DateRangePickerWrapper = require('./DatePicker/DateRangePickerWrapper')
+// const DateRangePickerWrapper = require('./DatePicker/DateRangePickerWrapper')
+const AirBnbDatePicker = require('./DatePicker/DateRangePickerWrapper_new')
 const elements = require('../../../../placesData/atlasObscure/atlasObscurePlaces.json')
 // https://github.com/ubilabs/react-geosuggest
 import Geosuggest from 'react-geosuggest'
@@ -58,6 +59,7 @@ class NewTripForm extends React.Component {
 
   onFocus (e) {
     console.log(e)
+    document.querySelectorAll('.geosuggest__suggests-wrapper')[0].style.display = 'block'
   }
 
   onBlur (e) {
@@ -67,6 +69,7 @@ class NewTripForm extends React.Component {
   onSuggestSelect (e) {
     console.log(e.label)
     let place = e.label
+    // split place so you just get the first word from the e.label result ex. Austin, Texas, United States -> Austin will be processed
     let locationSuggestPromise = axios.get(`/api/v1/flights/locationAutosuggest/${place.split(',')[0]}`)
 
     locationSuggestPromise.then((locationAutosuggest) => {
@@ -84,7 +87,12 @@ class NewTripForm extends React.Component {
     locationSuggestPromise.catch((error) => {
       console.log(error)
     })
-  }
+
+    if(this.state.to) {
+      document.querySelectorAll('.geosuggest__suggests-wrapper')[0].style.display = 'none'
+    }
+
+  } // onSuggestSelect
 
   onSuggestNoResults (e) {
     console.log(e)
@@ -181,14 +189,12 @@ class NewTripForm extends React.Component {
             <h2 style={style.h2}>When are we going?</h2>
             {/* <input value={`${this.state.date}`} onChange={this.changeDate} placeholder={`When are we going? ${new Date().toLocaleDateString()}`} type='text' /> */}
             {/*  REACT-DATES AIRBNB DATE PICKER */}
-            {/* <DateRangePickerWrapper
-              initialVisibleMonth={() => moment('04 2017', 'MM YYYY')}
-            /> */}
-            {/* react-date-range picker trying to replace!  */}
+            <AirBnbDatePicker />
+            {/* react-date-range picker trying to replace!
             <DateRangePickerWrapper
               onChange={this.onDatesSelected}
               startDate={this.state.dates.startDate}
-              endDate={this.state.dates.endDate} />
+              endDate={this.state.dates.endDate} />  */}
           </div>
 
           <button id='letsGo' type='submit'>Lets go!</button>
