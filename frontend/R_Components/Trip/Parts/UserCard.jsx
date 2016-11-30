@@ -36,7 +36,7 @@ class UserCard extends React.Component {
       userTripCard: {
         'marginBottom': '20px'
       },
-      tripDateAndBudget: {
+      tripDetails: {
         'padding': '20px'
       }
     }
@@ -46,9 +46,9 @@ class UserCard extends React.Component {
       <section className='userTripCard' style={styles.userTripCard}>
         {/* <pre><code>{JSON.stringify(this.props, null, 3)}</code></pre> */}
         <DisplayPhoto />
-          <div style={styles.tripDateAndBudget}>
+          <div style={styles.tripDetails}>
             <h2>{trip.to.location}</h2>
-            <h4>{moment(trip.tripDate).format('MMM Do, YYYY')}</h4>
+            <h3>{moment(trip.tripDate).format('MMM Do')} - {moment(trip.tripEndDate).format('MMM Do, YYYY')}</h3>
           </div>
         <TripBudget
           budget={trip.meta.budget}
