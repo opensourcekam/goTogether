@@ -1,17 +1,17 @@
 /* global */
-const React = require('react')
-const ObscurePlaces = require('./ObscurePlaces')
-const AutoComplete = require('./AutoComplete')
-// const DateRangePickerWrapper = require('./DatePicker/DateRangePickerWrapper')
-const AirBnbDatePicker = require('./DatePicker/DateRangePickerWrapper_new')
-const elements = require('../../../../placesData/atlasObscure/atlasObscurePlaces.json')
+import React from 'react'
+import ObscurePlaces from './ObscurePlaces'
+import AutoComplete from './AutoComplete'
+import DateRangePickerWrapper from './DatePicker/DateRangePickerWrapper'
+import elements from '../../../../placesData/atlasObscure/atlasObscurePlaces.json'
+
 // https://github.com/ubilabs/react-geosuggest
 import Geosuggest from 'react-geosuggest'
 import axios from 'axios'
 import moment from 'moment'
 
-const _ = require('underscore')
-const {hashHistory} = require('react-router')
+import _ from 'underscore'
+import { hashHistory } from 'react-router'
 
 const style = {
   h2: {
@@ -132,7 +132,6 @@ class NewTripForm extends React.Component {
   }
 
   onDatesSelected (e) {
-    console.log(e)
     this.setState({dates: e})
   }
 
@@ -144,6 +143,8 @@ class NewTripForm extends React.Component {
       tripDate: this.state.dates.startDate._d,
       tripEndDate: this.state.dates.endDate._d
     }
+
+    console.log(data)
 
     if (data.to !== '' && data.tripDate && data.tripEndDate) {
       axios.post('/newTrip', data).then((response) => {
@@ -187,14 +188,9 @@ class NewTripForm extends React.Component {
 
           <div className='form-group'>
             <h2 style={style.h2}>When are we going?</h2>
-            {/* <input value={`${this.state.date}`} onChange={this.changeDate} placeholder={`When are we going? ${new Date().toLocaleDateString()}`} type='text' /> */}
-            {/*  REACT-DATES AIRBNB DATE PICKER */}
-            <AirBnbDatePicker />
-            {/* react-date-range picker trying to replace!
             <DateRangePickerWrapper
               onChange={this.onDatesSelected}
-              startDate={this.state.dates.startDate}
-              endDate={this.state.dates.endDate} />  */}
+              preselectedDates={this.state.dates} />
           </div>
 
           <button id='letsGo' type='submit'>Lets go!</button>

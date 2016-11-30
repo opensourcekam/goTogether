@@ -7,31 +7,40 @@ class DateRangePickerWrapper extends Component {
     super(props, context)
 
     this.state = {
-      'linked': {
-        startDate: moment(),
-        endDate: moment().add(+7, 'days')
+      preselectedDates: {
+        startDate: null,
+        endDate: null
       },
       'displayCalendar': 0
     }
-    this.handleChange = this.handleChange.bind(this, 'linked')
     this.onFocusCalendarInput = this.onFocusCalendarInput.bind(this)
     this.onBlurCalendarInput = this.onBlurCalendarInput.bind(this)
   }
 
   // Handle changes of input to calender component
-  handleChange (linked, payload) { this.setState({ [linked]: payload }) }
-
   // Input focus
-  onFocusCalendarInput () { this.setState({ displayCalendar: 1 }) }
-  onBlurCalendarInput () { this.setState({ displayCalendar: 0 }) }
+  onFocusCalendarInput () {
+    // // next on calendar 1 is hidden
+    // document.querySelectorAll('.rdr-MonthAndYear-button.next')[0].style.visibility = 'hidden'
+    // // previous on calendar 2 is hidden
+    // document.querySelectorAll('.rdr-MonthAndYear-button.prev')[1].style.visibility = 'hidden'
+    this.setState({ displayCalendar: 1 })
+  }
+
+  onBlurCalendarInput () {
+    this.setState({ displayCalendar: 1 })
+  }
 
   // Pass props to linked
-  componentWillReceiveProps (nextProps) { this.setState({ linked: nextProps }) }
+  componentWillReceiveProps (nextProps) {
+    this.setState({ preselectedDates: nextProps })
+  }
 
   render () {
-    const { linked } = this.state
+    const { displayCalendar } = this.state
+    const { onChange, preselectedDates } = this.props
     const format = 'ddd, MMM D'
-    const preselectedDates = `${linked['startDate'] && linked['startDate'].format(format).toString()} - ${linked['endDate'] && linked['endDate'].format(format).toString()}`
+    const placeholder = `${preselectedDates.startDate && preselectedDates.startDate.format(format).toString()} - ${preselectedDates.endDate && preselectedDates.endDate.format(format).toString()}`
 
     return (
       <div>
@@ -41,17 +50,19 @@ class DateRangePickerWrapper extends Component {
             readOnly
             onFocus={this.onFocusCalendarInput}
             onBlur={this.onBlurCalendarInput}
-            placeholder={preselectedDates}
-            value={preselectedDates}
+            placeholder={placeholder}
+            value={placeholder}
             />
         </div>
-        {(this.state.displayCalendar === 1)
+        {(displayCalendar === 1)
          ? <div onMouseOver={this.onMouseOverInput}>
              <DateRange
+                 startDate={preselectedDates.startDate}
+                 endDate={preselectedDates.endDate}
                  linkedCalendars
                  firstDayOfWeek={1}
-                 onInit={this.handleChange}
-                 onChange={this.props.onChange}
+                 onInit={this.handleInit}
+                 onChange={onChange}
                  theme={{
                    PredefinedRanges: {
                      marginLeft: 10,
