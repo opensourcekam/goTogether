@@ -1,6 +1,7 @@
 /* global userJSON */
 const React = require('react')
 const CircleProgressBarWithImageCenter = require('./Parts/CircleProgressBarWithImageCenter')
+const PlaneSpinLoader = require('../Parts/Loaders/PlaneSpinLoader')
 import axios from 'axios'
 import { Link } from 'react-router'
 
@@ -56,7 +57,7 @@ class MyTrips extends React.Component {
                 </Link>
               </div>
             )
-          }) : <p>PLAN A TRIP!!!</p>}
+          }) : <PlaneSpinLoader />}
         </div>
       </div>
     )
