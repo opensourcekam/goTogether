@@ -125,11 +125,13 @@ svg { width: 100%; }
 
 input.geosuggest__input { margin: 0 !important; }
 
-ul.geosuggest__suggests { list-style-type: none; margin: 0; position: fixed; z-index: 9999999; overflow: hidden; border: none; border-left: 2px solid #fff; font-family: 'Montserrat', sans-serif; padding: 20px; transition: background 1.5s, border-left 2s; width: 600px; }
+ul.geosuggest__suggests { list-style-type: none; margin: 0; z-index: 9999999; overflow: hidden; border: none; border-left: 2px solid #fff; font-family: 'Montserrat', sans-serif; padding: 20px; transition: background 1.5s, border-left 2s; width: 600px; }
 
-li.geosuggest__item { background: #f0f0f0; display: block; border-bottom: 1px solid black; font-size: 2em; margin-bottom: 10px; padding: 10px; }
+li.geosuggest__item { background: #f0f0f0; display: block; border-bottom: 1px solid black; font-size: 2em; margin-bottom: 2px; padding: 10px; }
 
-li.geosuggest__item:hover { background: rgba(249, 208, 213, 0.85); box-shadow: none; outline: none; transition: background .2s; }
+li.geosuggest__item:hover { background: #2f9bff; box-shadow: none; outline: none; transition: background .2s; }
+
+li.geosuggest__item--active { background: rgba(0, 128, 0, 0.6); border: 1px solid #2f9bff; }
 
 /* CubeLoader*/
 .lt-cube-grid { width: 120px; height: 120px; margin: 10% auto; }
@@ -168,9 +170,9 @@ li.geosuggest__item:hover { background: rgba(249, 208, 213, 0.85); box-shadow: n
 
 /* Fin Animation */
 /*PLANE*/
-.wings { background: white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: 3px; animation: wings 1s infinite ease; animation-timing-function: cubic-bezier(0.57, -0.28, 0.37, 0.88); }
+.wings { background: rgba(80, 92, 93, 0.54); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 130px; height: 3px; animation: wings 3s infinite ease; animation-timing-function: cubic-bezier(0.57, -0.28, 0.37, 0.88); }
 
-.circle { width: 16px; height: 16px; border-radius: 100%; background: #F3721C; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: circle_ani .5 infinate ease; }
+.circle { width: 16px; height: 16px; border-radius: 100%; background: #1cf41e; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: circle_ani .5 infinate ease; }
 
 .arc { width: 40px; height: 40px; border-radius: 50%; border: solid 5px #dfdfc2; position: absolute; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border-left: solid 3px rgba(223, 223, 194, 0); border-right: solid 3px rgba(223, 223, 194, 0); border-bottom: solid 3px rgba(223, 223, 194, 0); animation: spin2 1s infinite ease; }
 
@@ -185,8 +187,8 @@ li.geosuggest__item:hover { background: rgba(249, 208, 213, 0.85); box-shadow: n
 @keyframes spin2 { 0%, 100% { transform: translate(-50%, -50%) rotateZ(-180deg); }
   50% { transform: translate(-50%, -50%) rotateZ(900deg); } }
 
-@keyframes wings { 0%, 100% { transform: translate(-50%, -50%) rotateZ(-4deg); }
-  50% { transform: translate(-50%, -50%) rotateZ(4deg); } }
+@keyframes wings { 0%, 100% { transform: translate(-50%, -50%) rotateZ(-40deg); }
+  50% { transform: translate(-50%, -50%) rotateZ(40deg); } }
 
 /*PLANE*/
 /*CALENDAR*/

@@ -363,7 +363,7 @@ input.geosuggest__input
 ul.geosuggest__suggests
     list-style-type: none
     margin: 0
-    position: fixed
+    // position: fixed
     z-index: 9999999
     overflow: hidden
     border: none
@@ -378,14 +378,17 @@ li.geosuggest__item
     display: block
     border-bottom: 1px solid black
     font-size: 2em
-    margin-bottom: 10px
+    margin-bottom: 2px
     padding: 10px
     &:hover
-      background: rgba(249, 208, 213, 0.85)
+      background: rgb(47, 155, 255)
       box-shadow: none
       outline: none
       transition: background .2s
 
+li.geosuggest__item--active
+    background: rgba(#008000, 0.6)
+    border: 1px solid rgb(47, 155, 255)
 /* CubeLoader*/
 
 .lt-cube-grid
@@ -458,21 +461,21 @@ li.geosuggest__item
 
 /*PLANE*/
 .wings
-  background: white
+  background: rgba(80, 92, 93, 0.54)
   position: absolute
   top: 50%
   left: 50%
   transform: translate(-50%, -50%)
-  width: 120px
+  width: 130px
   height: 3px
-  animation: wings 1s infinite ease
+  animation: wings 3s infinite ease
   animation-timing-function: cubic-bezier(0.57, -0.28, 0.37, 0.88)
 
 .circle
   width: 16px
   height: 16px
   border-radius: 100%
-  background: #F3721C
+  background: #1cf41e
   position: absolute
   top: 50%
   left: 50%
@@ -536,10 +539,10 @@ li.geosuggest__item
 
 @keyframes wings
   0%, 100%
-    transform: translate(-50%, -50%) rotateZ(-4deg)
+    transform: translate(-50%, -50%) rotateZ(-40deg)
 
   50%
-    transform: translate(-50%, -50%) rotateZ(4deg)
+    transform: translate(-50%, -50%) rotateZ(40deg)
 
 /*PLANE*/
 
