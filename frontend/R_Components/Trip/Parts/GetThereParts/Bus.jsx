@@ -21,7 +21,7 @@ class Bus extends React.Component {
 
     return (
       <div className='card'>
-        <div className="card-block">Bus</div>
+        <div className='card-block'>Bus</div>
         <img onClick={this.getBuses} className='card-img-bottom' style={style.img} src={`/images/trip/${iconSRC}`} alt='Card image' />
       </div>
     )

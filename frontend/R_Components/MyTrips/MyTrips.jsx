@@ -39,7 +39,7 @@ class MyTrips extends React.Component {
       <div>
         <h3>Plan for</h3>
         <hr />
-      <div className='container-fluid' id='progress-circle-container'>
+        <div className='container-fluid' id='progress-circle-container'>
           {(this.state.trips.length) ? this.state.trips.map((trip, i) => {
             return (
               <div key={i} className='col-xs-12 col-sm-12 col-md-6 col-lg-4'>
@@ -52,6 +52,7 @@ class MyTrips extends React.Component {
                     budget={trip.meta.budget}
                     saved={trip.meta.saved}
                     tripDate={trip.tripDate}
+                    tripEndDate={trip.tripEndDate}
                     color='#aae444'
                     strokeWidth='4' />
                 </Link>

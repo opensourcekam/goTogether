@@ -63,7 +63,6 @@ module.exports = (express, app, router, mongoose, TripModel, Trip, User) => {
     Trip.findById({'_id': req.params._id}).then((doc, err) => {
       console.log(`PUT req on trips/:id ${doc}`)
       if (doc) {
-
         let update = `UPDATE ${req.body.update.toUpperCase()}`
 
         switch (update) {

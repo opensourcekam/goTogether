@@ -10,12 +10,9 @@ class ThingsToDo extends React.Component {
     return (
       <article className='tripCard'>
         <h2>What are you doing there?</h2>
-        <div className='tripTile getThereTile'>
-        </div>
-        <div className='tripTile getThereTile'>
-        </div>
-        <div className='tripTile getThereTile'>
-        </div>
+        <div className='tripTile getThereTile' />
+        <div className='tripTile getThereTile' />
+        <div className='tripTile getThereTile' />
       </article>
     )
   }

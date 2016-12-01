@@ -27,8 +27,8 @@ class Footer extends React.Component {
   render () {
     return (
       <footer>
-        <nav className="navbar navbar-fixed-bottom navbar-dark bg-primary">
-          <a className="navbar-brand" href="#">youme.🌎🌍🌏</a>
+        <nav className='navbar navbar-fixed-bottom navbar-dark bg-primary'>
+          <a className='navbar-brand' href='#'>youme.🌎🌍🌏</a>
         </nav>
       </footer>
     )

@@ -1,6 +1,5 @@
 // https://github.com/jkbrzt/httpie
-
-module.exports = function (express, app, router, config, Trip) {
+module.exports = (express, app, router, config, Trip) => {
   const skyscanner = require('skyscannerjs')
   const api = new skyscanner.API('prtl6749387986743898559646983194')
 
@@ -48,6 +47,8 @@ module.exports = function (express, app, router, config, Trip) {
 
         option 2. Abstract api.flights.livePrices.poll out of first promise into its own function then call that inside of
       */
+
+      // Set country, currency, and locale from USER object
       api.flights.livePrices.session({
         country: 'ES',
         currency: 'EUR',
@@ -57,7 +58,7 @@ module.exports = function (express, app, router, config, Trip) {
         destinationplace: req.body.destinationplace,
         outbounddate: req.body.outbounddate,
         inbounddate: req.body.inbounddate,
-        adults: parseInt(req.body.adults) || 3
+        adults: parseInt(req.body.adults)
       }).then((response) => {
         const location = response.headers.location
 
@@ -65,9 +66,7 @@ module.exports = function (express, app, router, config, Trip) {
         console.log('// POLL THE FLIGHT SESSION')
 
         pollSession(location)
-
       }).catch((err) => {
-
         console.log(err)
         res.json({'err': err.status})
       })
@@ -80,12 +79,13 @@ module.exports = function (express, app, router, config, Trip) {
       let livePricesPromise = api.flights.livePrices.poll(location)
 
       livePricesPromise.then((response) => {
-        const { Itineraries, Legs, Query } = response.data
+        const {Itineraries, Legs, Query} = response.data
 
         console.log(Query)
         console.log({'// itineraries': Itineraries})
-
-        console.log({'// data': response.data })
+        // set Itineraries to sliced Itineraries
+        let cheapest_10_itineraries = Itineraries.slice(0, 10)
+        console.log({'// data': response.data})
 
         Trip.findById({'_id': req.body._id}).then((doc, err) => {
           if (doc) {
@@ -94,7 +94,7 @@ module.exports = function (express, app, router, config, Trip) {
 
             // get data necessary to send to user
             // add new data to fArr
-            doc.flights.push(Itineraries)
+            doc.flights.push(cheapest_10_itineraries)
             doc.save((err, doc) => {
               console.log(`// Saved trip ${doc}`)
             })
@@ -106,13 +106,10 @@ module.exports = function (express, app, router, config, Trip) {
         }) // db call 1
 
         // respond with json
-        res.json({
-          'itineraries': Itineraries
-        })
+        res.json({'itineraries': cheapest_10_itineraries})
       })
 
       livePricesPromise.catch((err) => {
-
         // If an err is caught it will contain the url for the polling location still
 
         if (err.status === 304 && err.statusText === 'Not Modified') {
@@ -123,26 +120,20 @@ module.exports = function (express, app, router, config, Trip) {
 
             if (doc.flights.length > 0 && doc.flights[0].length !== 0) {
               console.log('// doc has flights')
-              res.json({
-                'itineraries': doc.flights
-              })
+              res.json({'itineraries': doc.flights})
             } else {
               console.log('// doc doesnt have flights recurse on pollSession()')
               pollSession(pricesErrObj.config.url)
             }
-
-
           }).catch((err) => {
             console.log(err)
           }) // db call 2
-
         } else {
           console.log(err)
           res.json({'err': err.status})
         }
       }) // session poll catch
     } // end pollSession function
-
   }) // router
 
   app.use('/api/v1/flights', router)

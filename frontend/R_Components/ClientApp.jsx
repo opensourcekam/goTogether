@@ -33,13 +33,13 @@ class App extends React.Component {
           <Route path='/' component={Layout}>
             <IndexRoute component={Landing} />
             {/* Contains new trip form */}
-            <Route path="newTrip" component={NewTrip} />
+            <Route path='newTrip' component={NewTrip} />
             {/* Contains the map */}
-            <Route path="tripDash" component={Trip} />
-            <Route path="/tripDash/:tripId" component={Trip} />
+            <Route path='tripDash' component={Trip} />
+            <Route path='/tripDash/:tripId' component={Trip} />
             {/* <Route path="/tripDash/:tripIdt" onEnter={handleAddPost}/> */}
             {/* Contains all trips currently planning */}
-            <Route path="myTrips" component={MyTrips} />
+            <Route path='myTrips' component={MyTrips} />
           </Route>
         </Router>
       </div>

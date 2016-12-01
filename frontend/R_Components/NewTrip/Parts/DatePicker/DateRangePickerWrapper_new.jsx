@@ -48,25 +48,25 @@ class DateRangePickerWrapper extends Component {
         {(this.state.displayCalendar === 1)
          ? <div onMouseOver={this.onMouseOverInput}>
              <DateRange
-                 linkedCalendars
-                 firstDayOfWeek={1}
-                 onInit={this.handleChange}
-                 onChange={this.props.onChange}
-                 theme={{
-                   PredefinedRanges: {
-                     marginLeft: 10,
-                     marginTop: 10
-                   },
-                   DayHover: {
-                     background: '#ffffff',
-                     color: '#7f8c8d',
-                     transform: 'scale(1.1) translateY(-10%)',
-                     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.4)'
-                   },
-                   Calendar : {
-                    color : '#95a5a6'
-                  }
-                 }}
+               linkedCalendars
+               firstDayOfWeek={1}
+               onInit={this.handleChange}
+               onChange={this.props.onChange}
+               theme={{
+                 PredefinedRanges: {
+                   marginLeft: 10,
+                   marginTop: 10
+                 },
+                 DayHover: {
+                   background: '#ffffff',
+                   color: '#7f8c8d',
+                   transform: 'scale(1.1) translateY(-10%)',
+                   boxShadow: '0 2px 4px rgba(0, 0, 0, 0.4)'
+                 },
+                 Calendar: {
+                   color: '#95a5a6'
+                 }
+               }}
                 />
            </div>
           : null}

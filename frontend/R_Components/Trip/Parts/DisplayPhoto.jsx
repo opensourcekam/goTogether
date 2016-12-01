@@ -1,5 +1,5 @@
-/*global userJSON*/
-/*eslint no-undef: "error"*/
+/* global userJSON */
+/* eslint no-undef: "error" */
 const React = require('react')
 
 class DisplayPhoto extends React.Component {

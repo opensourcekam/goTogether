@@ -20,7 +20,7 @@ class Family extends React.Component {
 
     return (
       <div className='card'>
-        <div className="card-block">Family</div>
+        <div className='card-block'>Family</div>
         <img onClick={this.putFamily} className='card-img-bottom' style={style.img} src={`/images/trip/${iconSRC}`} alt='Card image' />
       </div>
     )

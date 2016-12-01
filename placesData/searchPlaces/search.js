@@ -28,7 +28,6 @@ const search = {
   } // getPlaces
 }
 
-
 /*
  const obscurePlaces = require('../data/places/atlasObscurePlaces.json')
  console.log(Search.getPlaces({

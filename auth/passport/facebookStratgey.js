@@ -1,4 +1,4 @@
-module.exports = function(passport, FacebookStrategy, config, mongoose, User) {
+module.exports = function (passport, FacebookStrategy, config, mongoose, User) {
   const Schema = mongoose.Schema
 
   passport.use(new FacebookStrategy({
@@ -6,13 +6,13 @@ module.exports = function(passport, FacebookStrategy, config, mongoose, User) {
     clientSecret: config.fb.appSecret,
     callbackURL: config.fb.callbackURL,
     profileFields: ['id', 'displayName', 'link', 'picture.type(large)', 'email']
-  }, function(accessToken, refreshToken, profile, cb) {
+  }, function (accessToken, refreshToken, profile, cb) {
     console.log(`Access token ${accessToken}`)
     console.log(profile)
     // I was overwriting the scope in line 20 by passing in profile again... good example of closures!
     User.findOne({
       'profileID': profile.id
-    }, function(err, user) {
+    }, function (err, user) {
       if (err) {
         console.log(err)
       }
@@ -26,7 +26,7 @@ module.exports = function(passport, FacebookStrategy, config, mongoose, User) {
           profilePic: profile.photos[0].value || ''
         })
 
-        Newuser.save(function(err) {
+        Newuser.save(function (err) {
           (err) ? console.error(err) : cb(null, Newuser)
         })
       }
@@ -43,12 +43,12 @@ module.exports = function(passport, FacebookStrategy, config, mongoose, User) {
   // from the database when deserializing.  However, due to the fact that this
   // example does not have a database, the complete Twitter profile is serialized
   // and deserialized.
-  passport.serializeUser(function(user, cb) {
+  passport.serializeUser(function (user, cb) {
     // console.log(`SERIALIZED ${user}`)
     cb(null, user)
   })
 
-  passport.deserializeUser(function(obj, cb) {
+  passport.deserializeUser(function (obj, cb) {
     cb(null, obj)
   })
 

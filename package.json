@@ -13,7 +13,7 @@
     "startd": "nodemon app.js",
     "test": "standard",
     "watch": "webpack --watch",
-    "postinstall": "webpack --progress --colors"
+    "postinstall": "NODE_ENV=production webpack -p --progress --colors"
   },
   "author": "Copyright (C)",
   "license": "MIT",

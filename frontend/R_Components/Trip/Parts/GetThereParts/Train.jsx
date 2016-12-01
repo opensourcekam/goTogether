@@ -20,7 +20,7 @@ class Train extends React.Component {
 
     return (
       <div className='card'>
-        <div className="card-block">Train</div>
+        <div className='card-block'>Train</div>
         <img onClick={this.getTrains} className='card-img-bottom' style={style.img} src={`/images/trip/${iconSRC}`} alt='Card image' />
       </div>
     )

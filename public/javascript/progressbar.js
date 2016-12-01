@@ -2,52 +2,51 @@
 // https://kimmobrunfeldt.github.io/progressbar.js
 // License: MIT
 
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.ProgressBar = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function (f) { if (typeof exports === 'object' && typeof module !== 'undefined') { module.exports = f() } else if (typeof define === 'function' && define.amd) { define([], f) } else { var g; if (typeof window !== 'undefined') { g = window } else if (typeof global !== 'undefined') { g = global } else if (typeof self !== 'undefined') { g = self } else { g = this }g.ProgressBar = f() } })(function () { var define, module, exports; return (function e (t, n, r) { function s (o, u) { if (!n[o]) { if (!t[o]) { var a = typeof require == 'function' && require; if (!u && a) return a(o, !0); if (i) return i(o, !0); var f = new Error("Cannot find module '" + o + "'"); throw f.code = 'MODULE_NOT_FOUND', f } var l = n[o] = {exports: {}}; t[o][0].call(l.exports, function (e) { var n = t[o][1][e]; return s(n ? n : e) }, l, l.exports, e, t, n, r) } return n[o].exports } var i = typeof require == 'function' && require; for (var o = 0; o < r.length; o++)s(r[o]); return s })({1: [function (require, module, exports) {
 /* shifty - v1.5.2 - 2016-02-10 - http://jeremyckahn.github.io/shifty */
-;(function () {
-  var root = this || Function('return this')();
+  ;(function () {
+    var root = this || Function('return this')()
 
 /**
  * Shifty Core
  * By Jeremy Kahn - jeremyckahn@gmail.com
  */
 
-var Tweenable = (function () {
-
-  'use strict';
+    var Tweenable = (function () {
+      'use strict'
 
   // Aliases that get defined later in this function
-  var formula;
+      var formula
 
   // CONSTANTS
-  var DEFAULT_SCHEDULE_FUNCTION;
-  var DEFAULT_EASING = 'linear';
-  var DEFAULT_DURATION = 500;
-  var UPDATE_TIME = 1000 / 60;
+      var DEFAULT_SCHEDULE_FUNCTION
+      var DEFAULT_EASING = 'linear'
+      var DEFAULT_DURATION = 500
+      var UPDATE_TIME = 1000 / 60
 
-  var _now = Date.now
+      var _now = Date.now
        ? Date.now
-       : function () {return +new Date();};
+       : function () { return +new Date() }
 
-  var now = typeof SHIFTY_DEBUG_NOW !== 'undefined' ? SHIFTY_DEBUG_NOW : _now;
+      var now = typeof SHIFTY_DEBUG_NOW !== 'undefined' ? SHIFTY_DEBUG_NOW : _now
 
-  if (typeof window !== 'undefined') {
+      if (typeof window !== 'undefined') {
     // requestAnimationFrame() shim by Paul Irish (modified for Shifty)
     // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
-    DEFAULT_SCHEDULE_FUNCTION = window.requestAnimationFrame
+        DEFAULT_SCHEDULE_FUNCTION = window.requestAnimationFrame
        || window.webkitRequestAnimationFrame
        || window.oRequestAnimationFrame
        || window.msRequestAnimationFrame
        || (window.mozCancelRequestAnimationFrame
        && window.mozRequestAnimationFrame)
-       || setTimeout;
-  } else {
-    DEFAULT_SCHEDULE_FUNCTION = setTimeout;
-  }
+       || setTimeout
+      } else {
+        DEFAULT_SCHEDULE_FUNCTION = setTimeout
+      }
 
-  function noop () {
+      function noop () {
     // NOOP!
-  }
+      }
 
   /**
    * Handy shortcut for doing a for-in loop. This is not a "normal" each
@@ -57,14 +56,14 @@ var Tweenable = (function () {
    * @param {Function(string)} fn
    * @private
    */
-  function each (obj, fn) {
-    var key;
-    for (key in obj) {
-      if (Object.hasOwnProperty.call(obj, key)) {
-        fn(key);
+      function each (obj, fn) {
+        var key
+        for (key in obj) {
+          if (Object.hasOwnProperty.call(obj, key)) {
+            fn(key)
+          }
+        }
       }
-    }
-  }
 
   /**
    * Perform a shallow copy of Object properties.
@@ -73,13 +72,13 @@ var Tweenable = (function () {
    * @return {Object} A reference to the augmented `targetObj` Object
    * @private
    */
-  function shallowCopy (targetObj, srcObj) {
-    each(srcObj, function (prop) {
-      targetObj[prop] = srcObj[prop];
-    });
+      function shallowCopy (targetObj, srcObj) {
+        each(srcObj, function (prop) {
+          targetObj[prop] = srcObj[prop]
+        })
 
-    return targetObj;
-  }
+        return targetObj
+      }
 
   /**
    * Copies each property from src onto target, but only if the property to
@@ -88,13 +87,13 @@ var Tweenable = (function () {
    * @param {Object} src
    * @private
    */
-  function defaults (target, src) {
-    each(src, function (prop) {
-      if (typeof target[prop] === 'undefined') {
-        target[prop] = src[prop];
+      function defaults (target, src) {
+        each(src, function (prop) {
+          if (typeof target[prop] === 'undefined') {
+            target[prop] = src[prop]
+          }
+        })
       }
-    });
-  }
 
   /**
    * Calculates the interpolated tween values of an Object for a given
@@ -111,33 +110,32 @@ var Tweenable = (function () {
    * targetState.
    * @private
    */
-  function tweenProps (forPosition, currentState, originalState, targetState,
+      function tweenProps (forPosition, currentState, originalState, targetState,
     duration, timestamp, easing) {
-    var normalizedPosition =
-        forPosition < timestamp ? 0 : (forPosition - timestamp) / duration;
+        var normalizedPosition =
+        forPosition < timestamp ? 0 : (forPosition - timestamp) / duration
 
-
-    var prop;
-    var easingObjectProp;
-    var easingFn;
-    for (prop in currentState) {
-      if (currentState.hasOwnProperty(prop)) {
-        easingObjectProp = easing[prop];
-        easingFn = typeof easingObjectProp === 'function'
+        var prop
+        var easingObjectProp
+        var easingFn
+        for (prop in currentState) {
+          if (currentState.hasOwnProperty(prop)) {
+            easingObjectProp = easing[prop]
+            easingFn = typeof easingObjectProp === 'function'
           ? easingObjectProp
-          : formula[easingObjectProp];
+          : formula[easingObjectProp]
 
-        currentState[prop] = tweenProp(
+            currentState[prop] = tweenProp(
           originalState[prop],
           targetState[prop],
           easingFn,
           normalizedPosition
-        );
-      }
-    }
+        )
+          }
+        }
 
-    return currentState;
-  }
+        return currentState
+      }
 
   /**
    * Tweens a single property.
@@ -149,9 +147,9 @@ var Tweenable = (function () {
    * @return {number} The tweened value.
    * @private
    */
-  function tweenProp (start, end, easingFunc, position) {
-    return start + (end - start) * easingFunc(position);
-  }
+      function tweenProp (start, end, easingFunc, position) {
+        return start + (end - start) * easingFunc(position)
+      }
 
   /**
    * Applies a filter to Tweenable instance.
@@ -160,21 +158,21 @@ var Tweenable = (function () {
    * @param {String} filterName The name of the filter to apply.
    * @private
    */
-  function applyFilter (tweenable, filterName) {
-    var filters = Tweenable.prototype.filter;
-    var args = tweenable._filterArgs;
+      function applyFilter (tweenable, filterName) {
+        var filters = Tweenable.prototype.filter
+        var args = tweenable._filterArgs
 
-    each(filters, function (name) {
-      if (typeof filters[name][filterName] !== 'undefined') {
-        filters[name][filterName].apply(tweenable, args);
+        each(filters, function (name) {
+          if (typeof filters[name][filterName] !== 'undefined') {
+            filters[name][filterName].apply(tweenable, args)
+          }
+        })
       }
-    });
-  }
 
-  var timeoutHandler_endTime;
-  var timeoutHandler_currentTime;
-  var timeoutHandler_isEnded;
-  var timeoutHandler_offset;
+      var timeoutHandler_endTime
+      var timeoutHandler_currentTime
+      var timeoutHandler_isEnded
+      var timeoutHandler_offset
   /**
    * Handles the update logic for one step of a tween.
    * @param {Tweenable} tweenable
@@ -191,48 +189,46 @@ var Tweenable = (function () {
    * Tweenable#seek.
    * @private
    */
-  function timeoutHandler (tweenable, timestamp, delay, duration, currentState,
+      function timeoutHandler (tweenable, timestamp, delay, duration, currentState,
     originalState, targetState, easing, step, schedule,
     opt_currentTimeOverride) {
+        timeoutHandler_endTime = timestamp + delay + duration
 
-    timeoutHandler_endTime = timestamp + delay + duration;
+        timeoutHandler_currentTime =
+    Math.min(opt_currentTimeOverride || now(), timeoutHandler_endTime)
 
-    timeoutHandler_currentTime =
-    Math.min(opt_currentTimeOverride || now(), timeoutHandler_endTime);
+        timeoutHandler_isEnded =
+      timeoutHandler_currentTime >= timeoutHandler_endTime
 
-    timeoutHandler_isEnded =
-      timeoutHandler_currentTime >= timeoutHandler_endTime;
+        timeoutHandler_offset = duration - (
+      timeoutHandler_endTime - timeoutHandler_currentTime)
 
-    timeoutHandler_offset = duration - (
-      timeoutHandler_endTime - timeoutHandler_currentTime);
+        if (tweenable.isPlaying()) {
+          if (timeoutHandler_isEnded) {
+            step(targetState, tweenable._attachment, timeoutHandler_offset)
+            tweenable.stop(true)
+          } else {
+            tweenable._scheduleId =
+          schedule(tweenable._timeoutHandler, UPDATE_TIME)
 
-    if (tweenable.isPlaying()) {
-      if (timeoutHandler_isEnded) {
-        step(targetState, tweenable._attachment, timeoutHandler_offset);
-        tweenable.stop(true);
-      } else {
-        tweenable._scheduleId =
-          schedule(tweenable._timeoutHandler, UPDATE_TIME);
-
-        applyFilter(tweenable, 'beforeTween');
+            applyFilter(tweenable, 'beforeTween')
 
         // If the animation has not yet reached the start point (e.g., there was
         // delay that has not yet completed), just interpolate the starting
         // position of the tween.
-        if (timeoutHandler_currentTime < (timestamp + delay)) {
-          tweenProps(1, currentState, originalState, targetState, 1, 1, easing);
-        } else {
-          tweenProps(timeoutHandler_currentTime, currentState, originalState,
-            targetState, duration, timestamp + delay, easing);
+            if (timeoutHandler_currentTime < (timestamp + delay)) {
+              tweenProps(1, currentState, originalState, targetState, 1, 1, easing)
+            } else {
+              tweenProps(timeoutHandler_currentTime, currentState, originalState,
+            targetState, duration, timestamp + delay, easing)
+            }
+
+            applyFilter(tweenable, 'afterTween')
+
+            step(currentState, tweenable._attachment, timeoutHandler_offset)
+          }
         }
-
-        applyFilter(tweenable, 'afterTween');
-
-        step(currentState, tweenable._attachment, timeoutHandler_offset);
       }
-    }
-  }
-
 
   /**
    * Creates a usable easing Object from a string, a function or another easing
@@ -243,24 +239,24 @@ var Tweenable = (function () {
    * @return {Object.<string|Function>}
    * @private
    */
-  function composeEasingObject (fromTweenParams, easing) {
-    var composedEasing = {};
-    var typeofEasing = typeof easing;
+      function composeEasingObject (fromTweenParams, easing) {
+        var composedEasing = {}
+        var typeofEasing = typeof easing
 
-    if (typeofEasing === 'string' || typeofEasing === 'function') {
-      each(fromTweenParams, function (prop) {
-        composedEasing[prop] = easing;
-      });
-    } else {
-      each(fromTweenParams, function (prop) {
-        if (!composedEasing[prop]) {
-          composedEasing[prop] = easing[prop] || DEFAULT_EASING;
+        if (typeofEasing === 'string' || typeofEasing === 'function') {
+          each(fromTweenParams, function (prop) {
+            composedEasing[prop] = easing
+          })
+        } else {
+          each(fromTweenParams, function (prop) {
+            if (!composedEasing[prop]) {
+              composedEasing[prop] = easing[prop] || DEFAULT_EASING
+            }
+          })
         }
-      });
-    }
 
-    return composedEasing;
-  }
+        return composedEasing
+      }
 
   /**
    * Tweenable constructor.
@@ -274,18 +270,18 @@ var Tweenable = (function () {
    * @module Tweenable
    * @constructor
    */
-  function Tweenable (opt_initialState, opt_config) {
-    this._currentState = opt_initialState || {};
-    this._configured = false;
-    this._scheduleFunction = DEFAULT_SCHEDULE_FUNCTION;
+      function Tweenable (opt_initialState, opt_config) {
+        this._currentState = opt_initialState || {}
+        this._configured = false
+        this._scheduleFunction = DEFAULT_SCHEDULE_FUNCTION
 
     // To prevent unnecessary calls to setConfig do not set default
     // configuration here.  Only set default configuration immediately before
     // tweening if none has been set.
-    if (typeof opt_config !== 'undefined') {
-      this.setConfig(opt_config);
-    }
-  }
+        if (typeof opt_config !== 'undefined') {
+          this.setConfig(opt_config)
+        }
+      }
 
   /**
    * Configure and start a tween.
@@ -294,21 +290,21 @@ var Tweenable = (function () {
    * `{{#crossLink "Tweenable/setConfig:method"}}{{/crossLink}}`.
    * @chainable
    */
-  Tweenable.prototype.tween = function (opt_config) {
-    if (this._isTweening) {
-      return this;
-    }
+      Tweenable.prototype.tween = function (opt_config) {
+        if (this._isTweening) {
+          return this
+        }
 
     // Only set default config if no configuration has been set previously and
     // none is provided now.
-    if (opt_config !== undefined || !this._configured) {
-      this.setConfig(opt_config);
-    }
+        if (opt_config !== undefined || !this._configured) {
+          this.setConfig(opt_config)
+        }
 
-    this._timestamp = now();
-    this._start(this.get(), this._attachment);
-    return this.resume();
-  };
+        this._timestamp = now()
+        this._start(this.get(), this._attachment)
+        return this.resume()
+      }
 
   /**
    * Configure a tween that will start at some point in the future.
@@ -339,29 +335,29 @@ var Tweenable = (function () {
    *   `step`/`start`/`finish` methods.
    * @chainable
    */
-  Tweenable.prototype.setConfig = function (config) {
-    config = config || {};
-    this._configured = true;
+      Tweenable.prototype.setConfig = function (config) {
+        config = config || {}
+        this._configured = true
 
     // Attach something to this Tweenable instance (e.g.: a DOM element, an
     // object, a string, etc.);
-    this._attachment = config.attachment;
+        this._attachment = config.attachment
 
     // Init the internal state
-    this._pausedAtTime = null;
-    this._scheduleId = null;
-    this._delay = config.delay || 0;
-    this._start = config.start || noop;
-    this._step = config.step || noop;
-    this._finish = config.finish || noop;
-    this._duration = config.duration || DEFAULT_DURATION;
-    this._currentState = shallowCopy({}, config.from) || this.get();
-    this._originalState = this.get();
-    this._targetState = shallowCopy({}, config.to) || this.get();
+        this._pausedAtTime = null
+        this._scheduleId = null
+        this._delay = config.delay || 0
+        this._start = config.start || noop
+        this._step = config.step || noop
+        this._finish = config.finish || noop
+        this._duration = config.duration || DEFAULT_DURATION
+        this._currentState = shallowCopy({}, config.from) || this.get()
+        this._originalState = this.get()
+        this._targetState = shallowCopy({}, config.to) || this.get()
 
-    var self = this;
-    this._timeoutHandler = function () {
-      timeoutHandler(self,
+        var self = this
+        this._timeoutHandler = function () {
+          timeoutHandler(self,
         self._timestamp,
         self._delay,
         self._duration,
@@ -371,41 +367,41 @@ var Tweenable = (function () {
         self._easing,
         self._step,
         self._scheduleFunction
-      );
-    };
+      )
+        }
 
     // Aliases used below
-    var currentState = this._currentState;
-    var targetState = this._targetState;
+        var currentState = this._currentState
+        var targetState = this._targetState
 
     // Ensure that there is always something to tween to.
-    defaults(targetState, currentState);
+        defaults(targetState, currentState)
 
-    this._easing = composeEasingObject(
-      currentState, config.easing || DEFAULT_EASING);
+        this._easing = composeEasingObject(
+      currentState, config.easing || DEFAULT_EASING)
 
-    this._filterArgs =
-      [currentState, this._originalState, targetState, this._easing];
+        this._filterArgs =
+      [currentState, this._originalState, targetState, this._easing]
 
-    applyFilter(this, 'tweenCreated');
-    return this;
-  };
+        applyFilter(this, 'tweenCreated')
+        return this
+      }
 
   /**
    * @method get
    * @return {Object} The current state.
    */
-  Tweenable.prototype.get = function () {
-    return shallowCopy({}, this._currentState);
-  };
+      Tweenable.prototype.get = function () {
+        return shallowCopy({}, this._currentState)
+      }
 
   /**
    * @method set
    * @param {Object} state The current state.
    */
-  Tweenable.prototype.set = function (state) {
-    this._currentState = state;
-  };
+      Tweenable.prototype.set = function (state) {
+        this._currentState = state
+      }
 
   /**
    * Pause a tween.  Paused tweens can be resumed from the point at which they
@@ -415,29 +411,29 @@ var Tweenable = (function () {
    * @method pause
    * @chainable
    */
-  Tweenable.prototype.pause = function () {
-    this._pausedAtTime = now();
-    this._isPaused = true;
-    return this;
-  };
+      Tweenable.prototype.pause = function () {
+        this._pausedAtTime = now()
+        this._isPaused = true
+        return this
+      }
 
   /**
    * Resume a paused tween.
    * @method resume
    * @chainable
    */
-  Tweenable.prototype.resume = function () {
-    if (this._isPaused) {
-      this._timestamp += now() - this._pausedAtTime;
-    }
+      Tweenable.prototype.resume = function () {
+        if (this._isPaused) {
+          this._timestamp += now() - this._pausedAtTime
+        }
 
-    this._isPaused = false;
-    this._isTweening = true;
+        this._isPaused = false
+        this._isTweening = true
 
-    this._timeoutHandler();
+        this._timeoutHandler()
 
-    return this;
-  };
+        return this
+      }
 
   /**
    * Move the state of the animation to a specific point in the tween's
@@ -448,23 +444,23 @@ var Tweenable = (function () {
    * to.  This must not be less than `0`.
    * @chainable
    */
-  Tweenable.prototype.seek = function (millisecond) {
-    millisecond = Math.max(millisecond, 0);
-    var currentTime = now();
+      Tweenable.prototype.seek = function (millisecond) {
+        millisecond = Math.max(millisecond, 0)
+        var currentTime = now()
 
-    if ((this._timestamp + millisecond) === 0) {
-      return this;
-    }
+        if ((this._timestamp + millisecond) === 0) {
+          return this
+        }
 
-    this._timestamp = currentTime - millisecond;
+        this._timestamp = currentTime - millisecond
 
-    if (!this.isPlaying()) {
-      this._isTweening = true;
-      this._isPaused = false;
+        if (!this.isPlaying()) {
+          this._isTweening = true
+          this._isPaused = false
 
       // If the animation is not running, call timeoutHandler to make sure that
       // any step handlers are run.
-      timeoutHandler(this,
+          timeoutHandler(this,
         this._timestamp,
         this._delay,
         this._duration,
@@ -475,13 +471,13 @@ var Tweenable = (function () {
         this._step,
         this._scheduleFunction,
         currentTime
-      );
+      )
 
-      this.pause();
-    }
+          this.pause()
+        }
 
-    return this;
-  };
+        return this
+      }
 
   /**
    * Stops and cancels a tween.
@@ -492,21 +488,21 @@ var Tweenable = (function () {
    * @method stop
    * @chainable
    */
-  Tweenable.prototype.stop = function (gotoEnd) {
-    this._isTweening = false;
-    this._isPaused = false;
-    this._timeoutHandler = noop;
+      Tweenable.prototype.stop = function (gotoEnd) {
+        this._isTweening = false
+        this._isPaused = false
+        this._timeoutHandler = noop;
 
-    (root.cancelAnimationFrame            ||
-    root.webkitCancelAnimationFrame     ||
-    root.oCancelAnimationFrame          ||
-    root.msCancelAnimationFrame         ||
+        (root.cancelAnimationFrame ||
+    root.webkitCancelAnimationFrame ||
+    root.oCancelAnimationFrame ||
+    root.msCancelAnimationFrame ||
     root.mozCancelRequestAnimationFrame ||
-    root.clearTimeout)(this._scheduleId);
+    root.clearTimeout)(this._scheduleId)
 
-    if (gotoEnd) {
-      applyFilter(this, 'beforeTween');
-      tweenProps(
+        if (gotoEnd) {
+          applyFilter(this, 'beforeTween')
+          tweenProps(
         1,
         this._currentState,
         this._originalState,
@@ -514,22 +510,22 @@ var Tweenable = (function () {
         1,
         0,
         this._easing
-      );
-      applyFilter(this, 'afterTween');
-      applyFilter(this, 'afterTweenEnd');
-      this._finish.call(this, this._currentState, this._attachment);
-    }
+      )
+          applyFilter(this, 'afterTween')
+          applyFilter(this, 'afterTweenEnd')
+          this._finish.call(this, this._currentState, this._attachment)
+        }
 
-    return this;
-  };
+        return this
+      }
 
   /**
    * @method isPlaying
    * @return {boolean} Whether or not a tween is running.
    */
-  Tweenable.prototype.isPlaying = function () {
-    return this._isTweening && !this._isPaused;
-  };
+      Tweenable.prototype.isPlaying = function () {
+        return this._isTweening && !this._isPaused
+      }
 
   /**
    * Set a custom schedule function.
@@ -543,30 +539,30 @@ var Tweenable = (function () {
    * @param {Function(Function,number)} scheduleFunction The function to be
    * used to schedule the next frame to be rendered.
    */
-  Tweenable.prototype.setScheduleFunction = function (scheduleFunction) {
-    this._scheduleFunction = scheduleFunction;
-  };
+      Tweenable.prototype.setScheduleFunction = function (scheduleFunction) {
+        this._scheduleFunction = scheduleFunction
+      }
 
   /**
    * `delete` all "own" properties.  Call this when the `Tweenable` instance
    * is no longer needed to free memory.
    * @method dispose
    */
-  Tweenable.prototype.dispose = function () {
-    var prop;
-    for (prop in this) {
-      if (this.hasOwnProperty(prop)) {
-        delete this[prop];
+      Tweenable.prototype.dispose = function () {
+        var prop
+        for (prop in this) {
+          if (this.hasOwnProperty(prop)) {
+            delete this[prop]
+          }
+        }
       }
-    }
-  };
 
   /**
    * Filters are used for transforming the properties of a tween at various
    * points in a Tweenable's life cycle.  See the README for more info on this.
    * @private
    */
-  Tweenable.prototype.filter = {};
+      Tweenable.prototype.filter = {}
 
   /**
    * This object contains all of the tweens available to Shifty.  It is
@@ -577,47 +573,46 @@ var Tweenable = (function () {
    * @property formula
    * @type {Object(function)}
    */
-  Tweenable.prototype.formula = {
-    linear: function (pos) {
-      return pos;
-    }
-  };
+      Tweenable.prototype.formula = {
+        linear: function (pos) {
+          return pos
+        }
+      }
 
-  formula = Tweenable.prototype.formula;
+      formula = Tweenable.prototype.formula
 
-  shallowCopy(Tweenable, {
-    'now': now
-    ,'each': each
-    ,'tweenProps': tweenProps
-    ,'tweenProp': tweenProp
-    ,'applyFilter': applyFilter
-    ,'shallowCopy': shallowCopy
-    ,'defaults': defaults
-    ,'composeEasingObject': composeEasingObject
-  });
+      shallowCopy(Tweenable, {
+        'now': now
+    , 'each': each
+    , 'tweenProps': tweenProps
+    , 'tweenProp': tweenProp
+    , 'applyFilter': applyFilter
+    , 'shallowCopy': shallowCopy
+    , 'defaults': defaults
+    , 'composeEasingObject': composeEasingObject
+      })
 
   // `root` is provided in the intro/outro files.
 
   // A hook used for unit testing.
-  if (typeof SHIFTY_DEBUG_NOW === 'function') {
-    root.timeoutHandler = timeoutHandler;
-  }
+      if (typeof SHIFTY_DEBUG_NOW === 'function') {
+        root.timeoutHandler = timeoutHandler
+      }
 
   // Bootstrap Tweenable appropriately for the environment.
-  if (typeof exports === 'object') {
+      if (typeof exports === 'object') {
     // CommonJS
-    module.exports = Tweenable;
-  } else if (typeof define === 'function' && define.amd) {
+        module.exports = Tweenable
+      } else if (typeof define === 'function' && define.amd) {
     // AMD
-    define(function () {return Tweenable;});
-  } else if (typeof root.Tweenable === 'undefined') {
+        define(function () { return Tweenable })
+      } else if (typeof root.Tweenable === 'undefined') {
     // Browser: Make `Tweenable` globally accessible.
-    root.Tweenable = Tweenable;
-  }
+        root.Tweenable = Tweenable
+      }
 
-  return Tweenable;
-
-} ());
+      return Tweenable
+    }())
 
 /*!
  * All equations are adapted from Thomas Fuchs'
@@ -634,192 +629,190 @@ var Tweenable = (function () {
  *  Easing Equations (c) 2003 Robert Penner, all rights reserved.
  */
 
-;(function () {
+  ;(function () {
+    Tweenable.shallowCopy(Tweenable.prototype.formula, {
+      easeInQuad: function (pos) {
+        return Math.pow(pos, 2)
+      },
 
-  Tweenable.shallowCopy(Tweenable.prototype.formula, {
-    easeInQuad: function (pos) {
-      return Math.pow(pos, 2);
-    },
+      easeOutQuad: function (pos) {
+        return -(Math.pow((pos - 1), 2) - 1)
+      },
 
-    easeOutQuad: function (pos) {
-      return -(Math.pow((pos - 1), 2) - 1);
-    },
+      easeInOutQuad: function (pos) {
+        if ((pos /= 0.5) < 1) { return 0.5 * Math.pow(pos, 2) }
+        return -0.5 * ((pos -= 2) * pos - 2)
+      },
 
-    easeInOutQuad: function (pos) {
-      if ((pos /= 0.5) < 1) {return 0.5 * Math.pow(pos,2);}
-      return -0.5 * ((pos -= 2) * pos - 2);
-    },
+      easeInCubic: function (pos) {
+        return Math.pow(pos, 3)
+      },
 
-    easeInCubic: function (pos) {
-      return Math.pow(pos, 3);
-    },
+      easeOutCubic: function (pos) {
+        return (Math.pow((pos - 1), 3) + 1)
+      },
 
-    easeOutCubic: function (pos) {
-      return (Math.pow((pos - 1), 3) + 1);
-    },
+      easeInOutCubic: function (pos) {
+        if ((pos /= 0.5) < 1) { return 0.5 * Math.pow(pos, 3) }
+        return 0.5 * (Math.pow((pos - 2), 3) + 2)
+      },
 
-    easeInOutCubic: function (pos) {
-      if ((pos /= 0.5) < 1) {return 0.5 * Math.pow(pos,3);}
-      return 0.5 * (Math.pow((pos - 2),3) + 2);
-    },
+      easeInQuart: function (pos) {
+        return Math.pow(pos, 4)
+      },
 
-    easeInQuart: function (pos) {
-      return Math.pow(pos, 4);
-    },
+      easeOutQuart: function (pos) {
+        return -(Math.pow((pos - 1), 4) - 1)
+      },
 
-    easeOutQuart: function (pos) {
-      return -(Math.pow((pos - 1), 4) - 1);
-    },
+      easeInOutQuart: function (pos) {
+        if ((pos /= 0.5) < 1) { return 0.5 * Math.pow(pos, 4) }
+        return -0.5 * ((pos -= 2) * Math.pow(pos, 3) - 2)
+      },
 
-    easeInOutQuart: function (pos) {
-      if ((pos /= 0.5) < 1) {return 0.5 * Math.pow(pos,4);}
-      return -0.5 * ((pos -= 2) * Math.pow(pos,3) - 2);
-    },
+      easeInQuint: function (pos) {
+        return Math.pow(pos, 5)
+      },
 
-    easeInQuint: function (pos) {
-      return Math.pow(pos, 5);
-    },
+      easeOutQuint: function (pos) {
+        return (Math.pow((pos - 1), 5) + 1)
+      },
 
-    easeOutQuint: function (pos) {
-      return (Math.pow((pos - 1), 5) + 1);
-    },
+      easeInOutQuint: function (pos) {
+        if ((pos /= 0.5) < 1) { return 0.5 * Math.pow(pos, 5) }
+        return 0.5 * (Math.pow((pos - 2), 5) + 2)
+      },
 
-    easeInOutQuint: function (pos) {
-      if ((pos /= 0.5) < 1) {return 0.5 * Math.pow(pos,5);}
-      return 0.5 * (Math.pow((pos - 2),5) + 2);
-    },
+      easeInSine: function (pos) {
+        return -Math.cos(pos * (Math.PI / 2)) + 1
+      },
 
-    easeInSine: function (pos) {
-      return -Math.cos(pos * (Math.PI / 2)) + 1;
-    },
+      easeOutSine: function (pos) {
+        return Math.sin(pos * (Math.PI / 2))
+      },
 
-    easeOutSine: function (pos) {
-      return Math.sin(pos * (Math.PI / 2));
-    },
+      easeInOutSine: function (pos) {
+        return (-0.5 * (Math.cos(Math.PI * pos) - 1))
+      },
 
-    easeInOutSine: function (pos) {
-      return (-0.5 * (Math.cos(Math.PI * pos) - 1));
-    },
+      easeInExpo: function (pos) {
+        return (pos === 0) ? 0 : Math.pow(2, 10 * (pos - 1))
+      },
 
-    easeInExpo: function (pos) {
-      return (pos === 0) ? 0 : Math.pow(2, 10 * (pos - 1));
-    },
+      easeOutExpo: function (pos) {
+        return (pos === 1) ? 1 : -Math.pow(2, -10 * pos) + 1
+      },
 
-    easeOutExpo: function (pos) {
-      return (pos === 1) ? 1 : -Math.pow(2, -10 * pos) + 1;
-    },
+      easeInOutExpo: function (pos) {
+        if (pos === 0) { return 0 }
+        if (pos === 1) { return 1 }
+        if ((pos /= 0.5) < 1) { return 0.5 * Math.pow(2, 10 * (pos - 1)) }
+        return 0.5 * (-Math.pow(2, -10 * --pos) + 2)
+      },
 
-    easeInOutExpo: function (pos) {
-      if (pos === 0) {return 0;}
-      if (pos === 1) {return 1;}
-      if ((pos /= 0.5) < 1) {return 0.5 * Math.pow(2,10 * (pos - 1));}
-      return 0.5 * (-Math.pow(2, -10 * --pos) + 2);
-    },
+      easeInCirc: function (pos) {
+        return -(Math.sqrt(1 - (pos * pos)) - 1)
+      },
 
-    easeInCirc: function (pos) {
-      return -(Math.sqrt(1 - (pos * pos)) - 1);
-    },
+      easeOutCirc: function (pos) {
+        return Math.sqrt(1 - Math.pow((pos - 1), 2))
+      },
 
-    easeOutCirc: function (pos) {
-      return Math.sqrt(1 - Math.pow((pos - 1), 2));
-    },
+      easeInOutCirc: function (pos) {
+        if ((pos /= 0.5) < 1) { return -0.5 * (Math.sqrt(1 - pos * pos) - 1) }
+        return 0.5 * (Math.sqrt(1 - (pos -= 2) * pos) + 1)
+      },
 
-    easeInOutCirc: function (pos) {
-      if ((pos /= 0.5) < 1) {return -0.5 * (Math.sqrt(1 - pos * pos) - 1);}
-      return 0.5 * (Math.sqrt(1 - (pos -= 2) * pos) + 1);
-    },
+      easeOutBounce: function (pos) {
+        if ((pos) < (1 / 2.75)) {
+          return (7.5625 * pos * pos)
+        } else if (pos < (2 / 2.75)) {
+          return (7.5625 * (pos -= (1.5 / 2.75)) * pos + 0.75)
+        } else if (pos < (2.5 / 2.75)) {
+          return (7.5625 * (pos -= (2.25 / 2.75)) * pos + 0.9375)
+        } else {
+          return (7.5625 * (pos -= (2.625 / 2.75)) * pos + 0.984375)
+        }
+      },
 
-    easeOutBounce: function (pos) {
-      if ((pos) < (1 / 2.75)) {
-        return (7.5625 * pos * pos);
-      } else if (pos < (2 / 2.75)) {
-        return (7.5625 * (pos -= (1.5 / 2.75)) * pos + 0.75);
-      } else if (pos < (2.5 / 2.75)) {
-        return (7.5625 * (pos -= (2.25 / 2.75)) * pos + 0.9375);
-      } else {
-        return (7.5625 * (pos -= (2.625 / 2.75)) * pos + 0.984375);
-      }
-    },
+      easeInBack: function (pos) {
+        var s = 1.70158
+        return (pos) * pos * ((s + 1) * pos - s)
+      },
 
-    easeInBack: function (pos) {
-      var s = 1.70158;
-      return (pos) * pos * ((s + 1) * pos - s);
-    },
+      easeOutBack: function (pos) {
+        var s = 1.70158
+        return (pos = pos - 1) * pos * ((s + 1) * pos + s) + 1
+      },
 
-    easeOutBack: function (pos) {
-      var s = 1.70158;
-      return (pos = pos - 1) * pos * ((s + 1) * pos + s) + 1;
-    },
+      easeInOutBack: function (pos) {
+        var s = 1.70158
+        if ((pos /= 0.5) < 1) {
+          return 0.5 * (pos * pos * (((s *= (1.525)) + 1) * pos - s))
+        }
+        return 0.5 * ((pos -= 2) * pos * (((s *= (1.525)) + 1) * pos + s) + 2)
+      },
 
-    easeInOutBack: function (pos) {
-      var s = 1.70158;
-      if ((pos /= 0.5) < 1) {
-        return 0.5 * (pos * pos * (((s *= (1.525)) + 1) * pos - s));
-      }
-      return 0.5 * ((pos -= 2) * pos * (((s *= (1.525)) + 1) * pos + s) + 2);
-    },
-
-    elastic: function (pos) {
+      elastic: function (pos) {
       // jshint maxlen:90
-      return -1 * Math.pow(4,-8 * pos) * Math.sin((pos * 6 - 1) * (2 * Math.PI) / 2) + 1;
-    },
+        return -1 * Math.pow(4, -8 * pos) * Math.sin((pos * 6 - 1) * (2 * Math.PI) / 2) + 1
+      },
 
-    swingFromTo: function (pos) {
-      var s = 1.70158;
-      return ((pos /= 0.5) < 1) ?
+      swingFromTo: function (pos) {
+        var s = 1.70158
+        return ((pos /= 0.5) < 1) ?
           0.5 * (pos * pos * (((s *= (1.525)) + 1) * pos - s)) :
-          0.5 * ((pos -= 2) * pos * (((s *= (1.525)) + 1) * pos + s) + 2);
-    },
+          0.5 * ((pos -= 2) * pos * (((s *= (1.525)) + 1) * pos + s) + 2)
+      },
 
-    swingFrom: function (pos) {
-      var s = 1.70158;
-      return pos * pos * ((s + 1) * pos - s);
-    },
+      swingFrom: function (pos) {
+        var s = 1.70158
+        return pos * pos * ((s + 1) * pos - s)
+      },
 
-    swingTo: function (pos) {
-      var s = 1.70158;
-      return (pos -= 1) * pos * ((s + 1) * pos + s) + 1;
-    },
+      swingTo: function (pos) {
+        var s = 1.70158
+        return (pos -= 1) * pos * ((s + 1) * pos + s) + 1
+      },
 
-    bounce: function (pos) {
-      if (pos < (1 / 2.75)) {
-        return (7.5625 * pos * pos);
-      } else if (pos < (2 / 2.75)) {
-        return (7.5625 * (pos -= (1.5 / 2.75)) * pos + 0.75);
-      } else if (pos < (2.5 / 2.75)) {
-        return (7.5625 * (pos -= (2.25 / 2.75)) * pos + 0.9375);
-      } else {
-        return (7.5625 * (pos -= (2.625 / 2.75)) * pos + 0.984375);
+      bounce: function (pos) {
+        if (pos < (1 / 2.75)) {
+          return (7.5625 * pos * pos)
+        } else if (pos < (2 / 2.75)) {
+          return (7.5625 * (pos -= (1.5 / 2.75)) * pos + 0.75)
+        } else if (pos < (2.5 / 2.75)) {
+          return (7.5625 * (pos -= (2.25 / 2.75)) * pos + 0.9375)
+        } else {
+          return (7.5625 * (pos -= (2.625 / 2.75)) * pos + 0.984375)
+        }
+      },
+
+      bouncePast: function (pos) {
+        if (pos < (1 / 2.75)) {
+          return (7.5625 * pos * pos)
+        } else if (pos < (2 / 2.75)) {
+          return 2 - (7.5625 * (pos -= (1.5 / 2.75)) * pos + 0.75)
+        } else if (pos < (2.5 / 2.75)) {
+          return 2 - (7.5625 * (pos -= (2.25 / 2.75)) * pos + 0.9375)
+        } else {
+          return 2 - (7.5625 * (pos -= (2.625 / 2.75)) * pos + 0.984375)
+        }
+      },
+
+      easeFromTo: function (pos) {
+        if ((pos /= 0.5) < 1) { return 0.5 * Math.pow(pos, 4) }
+        return -0.5 * ((pos -= 2) * Math.pow(pos, 3) - 2)
+      },
+
+      easeFrom: function (pos) {
+        return Math.pow(pos, 4)
+      },
+
+      easeTo: function (pos) {
+        return Math.pow(pos, 0.25)
       }
-    },
-
-    bouncePast: function (pos) {
-      if (pos < (1 / 2.75)) {
-        return (7.5625 * pos * pos);
-      } else if (pos < (2 / 2.75)) {
-        return 2 - (7.5625 * (pos -= (1.5 / 2.75)) * pos + 0.75);
-      } else if (pos < (2.5 / 2.75)) {
-        return 2 - (7.5625 * (pos -= (2.25 / 2.75)) * pos + 0.9375);
-      } else {
-        return 2 - (7.5625 * (pos -= (2.625 / 2.75)) * pos + 0.984375);
-      }
-    },
-
-    easeFromTo: function (pos) {
-      if ((pos /= 0.5) < 1) {return 0.5 * Math.pow(pos,4);}
-      return -0.5 * ((pos -= 2) * Math.pow(pos,3) - 2);
-    },
-
-    easeFrom: function (pos) {
-      return Math.pow(pos,4);
-    },
-
-    easeTo: function (pos) {
-      return Math.pow(pos,0.25);
-    }
-  });
-
-}());
+    })
+  }())
 
 // jshint maxlen:100
 /**
@@ -859,76 +852,76 @@ var Tweenable = (function () {
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-;(function () {
+  ;(function () {
   // port of webkit cubic bezier handling by http://www.netzgesta.de/dev/
-  function cubicBezierAtTime(t,p1x,p1y,p2x,p2y,duration) {
-    var ax = 0,bx = 0,cx = 0,ay = 0,by = 0,cy = 0;
-    function sampleCurveX(t) {
-      return ((ax * t + bx) * t + cx) * t;
-    }
-    function sampleCurveY(t) {
-      return ((ay * t + by) * t + cy) * t;
-    }
-    function sampleCurveDerivativeX(t) {
-      return (3.0 * ax * t + 2.0 * bx) * t + cx;
-    }
-    function solveEpsilon(duration) {
-      return 1.0 / (200.0 * duration);
-    }
-    function solve(x,epsilon) {
-      return sampleCurveY(solveCurveX(x, epsilon));
-    }
-    function fabs(n) {
-      if (n >= 0) {
-        return n;
-      } else {
-        return 0 - n;
+    function cubicBezierAtTime (t, p1x, p1y, p2x, p2y, duration) {
+      var ax = 0, bx = 0, cx = 0, ay = 0, by = 0, cy = 0
+      function sampleCurveX (t) {
+        return ((ax * t + bx) * t + cx) * t
       }
-    }
-    function solveCurveX(x, epsilon) {
-      var t0,t1,t2,x2,d2,i;
-      for (t2 = x, i = 0; i < 8; i++) {
-        x2 = sampleCurveX(t2) - x;
-        if (fabs(x2) < epsilon) {
-          return t2;
+      function sampleCurveY (t) {
+        return ((ay * t + by) * t + cy) * t
+      }
+      function sampleCurveDerivativeX (t) {
+        return (3.0 * ax * t + 2.0 * bx) * t + cx
+      }
+      function solveEpsilon (duration) {
+        return 1.0 / (200.0 * duration)
+      }
+      function solve (x, epsilon) {
+        return sampleCurveY(solveCurveX(x, epsilon))
+      }
+      function fabs (n) {
+        if (n >= 0) {
+          return n
+        } else {
+          return 0 - n
         }
-        d2 = sampleCurveDerivativeX(t2);
-        if (fabs(d2) < 1e-6) {
-          break;
+      }
+      function solveCurveX (x, epsilon) {
+        var t0, t1, t2, x2, d2, i
+        for (t2 = x, i = 0; i < 8; i++) {
+          x2 = sampleCurveX(t2) - x
+          if (fabs(x2) < epsilon) {
+            return t2
+          }
+          d2 = sampleCurveDerivativeX(t2)
+          if (fabs(d2) < 1e-6) {
+            break
+          }
+          t2 = t2 - x2 / d2
         }
-        t2 = t2 - x2 / d2;
-      }
-      t0 = 0.0;
-      t1 = 1.0;
-      t2 = x;
-      if (t2 < t0) {
-        return t0;
-      }
-      if (t2 > t1) {
-        return t1;
-      }
-      while (t0 < t1) {
-        x2 = sampleCurveX(t2);
-        if (fabs(x2 - x) < epsilon) {
-          return t2;
+        t0 = 0.0
+        t1 = 1.0
+        t2 = x
+        if (t2 < t0) {
+          return t0
         }
-        if (x > x2) {
-          t0 = t2;
-        }else {
-          t1 = t2;
+        if (t2 > t1) {
+          return t1
         }
-        t2 = (t1 - t0) * 0.5 + t0;
+        while (t0 < t1) {
+          x2 = sampleCurveX(t2)
+          if (fabs(x2 - x) < epsilon) {
+            return t2
+          }
+          if (x > x2) {
+            t0 = t2
+          } else {
+            t1 = t2
+          }
+          t2 = (t1 - t0) * 0.5 + t0
+        }
+        return t2 // Failure.
       }
-      return t2; // Failure.
+      cx = 3.0 * p1x
+      bx = 3.0 * (p2x - p1x) - cx
+      ax = 1.0 - cx - bx
+      cy = 3.0 * p1y
+      by = 3.0 * (p2y - p1y) - cy
+      ay = 1.0 - cy - by
+      return solve(t, solveEpsilon(duration))
     }
-    cx = 3.0 * p1x;
-    bx = 3.0 * (p2x - p1x) - cx;
-    ax = 1.0 - cx - bx;
-    cy = 3.0 * p1y;
-    by = 3.0 * (p2y - p1y) - cy;
-    ay = 1.0 - cy - by;
-    return solve(t, solveEpsilon(duration));
-  }
   /**
    *  getCubicBezierTransition(x1, y1, x2, y2) -> Function
    *
@@ -946,11 +939,11 @@ var Tweenable = (function () {
    *  @return {function}
    *  @private
    */
-  function getCubicBezierTransition (x1, y1, x2, y2) {
-    return function (pos) {
-      return cubicBezierAtTime(pos,x1,y1,x2,y2,1);
-    };
-  }
+    function getCubicBezierTransition (x1, y1, x2, y2) {
+      return function (pos) {
+        return cubicBezierAtTime(pos, x1, y1, x2, y2, 1)
+      }
+    }
   // End ported code
 
   /**
@@ -971,17 +964,16 @@ var Tweenable = (function () {
    * @return {function} The easing function that was attached to
    * Tweenable.prototype.formula.
    */
-  Tweenable.setBezierFunction = function (name, x1, y1, x2, y2) {
-    var cubicBezierTransition = getCubicBezierTransition(x1, y1, x2, y2);
-    cubicBezierTransition.displayName = name;
-    cubicBezierTransition.x1 = x1;
-    cubicBezierTransition.y1 = y1;
-    cubicBezierTransition.x2 = x2;
-    cubicBezierTransition.y2 = y2;
+    Tweenable.setBezierFunction = function (name, x1, y1, x2, y2) {
+      var cubicBezierTransition = getCubicBezierTransition(x1, y1, x2, y2)
+      cubicBezierTransition.displayName = name
+      cubicBezierTransition.x1 = x1
+      cubicBezierTransition.y1 = y1
+      cubicBezierTransition.x2 = x2
+      cubicBezierTransition.y2 = y2
 
-    return Tweenable.prototype.formula[name] = cubicBezierTransition;
-  };
-
+      return Tweenable.prototype.formula[name] = cubicBezierTransition
+    }
 
   /**
    * `delete` an easing function from `{{#crossLink
@@ -992,25 +984,23 @@ var Tweenable = (function () {
    * @param {string} name The name of the easing function to delete.
    * @return {function}
    */
-  Tweenable.unsetBezierFunction = function (name) {
-    delete Tweenable.prototype.formula[name];
-  };
+    Tweenable.unsetBezierFunction = function (name) {
+      delete Tweenable.prototype.formula[name]
+    }
+  })()
 
-})();
-
-;(function () {
-
-  function getInterpolatedValues (
+  ;(function () {
+    function getInterpolatedValues (
     from, current, targetState, position, easing, delay) {
-    return Tweenable.tweenProps(
-      position, current, from, targetState, 1, delay, easing);
-  }
+      return Tweenable.tweenProps(
+      position, current, from, targetState, 1, delay, easing)
+    }
 
   // Fake a Tweenable and patch some internals.  This approach allows us to
   // skip uneccessary processing and object recreation, cutting down on garbage
   // collection pauses.
-  var mockTweenable = new Tweenable();
-  mockTweenable._filterArgs = [];
+    var mockTweenable = new Tweenable()
+    mockTweenable._filterArgs = []
 
   /**
    * Compute the midpoint of two Objects.  This method effectively calculates a
@@ -1048,38 +1038,36 @@ var Tweenable = (function () {
    * increase all valid values of `position` to numbers between `0` and `1.5`.
    * @return {Object}
    */
-  Tweenable.interpolate = function (
+    Tweenable.interpolate = function (
     from, targetState, position, easing, opt_delay) {
+      var current = Tweenable.shallowCopy({}, from)
+      var delay = opt_delay || 0
+      var easingObject = Tweenable.composeEasingObject(
+      from, easing || 'linear')
 
-    var current = Tweenable.shallowCopy({}, from);
-    var delay = opt_delay || 0;
-    var easingObject = Tweenable.composeEasingObject(
-      from, easing || 'linear');
-
-    mockTweenable.set({});
+      mockTweenable.set({})
 
     // Alias and reuse the _filterArgs array instead of recreating it.
-    var filterArgs = mockTweenable._filterArgs;
-    filterArgs.length = 0;
-    filterArgs[0] = current;
-    filterArgs[1] = from;
-    filterArgs[2] = targetState;
-    filterArgs[3] = easingObject;
+      var filterArgs = mockTweenable._filterArgs
+      filterArgs.length = 0
+      filterArgs[0] = current
+      filterArgs[1] = from
+      filterArgs[2] = targetState
+      filterArgs[3] = easingObject
 
     // Any defined value transformation must be applied
-    Tweenable.applyFilter(mockTweenable, 'tweenCreated');
-    Tweenable.applyFilter(mockTweenable, 'beforeTween');
+      Tweenable.applyFilter(mockTweenable, 'tweenCreated')
+      Tweenable.applyFilter(mockTweenable, 'beforeTween')
 
-    var interpolatedValues = getInterpolatedValues(
-      from, current, targetState, position, easingObject, delay);
+      var interpolatedValues = getInterpolatedValues(
+      from, current, targetState, position, easingObject, delay)
 
     // Transform values back into their original format
-    Tweenable.applyFilter(mockTweenable, 'afterTween');
+      Tweenable.applyFilter(mockTweenable, 'afterTween')
 
-    return interpolatedValues;
-  };
-
-}());
+      return interpolatedValues
+    }
+  }())
 
 /**
  * This module adds string interpolation support to Shifty.
@@ -1217,8 +1205,7 @@ var Tweenable = (function () {
 // documentation and renders it.  It is never used, and is optimized away at
 // build time.
 
-;(function (Tweenable) {
-
+  ;(function (Tweenable) {
   /**
    * @typedef {{
    *   formatString: string
@@ -1226,20 +1213,20 @@ var Tweenable = (function () {
    * }}
    * @private
    */
-  var formatManifest;
+    var formatManifest
 
   // CONSTANTS
 
-  var R_NUMBER_COMPONENT = /(\d|\-|\.)/;
-  var R_FORMAT_CHUNKS = /([^\-0-9\.]+)/g;
-  var R_UNFORMATTED_VALUES = /[0-9.\-]+/g;
-  var R_RGB = new RegExp(
+    var R_NUMBER_COMPONENT = /(\d|\-|\.)/
+    var R_FORMAT_CHUNKS = /([^\-0-9\.]+)/g
+    var R_UNFORMATTED_VALUES = /[0-9.\-]+/g
+    var R_RGB = new RegExp(
     'rgb\\(' + R_UNFORMATTED_VALUES.source +
     (/,\s*/.source) + R_UNFORMATTED_VALUES.source +
-    (/,\s*/.source) + R_UNFORMATTED_VALUES.source + '\\)', 'g');
-  var R_RGB_PREFIX = /^.*\(/;
-  var R_HEX = /#([0-9]|[a-f]){3,6}/gi;
-  var VALUE_PLACEHOLDER = 'VAL';
+    (/,\s*/.source) + R_UNFORMATTED_VALUES.source + '\\)', 'g')
+    var R_RGB_PREFIX = /^.*\(/
+    var R_HEX = /#([0-9]|[a-f]){3,6}/gi
+    var VALUE_PLACEHOLDER = 'VAL'
 
   // HELPERS
 
@@ -1250,18 +1237,18 @@ var Tweenable = (function () {
    * @return {Array.<string>}
    * @private
    */
-  function getFormatChunksFrom (rawValues, prefix) {
-    var accumulator = [];
+    function getFormatChunksFrom (rawValues, prefix) {
+      var accumulator = []
 
-    var rawValuesLength = rawValues.length;
-    var i;
+      var rawValuesLength = rawValues.length
+      var i
 
-    for (i = 0; i < rawValuesLength; i++) {
-      accumulator.push('_' + prefix + '_' + i);
+      for (i = 0; i < rawValuesLength; i++) {
+        accumulator.push('_' + prefix + '_' + i)
+      }
+
+      return accumulator
     }
-
-    return accumulator;
-  }
 
   /**
    * @param {string} formattedString
@@ -1269,29 +1256,29 @@ var Tweenable = (function () {
    * @return {string}
    * @private
    */
-  function getFormatStringFrom (formattedString) {
-    var chunks = formattedString.match(R_FORMAT_CHUNKS);
+    function getFormatStringFrom (formattedString) {
+      var chunks = formattedString.match(R_FORMAT_CHUNKS)
 
-    if (!chunks) {
+      if (!chunks) {
       // chunks will be null if there were no tokens to parse in
       // formattedString (for example, if formattedString is '2').  Coerce
       // chunks to be useful here.
-      chunks = ['', ''];
+        chunks = ['', '']
 
       // If there is only one chunk, assume that the string is a number
       // followed by a token...
       // NOTE: This may be an unwise assumption.
-    } else if (chunks.length === 1 ||
+      } else if (chunks.length === 1 ||
       // ...or if the string starts with a number component (".", "-", or a
       // digit)...
     formattedString[0].match(R_NUMBER_COMPONENT)) {
       // ...prepend an empty string here to make sure that the formatted number
       // is properly replaced by VALUE_PLACEHOLDER
-      chunks.unshift('');
-    }
+        chunks.unshift('')
+      }
 
-    return chunks.join(VALUE_PLACEHOLDER);
-  }
+      return chunks.join(VALUE_PLACEHOLDER)
+    }
 
   /**
    * Convert all hex color values within a string to an rgb string.
@@ -1301,15 +1288,15 @@ var Tweenable = (function () {
    * @return {Object} The modified obj
    * @private
    */
-  function sanitizeObjectForHexProps (stateObject) {
-    Tweenable.each(stateObject, function (prop) {
-      var currentProp = stateObject[prop];
+    function sanitizeObjectForHexProps (stateObject) {
+      Tweenable.each(stateObject, function (prop) {
+        var currentProp = stateObject[prop]
 
-      if (typeof currentProp === 'string' && currentProp.match(R_HEX)) {
-        stateObject[prop] = sanitizeHexChunksToRGB(currentProp);
-      }
-    });
-  }
+        if (typeof currentProp === 'string' && currentProp.match(R_HEX)) {
+          stateObject[prop] = sanitizeHexChunksToRGB(currentProp)
+        }
+      })
+    }
 
   /**
    * @param {string} str
@@ -1317,9 +1304,9 @@ var Tweenable = (function () {
    * @return {string}
    * @private
    */
-  function  sanitizeHexChunksToRGB (str) {
-    return filterStringChunks(R_HEX, str, convertHexToRGB);
-  }
+    function sanitizeHexChunksToRGB (str) {
+      return filterStringChunks(R_HEX, str, convertHexToRGB)
+    }
 
   /**
    * @param {string} hexString
@@ -1327,12 +1314,12 @@ var Tweenable = (function () {
    * @return {string}
    * @private
    */
-  function convertHexToRGB (hexString) {
-    var rgbArr = hexToRGBArray(hexString);
-    return 'rgb(' + rgbArr[0] + ',' + rgbArr[1] + ',' + rgbArr[2] + ')';
-  }
+    function convertHexToRGB (hexString) {
+      var rgbArr = hexToRGBArray(hexString)
+      return 'rgb(' + rgbArr[0] + ',' + rgbArr[1] + ',' + rgbArr[2] + ')'
+    }
 
-  var hexToRGBArray_returnArray = [];
+    var hexToRGBArray_returnArray = []
   /**
    * Convert a hexadecimal string to an array with three items, one each for
    * the red, blue, and green decimal values.
@@ -1343,23 +1330,22 @@ var Tweenable = (function () {
    * valid string, or an Array of three 0's.
    * @private
    */
-  function hexToRGBArray (hex) {
-
-    hex = hex.replace(/#/, '');
+    function hexToRGBArray (hex) {
+      hex = hex.replace(/#/, '')
 
     // If the string is a shorthand three digit hex notation, normalize it to
     // the standard six digit notation
-    if (hex.length === 3) {
-      hex = hex.split('');
-      hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+      if (hex.length === 3) {
+        hex = hex.split('')
+        hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2]
+      }
+
+      hexToRGBArray_returnArray[0] = hexToDec(hex.substr(0, 2))
+      hexToRGBArray_returnArray[1] = hexToDec(hex.substr(2, 2))
+      hexToRGBArray_returnArray[2] = hexToDec(hex.substr(4, 2))
+
+      return hexToRGBArray_returnArray
     }
-
-    hexToRGBArray_returnArray[0] = hexToDec(hex.substr(0, 2));
-    hexToRGBArray_returnArray[1] = hexToDec(hex.substr(2, 2));
-    hexToRGBArray_returnArray[2] = hexToDec(hex.substr(4, 2));
-
-    return hexToRGBArray_returnArray;
-  }
 
   /**
    * Convert a base-16 number to base-10.
@@ -1369,9 +1355,9 @@ var Tweenable = (function () {
    * @returns {Number} The base-10 equivalent of `hex`.
    * @private
    */
-  function hexToDec (hex) {
-    return parseInt(hex, 16);
-  }
+    function hexToDec (hex) {
+      return parseInt(hex, 16)
+    }
 
   /**
    * Runs a filter operation on all chunks of a string that match a RegExp
@@ -1383,23 +1369,23 @@ var Tweenable = (function () {
    * @return {string}
    * @private
    */
-  function filterStringChunks (pattern, unfilteredString, filter) {
-    var pattenMatches = unfilteredString.match(pattern);
-    var filteredString = unfilteredString.replace(pattern, VALUE_PLACEHOLDER);
+    function filterStringChunks (pattern, unfilteredString, filter) {
+      var pattenMatches = unfilteredString.match(pattern)
+      var filteredString = unfilteredString.replace(pattern, VALUE_PLACEHOLDER)
 
-    if (pattenMatches) {
-      var pattenMatchesLength = pattenMatches.length;
-      var currentChunk;
+      if (pattenMatches) {
+        var pattenMatchesLength = pattenMatches.length
+        var currentChunk
 
-      for (var i = 0; i < pattenMatchesLength; i++) {
-        currentChunk = pattenMatches.shift();
-        filteredString = filteredString.replace(
-          VALUE_PLACEHOLDER, filter(currentChunk));
+        for (var i = 0; i < pattenMatchesLength; i++) {
+          currentChunk = pattenMatches.shift()
+          filteredString = filteredString.replace(
+          VALUE_PLACEHOLDER, filter(currentChunk))
+        }
       }
-    }
 
-    return filteredString;
-  }
+      return filteredString
+    }
 
   /**
    * Check for floating point values within rgb strings and rounds them.
@@ -1409,9 +1395,9 @@ var Tweenable = (function () {
    * @return {string}
    * @private
    */
-  function sanitizeRGBChunks (formattedString) {
-    return filterStringChunks(R_RGB, formattedString, sanitizeRGBChunk);
-  }
+    function sanitizeRGBChunks (formattedString) {
+      return filterStringChunks(R_RGB, formattedString, sanitizeRGBChunk)
+    }
 
   /**
    * @param {string} rgbChunk
@@ -1419,19 +1405,19 @@ var Tweenable = (function () {
    * @return {string}
    * @private
    */
-  function sanitizeRGBChunk (rgbChunk) {
-    var numbers = rgbChunk.match(R_UNFORMATTED_VALUES);
-    var numbersLength = numbers.length;
-    var sanitizedString = rgbChunk.match(R_RGB_PREFIX)[0];
+    function sanitizeRGBChunk (rgbChunk) {
+      var numbers = rgbChunk.match(R_UNFORMATTED_VALUES)
+      var numbersLength = numbers.length
+      var sanitizedString = rgbChunk.match(R_RGB_PREFIX)[0]
 
-    for (var i = 0; i < numbersLength; i++) {
-      sanitizedString += parseInt(numbers[i], 10) + ',';
+      for (var i = 0; i < numbersLength; i++) {
+        sanitizedString += parseInt(numbers[i], 10) + ','
+      }
+
+      sanitizedString = sanitizedString.slice(0, -1) + ')'
+
+      return sanitizedString
     }
-
-    sanitizedString = sanitizedString.slice(0, -1) + ')';
-
-    return sanitizedString;
-  }
 
   /**
    * @param {Object} stateObject
@@ -1440,61 +1426,61 @@ var Tweenable = (function () {
    * the string properties of stateObject
    * @private
    */
-  function getFormatManifests (stateObject) {
-    var manifestAccumulator = {};
+    function getFormatManifests (stateObject) {
+      var manifestAccumulator = {}
 
-    Tweenable.each(stateObject, function (prop) {
-      var currentProp = stateObject[prop];
+      Tweenable.each(stateObject, function (prop) {
+        var currentProp = stateObject[prop]
 
-      if (typeof currentProp === 'string') {
-        var rawValues = getValuesFrom(currentProp);
+        if (typeof currentProp === 'string') {
+          var rawValues = getValuesFrom(currentProp)
 
-        manifestAccumulator[prop] = {
-          'formatString': getFormatStringFrom(currentProp)
-          ,'chunkNames': getFormatChunksFrom(rawValues, prop)
-        };
-      }
-    });
+          manifestAccumulator[prop] = {
+            'formatString': getFormatStringFrom(currentProp)
+          , 'chunkNames': getFormatChunksFrom(rawValues, prop)
+          }
+        }
+      })
 
-    return manifestAccumulator;
-  }
-
-  /**
-   * @param {Object} stateObject
-   * @param {Object} formatManifests
-   * @private
-   */
-  function expandFormattedProperties (stateObject, formatManifests) {
-    Tweenable.each(formatManifests, function (prop) {
-      var currentProp = stateObject[prop];
-      var rawValues = getValuesFrom(currentProp);
-      var rawValuesLength = rawValues.length;
-
-      for (var i = 0; i < rawValuesLength; i++) {
-        stateObject[formatManifests[prop].chunkNames[i]] = +rawValues[i];
-      }
-
-      delete stateObject[prop];
-    });
-  }
+      return manifestAccumulator
+    }
 
   /**
    * @param {Object} stateObject
    * @param {Object} formatManifests
    * @private
    */
-  function collapseFormattedProperties (stateObject, formatManifests) {
-    Tweenable.each(formatManifests, function (prop) {
-      var currentProp = stateObject[prop];
-      var formatChunks = extractPropertyChunks(
-        stateObject, formatManifests[prop].chunkNames);
-      var valuesList = getValuesList(
-        formatChunks, formatManifests[prop].chunkNames);
-      currentProp = getFormattedValues(
-        formatManifests[prop].formatString, valuesList);
-      stateObject[prop] = sanitizeRGBChunks(currentProp);
-    });
-  }
+    function expandFormattedProperties (stateObject, formatManifests) {
+      Tweenable.each(formatManifests, function (prop) {
+        var currentProp = stateObject[prop]
+        var rawValues = getValuesFrom(currentProp)
+        var rawValuesLength = rawValues.length
+
+        for (var i = 0; i < rawValuesLength; i++) {
+          stateObject[formatManifests[prop].chunkNames[i]] = +rawValues[i]
+        }
+
+        delete stateObject[prop]
+      })
+    }
+
+  /**
+   * @param {Object} stateObject
+   * @param {Object} formatManifests
+   * @private
+   */
+    function collapseFormattedProperties (stateObject, formatManifests) {
+      Tweenable.each(formatManifests, function (prop) {
+        var currentProp = stateObject[prop]
+        var formatChunks = extractPropertyChunks(
+        stateObject, formatManifests[prop].chunkNames)
+        var valuesList = getValuesList(
+        formatChunks, formatManifests[prop].chunkNames)
+        currentProp = getFormattedValues(
+        formatManifests[prop].formatString, valuesList)
+        stateObject[prop] = sanitizeRGBChunks(currentProp)
+      })
+    }
 
   /**
    * @param {Object} stateObject
@@ -1503,20 +1489,20 @@ var Tweenable = (function () {
    * @return {Object} The extracted value chunks.
    * @private
    */
-  function extractPropertyChunks (stateObject, chunkNames) {
-    var extractedValues = {};
-    var currentChunkName, chunkNamesLength = chunkNames.length;
+    function extractPropertyChunks (stateObject, chunkNames) {
+      var extractedValues = {}
+      var currentChunkName, chunkNamesLength = chunkNames.length
 
-    for (var i = 0; i < chunkNamesLength; i++) {
-      currentChunkName = chunkNames[i];
-      extractedValues[currentChunkName] = stateObject[currentChunkName];
-      delete stateObject[currentChunkName];
+      for (var i = 0; i < chunkNamesLength; i++) {
+        currentChunkName = chunkNames[i]
+        extractedValues[currentChunkName] = stateObject[currentChunkName]
+        delete stateObject[currentChunkName]
+      }
+
+      return extractedValues
     }
 
-    return extractedValues;
-  }
-
-  var getValuesList_accumulator = [];
+    var getValuesList_accumulator = []
   /**
    * @param {Object} stateObject
    * @param {Array.<string>} chunkNames
@@ -1524,16 +1510,16 @@ var Tweenable = (function () {
    * @return {Array.<number>}
    * @private
    */
-  function getValuesList (stateObject, chunkNames) {
-    getValuesList_accumulator.length = 0;
-    var chunkNamesLength = chunkNames.length;
+    function getValuesList (stateObject, chunkNames) {
+      getValuesList_accumulator.length = 0
+      var chunkNamesLength = chunkNames.length
 
-    for (var i = 0; i < chunkNamesLength; i++) {
-      getValuesList_accumulator.push(stateObject[chunkNames[i]]);
+      for (var i = 0; i < chunkNamesLength; i++) {
+        getValuesList_accumulator.push(stateObject[chunkNames[i]])
+      }
+
+      return getValuesList_accumulator
     }
-
-    return getValuesList_accumulator;
-  }
 
   /**
    * @param {string} formatString
@@ -1542,17 +1528,17 @@ var Tweenable = (function () {
    * @return {string}
    * @private
    */
-  function getFormattedValues (formatString, rawValues) {
-    var formattedValueString = formatString;
-    var rawValuesLength = rawValues.length;
+    function getFormattedValues (formatString, rawValues) {
+      var formattedValueString = formatString
+      var rawValuesLength = rawValues.length
 
-    for (var i = 0; i < rawValuesLength; i++) {
-      formattedValueString = formattedValueString.replace(
-        VALUE_PLACEHOLDER, +rawValues[i].toFixed(4));
+      for (var i = 0; i < rawValuesLength; i++) {
+        formattedValueString = formattedValueString.replace(
+        VALUE_PLACEHOLDER, +rawValues[i].toFixed(4))
+      }
+
+      return formattedValueString
     }
-
-    return formattedValueString;
-  }
 
   /**
    * Note: It's the duty of the caller to convert the Array elements of the
@@ -1563,173 +1549,167 @@ var Tweenable = (function () {
    * @return {Array.<string>|null}
    * @private
    */
-  function getValuesFrom (formattedString) {
-    return formattedString.match(R_UNFORMATTED_VALUES);
-  }
-
-  /**
-   * @param {Object} easingObject
-   * @param {Object} tokenData
-   * @private
-   */
-  function expandEasingObject (easingObject, tokenData) {
-    Tweenable.each(tokenData, function (prop) {
-      var currentProp = tokenData[prop];
-      var chunkNames = currentProp.chunkNames;
-      var chunkLength = chunkNames.length;
-
-      var easing = easingObject[prop];
-      var i;
-
-      if (typeof easing === 'string') {
-        var easingChunks = easing.split(' ');
-        var lastEasingChunk = easingChunks[easingChunks.length - 1];
-
-        for (i = 0; i < chunkLength; i++) {
-          easingObject[chunkNames[i]] = easingChunks[i] || lastEasingChunk;
-        }
-
-      } else {
-        for (i = 0; i < chunkLength; i++) {
-          easingObject[chunkNames[i]] = easing;
-        }
-      }
-
-      delete easingObject[prop];
-    });
-  }
-
-  /**
-   * @param {Object} easingObject
-   * @param {Object} tokenData
-   * @private
-   */
-  function collapseEasingObject (easingObject, tokenData) {
-    Tweenable.each(tokenData, function (prop) {
-      var currentProp = tokenData[prop];
-      var chunkNames = currentProp.chunkNames;
-      var chunkLength = chunkNames.length;
-
-      var firstEasing = easingObject[chunkNames[0]];
-      var typeofEasings = typeof firstEasing;
-
-      if (typeofEasings === 'string') {
-        var composedEasingString = '';
-
-        for (var i = 0; i < chunkLength; i++) {
-          composedEasingString += ' ' + easingObject[chunkNames[i]];
-          delete easingObject[chunkNames[i]];
-        }
-
-        easingObject[prop] = composedEasingString.substr(1);
-      } else {
-        easingObject[prop] = firstEasing;
-      }
-    });
-  }
-
-  Tweenable.prototype.filter.token = {
-    'tweenCreated': function (currentState, fromState, toState, easingObject) {
-      sanitizeObjectForHexProps(currentState);
-      sanitizeObjectForHexProps(fromState);
-      sanitizeObjectForHexProps(toState);
-      this._tokenData = getFormatManifests(currentState);
-    },
-
-    'beforeTween': function (currentState, fromState, toState, easingObject) {
-      expandEasingObject(easingObject, this._tokenData);
-      expandFormattedProperties(currentState, this._tokenData);
-      expandFormattedProperties(fromState, this._tokenData);
-      expandFormattedProperties(toState, this._tokenData);
-    },
-
-    'afterTween': function (currentState, fromState, toState, easingObject) {
-      collapseFormattedProperties(currentState, this._tokenData);
-      collapseFormattedProperties(fromState, this._tokenData);
-      collapseFormattedProperties(toState, this._tokenData);
-      collapseEasingObject(easingObject, this._tokenData);
+    function getValuesFrom (formattedString) {
+      return formattedString.match(R_UNFORMATTED_VALUES)
     }
-  };
 
-} (Tweenable));
+  /**
+   * @param {Object} easingObject
+   * @param {Object} tokenData
+   * @private
+   */
+    function expandEasingObject (easingObject, tokenData) {
+      Tweenable.each(tokenData, function (prop) {
+        var currentProp = tokenData[prop]
+        var chunkNames = currentProp.chunkNames
+        var chunkLength = chunkNames.length
 
-}).call(null);
+        var easing = easingObject[prop]
+        var i
 
-},{}],2:[function(require,module,exports){
+        if (typeof easing === 'string') {
+          var easingChunks = easing.split(' ')
+          var lastEasingChunk = easingChunks[easingChunks.length - 1]
+
+          for (i = 0; i < chunkLength; i++) {
+            easingObject[chunkNames[i]] = easingChunks[i] || lastEasingChunk
+          }
+        } else {
+          for (i = 0; i < chunkLength; i++) {
+            easingObject[chunkNames[i]] = easing
+          }
+        }
+
+        delete easingObject[prop]
+      })
+    }
+
+  /**
+   * @param {Object} easingObject
+   * @param {Object} tokenData
+   * @private
+   */
+    function collapseEasingObject (easingObject, tokenData) {
+      Tweenable.each(tokenData, function (prop) {
+        var currentProp = tokenData[prop]
+        var chunkNames = currentProp.chunkNames
+        var chunkLength = chunkNames.length
+
+        var firstEasing = easingObject[chunkNames[0]]
+        var typeofEasings = typeof firstEasing
+
+        if (typeofEasings === 'string') {
+          var composedEasingString = ''
+
+          for (var i = 0; i < chunkLength; i++) {
+            composedEasingString += ' ' + easingObject[chunkNames[i]]
+            delete easingObject[chunkNames[i]]
+          }
+
+          easingObject[prop] = composedEasingString.substr(1)
+        } else {
+          easingObject[prop] = firstEasing
+        }
+      })
+    }
+
+    Tweenable.prototype.filter.token = {
+      'tweenCreated': function (currentState, fromState, toState, easingObject) {
+        sanitizeObjectForHexProps(currentState)
+        sanitizeObjectForHexProps(fromState)
+        sanitizeObjectForHexProps(toState)
+        this._tokenData = getFormatManifests(currentState)
+      },
+
+      'beforeTween': function (currentState, fromState, toState, easingObject) {
+        expandEasingObject(easingObject, this._tokenData)
+        expandFormattedProperties(currentState, this._tokenData)
+        expandFormattedProperties(fromState, this._tokenData)
+        expandFormattedProperties(toState, this._tokenData)
+      },
+
+      'afterTween': function (currentState, fromState, toState, easingObject) {
+        collapseFormattedProperties(currentState, this._tokenData)
+        collapseFormattedProperties(fromState, this._tokenData)
+        collapseFormattedProperties(toState, this._tokenData)
+        collapseEasingObject(easingObject, this._tokenData)
+      }
+    }
+  }(Tweenable))
+  }).call(null)
+}, {}], 2: [function (require, module, exports) {
 // Circle shaped progress bar
 
-var Shape = require('./shape');
-var utils = require('./utils');
+  var Shape = require('./shape')
+  var utils = require('./utils')
 
-var Circle = function Circle(container, options) {
+  var Circle = function Circle (container, options) {
     // Use two arcs to form a circle
     // See this answer http://stackoverflow.com/a/10477334/1446092
     this._pathTemplate =
         'M 50,50 m 0,-{radius}' +
         ' a {radius},{radius} 0 1 1 0,{2radius}' +
-        ' a {radius},{radius} 0 1 1 0,-{2radius}';
+        ' a {radius},{radius} 0 1 1 0,-{2radius}'
 
-    this.containerAspectRatio = 1;
+    this.containerAspectRatio = 1
 
-    Shape.apply(this, arguments);
-};
+    Shape.apply(this, arguments)
+  }
 
-Circle.prototype = new Shape();
-Circle.prototype.constructor = Circle;
+  Circle.prototype = new Shape()
+  Circle.prototype.constructor = Circle
 
-Circle.prototype._pathString = function _pathString(opts) {
-    var widthOfWider = opts.strokeWidth;
+  Circle.prototype._pathString = function _pathString (opts) {
+    var widthOfWider = opts.strokeWidth
     if (opts.trailWidth && opts.trailWidth > opts.strokeWidth) {
-        widthOfWider = opts.trailWidth;
+      widthOfWider = opts.trailWidth
     }
 
-    var r = 50 - widthOfWider / 2;
+    var r = 50 - widthOfWider / 2
 
     return utils.render(this._pathTemplate, {
-        radius: r,
-        '2radius': r * 2
-    });
-};
+      radius: r,
+      '2radius': r * 2
+    })
+  }
 
-Circle.prototype._trailString = function _trailString(opts) {
-    return this._pathString(opts);
-};
+  Circle.prototype._trailString = function _trailString (opts) {
+    return this._pathString(opts)
+  }
 
-module.exports = Circle;
-
-},{"./shape":7,"./utils":8}],3:[function(require,module,exports){
+  module.exports = Circle
+}, {'./shape': 7, './utils': 8}], 3: [function (require, module, exports) {
 // Line shaped progress bar
 
-var Shape = require('./shape');
-var utils = require('./utils');
+  var Shape = require('./shape')
+  var utils = require('./utils')
 
-var Line = function Line(container, options) {
-    this._pathTemplate = 'M 0,{center} L 100,{center}';
-    Shape.apply(this, arguments);
-};
+  var Line = function Line (container, options) {
+    this._pathTemplate = 'M 0,{center} L 100,{center}'
+    Shape.apply(this, arguments)
+  }
 
-Line.prototype = new Shape();
-Line.prototype.constructor = Line;
+  Line.prototype = new Shape()
+  Line.prototype.constructor = Line
 
-Line.prototype._initializeSvg = function _initializeSvg(svg, opts) {
-    svg.setAttribute('viewBox', '0 0 100 ' + opts.strokeWidth);
-    svg.setAttribute('preserveAspectRatio', 'none');
-};
+  Line.prototype._initializeSvg = function _initializeSvg (svg, opts) {
+    svg.setAttribute('viewBox', '0 0 100 ' + opts.strokeWidth)
+    svg.setAttribute('preserveAspectRatio', 'none')
+  }
 
-Line.prototype._pathString = function _pathString(opts) {
+  Line.prototype._pathString = function _pathString (opts) {
     return utils.render(this._pathTemplate, {
-        center: opts.strokeWidth / 2
-    });
-};
+      center: opts.strokeWidth / 2
+    })
+  }
 
-Line.prototype._trailString = function _trailString(opts) {
-    return this._pathString(opts);
-};
+  Line.prototype._trailString = function _trailString (opts) {
+    return this._pathString(opts)
+  }
 
-module.exports = Line;
-
-},{"./shape":7,"./utils":8}],4:[function(require,module,exports){
-module.exports = {
+  module.exports = Line
+}, {'./shape': 7, './utils': 8}], 4: [function (require, module, exports) {
+  module.exports = {
     // Higher level API, different shaped progress bars
     Line: require('./line'),
     Circle: require('./circle'),
@@ -1745,245 +1725,242 @@ module.exports = {
 
     // Internal utils, undocumented.
     utils: require('./utils')
-};
-
-},{"./circle":2,"./line":3,"./path":5,"./semicircle":6,"./shape":7,"./utils":8}],5:[function(require,module,exports){
+  }
+}, {'./circle': 2, './line': 3, './path': 5, './semicircle': 6, './shape': 7, './utils': 8}], 5: [function (require, module, exports) {
 // Lower level API to animate any kind of svg path
 
-var Tweenable = require('shifty');
-var utils = require('./utils');
+  var Tweenable = require('shifty')
+  var utils = require('./utils')
 
-var EASING_ALIASES = {
+  var EASING_ALIASES = {
     easeIn: 'easeInCubic',
     easeOut: 'easeOutCubic',
     easeInOut: 'easeInOutCubic'
-};
+  }
 
-var Path = function Path(path, opts) {
+  var Path = function Path (path, opts) {
     // Throw a better error if not initialized with `new` keyword
     if (!(this instanceof Path)) {
-        throw new Error('Constructor was called without new keyword');
+      throw new Error('Constructor was called without new keyword')
     }
 
     // Default parameters for animation
     opts = utils.extend({
-        duration: 800,
-        easing: 'linear',
-        from: {},
-        to: {},
-        step: function() {}
-    }, opts);
+      duration: 800,
+      easing: 'linear',
+      from: {},
+      to: {},
+      step: function () {}
+    }, opts)
 
-    var element;
+    var element
     if (utils.isString(path)) {
-        element = document.querySelector(path);
+      element = document.querySelector(path)
     } else {
-        element = path;
+      element = path
     }
 
     // Reveal .path as public attribute
-    this.path = element;
-    this._opts = opts;
-    this._tweenable = null;
+    this.path = element
+    this._opts = opts
+    this._tweenable = null
 
     // Set up the starting positions
-    var length = this.path.getTotalLength();
-    this.path.style.strokeDasharray = length + ' ' + length;
-    this.set(0);
-};
+    var length = this.path.getTotalLength()
+    this.path.style.strokeDasharray = length + ' ' + length
+    this.set(0)
+  }
 
-Path.prototype.value = function value() {
-    var offset = this._getComputedDashOffset();
-    var length = this.path.getTotalLength();
+  Path.prototype.value = function value () {
+    var offset = this._getComputedDashOffset()
+    var length = this.path.getTotalLength()
 
-    var progress = 1 - offset / length;
+    var progress = 1 - offset / length
     // Round number to prevent returning very small number like 1e-30, which
     // is practically 0
-    return parseFloat(progress.toFixed(6), 10);
-};
+    return parseFloat(progress.toFixed(6), 10)
+  }
 
-Path.prototype.set = function set(progress) {
-    this.stop();
+  Path.prototype.set = function set (progress) {
+    this.stop()
 
-    this.path.style.strokeDashoffset = this._progressToOffset(progress);
+    this.path.style.strokeDashoffset = this._progressToOffset(progress)
 
-    var step = this._opts.step;
+    var step = this._opts.step
     if (utils.isFunction(step)) {
-        var easing = this._easing(this._opts.easing);
-        var values = this._calculateTo(progress, easing);
-        var reference = this._opts.shape || this;
-        step(values, reference, this._opts.attachment);
+      var easing = this._easing(this._opts.easing)
+      var values = this._calculateTo(progress, easing)
+      var reference = this._opts.shape || this
+      step(values, reference, this._opts.attachment)
     }
-};
+  }
 
-Path.prototype.stop = function stop() {
-    this._stopTween();
-    this.path.style.strokeDashoffset = this._getComputedDashOffset();
-};
+  Path.prototype.stop = function stop () {
+    this._stopTween()
+    this.path.style.strokeDashoffset = this._getComputedDashOffset()
+  }
 
 // Method introduced here:
 // http://jakearchibald.com/2013/animated-line-drawing-svg/
-Path.prototype.animate = function animate(progress, opts, cb) {
-    opts = opts || {};
+  Path.prototype.animate = function animate (progress, opts, cb) {
+    opts = opts || {}
 
     if (utils.isFunction(opts)) {
-        cb = opts;
-        opts = {};
+      cb = opts
+      opts = {}
     }
 
-    var passedOpts = utils.extend({}, opts);
+    var passedOpts = utils.extend({}, opts)
 
     // Copy default opts to new object so defaults are not modified
-    var defaultOpts = utils.extend({}, this._opts);
-    opts = utils.extend(defaultOpts, opts);
+    var defaultOpts = utils.extend({}, this._opts)
+    opts = utils.extend(defaultOpts, opts)
 
-    var shiftyEasing = this._easing(opts.easing);
-    var values = this._resolveFromAndTo(progress, shiftyEasing, passedOpts);
+    var shiftyEasing = this._easing(opts.easing)
+    var values = this._resolveFromAndTo(progress, shiftyEasing, passedOpts)
 
-    this.stop();
+    this.stop()
 
     // Trigger a layout so styles are calculated & the browser
     // picks up the starting position before animating
-    this.path.getBoundingClientRect();
+    this.path.getBoundingClientRect()
 
-    var offset = this._getComputedDashOffset();
-    var newOffset = this._progressToOffset(progress);
+    var offset = this._getComputedDashOffset()
+    var newOffset = this._progressToOffset(progress)
 
-    var self = this;
-    this._tweenable = new Tweenable();
+    var self = this
+    this._tweenable = new Tweenable()
     this._tweenable.tween({
-        from: utils.extend({ offset: offset }, values.from),
-        to: utils.extend({ offset: newOffset }, values.to),
-        duration: opts.duration,
-        easing: shiftyEasing,
-        step: function(state) {
-            self.path.style.strokeDashoffset = state.offset;
-            var reference = opts.shape || self;
-            opts.step(state, reference, opts.attachment);
-        },
-        finish: function(state) {
-            if (utils.isFunction(cb)) {
-                cb();
-            }
+      from: utils.extend({ offset: offset }, values.from),
+      to: utils.extend({ offset: newOffset }, values.to),
+      duration: opts.duration,
+      easing: shiftyEasing,
+      step: function (state) {
+        self.path.style.strokeDashoffset = state.offset
+        var reference = opts.shape || self
+        opts.step(state, reference, opts.attachment)
+      },
+      finish: function (state) {
+        if (utils.isFunction(cb)) {
+          cb()
         }
-    });
-};
+      }
+    })
+  }
 
-Path.prototype._getComputedDashOffset = function _getComputedDashOffset() {
-    var computedStyle = window.getComputedStyle(this.path, null);
-    return parseFloat(computedStyle.getPropertyValue('stroke-dashoffset'), 10);
-};
+  Path.prototype._getComputedDashOffset = function _getComputedDashOffset () {
+    var computedStyle = window.getComputedStyle(this.path, null)
+    return parseFloat(computedStyle.getPropertyValue('stroke-dashoffset'), 10)
+  }
 
-Path.prototype._progressToOffset = function _progressToOffset(progress) {
-    var length = this.path.getTotalLength();
-    return length - progress * length;
-};
+  Path.prototype._progressToOffset = function _progressToOffset (progress) {
+    var length = this.path.getTotalLength()
+    return length - progress * length
+  }
 
 // Resolves from and to values for animation.
-Path.prototype._resolveFromAndTo = function _resolveFromAndTo(progress, easing, opts) {
+  Path.prototype._resolveFromAndTo = function _resolveFromAndTo (progress, easing, opts) {
     if (opts.from && opts.to) {
-        return {
-            from: opts.from,
-            to: opts.to
-        };
+      return {
+        from: opts.from,
+        to: opts.to
+      }
     }
 
     return {
-        from: this._calculateFrom(easing),
-        to: this._calculateTo(progress, easing)
-    };
-};
+      from: this._calculateFrom(easing),
+      to: this._calculateTo(progress, easing)
+    }
+  }
 
 // Calculate `from` values from options passed at initialization
-Path.prototype._calculateFrom = function _calculateFrom(easing) {
-    return Tweenable.interpolate(this._opts.from, this._opts.to, this.value(), easing);
-};
+  Path.prototype._calculateFrom = function _calculateFrom (easing) {
+    return Tweenable.interpolate(this._opts.from, this._opts.to, this.value(), easing)
+  }
 
 // Calculate `to` values from options passed at initialization
-Path.prototype._calculateTo = function _calculateTo(progress, easing) {
-    return Tweenable.interpolate(this._opts.from, this._opts.to, progress, easing);
-};
+  Path.prototype._calculateTo = function _calculateTo (progress, easing) {
+    return Tweenable.interpolate(this._opts.from, this._opts.to, progress, easing)
+  }
 
-Path.prototype._stopTween = function _stopTween() {
+  Path.prototype._stopTween = function _stopTween () {
     if (this._tweenable !== null) {
-        this._tweenable.stop();
-        this._tweenable = null;
+      this._tweenable.stop()
+      this._tweenable = null
     }
-};
+  }
 
-Path.prototype._easing = function _easing(easing) {
+  Path.prototype._easing = function _easing (easing) {
     if (EASING_ALIASES.hasOwnProperty(easing)) {
-        return EASING_ALIASES[easing];
+      return EASING_ALIASES[easing]
     }
 
-    return easing;
-};
+    return easing
+  }
 
-module.exports = Path;
-
-},{"./utils":8,"shifty":1}],6:[function(require,module,exports){
+  module.exports = Path
+}, {'./utils': 8, 'shifty': 1}], 6: [function (require, module, exports) {
 // Semi-SemiCircle shaped progress bar
 
-var Shape = require('./shape');
-var Circle = require('./circle');
-var utils = require('./utils');
+  var Shape = require('./shape')
+  var Circle = require('./circle')
+  var utils = require('./utils')
 
-var SemiCircle = function SemiCircle(container, options) {
+  var SemiCircle = function SemiCircle (container, options) {
     // Use one arc to form a SemiCircle
     // See this answer http://stackoverflow.com/a/10477334/1446092
     this._pathTemplate =
         'M 50,50 m -{radius},0' +
-        ' a {radius},{radius} 0 1 1 {2radius},0';
+        ' a {radius},{radius} 0 1 1 {2radius},0'
 
-    this.containerAspectRatio = 2;
+    this.containerAspectRatio = 2
 
-    Shape.apply(this, arguments);
-};
+    Shape.apply(this, arguments)
+  }
 
-SemiCircle.prototype = new Shape();
-SemiCircle.prototype.constructor = SemiCircle;
+  SemiCircle.prototype = new Shape()
+  SemiCircle.prototype.constructor = SemiCircle
 
-SemiCircle.prototype._initializeSvg = function _initializeSvg(svg, opts) {
-    svg.setAttribute('viewBox', '0 0 100 50');
-};
+  SemiCircle.prototype._initializeSvg = function _initializeSvg (svg, opts) {
+    svg.setAttribute('viewBox', '0 0 100 50')
+  }
 
-SemiCircle.prototype._initializeTextContainer = function _initializeTextContainer(
+  SemiCircle.prototype._initializeTextContainer = function _initializeTextContainer (
     opts,
     container,
     textContainer
 ) {
     if (opts.text.style) {
         // Reset top style
-        textContainer.style.top = 'auto';
-        textContainer.style.bottom = '0';
+      textContainer.style.top = 'auto'
+      textContainer.style.bottom = '0'
 
-        if (opts.text.alignToBottom) {
-            utils.setStyle(textContainer, 'transform', 'translate(-50%, 0)');
-        } else {
-            utils.setStyle(textContainer, 'transform', 'translate(-50%, 50%)');
-        }
+      if (opts.text.alignToBottom) {
+        utils.setStyle(textContainer, 'transform', 'translate(-50%, 0)')
+      } else {
+        utils.setStyle(textContainer, 'transform', 'translate(-50%, 50%)')
+      }
     }
-};
+  }
 
 // Share functionality with Circle, just have different path
-SemiCircle.prototype._pathString = Circle.prototype._pathString;
-SemiCircle.prototype._trailString = Circle.prototype._trailString;
+  SemiCircle.prototype._pathString = Circle.prototype._pathString
+  SemiCircle.prototype._trailString = Circle.prototype._trailString
 
-module.exports = SemiCircle;
-
-},{"./circle":2,"./shape":7,"./utils":8}],7:[function(require,module,exports){
+  module.exports = SemiCircle
+}, {'./circle': 2, './shape': 7, './utils': 8}], 7: [function (require, module, exports) {
 // Base object for different progress bar shapes
 
-var Path = require('./path');
-var utils = require('./utils');
+  var Path = require('./path')
+  var utils = require('./utils')
 
-var DESTROYED_ERROR = 'Object is destroyed';
+  var DESTROYED_ERROR = 'Object is destroyed'
 
-var Shape = function Shape(container, opts) {
+  var Shape = function Shape (container, opts) {
     // Throw a better error if progress bars are not initialized with `new`
     // keyword
     if (!(this instanceof Shape)) {
-        throw new Error('Constructor was called without new keyword');
+      throw new Error('Constructor was called without new keyword')
     }
 
     // Prevent calling constructor without parameters so inheritance
@@ -1993,285 +1970,285 @@ var Shape = function Shape(container, opts) {
     //
     // We just want to set the prototype for Line.
     if (arguments.length === 0) {
-        return;
+      return
     }
 
     // Default parameters for progress bar creation
     this._opts = utils.extend({
-        color: '#555',
-        strokeWidth: 1.0,
-        trailColor: null,
-        trailWidth: null,
-        fill: null,
-        text: {
-            style: {
-                color: null,
-                position: 'absolute',
-                left: '50%',
-                top: '50%',
-                padding: 0,
-                margin: 0,
-                transform: {
-                    prefix: true,
-                    value: 'translate(-50%, -50%)'
-                }
-            },
-            autoStyleContainer: true,
-            alignToBottom: true,
-            value: null,
-            className: 'progressbar-text'
+      color: '#555',
+      strokeWidth: 1.0,
+      trailColor: null,
+      trailWidth: null,
+      fill: null,
+      text: {
+        style: {
+          color: null,
+          position: 'absolute',
+          left: '50%',
+          top: '50%',
+          padding: 0,
+          margin: 0,
+          transform: {
+            prefix: true,
+            value: 'translate(-50%, -50%)'
+          }
         },
-        svgStyle: {
-            display: 'block',
-            width: '100%'
-        },
-        warnings: false
-    }, opts, true);  // Use recursive extend
+        autoStyleContainer: true,
+        alignToBottom: true,
+        value: null,
+        className: 'progressbar-text'
+      },
+      svgStyle: {
+        display: 'block',
+        width: '100%'
+      },
+      warnings: false
+    }, opts, true)  // Use recursive extend
 
     // If user specifies e.g. svgStyle or text style, the whole object
     // should replace the defaults to make working with styles easier
     if (utils.isObject(opts) && opts.svgStyle !== undefined) {
-        this._opts.svgStyle = opts.svgStyle;
+      this._opts.svgStyle = opts.svgStyle
     }
     if (utils.isObject(opts) && utils.isObject(opts.text) && opts.text.style !== undefined) {
-        this._opts.text.style = opts.text.style;
+      this._opts.text.style = opts.text.style
     }
 
-    var svgView = this._createSvgView(this._opts);
+    var svgView = this._createSvgView(this._opts)
 
-    var element;
+    var element
     if (utils.isString(container)) {
-        element = document.querySelector(container);
+      element = document.querySelector(container)
     } else {
-        element = container;
+      element = container
     }
 
     if (!element) {
-        throw new Error('Container does not exist: ' + container);
+      throw new Error('Container does not exist: ' + container)
     }
 
-    this._container = element;
-    this._container.appendChild(svgView.svg);
+    this._container = element
+    this._container.appendChild(svgView.svg)
     if (this._opts.warnings) {
-        this._warnContainerAspectRatio(this._container);
+      this._warnContainerAspectRatio(this._container)
     }
 
     if (this._opts.svgStyle) {
-        utils.setStyles(svgView.svg, this._opts.svgStyle);
+      utils.setStyles(svgView.svg, this._opts.svgStyle)
     }
 
     // Expose public attributes before Path initialization
-    this.svg = svgView.svg;
-    this.path = svgView.path;
-    this.trail = svgView.trail;
-    this.text = null;
+    this.svg = svgView.svg
+    this.path = svgView.path
+    this.trail = svgView.trail
+    this.text = null
 
     var newOpts = utils.extend({
-        attachment: undefined,
-        shape: this
-    }, this._opts);
-    this._progressPath = new Path(svgView.path, newOpts);
+      attachment: undefined,
+      shape: this
+    }, this._opts)
+    this._progressPath = new Path(svgView.path, newOpts)
 
     if (utils.isObject(this._opts.text) && this._opts.text.value !== null) {
-        this.setText(this._opts.text.value);
+      this.setText(this._opts.text.value)
     }
-};
+  }
 
-Shape.prototype.animate = function animate(progress, opts, cb) {
+  Shape.prototype.animate = function animate (progress, opts, cb) {
     if (this._progressPath === null) {
-        throw new Error(DESTROYED_ERROR);
+      throw new Error(DESTROYED_ERROR)
     }
 
-    this._progressPath.animate(progress, opts, cb);
-};
+    this._progressPath.animate(progress, opts, cb)
+  }
 
-Shape.prototype.stop = function stop() {
+  Shape.prototype.stop = function stop () {
     if (this._progressPath === null) {
-        throw new Error(DESTROYED_ERROR);
+      throw new Error(DESTROYED_ERROR)
     }
 
     // Don't crash if stop is called inside step function
     if (this._progressPath === undefined) {
-        return;
+      return
     }
 
-    this._progressPath.stop();
-};
+    this._progressPath.stop()
+  }
 
-Shape.prototype.destroy = function destroy() {
+  Shape.prototype.destroy = function destroy () {
     if (this._progressPath === null) {
-        throw new Error(DESTROYED_ERROR);
+      throw new Error(DESTROYED_ERROR)
     }
 
-    this.stop();
-    this.svg.parentNode.removeChild(this.svg);
-    this.svg = null;
-    this.path = null;
-    this.trail = null;
-    this._progressPath = null;
+    this.stop()
+    this.svg.parentNode.removeChild(this.svg)
+    this.svg = null
+    this.path = null
+    this.trail = null
+    this._progressPath = null
 
     if (this.text !== null) {
-        this.text.parentNode.removeChild(this.text);
-        this.text = null;
+      this.text.parentNode.removeChild(this.text)
+      this.text = null
     }
-};
+  }
 
-Shape.prototype.set = function set(progress) {
+  Shape.prototype.set = function set (progress) {
     if (this._progressPath === null) {
-        throw new Error(DESTROYED_ERROR);
+      throw new Error(DESTROYED_ERROR)
     }
 
-    this._progressPath.set(progress);
-};
+    this._progressPath.set(progress)
+  }
 
-Shape.prototype.value = function value() {
+  Shape.prototype.value = function value () {
     if (this._progressPath === null) {
-        throw new Error(DESTROYED_ERROR);
+      throw new Error(DESTROYED_ERROR)
     }
 
     if (this._progressPath === undefined) {
-        return 0;
+      return 0
     }
 
-    return this._progressPath.value();
-};
+    return this._progressPath.value()
+  }
 
-Shape.prototype.setText = function setText(newText) {
+  Shape.prototype.setText = function setText (newText) {
     if (this._progressPath === null) {
-        throw new Error(DESTROYED_ERROR);
+      throw new Error(DESTROYED_ERROR)
     }
 
     if (this.text === null) {
         // Create new text node
-        this.text = this._createTextContainer(this._opts, this._container);
-        this._container.appendChild(this.text);
+      this.text = this._createTextContainer(this._opts, this._container)
+      this._container.appendChild(this.text)
     }
 
     // Remove previous text and add new
     if (utils.isObject(newText)) {
-        utils.removeChildren(this.text);
-        this.text.appendChild(newText);
+      utils.removeChildren(this.text)
+      this.text.appendChild(newText)
     } else {
-        this.text.innerHTML = newText;
+      this.text.innerHTML = newText
     }
-};
+  }
 
-Shape.prototype._createSvgView = function _createSvgView(opts) {
-    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    this._initializeSvg(svg, opts);
+  Shape.prototype._createSvgView = function _createSvgView (opts) {
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+    this._initializeSvg(svg, opts)
 
-    var trailPath = null;
+    var trailPath = null
     // Each option listed in the if condition are 'triggers' for creating
     // the trail path
     if (opts.trailColor || opts.trailWidth) {
-        trailPath = this._createTrail(opts);
-        svg.appendChild(trailPath);
+      trailPath = this._createTrail(opts)
+      svg.appendChild(trailPath)
     }
 
-    var path = this._createPath(opts);
-    svg.appendChild(path);
+    var path = this._createPath(opts)
+    svg.appendChild(path)
 
     return {
-        svg: svg,
-        path: path,
-        trail: trailPath
-    };
-};
+      svg: svg,
+      path: path,
+      trail: trailPath
+    }
+  }
 
-Shape.prototype._initializeSvg = function _initializeSvg(svg, opts) {
-    svg.setAttribute('viewBox', '0 0 100 100');
-};
+  Shape.prototype._initializeSvg = function _initializeSvg (svg, opts) {
+    svg.setAttribute('viewBox', '0 0 100 100')
+  }
 
-Shape.prototype._createPath = function _createPath(opts) {
-    var pathString = this._pathString(opts);
-    return this._createPathElement(pathString, opts);
-};
+  Shape.prototype._createPath = function _createPath (opts) {
+    var pathString = this._pathString(opts)
+    return this._createPathElement(pathString, opts)
+  }
 
-Shape.prototype._createTrail = function _createTrail(opts) {
+  Shape.prototype._createTrail = function _createTrail (opts) {
     // Create path string with original passed options
-    var pathString = this._trailString(opts);
+    var pathString = this._trailString(opts)
 
     // Prevent modifying original
-    var newOpts = utils.extend({}, opts);
+    var newOpts = utils.extend({}, opts)
 
     // Defaults for parameters which modify trail path
     if (!newOpts.trailColor) {
-        newOpts.trailColor = '#eee';
+      newOpts.trailColor = '#eee'
     }
     if (!newOpts.trailWidth) {
-        newOpts.trailWidth = newOpts.strokeWidth;
+      newOpts.trailWidth = newOpts.strokeWidth
     }
 
-    newOpts.color = newOpts.trailColor;
-    newOpts.strokeWidth = newOpts.trailWidth;
+    newOpts.color = newOpts.trailColor
+    newOpts.strokeWidth = newOpts.trailWidth
 
     // When trail path is set, fill must be set for it instead of the
     // actual path to prevent trail stroke from clipping
-    newOpts.fill = null;
+    newOpts.fill = null
 
-    return this._createPathElement(pathString, newOpts);
-};
+    return this._createPathElement(pathString, newOpts)
+  }
 
-Shape.prototype._createPathElement = function _createPathElement(pathString, opts) {
-    var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    path.setAttribute('d', pathString);
-    path.setAttribute('stroke', opts.color);
-    path.setAttribute('stroke-width', opts.strokeWidth);
+  Shape.prototype._createPathElement = function _createPathElement (pathString, opts) {
+    var path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+    path.setAttribute('d', pathString)
+    path.setAttribute('stroke', opts.color)
+    path.setAttribute('stroke-width', opts.strokeWidth)
 
     if (opts.fill) {
-        path.setAttribute('fill', opts.fill);
+      path.setAttribute('fill', opts.fill)
     } else {
-        path.setAttribute('fill-opacity', '0');
+      path.setAttribute('fill-opacity', '0')
     }
 
-    return path;
-};
+    return path
+  }
 
-Shape.prototype._createTextContainer = function _createTextContainer(opts, container) {
-    var textContainer = document.createElement('div');
-    textContainer.className = opts.text.className;
+  Shape.prototype._createTextContainer = function _createTextContainer (opts, container) {
+    var textContainer = document.createElement('div')
+    textContainer.className = opts.text.className
 
-    var textStyle = opts.text.style;
+    var textStyle = opts.text.style
     if (textStyle) {
-        if (opts.text.autoStyleContainer) {
-            container.style.position = 'relative';
-        }
+      if (opts.text.autoStyleContainer) {
+        container.style.position = 'relative'
+      }
 
-        utils.setStyles(textContainer, textStyle);
+      utils.setStyles(textContainer, textStyle)
         // Default text color to progress bar's color
-        if (!textStyle.color) {
-            textContainer.style.color = opts.color;
-        }
+      if (!textStyle.color) {
+        textContainer.style.color = opts.color
+      }
     }
 
-    this._initializeTextContainer(opts, container, textContainer);
-    return textContainer;
-};
+    this._initializeTextContainer(opts, container, textContainer)
+    return textContainer
+  }
 
 // Give custom shapes possibility to modify text element
-Shape.prototype._initializeTextContainer = function(opts, container, element) {
+  Shape.prototype._initializeTextContainer = function (opts, container, element) {
     // By default, no-op
     // Custom shapes should respect API options, such as text.style
-};
+  }
 
-Shape.prototype._pathString = function _pathString(opts) {
-    throw new Error('Override this function for each progress bar');
-};
+  Shape.prototype._pathString = function _pathString (opts) {
+    throw new Error('Override this function for each progress bar')
+  }
 
-Shape.prototype._trailString = function _trailString(opts) {
-    throw new Error('Override this function for each progress bar');
-};
+  Shape.prototype._trailString = function _trailString (opts) {
+    throw new Error('Override this function for each progress bar')
+  }
 
-Shape.prototype._warnContainerAspectRatio = function _warnContainerAspectRatio(container) {
+  Shape.prototype._warnContainerAspectRatio = function _warnContainerAspectRatio (container) {
     if (!this.containerAspectRatio) {
-        return;
+      return
     }
 
-    var computedStyle = window.getComputedStyle(container, null);
-    var width = parseFloat(computedStyle.getPropertyValue('width'), 10);
-    var height = parseFloat(computedStyle.getPropertyValue('height'), 10);
+    var computedStyle = window.getComputedStyle(container, null)
+    var width = parseFloat(computedStyle.getPropertyValue('width'), 10)
+    var height = parseFloat(computedStyle.getPropertyValue('height'), 10)
     if (!utils.floatEquals(this.containerAspectRatio, width / height)) {
-        console.warn(
+      console.warn(
             'Incorrect aspect ratio of container',
             '#' + container.id,
             'detected:',
@@ -2280,143 +2257,142 @@ Shape.prototype._warnContainerAspectRatio = function _warnContainerAspectRatio(c
             computedStyle.getPropertyValue('height') + '(height)',
             '=',
             width / height
-        );
+        )
 
-        console.warn(
+      console.warn(
             'Aspect ratio of should be',
             this.containerAspectRatio
-        );
+        )
     }
-};
+  }
 
-module.exports = Shape;
-
-},{"./path":5,"./utils":8}],8:[function(require,module,exports){
+  module.exports = Shape
+}, {'./path': 5, './utils': 8}], 8: [function (require, module, exports) {
 // Utility functions
 
-var PREFIXES = 'Webkit Moz O ms'.split(' ');
-var FLOAT_COMPARISON_EPSILON = 0.001;
+  var PREFIXES = 'Webkit Moz O ms'.split(' ')
+  var FLOAT_COMPARISON_EPSILON = 0.001
 
 // Copy all attributes from source object to destination object.
 // destination object is mutated.
-function extend(destination, source, recursive) {
-    destination = destination || {};
-    source = source || {};
-    recursive = recursive || false;
+  function extend (destination, source, recursive) {
+    destination = destination || {}
+    source = source || {}
+    recursive = recursive || false
 
     for (var attrName in source) {
-        if (source.hasOwnProperty(attrName)) {
-            var destVal = destination[attrName];
-            var sourceVal = source[attrName];
-            if (recursive && isObject(destVal) && isObject(sourceVal)) {
-                destination[attrName] = extend(destVal, sourceVal, recursive);
-            } else {
-                destination[attrName] = sourceVal;
-            }
+      if (source.hasOwnProperty(attrName)) {
+        var destVal = destination[attrName]
+        var sourceVal = source[attrName]
+        if (recursive && isObject(destVal) && isObject(sourceVal)) {
+          destination[attrName] = extend(destVal, sourceVal, recursive)
+        } else {
+          destination[attrName] = sourceVal
         }
+      }
     }
 
-    return destination;
-}
+    return destination
+  }
 
 // Renders templates with given variables. Variables must be surrounded with
 // braces without any spaces, e.g. {variable}
 // All instances of variable placeholders will be replaced with given content
 // Example:
 // render('Hello, {message}!', {message: 'world'})
-function render(template, vars) {
-    var rendered = template;
+  function render (template, vars) {
+    var rendered = template
 
     for (var key in vars) {
-        if (vars.hasOwnProperty(key)) {
-            var val = vars[key];
-            var regExpString = '\\{' + key + '\\}';
-            var regExp = new RegExp(regExpString, 'g');
+      if (vars.hasOwnProperty(key)) {
+        var val = vars[key]
+        var regExpString = '\\{' + key + '\\}'
+        var regExp = new RegExp(regExpString, 'g')
 
-            rendered = rendered.replace(regExp, val);
-        }
+        rendered = rendered.replace(regExp, val)
+      }
     }
 
-    return rendered;
-}
+    return rendered
+  }
 
-function setStyle(element, style, value) {
-    var elStyle = element.style;  // cache for performance
+  function setStyle (element, style, value) {
+    var elStyle = element.style  // cache for performance
 
     for (var i = 0; i < PREFIXES.length; ++i) {
-        var prefix = PREFIXES[i];
-        elStyle[prefix + capitalize(style)] = value;
+      var prefix = PREFIXES[i]
+      elStyle[prefix + capitalize(style)] = value
     }
 
-    elStyle[style] = value;
-}
+    elStyle[style] = value
+  }
 
-function setStyles(element, styles) {
-    forEachObject(styles, function(styleValue, styleName) {
+  function setStyles (element, styles) {
+    forEachObject(styles, function (styleValue, styleName) {
         // Allow disabling some individual styles by setting them
         // to null or undefined
-        if (styleValue === null || styleValue === undefined) {
-            return;
-        }
+      if (styleValue === null || styleValue === undefined) {
+        return
+      }
 
         // If style's value is {prefix: true, value: '50%'},
         // Set also browser prefixed styles
-        if (isObject(styleValue) && styleValue.prefix === true) {
-            setStyle(element, styleName, styleValue.value);
-        } else {
-            element.style[styleName] = styleValue;
-        }
-    });
-}
+      if (isObject(styleValue) && styleValue.prefix === true) {
+        setStyle(element, styleName, styleValue.value)
+      } else {
+        element.style[styleName] = styleValue
+      }
+    })
+  }
 
-function capitalize(text) {
-    return text.charAt(0).toUpperCase() + text.slice(1);
-}
+  function capitalize (text) {
+    return text.charAt(0).toUpperCase() + text.slice(1)
+  }
 
-function isString(obj) {
-    return typeof obj === 'string' || obj instanceof String;
-}
+  function isString (obj) {
+    return typeof obj === 'string' || obj instanceof String
+  }
 
-function isFunction(obj) {
-    return typeof obj === 'function';
-}
+  function isFunction (obj) {
+    return typeof obj === 'function'
+  }
 
-function isArray(obj) {
-    return Object.prototype.toString.call(obj) === '[object Array]';
-}
+  function isArray (obj) {
+    return Object.prototype.toString.call(obj) === '[object Array]'
+  }
 
 // Returns true if `obj` is object as in {a: 1, b: 2}, not if it's function or
 // array
-function isObject(obj) {
+  function isObject (obj) {
     if (isArray(obj)) {
-        return false;
+      return false
     }
 
-    var type = typeof obj;
-    return type === 'object' && !!obj;
-}
+    var type = typeof obj
+    return type === 'object' && !!obj
+  }
 
-function forEachObject(object, callback) {
+  function forEachObject (object, callback) {
     for (var key in object) {
-        if (object.hasOwnProperty(key)) {
-            var val = object[key];
-            callback(val, key);
-        }
+      if (object.hasOwnProperty(key)) {
+        var val = object[key]
+        callback(val, key)
+      }
     }
-}
+  }
 
-function floatEquals(a, b) {
-    return Math.abs(a - b) < FLOAT_COMPARISON_EPSILON;
-}
+  function floatEquals (a, b) {
+    return Math.abs(a - b) < FLOAT_COMPARISON_EPSILON
+  }
 
 // https://coderwall.com/p/nygghw/don-t-use-innerhtml-to-empty-dom-elements
-function removeChildren(el) {
+  function removeChildren (el) {
     while (el.firstChild) {
-        el.removeChild(el.firstChild);
+      el.removeChild(el.firstChild)
     }
-}
+  }
 
-module.exports = {
+  module.exports = {
     extend: extend,
     render: render,
     setStyle: setStyle,
@@ -2428,7 +2404,6 @@ module.exports = {
     forEachObject: forEachObject,
     floatEquals: floatEquals,
     removeChildren: removeChildren
-};
-
-},{}]},{},[4])(4)
-});
+  }
+}, {}]}, {}, [4])(4)
+})

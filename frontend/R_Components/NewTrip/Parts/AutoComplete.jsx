@@ -9,12 +9,12 @@ class AutoComplete extends React.Component {
   render () {
     var options = this.props.autoFillPlaces.map((place, i) => {
       return (
-        <option value={place} key={i}></option>
+        <option value={place} key={i} />
       )
     })
 
     return (
-      <datalist id="places">
+      <datalist id='places'>
         {options}
       </datalist>
     )

@@ -59,6 +59,7 @@ class NewTripForm extends React.Component {
 
   onFocus (e) {
     console.log(e)
+    // delete any value in input
     document.querySelectorAll('.geosuggest__suggests-wrapper')[0].style.display = 'block'
   }
 
@@ -88,10 +89,9 @@ class NewTripForm extends React.Component {
       console.log(error)
     })
 
-    if(this.state.to) {
+    if (this.state.to) {
       document.querySelectorAll('.geosuggest__suggests-wrapper')[0].style.display = 'none'
     }
-
   } // onSuggestSelect
 
   onSuggestNoResults (e) {
@@ -167,6 +167,13 @@ class NewTripForm extends React.Component {
 
         <form onSubmit={this.handleSubmit} className='form-inline'>
 
+          <div className='form-group'>
+            <h2 style={style.h2}>When are we going?</h2>
+            <DateRangePickerWrapper
+              onChange={this.onDatesSelected}
+              preselectedDates={this.state.dates} />
+          </div>
+
           <div className='form-group' style={{'float': 'left'}}>
             <h2 style={style.h2}>Where are we going?</h2>
             <Geosuggest
@@ -178,13 +185,6 @@ class NewTripForm extends React.Component {
               onSuggestNoResults={this.onSuggestNoResults}
               value={this.state.location}
               placeholder='Marsille, France' />
-          </div>
-
-          <div className='form-group'>
-            <h2 style={style.h2}>When are we going?</h2>
-            <DateRangePickerWrapper
-              onChange={this.onDatesSelected}
-              preselectedDates={this.state.dates} />
           </div>
 
           <button id='letsGo' type='submit'>Lets go!</button>

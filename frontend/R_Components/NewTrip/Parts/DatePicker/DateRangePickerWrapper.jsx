@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {DateRange} from 'react-date-range'
-import moment from 'moment'
 
 class DateRangePickerWrapper extends Component {
   constructor (props, context) {
@@ -15,7 +14,6 @@ class DateRangePickerWrapper extends Component {
     }
     this.onFocusCalendarInput = this.onFocusCalendarInput.bind(this)
     this.mouseLeave = this.mouseLeave.bind(this)
-    this.mouseOut = this.mouseOut.bind(this)
   }
 
   // Handle changes of input to calender component
@@ -30,10 +28,9 @@ class DateRangePickerWrapper extends Component {
 
   mouseLeave (e) {
     console.log(e)
-    this.setState({ displayCalendar: 0 })
-  }
-  mouseOut (e) {
-    console.log(e)
+    // ReactDOM.findDOMNode(this.refs.datePickerPlaceHolder).blur()
+    this.refs.datePickerPlaceHolder.blur()
+    // document.getElementById('datePickerPlaceHolder').blur()
     this.setState({ displayCalendar: 0 })
   }
 
@@ -52,10 +49,11 @@ class DateRangePickerWrapper extends Component {
       <div onMouseLeave={this.mouseLeave}>
         <div>
           <input
+            id='datePickerPlaceHolder'
             type='text'
             readOnly
             onFocus={this.onFocusCalendarInput}
-            onBlur={this.onBlurCalendarInput}
+            ref='datePickerPlaceHolder'
             placeholder={placeholder}
             value={placeholder}
             />
@@ -92,10 +90,11 @@ class DateRangePickerWrapper extends Component {
   }
 }
 
-const { func } = React.PropTypes
+const { func, object } = React.PropTypes
 
 DateRangePickerWrapper.propTypes = {
-  onChange: func.isRequired
+  onChange: func.isRequired,
+  preselectedDates: object.isRequired
 }
 
 module.exports = DateRangePickerWrapper

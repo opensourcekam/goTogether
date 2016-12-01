@@ -68,7 +68,7 @@ class Map extends React.Component {
       height: '350px'
     }
     return (
-      <div className='map' style={style}></div>
+      <div className='map' style={style} />
     )
   }
 }

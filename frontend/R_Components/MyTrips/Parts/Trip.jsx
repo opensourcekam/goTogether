@@ -11,7 +11,7 @@ const style = {
     'position': 'relative',
     'display': 'block',
     'marginBottom': '3.75rem',
-    'borderRedius': '50%',
+    'borderRedius': '50%'
     // 'border': '1px solid rgba(0, 0, 0, .125)',
     // 'width': '500px',
     // 'height': '500px'
@@ -23,7 +23,7 @@ const style = {
     'left': '10%',
     'padding': '1.25rem',
     'backgroundColor': 'rgba(115, 186, 255,.85)',
-    'height': 'auto',
+    'height': 'auto'
 
   },
   'innerDivOverlay': {
@@ -38,8 +38,6 @@ const style = {
   }
 }
 
-
-
 class Trip extends React.Component {
   render () {
     return (
@@ -47,9 +45,9 @@ class Trip extends React.Component {
         <div style={style.innerDivOverlay}>
             <h2 style={style.h2} id='planningTripBubbleH2'>{this.props.dest}</h2>
             <span>${this.props.budget}</span>
-            <span style={{'float':'right'}}>{this.props.tripDate}</span>
+            <span style={{'float': 'right'}}>{this.props.tripDate}</span>
         </div>
-        <img className='img-circle img-responsive' src={this.props.placeImage || '/images/br1.jpg'} style={style.img}></img>
+        <img className='img-circle img-responsive' src={this.props.placeImage || '/images/br1.jpg'} style={style.img} />
       </div>
     )
   }

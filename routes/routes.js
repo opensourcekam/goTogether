@@ -3,7 +3,6 @@ module.exports = function (express, app, router, passport, config, User, Trip) {
   const mongoose = require('mongoose')
 
   app.get('/', (req, res, next) => {
-
     console.log(`
 
       Router get ${req.baseUrl}
@@ -76,7 +75,6 @@ module.exports = function (express, app, router, passport, config, User, Trip) {
   // })
 
   router.get('/user/trips/:profileId', (req, res, next) => {
-
     const promise = User.findOne({'profileID': req.params.profileId}).populate('trips').exec()
 
     promise.then((doc) => {

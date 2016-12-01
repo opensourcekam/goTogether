@@ -13,10 +13,10 @@ const style = {
 class Card extends React.Component {
   render () {
     return (
-      <div className="card" style={style.card}>
-        <div className="card-block">
-          <h2 className="card-title">{this.props.action}</h2>
-          <p style={style.p} className="card-text">{this.props.actionText}</p>
+      <div className='card' style={style.card}>
+        <div className='card-block'>
+          <h2 className='card-title'>{this.props.action}</h2>
+          <p style={style.p} className='card-text'>{this.props.actionText}</p>
         </div>
       </div>
     )

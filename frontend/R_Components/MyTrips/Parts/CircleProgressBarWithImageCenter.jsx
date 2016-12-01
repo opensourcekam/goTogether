@@ -1,5 +1,5 @@
 const React = require('react')
-import { Circle } from 'progressbar.js'
+import {Circle} from 'progressbar.js'
 // import { sampleSize } from 'lodash'
 import moment from 'moment'
 
@@ -39,7 +39,10 @@ const style = {
 class CircleProgressBarWithImageCenter extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { loadTo: '0', hovered: 0 }
+    this.state = {
+      loadTo: '0',
+      hovered: 0
+    }
     this.animateProgress = this.animateProgress.bind(this)
   }
 
@@ -61,7 +64,7 @@ class CircleProgressBarWithImageCenter extends React.Component {
     console.log(this)
     if (this.state.hovered === 0) {
       const circle = new Circle(`#${this.props.mountId}`, {
-        strokeWidth: this.props.strokeWidth || 4,  // This means 4% of the container
+        strokeWidth: this.props.strokeWidth || 4, // This means 4% of the container
         color: this.props.color
       })
 
@@ -81,21 +84,26 @@ class CircleProgressBarWithImageCenter extends React.Component {
   }
 
   render () {
+    const { _id, img, mountId, dest, budget, tripDate, tripEndDate } = this.props
     return (
-      <div className='wrapper' data-trip-id={this.props._id} onMouseEnter={this.animateProgress}>
-        <img src={this.props.img} />
-        <div id={this.props.mountId} />
+      <div className='wrapper' data-trip-id={_id} onMouseEnter={this.animateProgress}>
+        <img src={img} />
+        <div id={mountId} />
         <div style={style.innerDivOverlay}>
-          <h2 style={style.h2} id='planningTripBubbleH2'>{this.props.dest}</h2>
-          <span>Goal ${this.props.budget}</span>
-          <span style={{'float': 'right'}}>{moment(this.props.tripDate).format('MMM Do, YYYY')}</span>
+          <h2 style={style.h2} id='planningTripBubbleH2'>{dest}</h2>
+          <span>Goal ${budget}</span>
+          <span style={{
+            'float': 'right'
+          }}>
+           {moment(tripDate).format('MMM Do')} - {moment(tripEndDate).format('MMM Do, YYYY')}
+          </span>
         </div>
       </div>
     )
   }
 }
 
-const { number, string } = React.PropTypes
+const {number, string} = React.PropTypes
 
 CircleProgressBarWithImageCenter.propTypes = {
   _id: string,
@@ -105,6 +113,7 @@ CircleProgressBarWithImageCenter.propTypes = {
   dest: string,
   budget: number,
   tripDate: string,
+  tripEndDate: string,
   color: string,
   strokeWidth: string,
   saved: number

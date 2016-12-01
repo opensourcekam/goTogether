@@ -121,7 +121,9 @@ Flights.propTypes = {
   date: string.isRequired,
   invitees: array.isRequired,
   _id: string.isRequired,
-  itineraries: array.isRequired
+  itineraries: array.isRequired,
+  tripDate: string.isRequired,
+  tripEndDate: string.isRequired
 }
 
 module.exports = Flights
