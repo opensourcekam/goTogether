@@ -1,4 +1,4 @@
-module.exports = (express, app, router, mongoose, TripModel, Trip, User) => {
+module.exports = (express, app, router, mongoose, TripModel, Trip, User, moment) => {
   // GET ALL
   // app.use((req, res, next) => {
   //   if(req.isAuthenticated()){
@@ -10,9 +10,36 @@ module.exports = (express, app, router, mongoose, TripModel, Trip, User) => {
   //
   router.get('/trips/all', (req, res, next) => {
     // HTTP GET localhost:8080/api/v1/trip/all
-    const promise = Trip.find({}).sort('-created').exec().then((doc) => {
-      res.json(doc)
-    }).catch((err) => {
+    const allTripsPromise = Trip.find({}).sort('-created').exec()
+
+    allTripsPromise.then((doc) => {
+      let docs = doc.map((t, i) => {
+        // diff trip finish date and today, set in DB
+        let datesDiff = moment(t.tripEndDate).diff(moment(), 'days')
+        // compare finish date to today
+        console.log(
+          `There are ${datesDiff} days
+          ${(datesDiff <= -1) ? 'since you went to ' : 'until you go to'}
+          ${t.to.location}`
+        )
+        // if finish date has passed set trip.meta.past to true
+        t.meta.past = Boolean(datesDiff <= -1)
+        // save
+        t.save((err) => {
+          if (err) {
+            console.log({'Save error': err})
+          } else {
+            console.log({'Updated': doc[i]['_id']})
+          }
+        })
+        // return edited
+        return t
+      })
+
+      res.json(docs)
+    })
+
+    allTripsPromise.catch((err) => {
       res.json(err)
     })
   })
