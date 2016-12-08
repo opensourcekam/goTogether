@@ -167,6 +167,20 @@ class NewTripForm extends React.Component {
 
         <form onSubmit={this.handleSubmit} className='form-inline'>
 
+        <div className='form-group' style={{'float': 'left'}}>
+        
+          <h2 style={style.h2}>Where are we going?</h2>
+          <Geosuggest
+            types={['(cities)']}
+            onChange={this.getObscureCards}
+            onFocus={this.onFocus}
+            onBlur={this.onBlur}
+            onSuggestSelect={this.onSuggestSelect}
+            onSuggestNoResults={this.onSuggestNoResults}
+            value={this.state.location}
+            placeholder='Marsille, France' />
+        </div>
+
           <div className='form-group'>
             <h2 style={style.h2}>When are we going?</h2>
             <DateRangePickerWrapper
@@ -174,18 +188,7 @@ class NewTripForm extends React.Component {
               preselectedDates={this.state.dates} />
           </div>
 
-          <div className='form-group' style={{'float': 'left'}}>
-            <h2 style={style.h2}>Where are we going?</h2>
-            <Geosuggest
-              types={['(cities)']}
-              onChange={this.getObscureCards}
-              onFocus={this.onFocus}
-              onBlur={this.onBlur}
-              onSuggestSelect={this.onSuggestSelect}
-              onSuggestNoResults={this.onSuggestNoResults}
-              value={this.state.location}
-              placeholder='Marsille, France' />
-          </div>
+
 
           <button id='letsGo' type='submit'>Lets go!</button>
         </form>

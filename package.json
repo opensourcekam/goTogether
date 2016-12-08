@@ -95,6 +95,7 @@
     "jsdom": "^8.0.4",
     "json-loader": "^0.5.4",
     "mocha": "^2.4.5",
+    "node-sass-middleware": "^0.10.0",
     "nyc": "^6.0.0",
     "react-addons-test-utils": "^0.14.7",
     "sinon": "^1.17.3",

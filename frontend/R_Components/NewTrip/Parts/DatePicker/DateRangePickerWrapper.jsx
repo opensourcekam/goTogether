@@ -46,7 +46,7 @@ class DateRangePickerWrapper extends Component {
     const placeholder = `${preselectedDates.startDate && preselectedDates.startDate.format(format).toString()} - ${preselectedDates.endDate && preselectedDates.endDate.format(format).toString()}`
 
     return (
-      <div onMouseLeave={this.userLeavePicker} onTouchMove={this.userLeavePicker}>
+      <div onMouseLeave={this.userLeavePicker}>
         <div>
           <input
             id='datePickerPlaceHolder'

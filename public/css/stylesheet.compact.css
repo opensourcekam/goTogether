@@ -192,7 +192,7 @@ li.geosuggest__item--active { background: rgba(0, 128, 0, 0.6); border: 1px soli
 
 /*PLANE*/
 /*CALENDAR*/
-div.rdr-DateRange { text-align: center !important; position: absolute !important; z-index: 9999999999; }
+div.rdr-DateRange { text-align: center !important; z-index: 9999999999; }
 
 div.rdr-MonthAndYear-innerWrapper { margin: 20px; }
 
