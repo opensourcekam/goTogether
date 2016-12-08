@@ -35,29 +35,41 @@ class MyTrips extends React.Component {
   }
 
   render () {
+    const { trips } = this.state
     return (
       <div>
         <h3>Plan for</h3>
         <hr />
         <div className='container-fluid' id='progress-circle-container'>
-          {(this.state.trips.length) ? this.state.trips.map((trip, i) => {
-            return (
-              <div key={i} className='col-xs-12 col-sm-12 col-md-6 col-lg-4'>
-                <Link to={`/tripDash/${trip._id}`}>
-                  <CircleProgressBarWithImageCenter
-                    img={`//maps.googleapis.com/maps/api/staticmap?center=${trip.to.geometry.lat},${trip.to.geometry.lng}&zoom=13&size=400x450&satellite=roadmap&key=AIzaSyDa8ZRyg_iOyMDRf7nM8sWp_6vLgy7mYLE`}
-                    _id={trip._id}
-                    mountId={`${trip.to.location.replace(/[\s,]/g, '')}_${trip._id}`}
-                    dest={trip.to.location}
-                    budget={trip.meta.budget}
-                    saved={trip.meta.saved}
-                    tripDate={trip.tripDate}
-                    tripEndDate={trip.tripEndDate}
-                    color='#aae444'
-                    strokeWidth='4' />
-                </Link>
-              </div>
-            )
+          {(trips.length) ? trips.map((trip, i) => {
+            // If past is false show the trip bubble otherwise show these in a past trips section
+            if (trip.meta.past !== true) {
+              return (
+                <div key={i} className='col-xs-12 col-sm-12 col-md-6 col-lg-4'>
+                  <Link to={`/tripDash/${trip._id}`}>
+                    <CircleProgressBarWithImageCenter
+                      img={`//maps.googleapis.com/maps/api/staticmap?center=${trip.to.geometry.lat},${trip.to.geometry.lng}&zoom=13&size=400x450&satellite=roadmap&key=AIzaSyDa8ZRyg_iOyMDRf7nM8sWp_6vLgy7mYLE`}
+                      _id={trip._id}
+                      mountId={`${trip.to.location.replace(/[\s,]/g, '')}_${trip._id}`}
+                      dest={trip.to.location}
+                      budget={trip.meta.budget}
+                      saved={trip.meta.saved}
+                      tripDate={trip.tripDate}
+                      tripEndDate={trip.tripEndDate}
+                      tripHasPast={trip.meta.past.toString()}
+                      color='#aae444'
+                      strokeWidth='4' />
+                  </Link>
+                </div>
+              )
+            } else {
+              return (
+                null
+                // <div key={i} className='col-xs-12 col-sm-12 col-md-6 col-lg-4'>
+                //   {/* <Link to={`/tripDash/${trip._id}`}><p>{trip.to.location}</p></Link> */}
+                // </div>
+              )
+            } // if
           }) : <PlaneSpinLoader />}
         </div>
       </div>
