@@ -1,6 +1,6 @@
 const React = require('react')
 import {Circle} from 'progressbar.js'
-// import { sampleSize } from 'lodash'
+import { sampleSize } from 'lodash'
 import moment from 'moment'
 
 const style = {
@@ -71,10 +71,9 @@ class CircleProgressBarWithImageCenter extends React.Component {
       this.setState({hovered: 1})
 
       // Sample to display mockup of completeing trip planning
-      // circle.animate(sampleSize(['0.1', '.2', '.3', '.4', '.5', '.6', '.7', '.8', '.9', '1'], 1))
-      let progressPercent = (this.props.saved / this.props.budget).toFixed(2)
-
-      circle.animate(progressPercent)
+      circle.animate(sampleSize(['0.1', '.2', '.3', '.4', '.5', '.6', '.7', '.8', '.9', '1'], 1))
+      // let progressPercent = (this.props.saved / this.props.budget).toFixed(2)
+      // circle.animate(progressPercent)
     } else {
       // console.log('no re render ProgressBar')
       return
@@ -84,19 +83,20 @@ class CircleProgressBarWithImageCenter extends React.Component {
   }
 
   render () {
-    const { _id, img, mountId, dest, budget, tripDate, tripEndDate } = this.props
+    const { _id, img, mountId, dest, budget, tripDate, tripEndDate, tripHasPast } = this.props
     return (
       <div className='wrapper' data-trip-id={_id} onMouseEnter={this.animateProgress}>
         <img src={img} />
         <div id={mountId} />
         <div style={style.innerDivOverlay}>
           <h2 style={style.h2} id='planningTripBubbleH2'>{dest}</h2>
-          <span>Goal ${budget}</span>
+          {/* <span>Goal ${budget}</span> */}
           <span style={{
-            'float': 'right'
+            'float': 'left'
           }}>
-           {moment(tripDate).format('MMM Do')} - {moment(tripEndDate).format('MMM Do, YYYY')}
+            {moment(tripDate).format('MMM Do')} - {moment(tripEndDate).format('MMM Do, YYYY')}
           </span>
+          {/* <span>Past: {tripHasPast}</span> */}
         </div>
       </div>
     )
@@ -114,6 +114,7 @@ CircleProgressBarWithImageCenter.propTypes = {
   budget: number,
   tripDate: string,
   tripEndDate: string,
+  tripHasPast: string,
   color: string,
   strokeWidth: string,
   saved: number

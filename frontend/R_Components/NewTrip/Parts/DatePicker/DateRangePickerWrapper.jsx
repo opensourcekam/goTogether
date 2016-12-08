@@ -13,7 +13,7 @@ class DateRangePickerWrapper extends Component {
       'displayCalendar': 0
     }
     this.onFocusCalendarInput = this.onFocusCalendarInput.bind(this)
-    this.mouseLeave = this.mouseLeave.bind(this)
+    this.userLeavePicker = this.userLeavePicker.bind(this)
   }
 
   // Handle changes of input to calender component
@@ -26,7 +26,7 @@ class DateRangePickerWrapper extends Component {
     this.setState({ displayCalendar: 1 })
   }
 
-  mouseLeave (e) {
+  userLeavePicker (e) {
     console.log(e)
     // ReactDOM.findDOMNode(this.refs.datePickerPlaceHolder).blur()
     this.refs.datePickerPlaceHolder.blur()
@@ -46,7 +46,7 @@ class DateRangePickerWrapper extends Component {
     const placeholder = `${preselectedDates.startDate && preselectedDates.startDate.format(format).toString()} - ${preselectedDates.endDate && preselectedDates.endDate.format(format).toString()}`
 
     return (
-      <div onMouseLeave={this.mouseLeave}>
+      <div onMouseLeave={this.userLeavePicker} onTouchMove={this.userLeavePicker}>
         <div>
           <input
             id='datePickerPlaceHolder'
