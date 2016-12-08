@@ -118,7 +118,6 @@ const { string, object, array } = React.PropTypes
 Flights.propTypes = {
   from: object.isRequired,
   to: object.isRequired,
-  date: string.isRequired,
   invitees: array.isRequired,
   _id: string.isRequired,
   itineraries: array.isRequired,

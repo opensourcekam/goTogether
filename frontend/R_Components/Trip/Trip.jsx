@@ -47,11 +47,10 @@ class Trip extends React.Component {
   }
 }
 
-const { object, string } = React.PropTypes
+const { object } = React.PropTypes
 
 Trip.propTypes = {
-  routeParams: object.isRequired,
-  tripId: string.isRequired
+  routeParams: object.isRequired
 }
 
 module.exports = Trip
