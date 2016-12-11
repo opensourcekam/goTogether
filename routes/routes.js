@@ -127,6 +127,11 @@ module.exports = function (express, app, router, passport, config, User, Trip) {
     res.json(response)
   })
 
+  router.get('/test', (req, res, next) => {
+
+    res.json(req.query)
+  })
+
   // Reset database
   router.get('/resetDB', (req, res, next) => {
     Trip.remove({}, function (err) {

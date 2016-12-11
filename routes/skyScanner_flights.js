@@ -7,6 +7,11 @@ module.exports = (express, app, router, config, Trip) => {
     res.json({'APIV1': 'true'})
   })
 
+  router.get('/test', (req, res, next) => {
+    console.log(req.query)
+    res.json(req.query)
+  })
+
   router.get('/locationAutosuggest/:location', (req, res, next) => {
     // GET - locationAutosuggest with this.props.country// or store in database when trip is created
     // RETURNS - [{},{},{}] arr[0] is clostest match to req.body.location
@@ -49,16 +54,17 @@ module.exports = (express, app, router, config, Trip) => {
       */
 
       // Set country, currency, and locale from USER object
+      const { originplace, destinationplace, outbounddate, inbounddate, adults } = req.body
       api.flights.livePrices.session({
         country: 'ES',
         currency: 'EUR',
         locale: 'es-ES',
         locationSchema: 'Iata',
-        originplace: req.body.originplace,
-        destinationplace: req.body.destinationplace,
-        outbounddate: req.body.outbounddate,
-        inbounddate: req.body.inbounddate,
-        adults: parseInt(req.body.adults)
+        originplace: originplace,
+        destinationplace: destinationplace,
+        outbounddate: outbounddate,
+        inbounddate: inbounddate,
+        adults: parseInt(adults)
       }).then((response) => {
         const location = response.headers.location
 
