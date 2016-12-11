@@ -1,5 +1,7 @@
 const React = require('react')
-// import axios from 'axios'
+const HotelDetails = require('./Parts/HotelDetails')
+const HotelLoader = require('../../../Parts/Loaders/HotelLoader')
+import axios from 'axios'
 // import moment from 'moment'
 
 // Component will essintally search for rooms in its corrosponding city this is where the structure of length of stay would come in handy, for both this and flights.
@@ -9,11 +11,63 @@ const React = require('react')
 class Hotel extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = {
+      agents: [],
+      amenities: [],
+      hotels: [],
+      hotels_prices: [],
+      image_host_url: '',
+      total_available_hotels: 0
+
+    }
+
+    this.getPlaceList = this.getPlaceList.bind(this)
+    this.getHotels = this.getHotels.bind(this)
   }
 
-  getHotels () {
-    console.log('Get hotels')
+  getHotels (e) {
+    console.log(e)
+    console.log(this)
+  }
+
+  getPlaceList (destination, checkIn, checkOut) {
+    // location is passed from BookAPlace component as data.trip.to.location
+    // if(this.props.destination !== '') {
+    //   destination = this.props.destination
+    // }
+    //
+    console.log(destination)
+
+    axios.get('/api/v1/hotels/rooms', {
+      params: {
+        destination,
+        checkIn,
+        checkOut
+      }
+    }).then((res) => {
+      window._htd = res.data
+      let { agents, amenities, hotels, hotels_prices, image_host_url, total_available_hotels } = res.data
+      console.log({agents, amenities, hotels, hotels_prices, image_host_url, total_available_hotels})
+
+      this.setState({agents, amenities, hotels, hotels_prices, image_host_url, total_available_hotels})
+    }).catch((err) => {
+      console.log(err)
+    })
+
+    // axios.get(`/api/v1/hotels/rooms?destination=${destination}\&checkIn=${checkIn}\&checkOut=${checkOut}`).then((res) => {
+    //   this.setState({autosuggest: res.data})
+    // }).catch((err) => {
+    //   console.log(err)
+    // })
+  }
+
+  componentWillReceiveProps (nextProps) {
+    // console.log('NP', nextProps)
+
+    const destination = nextProps.destination
+    const { checkIn, checkOut } = nextProps
+    console.log(destination)
+    this.getPlaceList(destination, checkIn, checkOut)
   }
 
   render () {
@@ -24,11 +78,16 @@ class Hotel extends React.Component {
       }
     }
 
+    const { hotels, amenities, hotels_prices, image_host_url } = this.state
+
     return (
-      <div className='card'>
-        <div className='card-block'>Hotel</div>
-        <img onClick={this.getHotels} className='card-img-bottom' style={style.img} src={`/images/trip/${iconSRC}`} alt='Card image' />
-      </div>
+      (hotels.length === 0) ?
+        <HotelLoader />
+       : <HotelDetails
+           hotels={hotels}
+           amenities={amenities}
+           hotels_prices={hotels_prices}
+           image_host_url={image_host_url} />
     )
   }
 }

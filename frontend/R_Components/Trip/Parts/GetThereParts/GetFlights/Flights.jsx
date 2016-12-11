@@ -58,8 +58,9 @@ class Flights extends React.Component {
     console.log('FLIGHTS PROPS', this.props)
     if (this.props.itineraries.length) {
       this.setState({itineraries: this.props.itineraries})
+    } else {
+      this.getFlights()
     }
-    this.getFlights()
   }
 
   /*

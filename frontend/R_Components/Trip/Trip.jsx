@@ -29,14 +29,15 @@ class Trip extends React.Component {
   }
 
   render () {
+    let { trip } = this.state
     return (
       <div className='row'>
         <aside className='col-xs-12 col-sm-12 col-md-6'>
-          <UserCard data={this.state.trip} />
+          <UserCard data={trip} />
         </aside>
         <section className='tripCards col-xs-12 col-sm-12 col-md-6'>
-          <GetThere data={this.state.trip} />
-          <BookAPlace />
+          <GetThere data={trip} />
+          <BookAPlace data={trip} />
           {/* <ThingsToDo /> */}
         </section>
         {/* <section>

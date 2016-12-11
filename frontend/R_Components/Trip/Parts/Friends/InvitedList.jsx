@@ -6,7 +6,7 @@ class InvitedList extends React.Component {
     return (
       <div>
         <Invite />
-        <p>DisplayPhoto for each friend invited</p>
+        {/* <p>DisplayPhoto for each friend invited</p> */}
       </div>
     )
   }

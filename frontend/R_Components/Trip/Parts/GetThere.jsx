@@ -13,7 +13,7 @@ class GetThere extends React.Component {
     return (
       <article className='tripCard'>
         {/* <h2>How are you arriving?</h2> */}
-        <div className='card-deck'>
+        <div className='card-deck' style={{display: 'block'}}>
           <Plane data={this.props.data} />
           {/* <Train />
           <Bus /> */}

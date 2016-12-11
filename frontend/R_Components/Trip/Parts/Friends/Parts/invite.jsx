@@ -4,7 +4,7 @@ class Invite extends React.Component {
   render () {
     return (
       <div>
-        <p>Display + button for adding friends</p>
+        {/* <p>Display + button for adding friends</p> */}
       </div>
     )
   }

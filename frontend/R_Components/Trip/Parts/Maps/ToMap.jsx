@@ -66,7 +66,7 @@ class ToMap extends React.Component {
 
   render () {
     let style = {
-      height: '350px'
+      height: '620px'
     }
     return (
       <div className='map' style={style} />
