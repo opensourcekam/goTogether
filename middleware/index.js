@@ -1,4 +1,5 @@
 module.exports = function (express, cookieParser, app, tripsRouter, mongoose, ConnectMongo, passport, port, env, session, config) {
+  const moment = require('moment')
   const forceSsl = function (req, res, next) {
     if (req.headers['x-forwarded-proto'] !== 'https') {
       return res.redirect(['https://', req.get('Host'), req.url].join(''))
@@ -32,6 +33,16 @@ module.exports = function (express, cookieParser, app, tripsRouter, mongoose, Co
         SHOWING FROM Middleware
         ${JSON.stringify(req.user.id, null, 10)}
         `)
+      next()
+    } else {
+      next()
+    }
+  })
+
+  app.use((req, res, next) => {
+    if(req.query.checkIn || req.query.checkOut){
+      req.query.checkIn = moment(req.query.checkIn).format('YYYY-MM-DD')
+      req.query.checkOut = moment(req.query.checkOut).format('YYYY-MM-DD')
       next()
     } else {
       next()
