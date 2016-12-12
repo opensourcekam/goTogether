@@ -12,6 +12,7 @@ module.exports = function (mongoose) {
     ],
     country: String,
     currency: String,
-    locale: String
+    locale: String,
+    market: String
   })
 }
