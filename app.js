@@ -49,7 +49,7 @@ require('./routes/routes')(express, app, topRouter, passport, config, User, Trip
 require('./routes/trips')(express, app, topRouter, mongoose, TripModel, Trip, User, moment)
 require('./routes/users')(app, topRouter, User)
 require('./routes/skyScanner_flights')(express, app, skyScanner_flights_Router, config, Trip)
-require('./routes/skyScanner_hotels')(express, app, skyScanner_hotels_Router, config, Trip)
+require('./routes/skyScanner_hotels')(app, skyScanner_hotels_Router, config, Trip, moment)
 // routes
 
 // passport auth (FB)
