@@ -1,6 +1,8 @@
 //compiled: ./stylesheet.css.min
 $header : rgb(17, 81, 246)
 $base : #eee
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,600,700')
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css')
 
 body, html
   zoom: 90%
@@ -76,7 +78,8 @@ button
   &letsGo
 
 .table-container tr:nth-child(odd)
-  background-color: rgba(212, 249, 193, .5)
+  // background-color: rgba(212, 249, 193, .5)
+  background-color: rgba(219, 231, 249, 0.32)
 
 .table-container tr
   text-align: left
@@ -300,12 +303,20 @@ article
 span
   text-align: center
 
+.card-deck
+  display: block
+
 .tripCard
   height: 300px
   background-color: #eee
   margin-bottom: 20px
   overflow: scroll
-  box-shadow: 0px 0px 20px 5px #A0A0Af
+  // box-shadow: 0px 0px 20px 5px #A0A0Af
+  transition: height 1s
+  // &:hover
+  //   height: 600px
+  //   transition: height 2s
+
   // border-top-right-radius: 10%
   h2
     margin-top: 20px
@@ -459,6 +470,7 @@ li.geosuggest__item--active
 
 /* Fin Animation */
 
+/*LOADERS*/
 /*PLANE*/
 .wings
   background: rgba(80, 92, 93, 0.54)
@@ -545,6 +557,304 @@ li.geosuggest__item--active
     transform: translate(-50%, -50%) rotateZ(40deg)
 
 /*PLANE*/
+
+/*HOTEL*/
+
+
+@keyframes flicker
+  0%
+    background: transparent
+
+  50%
+    background: white
+
+  100%
+    background: transparent
+
+
+@keyframes neon
+  0%
+    text-shadow: none
+
+  50%
+    text-shadow: rgba(255, 255, 255, 0.8) 0 0 8px
+
+  100%
+    text-shadow: none
+
+
+.hotel-loader
+  padding: .5em
+  width: 5.5em
+  height: 9.5em
+  margin: 250px auto
+  background: #444444
+  position: relative
+  -moz-box-shadow: #2b2b2b 0 0 20px inset
+  -webkit-box-shadow: #2b2b2b 0 0 20px inset
+  box-shadow: #2b2b2b 0 0 20px inset
+  -moz-border-radius: 4px
+  -webkit-border-radius: 4px
+  border-radius: 4px
+  .hotel-sign
+    color: white
+    padding: .25em 0
+    position: absolute
+    right: -1.5em
+    width: 1.4em
+    content: " "
+    text-align: center
+    background: #444444
+    font-family: sans-serif
+    font-weight: 700
+    -moz-border-radius: 4px
+    -webkit-border-radius: 4px
+    border-radius: 4px
+    -moz-box-shadow: #2b2b2b 0 0 10px inset
+    -webkit-box-shadow: #2b2b2b 0 0 10px inset
+    box-shadow: #2b2b2b 0 0 10px inset
+    animation: neon 3s infinite ease
+    span
+      line-height: 1
+      display: block
+  .hotel-window
+    background: white
+    width: .5em
+    height: 1em
+    float: left
+    margin: 0 .5em .5em 0
+    -moz-border-radius: 2px
+    -webkit-border-radius: 2px
+    border-radius: 2px
+    animation: flicker 1s infinite ease
+    &:nth-of-type(5n)
+      margin: 0 0 .5em 0
+    &:nth-child(1)
+      animation-delay: 0.5s
+      animation-duration: 0.5s
+    &:nth-child(2)
+      animation-delay: 1s
+      animation-duration: 1s
+    &:nth-child(3)
+      animation-delay: 1.5s
+      animation-duration: 1.5s
+    &:nth-child(4)
+      animation-delay: 2s
+      animation-duration: 2s
+    &:nth-child(5)
+      animation-delay: 2.5s
+      animation-duration: 2.5s
+      animation-delay: 1.25s
+      animation-duration: 1.25s
+    &:nth-child(6)
+      animation-delay: 1.5s
+      animation-duration: 1.5s
+    &:nth-child(7)
+      animation-delay: 1.75s
+      animation-duration: 1.75s
+    &:nth-child(8)
+      animation-delay: 2s
+      animation-duration: 2s
+    &:nth-child(9)
+      animation-delay: 2.25s
+      animation-duration: 2.25s
+    &:nth-child(10)
+      animation-delay: 2.5s
+      animation-duration: 2.5s
+      animation-delay: 1s
+      animation-duration: 1s
+    &:nth-child(11)
+      animation-delay: 1.1s
+      animation-duration: 1.1s
+    &:nth-child(12)
+      animation-delay: 1.2s
+      animation-duration: 1.2s
+    &:nth-child(13)
+      animation-delay: 1.3s
+      animation-duration: 1.3s
+    &:nth-child(14)
+      animation-delay: 1.4s
+      animation-duration: 1.4s
+    &:nth-child(15)
+      animation-delay: 1.5s
+      animation-duration: 1.5s
+    &:nth-child(16)
+      animation-delay: 1.6s
+      animation-duration: 1.6s
+    &:nth-child(17)
+      animation-delay: 1.7s
+      animation-duration: 1.7s
+    &:nth-child(18)
+      animation-delay: 1.8s
+      animation-duration: 1.8s
+    &:nth-child(19)
+      animation-delay: 1.9s
+      animation-duration: 1.9s
+    &:nth-child(20)
+      animation-delay: 2s
+      animation-duration: 2s
+      animation-delay: 1.33333s
+      animation-duration: 1.66667s
+    &:nth-child(21)
+      animation-delay: 1.4s
+      animation-duration: 1.75s
+    &:nth-child(22)
+      animation-delay: 1.46667s
+      animation-duration: 1.83333s
+    &:nth-child(23)
+      animation-delay: 1.53333s
+      animation-duration: 1.91667s
+    &:nth-child(24)
+      animation-delay: 1.6s
+      animation-duration: 2s
+    &:nth-child(25)
+      animation-delay: 1.66667s
+      animation-duration: 2.08333s
+    &:nth-child(26)
+      animation-delay: 1.73333s
+      animation-duration: 2.16667s
+    &:nth-child(27)
+      animation-delay: 1.8s
+      animation-duration: 2.25s
+    &:nth-child(28)
+      animation-delay: 1.86667s
+      animation-duration: 2.33333s
+    &:nth-child(29)
+      animation-delay: 1.93333s
+      animation-duration: 2.41667s
+    &:nth-child(30)
+      animation-delay: 2s
+      animation-duration: 2.5s
+  .hotel-door
+    background: white
+    position: absolute
+    bottom: 0
+    width: 1em
+    height: 1.5em
+    left: 50%
+    margin-left: -.5em
+    -moz-border-radius-topleft: 3px
+    -webkit-border-top-left-radius: 3px
+    border-top-left-radius: 3px
+    -moz-border-radius-topright: 3px
+    -webkit-border-top-right-radius: 3px
+    border-top-right-radius: 3px
+
+/*HOTEL*/
+
+/*LOADERS*/
+
+/*HotelDetails component*/
+
+.hotel-grid
+  &:after
+    content: ''
+    display: block
+    clear: both
+  clear: both
+
+[class*='large-']
+  position: relative
+  float: left
+  padding: 15px
+
+.large-1
+  width: 8.33333%
+
+.large-2
+  width: 16.66667%
+
+.large-3
+  width: 25%
+
+.large-4
+  width: 33.33333%
+
+.large-5
+  width: 41.66667%
+
+.large-6
+  width: 50%
+
+.large-7
+  width: 58.33333%
+
+.large-8
+  width: 66.66667%
+
+.large-9
+  width: 75%
+
+.large-10
+  width: 83.33333%
+
+.large-11
+  width: 91.66667%
+
+.large-12
+  width: 100%
+
+.grid
+  &.small [class*='large-']
+    padding: 5px
+  &.hotel-collapse [class*='large-']
+    padding: 0
+
+.hotel-collapse
+  position: absolute
+  top: 20px
+  right: 60px
+  width: 320px
+
+.fa
+  font-family: FontAwesome
+
+.large-8 .fa
+  color: #fcc93f
+
+.large-4 .fa
+  color: #fe5959
+
+.hotel-search
+  display: flex
+  flex-direction: row
+
+.hotel-map
+  flex: 1
+  background: #aaa
+
+.hotel-sidebar
+  text-align: left
+  position: relative
+  //width: 600px
+  // background: #345
+  background: #eee
+  // box-shadow: 0 0 15px rgba(0, 0, 0, 0.75)
+
+.hotel-detail
+  position: relative
+  line-height: normal
+  display: block
+  height: 220px
+  color: black
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3)
+  img
+    width: 220px
+    height: 220px
+    border-bottom: 2px solid black
+
+.hotel-detail-top
+  font-size: 20px
+  margin-bottom: 5px
+  font-weight: 600
+
+.hotel-detail-bottom
+  // margin-bottom: 20px
+  font-size: 16px
+  color: #827a58
+
+
+/*HotelDetails component*/
 
 /*CALENDAR*/
 div.rdr-DateRange
