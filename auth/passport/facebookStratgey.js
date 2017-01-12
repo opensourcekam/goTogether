@@ -1,4 +1,4 @@
-module.exports = function (passport, FacebookStrategy, config, mongoose, User) {
+module.exports = function (passport, FacebookStrategy, config, mongoose, User, io) {
   const Schema = mongoose.Schema
 
   passport.use(new FacebookStrategy({

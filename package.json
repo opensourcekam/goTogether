@@ -47,6 +47,7 @@
     "jsdom": "^8.5.0",
     "json-loader": "^0.5.4",
     "json-query": "^2.2.0",
+    "jsonp": "^0.2.1",
     "lodash": "^4.6.1",
     "mocha": "^2.5.3",
     "moment": "^2.16.0",
@@ -70,6 +71,7 @@
     "sinon": "^1.17.6",
     "skyscannerjs": "^0.2.2",
     "socket.io": "^1.5.0",
+    "socket.io-client": "^1.7.2",
     "underscore": "^1.8.3",
     "webpack": "^1.13.2",
     "x-ray": "^2.3.1"
