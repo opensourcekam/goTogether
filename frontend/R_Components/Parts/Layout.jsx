@@ -1,12 +1,13 @@
 const React = require('react')
 const Header = require('./Header')
 // const Footer = require('./Footer')
+// const axios = require('axios')
 
 const Layout = (props) => (
   <div className='app-container'>
     <Header />
       {props.children}
-    {/* <Footer /> */}
+    {/* <Footer axios={axios} /> */}
   </div>
 )
 
