@@ -15,19 +15,12 @@ class Hotel extends React.Component {
       agents: [],
       amenities: [],
       hotels: [],
-      hotels_prices: [],
-      image_host_url: '',
-      total_available_hotels: 0
-
+      hotelsPrices: [],
+      imageHostUrl: '',
+      totalAvailableHotels: 0
     }
 
     this.getPlaceList = this.getPlaceList.bind(this)
-    this.getHotels = this.getHotels.bind(this)
-  }
-
-  getHotels (e) {
-    console.log(e)
-    console.log(this)
   }
 
   getPlaceList (destination, checkIn, checkOut) {
@@ -36,7 +29,7 @@ class Hotel extends React.Component {
     //   destination = this.props.destination
     // }
     //
-    console.log(destination)
+    // console.log(destination)
 
     axios.get('/api/v1/hotels/rooms', {
       params: {
@@ -46,12 +39,17 @@ class Hotel extends React.Component {
       }
     }).then((res) => {
       window._htd = res.data
-      let { agents, amenities, hotels, hotels_prices, image_host_url, total_available_hotels } = res.data
-      console.log({agents, amenities, hotels, hotels_prices, image_host_url, total_available_hotels})
+      let { agents, amenities, hotels } = res.data
+      let imageHostUrl = res.data.image_host_url
+      let totalAvailableHotels = res.data.total_available_hotels
+      let hotelsPrices = res.data.hotels_prices
 
-      this.setState({agents, amenities, hotels, hotels_prices, image_host_url, total_available_hotels})
+      console.log({agents, amenities, hotels, hotelsPrices, imageHostUrl, totalAvailableHotels})
+
+      this.setState({agents, amenities, hotels, hotelsPrices, imageHostUrl, totalAvailableHotels})
     }).catch((err) => {
-      console.log(err)
+      console.err(err)
+      throw new Error('Could not poll for rooms')
     })
 
     // axios.get(`/api/v1/hotels/rooms?destination=${destination}\&checkIn=${checkIn}\&checkOut=${checkOut}`).then((res) => {
@@ -66,28 +64,27 @@ class Hotel extends React.Component {
 
     const destination = nextProps.destination
     const { checkIn, checkOut } = nextProps
-    console.log(destination)
+    // console.log(destination)
     this.getPlaceList(destination, checkIn, checkOut)
   }
 
   render () {
-    const iconSRC = 'hotel_icon.png'
-    const style = {
-      img: {
-        height: '140px'
-      }
-    }
+    // const iconSRC = 'hotel_icon.png'
+    // const style = {
+    //   img: {
+    //     height: '140px'
+    //   }
+    // }
 
-    const { hotels, amenities, hotels_prices, image_host_url } = this.state
+    const { hotels, amenities, hotelsPrices, imageHostUrl } = this.state
 
     return (
-      (hotels.length === 0) ?
-        <HotelLoader />
+      (hotels.length === 0) ? <HotelLoader />
        : <HotelDetails
-           hotels={hotels}
-           amenities={amenities}
-           hotels_prices={hotels_prices}
-           image_host_url={image_host_url} />
+         hotels={hotels}
+         amenities={amenities}
+         hotelsPrices={hotelsPrices}
+         imageHostUrl={imageHostUrl} />
     )
   }
 }

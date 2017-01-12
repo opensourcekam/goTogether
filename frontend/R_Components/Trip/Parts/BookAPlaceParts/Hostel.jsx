@@ -7,7 +7,7 @@ class Hostel extends React.Component {
   }
 
   getHotels () {
-    console.log('Get Hostel')
+    // console.log('Get Hostel')
   }
 
   render () {

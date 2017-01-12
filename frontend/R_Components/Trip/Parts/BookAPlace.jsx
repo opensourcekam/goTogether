@@ -1,7 +1,7 @@
 const React = require('react')
 const Hotel = require('./BookAPlaceParts/Hotel')
-const Hostel = require('./BookAPlaceParts/Hostel')
-const Family = require('./BookAPlaceParts/Family')
+// const Hostel = require('./BookAPlaceParts/Hostel')
+// const Family = require('./BookAPlaceParts/Family')
 
 class BookAPlace extends React.Component {
   constructor (props) {
@@ -15,7 +15,7 @@ class BookAPlace extends React.Component {
 
   componentWillReceiveProps (nextProps) {
     // console.log('BAP', nextProps)
-    if(nextProps) {
+    if (nextProps) {
       const trip = nextProps.data
       this.setState({
         destination: trip.to.location,

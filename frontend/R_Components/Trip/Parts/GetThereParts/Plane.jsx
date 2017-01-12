@@ -18,7 +18,7 @@ class Plane extends React.Component {
     super(props)
     this.state = {
       from: {
-        location: null,
+        location: '',
         skyscanner: {}
       },
       to: {
@@ -36,11 +36,17 @@ class Plane extends React.Component {
   }
 
   componentDidMount () {
-    console.log('CDM', this.props)
+    // console.log('CDM', this.props)
+    axios.get('http://ip-api.com/json').then((values) => {
+      const { city, country } = values.data
+      this.setStete({location: `${city}, ${country}`})
+    }).catch((err) => {
+      throw new Error(`Could not get location json ${err}`)
+    })
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log('componentWillReceiveProps', nextProps)
+    // console.log('componentWillReceiveProps', nextProps)
     // newtrip doesnt have an ID since its not exactly being pulled from DB and passed as a prop need to pass either the param or something
     if (nextProps.data.from) {
       this.setState({
@@ -79,9 +85,9 @@ class Plane extends React.Component {
     if (data.from !== '') {
       axios.put(`/trips/${this.state._id}`, data).then((response) => {
         return this.setState({from: this.state.from, alreadyPut: true})
-      }).catch((error) => {
-        console.log(error)
-        return
+      }).catch((err) => {
+        console.error(err)
+        throw new Error(`Could not put from location ${err}`)
       })
     }
   }
@@ -96,16 +102,16 @@ class Plane extends React.Component {
 
       thatOBJ.location = location
       thatOBJ.skyscanner = locationAutosuggest.data[0]
-
-      this.setState({from: thatOBJ})
-      console.log('onChange', this.state)
-      return
+      return this.setState({from: thatOBJ})
     }).catch((error) => {
-      console.log(error)
+      console.error(error)
+      throw new Error(`Could not locationAutosuggest for ${location}`)
     })
   }
 
   render () {
+    const { userLocation } = this.props
+    let locationString = (userLocation.city !== '' && userLocation.country !== '') ? `${userLocation.city}, ${userLocation.country}` : ''
     return (
       <div>
         {(this.state.from && this.state.alreadyPut)
@@ -130,7 +136,7 @@ class Plane extends React.Component {
             <div className='card'>
               <div className='card-block'>
                 <form style={style.form} onSubmit={this.handleSubmit}>
-                  <input placeholder='' onChange={this.onChange} style={style.input} />
+                  <input placeholder={locationString} onChange={this.onChange} style={style.input} />
                 </form>
               </div>
             </div>
@@ -138,6 +144,12 @@ class Plane extends React.Component {
       </div>
     )
   }
+}
+
+const { object } = React.PropTypes
+
+Plane.propTypes = {
+  userLocation: object.isRequired
 }
 
 module.exports = Plane

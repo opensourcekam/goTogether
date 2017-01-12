@@ -22,7 +22,7 @@ class ToMap extends React.Component {
     const map = new google.maps.Map(ReactDOM.findDOMNode(this), mapOptions)
 
     this.props.activities.forEach((action) => {
-      console.log(action.name)
+      // console.log(action.name)
 
       var contentString = '<div id="content">' +
             '<div id="siteNotice">' +
@@ -60,13 +60,15 @@ class ToMap extends React.Component {
         infowindow.open(map, marker)
       })
     })
-
+    window.__tripMap__ = map
     this.setState({map: map})
   }
 
   render () {
+    const { width, height } = this.props
     let style = {
-      height: '620px'
+      height: height,
+      width: width
     }
     return (
       <div className='map' style={style} />
@@ -74,12 +76,14 @@ class ToMap extends React.Component {
   }
 }
 
-const { number, object, array } = React.PropTypes
+const { string, number, object, array } = React.PropTypes
 
 ToMap.propTypes = {
   initialZoom: number.isRequired,
   flyingTo: object.isRequired,
-  activities: array
+  activities: array.isRequired,
+  width: string.isRequired,
+  height: string.isRequired
 }
 
 module.exports = ToMap

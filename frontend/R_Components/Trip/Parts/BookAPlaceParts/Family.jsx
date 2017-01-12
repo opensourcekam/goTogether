@@ -7,7 +7,7 @@ class Family extends React.Component {
   }
 
   putFamily () {
-    console.log('Put Family')
+    // console.log('Put Family')
   }
 
   render () {

@@ -10,11 +10,12 @@ class GetThere extends React.Component {
   }
 
   render () {
+    const { data, userLocation } = this.props
     return (
       <article className='tripCard'>
         {/* <h2>How are you arriving?</h2> */}
         <div className='card-deck' style={{display: 'block'}}>
-          <Plane data={this.props.data} />
+          <Plane data={data} userLocation={userLocation} />
           {/* <Train />
           <Bus /> */}
         </div>
@@ -26,7 +27,8 @@ class GetThere extends React.Component {
 const { object } = React.PropTypes
 
 GetThere.propTypes = {
-  data: object.isRequired
+  data: object.isRequired,
+  userLocation: object.isRequired
 }
 
 module.exports = GetThere
