@@ -29,10 +29,6 @@ const styles = {
 }
 
 class ObscurePlaces extends React.Component {
-  showDetails () {
-    console.log(this)
-  }
-
   render () {
     var childElements = this.props.elements.map((element, i) => {
       return (

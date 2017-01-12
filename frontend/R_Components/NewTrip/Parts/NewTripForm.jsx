@@ -1,9 +1,9 @@
-/* global */
 import React from 'react'
 import ObscurePlaces from './ObscurePlaces'
 import AutoComplete from './AutoComplete'
 import DateRangePickerWrapper from './DatePicker/DateRangePickerWrapper'
 import elements from '../../../../placesData/atlasObscure/atlasObscurePlaces.json'
+// import ToMap from '../../Trip/Parts/Maps/ToMap'
 
 // https://github.com/ubilabs/react-geosuggest
 import Geosuggest from 'react-geosuggest'
@@ -15,7 +15,7 @@ import { hashHistory } from 'react-router'
 
 const style = {
   h2: {
-    'padding': '20px'
+    'paddingBottom': '15px'
   }
 }
 
@@ -33,7 +33,10 @@ class NewTripForm extends React.Component {
       // budget: '',
       to: {
         location: '',
-        geometry: {},
+        geometry: {
+          'lat': 51.8968917,
+          'lng': -8.486315699999977
+        },
         skyscanner: {}
       }
     }
@@ -167,19 +170,19 @@ class NewTripForm extends React.Component {
 
         <form onSubmit={this.handleSubmit} className='form-inline'>
 
-        <div className='form-group' style={{'float': 'left'}}>
-        
-          <h2 style={style.h2}>Where are we going?</h2>
-          <Geosuggest
-            types={['(cities)']}
-            onChange={this.getObscureCards}
-            onFocus={this.onFocus}
-            onBlur={this.onBlur}
-            onSuggestSelect={this.onSuggestSelect}
-            onSuggestNoResults={this.onSuggestNoResults}
-            value={this.state.location}
-            placeholder='Marsille, France' />
-        </div>
+          <div className='form-group' style={{'float': 'left'}}>
+
+            <h2 style={style.h2}>Where are we going?</h2>
+            <Geosuggest
+              types={['(cities)']}
+              onChange={this.getObscureCards}
+              onFocus={this.onFocus}
+              onBlur={this.onBlur}
+              onSuggestSelect={this.onSuggestSelect}
+              onSuggestNoResults={this.onSuggestNoResults}
+              value={this.state.location}
+              placeholder='Marsille, France' />
+          </div>
 
           <div className='form-group'>
             <h2 style={style.h2}>When are we going?</h2>
@@ -188,14 +191,21 @@ class NewTripForm extends React.Component {
               preselectedDates={this.state.dates} />
           </div>
 
-
-
-          <button id='letsGo' type='submit'>Lets go!</button>
+          <div className='form-group'>
+            <h2 style={style.h2}>When you're ready!</h2>
+            <button id='letsGo' type='submit'>Lets go!</button>
+          </div>
         </form>
 
         <ObscurePlaces
           elements={this.state.locations}
           searched={this.state.searched} />
+
+        {/* <ToMap
+          initialZoom={12}
+          flyingTo={this.state.to.geometry}
+          width={'100%'}
+          height={'71vh'} /> */}
 
       </section>
     )

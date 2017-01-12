@@ -27,7 +27,7 @@ class DateRangePickerWrapper extends Component {
   }
 
   userLeavePicker (e) {
-    console.log(e)
+    // console.log(e)
     // ReactDOM.findDOMNode(this.refs.datePickerPlaceHolder).blur()
     this.refs.datePickerPlaceHolder.blur()
     // document.getElementById('datePickerPlaceHolder').blur()
