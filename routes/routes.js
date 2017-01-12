@@ -1,15 +1,16 @@
 module.exports = function (express, app, router, passport, config, User, Trip) {
   const Search = require('../placesData/searchPlaces/search')
   const mongoose = require('mongoose')
+  const axios = require('axios')
 
   app.get('/', (req, res, next) => {
-    console.log(`
-
-      Router get ${req.baseUrl}
-
-      ${JSON.stringify(req.user, null, 10)}
-
-      `)
+    // console.log(`
+    //
+    //   Router get ${req.baseUrl}
+    //
+    //   ${JSON.stringify(req.user, null, 10)}
+    //
+    //   `)
     if (req.user) {
       res.render('index', {
         user: req.user,
@@ -35,7 +36,7 @@ module.exports = function (express, app, router, passport, config, User, Trip) {
   }))
 
   router.get('/home', securePages, (req, res, next) => {
-    console.log(res.user[0].id)
+    // console.log(res.user[0].id)
     res.render('index', {
       user: req.user,
       config: config
@@ -54,25 +55,10 @@ module.exports = function (express, app, router, passport, config, User, Trip) {
     })
 
     promise.catch((err) => {
-      console.log('Does exist')
+      // console.log('Does exist')
       res.json(err)
     })
   })
-
-  // router.get('/userById/:profileId', (req, res, next) => {
-  //   console.log(`{'profileID': ${req.params.profileId}}`)
-  //
-  //   const promise = User.findOne({'profileID': req.params.profileId}).populate('flights').exec()
-  //
-  //   promise.then((doc) => {
-  //     res.json(doc)
-  //   })
-  //
-  //   promise.catch((err) => {
-  //     console.log('Does exist')
-  //     res.json(err)
-  //   })
-  // })
 
   router.get('/user/trips/:profileId', (req, res, next) => {
     const promise = User.findOne({'profileID': req.params.profileId}).populate('trips').exec()
@@ -82,7 +68,7 @@ module.exports = function (express, app, router, passport, config, User, Trip) {
     })
 
     promise.catch((err) => {
-      console.log('Does exist')
+      // console.log('Does exist')
       res.json(err)
     })
   })
@@ -128,7 +114,6 @@ module.exports = function (express, app, router, passport, config, User, Trip) {
   })
 
   router.get('/test', (req, res, next) => {
-
     res.json(req.query)
   })
 
@@ -136,6 +121,28 @@ module.exports = function (express, app, router, passport, config, User, Trip) {
   router.get('/resetDB', (req, res, next) => {
     Trip.remove({}, function (err) {
       res.json([{}])
+    })
+  })
+
+  router.get('/flickrImages/:tags', (req, res, next) => {
+    let tags = req.params.tags.replace(/[\s+]/ig, ', ')
+    console.log(tags)
+    axios.get(`http://api.flickr.com/services/feeds/photos_public.gne?format=json&tags=${tags},cityscape`).then((value) => {
+        // console.log(value)
+
+      res.jsonp(value.data)
+    }).catch((err) => {
+      console.log(err)
+      res.status(500).send('Could not get flickr photos')
+    })
+  })
+
+  router.get('/currentLocation', (req, res, next) => {
+    axios.get('http://ip-api.com/json').then((value) => {
+      res.json(value.data)
+    }).catch((err) => {
+      console.log(err)
+      res.status(500).send('Something broke!')
     })
   })
 

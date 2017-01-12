@@ -48,9 +48,9 @@ module.exports = function (app, router, config, Trip, moment) {
       // console.log('entityId', entityId)
 
       api.hotels.livePrices.session({
-        market: 'UK',
+        market: 'ES',
         currency: 'EUR',
-        locale: 'en-GB',
+        locale: 'es-ES',
         entityId: entityId,
         checkindate: checkIn,
         checkoutdate: checkOut,

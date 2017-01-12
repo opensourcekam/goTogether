@@ -1,5 +1,5 @@
 // https://github.com/jkbrzt/httpie
-module.exports = (express, app, router, config, Trip) => {
+module.exports = (app, router, config, Trip) => {
   const skyscanner = require('skyscannerjs')
   const api = new skyscanner.API('prtl6749387986743898559646983194')
 
