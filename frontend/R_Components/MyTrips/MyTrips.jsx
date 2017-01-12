@@ -22,12 +22,13 @@ class MyTrips extends React.Component {
   }
 
   componentDidMount () {
-    console.log(userJSON.id)
+    // console.log(userJSON.id)
     axios.get(`/api/v1/trips/all/${userJSON.id}`).then((res) => {
-      console.log(res.data)
+      // console.log(res.data)
       return this.setState({ trips: res.data })
     }).catch((err) => {
-      console.log(err)
+      console.err(err)
+      throw new Error(`Could not get trips for ${userJSON.id}`)
     })
   }
 
@@ -37,10 +38,15 @@ class MyTrips extends React.Component {
   render () {
     const { trips } = this.state
     let childElements
+    let pastTrips = []
 
     if (trips.length) {
       childElements = trips.map((trip, i) => {
         // If past is false show the trip bubble otherwise show these in a past trips section
+        // axios.get(`/flickrImages/${trip.to.location.split(' ')[0]}`).then((value) => {
+        //   return value.data
+        // })
+
         if (trip.meta.past !== true) {
           return (
             <div key={i} className='col-xs-12 col-sm-12 col-md-6 col-lg-4'>
@@ -61,8 +67,12 @@ class MyTrips extends React.Component {
             </div>
           )
         } else { // meta else
-          return (
-            null // return null until I have a way to clearly show a user their trip has passed
+          pastTrips.push(
+            <Link to={`/tripDash/${trip._id}`}>
+              {/* <PastTrip /> */}
+              <span>{trip.to.location}</span>
+              <br />
+            </Link>
           )
         }
       })
@@ -76,6 +86,8 @@ class MyTrips extends React.Component {
         <hr />
         <div className='container-fluid' id='progress-circle-container'>
           {childElements}
+          <h4>Past Trips</h4>
+          {pastTrips}
         </div>
       </div>
     )

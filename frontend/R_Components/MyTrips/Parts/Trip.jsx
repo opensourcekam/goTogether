@@ -3,7 +3,6 @@ const React = require('react')
 const style = {
   'img': {
     'width': '100%',
-    // 'height': 'auto',
     'position': 'relative',
     'borderTop': '.5em red solid'
   },
@@ -12,9 +11,6 @@ const style = {
     'display': 'block',
     'marginBottom': '3.75rem',
     'borderRedius': '50%'
-    // 'border': '1px solid rgba(0, 0, 0, .125)',
-    // 'width': '500px',
-    // 'height': '500px'
   },
   'cardOverlay': {
     'position': 'absolute',
@@ -54,17 +50,3 @@ class Trip extends React.Component {
 }
 
 module.exports = Trip
-
-/*
-    < li class = 'card card-inverse' data - reactid = '.0.0.1.0.0.2.0.$1' style = 'position: absolute left: 426px top: 0px' >
-      <div class='card-img-overlay' style='background-color:rgba(0, 0, 0, 0.6)width:100%height:100%' data-reactid='.0.0.1.0.0.2.0.$1.0'>
-      <span class='card-text' style='padding:0pxmargin:0pxfont-size:2emfont-weight:500' data-reactid='.0.0.1.0.0.2.0.$1.0.0'>
-        <span data-reactid='.0.0.1.0.0.2.0.$1.0.0.0'>Ağdam</span>
-        <span data-reactid='.0.0.1.0.0.2.0.$1.0.0.1'>,
-        </span>
-      </span>
-      <span class='card-text' data-reactid='.0.0.1.0.0.2.0.$1.0.1'>Akna, Azerbaijan</span>
-    </div>
-    < img class = 'card-img' style = 'width:99%' src = 'http://assets.atlasobscura.com/media/W1siZiIsInVwbG9hZHMvcGxhY2VfaW1hZ2VzLzJkYWY4ZTk3YTc5MjgzYjFhMWNhYThhN2RkYTZjMjQyOWU3YjEzNzUuanBnIl0sWyJwIiwiY29udmVydCIsIi1xdWFsaXR5IDkxIC1hdXRvLW9yaWVudCJdLFsicCIsInRodW1iIiwiMzcyeDI0OCMiXV0/2daf8e97a79283b1a1caa8a7dda6c2429e7b1375.jpg' data - reactid = '.0.0.1.0.0.2.0.$1.1' >
-    </li>
-*/

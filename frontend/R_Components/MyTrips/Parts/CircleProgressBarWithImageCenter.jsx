@@ -1,5 +1,5 @@
 const React = require('react')
-import {Circle} from 'progressbar.js'
+import { Circle } from 'progressbar.js'
 import { sampleSize } from 'lodash'
 import moment from 'moment'
 
@@ -47,21 +47,10 @@ class CircleProgressBarWithImageCenter extends React.Component {
   }
 
   componentDidMount () {
-    // const circle = new ProgressBar.Circle(`#${this.props.mountId}`, {
-    //   strokeWidth: this.props.strokeWidth || 4,  // This means 4% of the container
-    //   color:  this.props.color
-    // })
-    //
-    // this.animateProgress.bind(circle)
-    //
-    // setTimeout(() => {
-    //     circle.animate('.40')
-    //
-    // }, 5000);
   }
 
   animateProgress () {
-    console.log(this)
+    // console.log(this)
     if (this.state.hovered === 0) {
       const circle = new Circle(`#${this.props.mountId}`, {
         strokeWidth: this.props.strokeWidth || 4, // This means 4% of the container
@@ -90,7 +79,8 @@ class CircleProgressBarWithImageCenter extends React.Component {
         <div id={mountId} />
         <div style={style.innerDivOverlay}>
           <h2 style={style.h2} id='planningTripBubbleH2'>{dest}</h2>
-          {/* <span>Goal ${budget}</span> */}
+          <span>Budget ${budget}</span>
+          <span style={{'display': 'none'}}>${tripHasPast}</span>
           <span style={{
             'float': 'left'
           }}>
