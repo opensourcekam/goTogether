@@ -40,7 +40,7 @@ module.exports = function (express, cookieParser, app, tripsRouter, mongoose, Co
   })
 
   app.use((req, res, next) => {
-    if(req.query.checkIn || req.query.checkOut){
+    if (req.query.checkIn || req.query.checkOut) {
       req.query.checkIn = moment(req.query.checkIn).format('YYYY-MM-DD')
       req.query.checkOut = moment(req.query.checkOut).format('YYYY-MM-DD')
       next()
@@ -48,6 +48,20 @@ module.exports = function (express, cookieParser, app, tripsRouter, mongoose, Co
       next()
     }
   })
+
+  // secure all routes with auth
+  // let lockedRoutes = (req, res, next) => {
+  //   let { apiTestingKey } = req.body
+  //   if(req.isAuthenticated() || process.env.NODE_APITESTINGKEY === apiTestingKey){
+  //     next()
+  //   } else {
+  //     res.redirect('/')
+  //   }
+  // }
+
+  // app.all('/api/*', lockedRoutes, (req, res, next) => {
+  //   next() // pass control to the next handler
+  // })
 
   app.set('port', process.env.PORT || port)
 }
