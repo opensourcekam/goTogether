@@ -26,6 +26,8 @@ button#logout { background-color: #f61111; }
 
 button#ggl { background-color: rgba(120, 142, 121, 0.84); }
 
+button#letsGo { width: 300px; }
+
 .table-container tr:nth-child(odd) { background-color: rgba(219, 231, 249, 0.32); }
 
 .table-container tr { text-align: left; }
@@ -97,7 +99,7 @@ article { width: 100%; text-align: center; }
 .grid-item > img { border-top-right-radius: 10%; }
 
 /** Trip */
-.userTripCard { background-color: #eee; box-shadow: 0px 0px 20px 5px #A0A0Af; text-align: center; overflow: scroll; }
+.userTripCard { background-color: #eee; box-shadow: 0px 0px 20px 5px #A0A0Af; text-align: center; overflow: scroll; border-radius: 10px; }
 
 .userTripCard figure img { border-radius: 100%; -webkit-box-shadow: inset 0px 0px 20px 6px rgba(0, 0, 0, 0.45); -moz-box-shadow: inset 0px 0px 20px 6px rgba(0, 0, 0, 0.45); box-shadow: 0px 0px 20px 6px rgba(0, 0, 0, 0.45); width: 150px; margin: 10px; }
 
@@ -111,7 +113,7 @@ span { text-align: center; }
 
 .card-deck { display: block; }
 
-.tripCard { height: 300px; background-color: #eee; margin-bottom: 20px; overflow: scroll; transition: height 1s; }
+.tripCard { height: 300px; background-color: #eee; margin-bottom: 20px; overflow: scroll; transition: height 1s; border-radius: 10px; }
 
 .tripCard h2 { margin-top: 20px; margin-bottom: 10px; margin-left: 2%; font-weight: 100 !important; text-align: left !important; }
 
@@ -314,7 +316,7 @@ li.geosuggest__item--active { background: rgba(0, 128, 0, 0.6); border: 1px soli
 
 .grid.hotel-collapse [class*='large-'] { padding: 0; }
 
-.hotel-collapse { position: absolute; top: 20px; right: 60px; width: 320px; }
+.hotel-collapse { position: absolute; top: 20px; right: -20px; width: 320px; }
 
 .fa { font-family: FontAwesome; }
 
@@ -381,4 +383,9 @@ span.rdr-Day, .rdr-WeekDay { font-size: 32px !important; }
   .image-element-class > img { width: 100%; }
   ul.geosuggest__suggests { width: 100%; position: initial; }
   #progress-circle-container { margin: -35px; }
-  div.rdr-Calendar { width: 100% !important; } }
+  div.rdr-Calendar { width: 100% !important; }
+  .hotel-detail img { float: right; }
+  .hotel-detail img:nth-of-type(1) { display: none; }
+  .large-12 { width: 58.33333%; }
+  .hotel-collapse { right: 120px; }
+  .hotel-detail-top { font-size: 16px; } }

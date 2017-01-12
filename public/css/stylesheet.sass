@@ -75,7 +75,9 @@ button
 
   &#ggl
     background-color: rgba(120, 142, 121, 0.84)
-  &letsGo
+  &#letsGo
+    width: 300px
+    // margin-top: 67px !important
 
 .table-container tr:nth-child(odd)
   // background-color: rgba(212, 249, 193, .5)
@@ -280,6 +282,7 @@ article
   box-shadow: 0px 0px 20px 5px #A0A0Af
   text-align: center
   overflow: scroll
+  border-radius: 10px
   figure img
     border-radius: 100%
     -webkit-box-shadow: inset 0px 0px 20px 6px rgba(0, 0, 0, 0.45)
@@ -313,6 +316,7 @@ span
   overflow: scroll
   // box-shadow: 0px 0px 20px 5px #A0A0Af
   transition: height 1s
+  border-radius: 10px
   // &:hover
   //   height: 600px
   //   transition: height 2s
@@ -803,7 +807,7 @@ li.geosuggest__item--active
 .hotel-collapse
   position: absolute
   top: 20px
-  right: 60px
+  right: -20px
   width: 320px
 
 .fa
@@ -950,7 +954,16 @@ span.rdr-Day, .rdr-WeekDay
     margin: -35px
   div.rdr-Calendar
     width: 100% !important
-
+  .hotel-detail img
+    float: right
+  .hotel-detail img:nth-of-type(1)
+    display: none
+  .large-12
+    width: 58.33333%
+  .hotel-collapse
+    right: 120px
+  .hotel-detail-top
+    font-size: 16px
 // @media screen and (min-width: 320px) and (max-width: 568px)
 //   .container-fluid .wrapper
 //     width: 380
