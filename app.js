@@ -12,9 +12,15 @@ const port = 8080
 const env = process.env.NODE_ENV || 'development'
 const axios = require('axios')
 const moment = require('moment')
-
+const server = require('http').Server(app)
+const io = require('socket.io')(server)
 // send bank transaction with amount date hearth jones
-//
+io.on('connection', (socket) => {
+  socket.emit('server event', { hello: '<3 from server' })
+  socket.on('client event', (data) => {
+    console.log(data)
+  })
+})
 
 // Routers
 const topRouter = express.Router()
@@ -41,24 +47,21 @@ const Trip = mongoose.model('Trips', TripModel)
 const middleware = require('./middleware/index')(express, cookieParser, app, tripsRouter, mongoose, ConnectMongo, passport, port, env, session, config)
 // End Middleware
 
-const server = require('http').Server(app)
-const io = require('socket.io')(server)
-
 // routes
 require('./routes/routes')(express, app, topRouter, passport, config, User, Trip)
 require('./routes/trips')(express, app, topRouter, mongoose, TripModel, Trip, User, moment)
 require('./routes/users')(app, topRouter, User)
-require('./routes/skyScanner_flights')(express, app, skyScanner_flights_Router, config, Trip)
-require('./routes/skyScanner_hotels')(app, skyScanner_hotels_Router, config, Trip, moment)
+require('./routes/skyScanner')(app, skyScanner_hotels_Router, skyScanner_flights_Router, topRouter, config, Trip, User, moment)
+// require('./routes/skyScanner_hotels')(app, skyScanner_hotels_Router, config, Trip, moment)
 // routes
 
 // passport auth (FB)
-require('./auth/passport/facebookStratgey')(passport, FacebookStrategy, config, mongoose, User)
+require('./auth/passport/facebookStratgey')(passport, FacebookStrategy, config, mongoose, User, io)
 
 // socket.io
 require('./socket_io/socket')(io)
 
-server.listen(app.get('port'), function () {
+server.listen(app.get('port'), () => {
   console.log(`
     Listening on http://localhost:${port}
     Environment: ${env}
