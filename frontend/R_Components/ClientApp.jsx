@@ -5,26 +5,25 @@ const Layout = require('./Parts/Layout')
 const NewTrip = require('./NewTrip/NewTrip')
 const Trip = require('./Trip/Trip')
 const MyTrips = require('./MyTrips/MyTrips')
-
-const {Router, Route, IndexRoute, hashHistory} = require('react-router')
+const { Router, Route, IndexRoute, hashHistory } = require('react-router')
 import configureStore from '../redux/store/store'
-import auth from './Auth/auth'
+import io from 'socket.io-client'
+const socket = io()
+// import auth from './Auth/auth'
 
 class App extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      loggedIn: auth.loggedIn()
-    }
-  }
-
-  updateAuth (loggedIn) {
-    this.setState({loggedIn})
-  }
 
   componentWillMount () {
-    auth.onChange = this.updateAuth(this.state.loggedIn)
+    socket.on('server event', (data) => {
+      console.log(data)
+      socket.emit('client event', { socket: 'io' })
+    })
   }
+
+  componentDidMount () {
+  }
+
+  // _userUpdatedCart (e) {}
 
   render () {
     return (
