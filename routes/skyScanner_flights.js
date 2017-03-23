@@ -1,29 +1,29 @@
 // https://github.com/jkbrzt/httpie
 module.exports = (app, router, config, Trip) => {
-  const skyscanner = require('skyscannerjs')
-  const api = new skyscanner.API('prtl6749387986743898559646983194')
+  const skyscanner = require('skyscannerjs');
+  const api = new skyscanner.API('prtl6749387986743898559646983194');
 
   router.get('/', (req, res, next) => {
-    res.json({'APIV1': 'true'})
-  })
+    res.json({'APIV1': 'true'});
+  });
 
   router.get('/test', (req, res, next) => {
-    console.log(req.query)
-    res.json(req.query)
-  })
+    console.log(req.query);
+    res.json(req.query);
+  });
 
   router.get('/locationAutosuggest/:location', (req, res, next) => {
     // GET - locationAutosuggest with this.props.country// or store in database when trip is created
     // RETURNS - [{},{},{}] arr[0] is clostest match to req.body.location
     api.locationAutosuggest({market: 'US', currency: 'USD', locale: 'en-US', query: req.params.location}).then((response) => {
-      const places = response.data.Places
-      console.log(places)
-      res.json(places)
+      const places = response.data.Places;
+      console.log(places);
+      res.json(places);
     }).catch((err) => {
-      console.log(err)
-      res.json({'err': err.status})
-    })
-  })
+      console.log(err);
+      res.json({'err': err.status});
+    });
+  });
 
   router.post('/livePrices/poll', (req, res, next) => {
     // flow of getting ticket prices for user
@@ -46,7 +46,7 @@ module.exports = (app, router, config, Trip) => {
     // repeat for hotels
     // fix more stuff
     if (req.isAuthenticated() || req.body._id === '') {
-      console.log(req.body)
+      console.log(req.body);
       /* Getting weird bugs when polling session 1st time need to restructure
         option 1. Create poll session with livePrices/create/session then store session in DB. If call livePrices/c/session 304, use that poll session to call livePrices/poll otherwise call livePrices/poll with the db session
 
@@ -54,11 +54,11 @@ module.exports = (app, router, config, Trip) => {
       */
 
       // Set country, currency, and locale from USER object
-      const { originplace, destinationplace, outbounddate, inbounddate, adults } = req.body
+      const { originplace, destinationplace, outbounddate, inbounddate, adults } = req.body;
       api.flights.livePrices.session({
-        country: 'ES',
-        currency: 'EUR',
-        locale: 'es-ES',
+        country: 'US',
+        currency: 'USD',
+        locale: 'en-US',
         locationSchema: 'Iata',
         originplace: originplace,
         destinationplace: destinationplace,
@@ -66,81 +66,81 @@ module.exports = (app, router, config, Trip) => {
         inbounddate: inbounddate,
         adults: parseInt(adults)
       }).then((response) => {
-        const location = response.headers.location
+        const location = response.headers.location;
 
-        console.log(`// POLL SESSION CREATED ${location}`)
-        console.log('// POLL THE FLIGHT SESSION')
+        console.log(`// POLL SESSION CREATED ${location}`);
+        console.log('// POLL THE FLIGHT SESSION');
 
-        pollSession(location)
+        pollSession(location);
       }).catch((err) => {
-        console.log(err)
-        res.json({'err': err.status})
-      })
+        console.log(err);
+        res.json({'err': err.status});
+      });
     } else {
-      res.json({})
-      next()
+      res.json({});
+      next();
     }
 
     let pollSession = (location) => {
-      let livePricesPromise = api.flights.livePrices.poll(location)
+      let livePricesPromise = api.flights.livePrices.poll(location);
 
       livePricesPromise.then((response) => {
-        const {Itineraries, Legs, Query} = response.data
+        const {Itineraries, Legs, Query} = response.data;
 
-        console.log(Query)
-        console.log({'// itineraries': Itineraries})
+        console.log(Query);
+        console.log({'// itineraries': Itineraries});
         // set Itineraries to sliced Itineraries
-        let cheapest_10_itineraries = Itineraries.slice(0, 10)
-        console.log({'// data': response.data})
+        let cheapest_10_itineraries = Itineraries.slice(0, 10);
+        console.log({'// data': response.data});
 
         Trip.findById({'_id': req.body._id}).then((doc, err) => {
           if (doc) {
             // pop off last polling session
-            doc.flights.shift()
+            doc.flights.shift();
 
             // get data necessary to send to user
             // add new data to fArr
-            doc.flights.push(cheapest_10_itineraries)
+            doc.flights.push(cheapest_10_itineraries);
             doc.save((err, doc) => {
-              console.log(`// Saved trip ${doc}`)
-            })
+              console.log(`// Saved trip ${doc}`);
+            });
           } else {
-            console.log({'// No document error': err})
+            console.log({'// No document error': err});
           }
         }).catch((err) => {
-          console.log(err)
-        }) // db call 1
+          console.log(err);
+        }); // db call 1
 
         // respond with json
-        res.json({'itineraries': cheapest_10_itineraries})
-      })
+        res.json({'itineraries': cheapest_10_itineraries});
+      });
 
       livePricesPromise.catch((err) => {
         // If an err is caught it will contain the url for the polling location still
 
         if (err.status === 304 && err.statusText === 'Not Modified') {
-          console.log('GET FLIGHTS FROM DB')
-          let pricesErrObj = err
+          console.log('GET FLIGHTS FROM DB');
+          let pricesErrObj = err;
           Trip.findById({'_id': req.body._id}).then((doc, err) => {
-            console.log('If this is the first time nothing exist...')
+            console.log('If this is the first time nothing exist...');
 
             if (doc.flights.length > 0 && doc.flights[0].length !== 0) {
-              console.log('// doc has flights')
-              res.json({'itineraries': doc.flights})
+              console.log('// doc has flights');
+              res.json({'itineraries': doc.flights});
             } else {
-              console.log('// doc doesnt have flights recurse on pollSession()')
-              pollSession(pricesErrObj.config.url)
+              console.log('// doc doesnt have flights recurse on pollSession()');
+              pollSession(pricesErrObj.config.url);
             }
           }).catch((err) => {
-            console.log(err)
-          }) // db call 2
+            console.log(err);
+          }); // db call 2
         } else {
-          console.log(err)
-          res.json({'err': err.status})
+          console.log(err);
+          res.json({'err': err.status});
         }
-      }) // session poll catch
-    } // end pollSession function
-  }) // router
+      }); // session poll catch
+    }; // end pollSession function
+  }); // router
 
-  app.use('/api/v1/flights', router)
-}
+  app.use('/api/v1/flights', router);
+};

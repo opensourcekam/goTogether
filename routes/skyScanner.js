@@ -1,7 +1,7 @@
 // https://github.com/jkbrzt/httpie
 module.exports = (app, hotelsRouter, flightsRouter, topRouter, config, Trip, User, moment) => {
-  const skyscanner = require('skyscannerjs')
-  const api = new skyscanner.API('prtl6749387986743898559646983194')
+  const skyscanner = require('skyscannerjs');
+  const api = new skyscanner.API('prtl6749387986743898559646983194');
 
   // const getUserDetails = (req, res, next) => {
   //   const { id, displayName, profileUrl, photos }= req.user
@@ -23,62 +23,62 @@ module.exports = (app, hotelsRouter, flightsRouter, topRouter, config, Trip, Use
   /* Currencies */
   topRouter.get('/currencies', (req, res, next) => {
     api.reference.currencies().then((response) => {
-      const currencies = response.data.Currencies
-      res.json(currencies)
-    })
-  })
+      const currencies = response.data.Currencies;
+      res.json(currencies);
+    });
+  });
 
   topRouter.get('/locales', (req, res, next) => {
     api.reference.locales().then((response) => {
-      const locales = response.data.Locales
-      res.json(locales)
-    })
-  })
+      const locales = response.data.Locales;
+      res.json(locales);
+    });
+  });
 
   topRouter.get('/countries', (req, res, next) => {
-    const { locale } = req.body
-    // console.log(locale)
+    const { locale } = req.query;
+
     api.reference.countries(locale).then((response) => {
-      const countries = response.data.Countries
-      res.json(countries)
-    })
-  })
+      const countries = response.data.Countries;
+      res.json(countries);
+    });
+  });
   /* TOP ROUTER */
 
   /* HOTEL ROUTES */
   let getHotelRooms = (session) => {
-    console.log('GHR', session)
+    console.log('GHR', session);
     api.hotels.livePrices.poll(session).then((response) => {
-      console.log(response)
-      const hotels = response.data.hotels
-      const status = response.data.status
-      return ({hotels, status})
+      console.log(response);
+      const hotels = response.data.hotels;
+      const status = response.data.status;
+      return ({hotels, status});
     }).catch((err) => {
-      console.log(err)
-      return err
-    })
-  }
+      console.log(err);
+      return err;
+    });
+  };
 
   hotelsRouter.get('/room/session/:ids', (req, res, next) => {
-    const {hotels} = req.params.ids
+    const {hotels} = req.params.ids;
 
     api.hotels.livePrices.details.session(session, {HotelIds: hotels}).then((response) => {
       // URL to poll the session.
-      const location = response.headers.location
+      const location = response.headers.location;
 
       api.hotels.livePrices.details.poll(location, {HotelIds: hotels}).then((response) => {
-        console.log(response)
+        console.log(response);
       }).catch((err) => {
-        console.log(err)
-      })
+        console.log(err);
+      });
     }).catch((err) => {
-      console.log(err)
-      next()
-    })
-  })
+      console.log(err);
+      next();
+    });
+  });
 
   hotelsRouter.get('/rooms', (req, res, next) => {
-    let {destination, checkIn, checkOut} = req.query
+    let {destination, checkIn, checkOut} = req.query;
     // console.log(destination, checkIn, checkOut)
 
     api.hotels.autosuggest({
@@ -86,8 +86,8 @@ module.exports = (app, hotelsRouter, flightsRouter, topRouter, config, Trip, Use
     }).then((response) => {
       // console.log(response)
       // console.log('autosuggest')
-      const { results, places } = response.data
-      const entityId = results[0].individual_id // respond with place that closest matches query
+      const { results, places } = response.data;
+      const entityId = results[0].individual_id; // respond with place that closest matches query
       // console.log('entityId', entityId)
 
       api.hotels.livePrices.session({
@@ -100,73 +100,73 @@ module.exports = (app, hotelsRouter, flightsRouter, topRouter, config, Trip, Use
         guests: 1,
         rooms: 1
       }).then((response) => {
-        const location = response.headers.location
+        const location = response.headers.location;
         // res.send(response.data)
         let hotelIds = response.data.hotels.map((h) => {
-          return h.hotel_id
-        })
+          return h.hotel_id;
+        });
         return {
           session: location.substring(location.lastIndexOf('/') + 1),
           hotelIds: hotelIds
-        }
+        };
       }).then((obj) => {
         // console.log(obj)
-        var str = ''
+        var str = '';
 
         obj.hotelIds.forEach((h, i) => {
           // Dont include comma at end of str
           str += (obj.hotelIds.length != i + 1)
             ? `${h},`
-            : `${h}`
-        })
+            : `${h}`;
+        });
 
         return api.hotels.livePrices.details.session(obj.session, {HotelIds: str}).then((session) => {
           // console.log('foo', session)
-          return session
+          return session;
         }).then((session) => {
           // console.log('bar', session)
           // console.log('appse', obj)
           return api.hotels.livePrices.details.poll(obj.session, {HotelIds: str})
           .then((response) => {
             // console.log(response.data)
-            res.json(response.data)
-          })
-        })
+            res.json(response.data);
+          });
+        });
       }).catch((err) => {
-        console.log(err)
-        res.send(err)
-      })
+        console.log(err);
+        res.send(err);
+      });
     }).catch((err) => {
-      console.log(err)
-      res.json({err})
-    })
-  })
+      console.log(err);
+      res.json({err});
+    });
+  });
 
-  app.use('/api/v1/hotels', hotelsRouter)
+  app.use('/api/v1/hotels', hotelsRouter);
     /* HOTEL ROUTES */
 
     /* FLIGHTS ROUTES */
   flightsRouter.get('/', (req, res, next) => {
-    res.json({'APIV1': 'true'})
-  })
+    res.json({'APIV1': 'true'});
+  });
 
   flightsRouter.get('/test', (req, res, next) => {
-    console.log(req.query)
-    res.json(req.query)
-  })
+    console.log(req.query);
+    res.json(req.query);
+  });
 
   flightsRouter.get('/locationAutosuggest/:location', (req, res, next) => {
       // GET - locationAutosuggest with this.props.country// or store in database when trip is created
       // RETURNS - [{},{},{}] arr[0] is clostest match to req.body.location
     api.locationAutosuggest({market: 'US', currency: 'USD', locale: 'en-US', query: req.params.location}).then((response) => {
-      const places = response.data.Places
-      console.log(places)
-      res.json(places)
+      const places = response.data.Places;
+      console.log(places);
+      res.json(places);
     }).catch((err) => {
-      console.log(err)
-      res.json({'err': err.status})
-    })
-  })
+      console.log(err);
+      res.json({'err': err.status});
+    });
+  });
 
   flightsRouter.post('/livePrices/poll', (req, res, next) => {
       // flow of getting ticket prices for user
@@ -189,7 +189,7 @@ module.exports = (app, hotelsRouter, flightsRouter, topRouter, config, Trip, Use
       // repeat for hotels
       // fix more stuff
     if (req.isAuthenticated() || req.body._id === '') {
-      console.log(req.body)
+      console.log(req.body);
         /* Getting weird bugs when polling session 1st time need to restructure
           option 1. Create poll session with livePrices/create/session then store session in DB. If call livePrices/c/session 304, use that poll session to call livePrices/poll otherwise call livePrices/poll with the db session
 
@@ -197,7 +197,7 @@ module.exports = (app, hotelsRouter, flightsRouter, topRouter, config, Trip, Use
         */
 
         // Set country, currency, and locale from USER object
-      const { originplace, destinationplace, outbounddate, inbounddate, adults } = req.body
+      const { originplace, destinationplace, outbounddate, inbounddate, adults } = req.body;
       api.flights.livePrices.session({
         country: 'ES',
         currency: 'EUR',
@@ -209,31 +209,31 @@ module.exports = (app, hotelsRouter, flightsRouter, topRouter, config, Trip, Use
         inbounddate: inbounddate,
         adults: parseInt(adults)
       }).then((response) => {
-        const location = response.headers.location
+        const location = response.headers.location;
 
-        console.log(`// POLL SESSION CREATED ${location}`)
-        console.log('// POLL THE FLIGHT SESSION')
+        console.log(`// POLL SESSION CREATED ${location}`);
+        console.log('// POLL THE FLIGHT SESSION');
 
-        pollSession(location)
+        pollSession(location);
       }).catch((err) => {
-        console.log(err)
-        res.json({'err': err.status})
-      })
+        console.log(err);
+        res.json({'err': err.status});
+      });
     } else {
-      res.json({})
-      next()
+      res.json({});
+      next();
     }
 
     let pollSession = (location) => {
-      let livePricesPromise = api.flights.livePrices.poll(location)
+      let livePricesPromise = api.flights.livePrices.poll(location);
 
       livePricesPromise.then((response) => {
-        const {Itineraries, Legs, Query} = response.data
+        const {Itineraries, Legs, Query} = response.data;
 
-        // console.log(Query) 
+        // console.log(Query)
         // console.log({'// itineraries': Itineraries})
           // set Itineraries to sliced Itineraries
-        let cheapest_10_itineraries = Itineraries.slice(0, 10)
+        let cheapest_10_itineraries = Itineraries.slice(0, 10);
         // console.log({'// data': response.data})
         //
         // Trip.findById({'_id': req.body._id}).then((doc, err) => {
@@ -255,36 +255,36 @@ module.exports = (app, hotelsRouter, flightsRouter, topRouter, config, Trip, Use
         // }) // db call 1
 
           // respond with json
-        res.json({'itineraries': cheapest_10_itineraries})
-      })
+        res.json({'itineraries': cheapest_10_itineraries});
+      });
 
       livePricesPromise.catch((err) => {
           // If an err is caught it will contain the url for the polling location still
 
         if (err.status === 304 && err.statusText === 'Not Modified') {
-          console.log('GET FLIGHTS FROM DB')
-          let pricesErrObj = err
+          console.log('GET FLIGHTS FROM DB');
+          let pricesErrObj = err;
           Trip.findById({'_id': req.body._id}).then((doc, err) => {
-            console.log('If this is the first time nothing exist...')
+            console.log('If this is the first time nothing exist...');
 
             if (doc.flights.length > 0 && doc.flights[0].length !== 0) {
-              console.log('// doc has flights')
-              res.json({'itineraries': doc.flights})
+              console.log('// doc has flights');
+              res.json({'itineraries': doc.flights});
             } else {
-              console.log('// doc doesnt have flights recurse on pollSession()')
-              pollSession(pricesErrObj.config.url)
+              console.log('// doc doesnt have flights recurse on pollSession()');
+              pollSession(pricesErrObj.config.url);
             }
           }).catch((err) => {
-            console.log(err)
-          }) // db call 2
+            console.log(err);
+          }); // db call 2
         } else {
-          console.log(err)
-          res.json({'err': err.status})
+          console.log(err);
+          res.json({'err': err.status});
         }
-      }) // session poll catch
-    } // end pollSession function
-  }) // router
+      }); // session poll catch
+    }; // end pollSession function
+  }); // router
 
-  app.use('/api/v1/flights', flightsRouter)
+  app.use('/api/v1/flights', flightsRouter);
   /* FLIGHTS ROUTES */
-}
+};

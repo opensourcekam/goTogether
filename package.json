@@ -9,8 +9,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start": "node app.js",
-    "startd": "nodemon app.js",
+    "start": "nodemon app.js",
     "test": "standard",
     "watch": "webpack --watch",
     "postinstall": "NODE_ENV=production webpack -p --progress --colors"

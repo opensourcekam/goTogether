@@ -31,6 +31,7 @@ class BookAPlace extends React.Component {
       <article className='tripCard' style={{height: '600px'}}>
         {/* <h2>Where are you staying in {destination}?</h2> */}
         <div className='card-deck' style={{display: 'block'}}>
+          {this.state.destination}
           <Hotel
             destination={destination}
             checkIn={checkIn}

@@ -1,27 +1,27 @@
-import React from 'react'
-import ObscurePlaces from './ObscurePlaces'
-import AutoComplete from './AutoComplete'
-import DateRangePickerWrapper from './DatePicker/DateRangePickerWrapper'
-import elements from '../../../../placesData/atlasObscure/atlasObscurePlaces.json'
+import React from 'react';
+import ObscurePlaces from './ObscurePlaces';
+import AutoComplete from './AutoComplete';
+import DateRangePickerWrapper from './DatePicker/DateRangePickerWrapper';
+import elements from '../../../../placesData/atlasObscure/atlasObscurePlaces.json';
 // import ToMap from '../../Trip/Parts/Maps/ToMap'
 
 // https://github.com/ubilabs/react-geosuggest
-import Geosuggest from 'react-geosuggest'
-import axios from 'axios'
-import moment from 'moment'
+import Geosuggest from 'react-geosuggest';
+import axios from 'axios';
+import moment from 'moment';
 
-import _ from 'underscore'
-import { hashHistory } from 'react-router'
+import _ from 'underscore';
+import { hashHistory } from 'react-router';
 
 const style = {
   h2: {
     'paddingBottom': '15px'
   }
-}
+};
 
 class NewTripForm extends React.Component {
   constructor (props) {
-    super(props)
+    super(props);
     this.state = {
       locations: _.sample(elements, 12),
       searched: false,
@@ -39,18 +39,18 @@ class NewTripForm extends React.Component {
         },
         skyscanner: {}
       }
-    }
+    };
 
-    this.data = []
-    this.placesArr = []
+    this.data = [];
+    this.placesArr = [];
 
     // Bind this to event functions
     // this.renderPlaces = this.renderPlaces.bind(this)
-    this.onSuggestSelect = this.onSuggestSelect.bind(this)
-    this.getObscureCards = this.getObscureCards.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.changeDate = this.changeDate.bind(this)
-    this.onDatesSelected = this.onDatesSelected.bind(this)
+    this.onSuggestSelect = this.onSuggestSelect.bind(this);
+    this.getObscureCards = this.getObscureCards.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.changeDate = this.changeDate.bind(this);
+    this.onDatesSelected = this.onDatesSelected.bind(this);
     // this.setBudget = this.setBudget.bind(this)
   } // constructor
 
@@ -61,48 +61,48 @@ class NewTripForm extends React.Component {
   }
 
   onFocus (e) {
-    console.log(e)
+    console.log(e);
     // delete any value in input
-    document.querySelectorAll('.geosuggest__suggests-wrapper')[0].style.display = 'block'
+    document.querySelectorAll('.geosuggest__suggests-wrapper')[0].style.display = 'block';
   }
 
   onBlur (e) {
-    console.log(e)
+    console.log(e);
   }
 
   onSuggestSelect (e) {
-    console.log(e.label)
-    let place = e.label
+    console.log(e.label);
+    let place = e.label;
     // split place so you just get the first word from the e.label result ex. Austin, Texas, United States -> Austin will be processed
-    let locationSuggestPromise = axios.get(`/api/v1/flights/locationAutosuggest/${place.split(',')[0]}`)
+    let locationSuggestPromise = axios.get(`/api/v1/flights/locationAutosuggest/${place.split(',')[0]}`);
 
     locationSuggestPromise.then((locationAutosuggest) => {
-      // console.log(locationAutosuggest.data)
+      console.log(locationAutosuggest.data);
       this.setState({
         to: {
           location: e.label,
           geometry: e.location,
           skyscanner: locationAutosuggest.data[0] || undefined
         }
-      })
-      console.log(`onSuggestSelect state: ${JSON.stringify(this.state, null, 3)}`)
-    })
+      });
+      console.log(`onSuggestSelect state: ${JSON.stringify(this.state, null, 3)}`);
+    });
 
     locationSuggestPromise.catch((error) => {
-      console.log(error)
-    })
+      console.log(error);
+    });
 
     if (this.state.to) {
-      document.querySelectorAll('.geosuggest__suggests-wrapper')[0].style.display = 'none'
+      document.querySelectorAll('.geosuggest__suggests-wrapper')[0].style.display = 'none';
     }
   } // onSuggestSelect
 
   onSuggestNoResults (e) {
-    console.log(e)
+    console.log(e);
   }
 
   getObscureCards (e) {
-    console.log(e)
+    console.log(e);
     if (e.trim() !== '') {
       axios.get('/searchPlace', {
         params: {
@@ -110,20 +110,20 @@ class NewTripForm extends React.Component {
           format: 'jsonp'
         }
       }).then((json) => {
-        console.log(json.data)
+        console.log(json.data);
 
         if (json.statusText === 'OK') {
-          this.placesArr = _.sample(_.uniq(_.pluck(json.data, 'name')), 10)
-          this.data = _.sample(json.data, 12)
+          this.placesArr = _.sample(_.uniq(_.pluck(json.data, 'name')), 10);
+          this.data = _.sample(json.data, 12);
         }
       }).catch((error) => {
-        console.log(error)
-      })
+        console.log(error);
+      });
     }
 
-    this.setState({locations: this.data, autoFillPlaces: this.placesArr, searched: true})
+    this.setState({locations: this.data, autoFillPlaces: this.placesArr, searched: true});
 
-    return this.renderDataList
+    return this.renderDataList;
   }
 
   // setBudget (e) {
@@ -131,33 +131,33 @@ class NewTripForm extends React.Component {
   // }
 
   changeDate (e) {
-    return this.setState({dates: e.target.value})
+    return this.setState({dates: e.target.value});
   }
 
   onDatesSelected (e) {
-    this.setState({dates: e})
+    this.setState({dates: e});
   }
 
   handleSubmit (e) {
-    e.preventDefault()
+    e.preventDefault();
 
     var data = {
       to: this.state.to,
       tripDate: this.state.dates.startDate._d,
       tripEndDate: this.state.dates.endDate._d
-    }
+    };
 
-    console.log(data)
+    console.log(data.to);
 
-    if (data.to !== '' && data.tripDate && data.tripEndDate) {
+    if (data.to.location !== '') {
       axios.post('/newTrip', data).then((response) => {
-        console.log(response)
+        console.log(response);
         if (response.statusText === 'OK' && response.data) {
-          hashHistory.push(`tripDash/${response.data._id}`)
+          hashHistory.push(`tripDash/${response.data._id}`);
         }
       }).catch((error) => {
-        console.log(error)
-      })
+        console.log(error);
+      });
     }
   }
 
@@ -208,14 +208,14 @@ class NewTripForm extends React.Component {
           height={'71vh'} /> */}
 
       </section>
-    )
+    );
   }
 }
 
-const {string} = React.PropTypes
+const {string} = React.PropTypes;
 
 NewTripForm.propTypes = {
   currencySymbol: string.isRequired
-}
+};
 
-module.exports = NewTripForm
+module.exports = NewTripForm;

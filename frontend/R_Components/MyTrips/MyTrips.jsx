@@ -1,16 +1,16 @@
 /* global userJSON */
-const React = require('react')
-const CircleProgressBarWithImageCenter = require('./Parts/CircleProgressBarWithImageCenter')
-const PlaneSpinLoader = require('../Parts/Loaders/PlaneSpinLoader')
-import axios from 'axios'
-import { Link } from 'react-router'
+const React = require('react');
+const CircleProgressBarWithImageCenter = require('./Parts/CircleProgressBarWithImageCenter');
+const PlaneSpinLoader = require('../Parts/Loaders/PlaneSpinLoader');
+import axios from 'axios';
+import { Link } from 'react-router';
 
 class MyTrips extends React.Component {
   constructor (props) {
-    super(props)
+    super(props);
     this.state = {
       trips: []
-    }
+    };
   }
 
   // Get each trip for currently loggedin user
@@ -25,20 +25,20 @@ class MyTrips extends React.Component {
     // console.log(userJSON.id)
     axios.get(`/api/v1/trips/all/${userJSON.id}`).then((res) => {
       // console.log(res.data)
-      return this.setState({ trips: res.data })
+      return this.setState({ trips: res.data });
     }).catch((err) => {
-      console.err(err)
-      throw new Error(`Could not get trips for ${userJSON.id}`)
-    })
+      console.err(err);
+      throw new Error(`Could not get trips for ${userJSON.id}`);
+    });
   }
 
   componentWillUnmount () {
   }
 
   render () {
-    const { trips } = this.state
-    let childElements
-    let pastTrips = []
+    const { trips } = this.state;
+    let childElements;
+    let pastTrips = [];
 
     if (trips.length) {
       childElements = trips.map((trip, i) => {
@@ -48,8 +48,9 @@ class MyTrips extends React.Component {
         // })
 
         if (trip.meta.past !== true) {
+                      // <div key={i} className='col-xs-12 col-sm-12 col-md-6 col-lg-4'>
           return (
-            <div key={i} className='col-xs-12 col-sm-12 col-md-6 col-lg-4'>
+            <div key={i}>
               <Link to={`/tripDash/${trip._id}`}>
                 <CircleProgressBarWithImageCenter
                   img={`//maps.googleapis.com/maps/api/staticmap?center=${trip.to.geometry.lat},${trip.to.geometry.lng}&zoom=13&size=400x450&satellite=roadmap&key=AIzaSyDa8ZRyg_iOyMDRf7nM8sWp_6vLgy7mYLE`}
@@ -65,7 +66,7 @@ class MyTrips extends React.Component {
                   strokeWidth='4' />
               </Link>
             </div>
-          )
+          );
         } else { // meta else
           pastTrips.push(
             <Link to={`/tripDash/${trip._id}`}>
@@ -73,25 +74,23 @@ class MyTrips extends React.Component {
               <span>{trip.to.location}</span>
               <br />
             </Link>
-          )
+          );
         }
-      })
+      });
     } else {
-      childElements = <PlaneSpinLoader />
+      childElements = <PlaneSpinLoader />;
     }
 
     return (
-      <div>
-        <h3>Plan for</h3>
-        <hr />
-        <div className='container-fluid' id='progress-circle-container'>
-          {childElements}
-          <h4>Past Trips</h4>
-          {pastTrips}
-        </div>
+      <div id='progress-circle-container' style={{'display': 'flex', 'flexWrap': 'wrap', 'width': '100%', 'justifyContent': 'center'}}>
+        {/* <h3>Plan for</h3>
+        <hr /> */}
+        {childElements}
+        {/* <h4>Past Trips</h4>
+          {pastTrips} */}
       </div>
-    )
+    );
   }
 }
 
-module.exports = MyTrips
+module.exports = MyTrips;
