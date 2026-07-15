@@ -1,0 +1,177 @@
+{
+  "Manhattan, New York": {
+    "status": "ok",
+    "lng": -73.9712,
+    "lat": 40.7831,
+    "placeName": "Manhattan, New York, United States",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Leiden, Netherlands": {
+    "status": "ok",
+    "lng": 4.497,
+    "lat": 52.1601,
+    "placeName": "Leiden, South Holland, Netherlands",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Vasilyevo, Russia": {
+    "status": "ok",
+    "lng": 49.0833,
+    "lat": 55.8333,
+    "placeName": "Vasilyevo, Tatarstan, Russia",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Guatape, Colombia": {
+    "status": "ok",
+    "lng": -75.3314,
+    "lat": 6.2317,
+    "placeName": "Guatapé, Antioquia, Colombia",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Kayenta, Arizona": {
+    "status": "ok",
+    "lng": -110.2146,
+    "lat": 36.7081,
+    "placeName": "Kayenta, Arizona, United States",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Columbus Junction, Iowa": {
+    "status": "ok",
+    "lng": -91.3607,
+    "lat": 41.2786,
+    "placeName": "Columbus Junction, Iowa, United States",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Warsaw, Poland": {
+    "status": "ok",
+    "lng": 21.0122,
+    "lat": 52.2297,
+    "placeName": "Warsaw, Masovian Voivodeship, Poland",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Mayong, India": {
+    "status": "ok",
+    "lng": 92.0417,
+    "lat": 26.2167,
+    "placeName": "Mayong, Assam, India",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "New York, New York": {
+    "status": "ok",
+    "lng": -74.006,
+    "lat": 40.7128,
+    "placeName": "New York, New York, United States",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Sierksdorf, Germany": {
+    "status": "ok",
+    "lng": 10.7722,
+    "lat": 54.15,
+    "placeName": "Sierksdorf, Schleswig-Holstein, Germany",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Krásno, Czech Republic": {
+    "status": "ok",
+    "lng": 12.785,
+    "lat": 50.108,
+    "placeName": "Krásno, Karlovy Vary, Czechia",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Zinnowitz, Germany": {
+    "status": "ok",
+    "lng": 13.9117,
+    "lat": 54.0767,
+    "placeName": "Zinnowitz, Mecklenburg-Vorpommern, Germany",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Ovid, New York": {
+    "status": "ok",
+    "lng": -76.823,
+    "lat": 42.6765,
+    "placeName": "Ovid, New York, United States",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Hyderabad, India": {
+    "status": "ok",
+    "lng": 78.4867,
+    "lat": 17.385,
+    "placeName": "Hyderabad, Telangana, India",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Dijon, France": {
+    "status": "ok",
+    "lng": 5.0415,
+    "lat": 47.322,
+    "placeName": "Dijon, Bourgogne-Franche-Comté, France",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Florence, Italy": {
+    "status": "ok",
+    "lng": 11.2558,
+    "lat": 43.7696,
+    "placeName": "Florence, Tuscany, Italy",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Fort Kent, Maine": {
+    "status": "ok",
+    "lng": -68.5895,
+    "lat": 47.2586,
+    "placeName": "Fort Kent, Maine, United States",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Neiva, Colombia": {
+    "status": "ok",
+    "lng": -75.2819,
+    "lat": 2.9273,
+    "placeName": "Neiva, Huila, Colombia",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Plains, Georgia": {
+    "status": "ok",
+    "lng": -84.3927,
+    "lat": 32.034,
+    "placeName": "Plains, Georgia, United States",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Ashibetsu-shi, Japan": {
+    "status": "ok",
+    "lng": 142.19,
+    "lat": 43.518,
+    "placeName": "Ashibetsu, Hokkaido, Japan",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Gießen, Germany": {
+    "status": "ok",
+    "lng": 8.6755,
+    "lat": 50.5841,
+    "placeName": "Giessen, Hesse, Germany",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Zurich, Switzerland": {
+    "status": "ok",
+    "lng": 8.5417,
+    "lat": 47.3769,
+    "placeName": "Zurich, Zurich, Switzerland",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Fraserburgh, Scotland": {
+    "status": "ok",
+    "lng": -2.005,
+    "lat": 57.693,
+    "placeName": "Fraserburgh, Scotland, United Kingdom",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Thiells, New York": {
+    "status": "ok",
+    "lng": -74.0132,
+    "lat": 41.2059,
+    "placeName": "Thiells, New York, United States",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  },
+  "Yverdon-les-Bains, Switzerland": {
+    "status": "ok",
+    "lng": 6.641,
+    "lat": 46.7785,
+    "placeName": "Yverdon-les-Bains, Vaud, Switzerland",
+    "cachedAt": "2026-07-15T00:00:00.000Z"
+  }
+}

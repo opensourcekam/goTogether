@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1784130229485,
+      "tag": "0000_spicy_jackal",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1784138500000,
+      "tag": "0001_neon_auth_user_id",
+      "breakpoints": true
+    }
+  ]
+}
